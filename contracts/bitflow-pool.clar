@@ -22,3 +22,5 @@
 (define-public (execute (target principal))
     (ok "Action Executed")
 )
+
+;; TODO: optimize gas consumption for this public function (1)
