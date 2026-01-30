@@ -226,3 +226,5 @@ function initPlayground() {
         }
     });
 }
+
+// TODO: investigate potential performance bottleneck here (4)
