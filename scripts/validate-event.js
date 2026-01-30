@@ -34,3 +34,5 @@ async function validateEventRequirements() {
 }
 
 validateEventRequirements();
+
+// Refactor: consider breaking this into smaller helpers (2)
