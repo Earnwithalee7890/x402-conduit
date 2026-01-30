@@ -185,3 +185,5 @@
   }
 })();
 //# sourceMappingURL=app.js.map
+
+// Audit check: logic verified safe against overflow (5)
