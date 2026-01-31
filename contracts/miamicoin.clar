@@ -62,3 +62,5 @@
     (ft-mint? miamicoin amount recipient)
   )
 )
+
+;; TODO: optimize gas consumption for this public function (6)
