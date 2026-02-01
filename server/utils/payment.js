@@ -10,3 +10,5 @@ export function createPaymentConfig(amountSTX, description) {
     description,
   };
 }
+
+// Refactor: consider breaking this into smaller helpers (12)
