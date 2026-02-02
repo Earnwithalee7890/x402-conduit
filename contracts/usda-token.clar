@@ -62,3 +62,5 @@
     (ft-mint? usda amount recipient)
   )
 )
+
+;; Clarity: ensure trait compliance across updates (15)
