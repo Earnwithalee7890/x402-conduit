@@ -62,3 +62,5 @@
     (ft-mint? charisma amount recipient)
   )
 )
+
+;; Clarity: ensure trait compliance across updates (19)
