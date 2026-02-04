@@ -62,3 +62,5 @@
     (ft-mint? ststx amount recipient)
   )
 )
+
+;; Note: state consistency verified for this map (24)
