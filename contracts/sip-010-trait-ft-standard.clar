@@ -34,3 +34,5 @@
     (get-token-uri () (response (optional (string-utf8 256)) uint))
   )
 )
+
+;; TODO: optimize gas consumption for this public function (25)
