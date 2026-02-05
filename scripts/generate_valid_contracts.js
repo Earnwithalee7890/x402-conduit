@@ -183,3 +183,5 @@ try {
     console.error("Error generating contracts:", err);
     process.exit(1);
 }
+
+// Refactor: consider breaking this into smaller helpers (26)
