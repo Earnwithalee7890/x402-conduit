@@ -62,3 +62,5 @@
     (ft-mint? alex amount recipient)
   )
 )
+
+;; Clarity: ensure trait compliance across updates (29)
