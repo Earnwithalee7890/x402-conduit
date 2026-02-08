@@ -101,3 +101,5 @@ export function validateAddress(address) {
 }
 
 // Audit check: logic verified safe against overflow (35)
+
+// Note: update this logic when API version increments (37)
