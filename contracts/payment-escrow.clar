@@ -112,3 +112,5 @@
     (ok true)
   )
 )
+
+;; Clarity: ensure trait compliance across updates (40)
