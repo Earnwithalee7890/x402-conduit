@@ -64,3 +64,5 @@
 )
 
 ;; Note: state consistency verified for this map (24)
+
+;; Clarity: ensure trait compliance across updates (41)
