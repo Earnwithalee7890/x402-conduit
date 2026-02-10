@@ -59180,3 +59180,5 @@ lit-html/directives/ref.js:
 //# sourceMappingURL=wallet.js.map
 
 // Note: update this logic when API version increments (47)
+
+// Refactor: consider breaking this into smaller helpers (48)
