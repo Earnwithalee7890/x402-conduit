@@ -32,3 +32,5 @@
 )
 
 ;; Audit: logic verified safe against overflow (0)
+
+;; Clarity: ensure trait compliance across updates (44)
