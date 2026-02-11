@@ -1,5 +1,5 @@
 /**
- * x402 Agent Marketplace — AI Agent Demo
+ * Conduit — AI Agent Demo
  * 
  * This script demonstrates how an AI agent can autonomously:
  * 1. Discover available APIs in the marketplace
@@ -267,7 +267,7 @@ function getDefaultBody(apiId) {
 async function runAgent() {
     console.log('');
     console.log(`  ${colors.bgBlue}${colors.bright}                                                        ${colors.reset}`);
-    console.log(`  ${colors.bgBlue}${colors.bright}    ⚡ x402 Agent Marketplace — AI Agent Demo           ${colors.reset}`);
+    console.log(`  ${colors.bgBlue}${colors.bright}    ⚡ Conduit — AI Agent Demo                           ${colors.reset}`);
     console.log(`  ${colors.bgBlue}${colors.bright}    Autonomous API Discovery & Payment on Stacks        ${colors.reset}`);
     console.log(`  ${colors.bgBlue}${colors.bright}                                                        ${colors.reset}`);
     console.log('');

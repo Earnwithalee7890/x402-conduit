@@ -1,7 +1,7 @@
 /**
- * x402 Agent Marketplace — Server
+ * Conduit — Server
  * 
- * Production API marketplace where AI agents autonomously discover,
+ * Pay-per-call API marketplace where AI agents autonomously discover,
  * pay for, and consume APIs using the x402 payment protocol on Stacks.
  */
 
@@ -194,7 +194,7 @@ function recordTransaction(apiId, req, payment) {
 
 app.get('/api/v1/discover', (req, res) => {
   res.json({
-    marketplace: 'x402 Agent Marketplace',
+    marketplace: 'Conduit',
     protocol: 'x402-stacks',
     version: '2.0',
     network: NETWORK,
@@ -225,7 +225,7 @@ app.get('/api/v1/discover', (req, res) => {
 
 app.get('/api/v1/stats', (req, res) => {
   res.json({
-    marketplace: 'x402 Agent Marketplace',
+    marketplace: 'Conduit',
     uptime: process.uptime(),
     stats: {
       totalAPIs: API_REGISTRY.length,
@@ -515,8 +515,8 @@ app.listen(PORT, () => {
   console.log('');
   console.log('  ╔══════════════════════════════════════════════════════════╗');
   console.log('  ║                                                          ║');
-  console.log('  ║   ⚡ x402 Agent Marketplace                              ║');
-  console.log('  ║   Powered by x402-stacks on Stacks                       ║');
+  console.log('  ║   ⚡ Conduit                                              ║');
+  console.log('  ║   Pay-per-call APIs on Stacks                             ║');
   console.log('  ║                                                          ║');
   console.log(`  ║   🌐 http://localhost:${PORT}                              ║`);
   console.log(`  ║   📡 Network: ${NETWORK.padEnd(41)}║`);

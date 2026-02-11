@@ -1,7 +1,7 @@
 {
-  "name": "x402-agent-marketplace",
+  "name": "conduit",
   "version": "1.0.0",
-  "description": "AI Agent API Marketplace powered by x402-stacks — discover, pay, and consume APIs with HTTP 402 payments on Stacks blockchain",
+  "description": "Conduit — Pay-per-call API marketplace powered by x402 payments on the Stacks blockchain",
   "main": "server/index.js",
   "type": "module",
   "scripts": {

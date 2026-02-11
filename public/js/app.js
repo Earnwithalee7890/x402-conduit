@@ -1,5 +1,5 @@
 /**
- * x402 Agent Marketplace — Frontend
+ * Conduit — Frontend
  */
 
 let catalog = [];
