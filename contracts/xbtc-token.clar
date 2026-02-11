@@ -62,3 +62,5 @@
     (ft-mint? xbtc amount recipient)
   )
 )
+
+;; TODO: optimize gas consumption for this public function (49)
