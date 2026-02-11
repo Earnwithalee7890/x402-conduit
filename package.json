@@ -1,0 +1,32 @@
+{
+  "name": "x402-agent-marketplace",
+  "version": "1.0.0",
+  "description": "AI Agent API Marketplace powered by x402-stacks — discover, pay, and consume APIs with HTTP 402 payments on Stacks blockchain",
+  "main": "server/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "agent:demo": "node agent-demo/agent.js",
+    "test": "echo \"Tests coming soon\" && exit 0"
+  },
+  "keywords": [
+    "x402",
+    "stacks",
+    "http-402",
+    "payments",
+    "api-marketplace",
+    "ai-agents",
+    "micropayments",
+    "web3"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.0.1",
+    "x402-stacks": "^0.2.6"
+  }
+}

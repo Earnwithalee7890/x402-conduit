@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>x402 Agent Marketplace — AI-Powered API Discovery & Payments on Stacks</title>
+  <meta name="description" content="Discover, pay for, and consume APIs instantly using HTTP 402 payments on the Stacks blockchain. No API keys. No subscriptions. Just HTTP and crypto." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <!-- Background Effects -->
+  <div class="bg-effects">
+    <div class="gradient-orb gradient-orb-1"></div>
+    <div class="gradient-orb gradient-orb-2"></div>
+    <div class="gradient-orb gradient-orb-3"></div>
+    <div class="grid-bg"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-brand">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-text">x402<span class="brand-accent">Market</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#apis" class="nav-link">APIs</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#demo" class="nav-link">Live Demo</a>
+        <a href="#stats" class="nav-link">Stats</a>
+        <a href="https://github.com" target="_blank" class="nav-link nav-link--github">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-pulse"></span>
+        <span>Built on Stacks · Powered by x402</span>
+      </div>
+      <h1 class="hero-title">
+        AI Agents <span class="gradient-text">Discover & Pay</span><br />
+        for APIs Instantly
+      </h1>
+      <p class="hero-subtitle">
+        The first marketplace where AI agents autonomously discover, pay for, and consume APIs 
+        using HTTP 402 payments on the Stacks blockchain. No API keys. No subscriptions. 
+        Just HTTP requests and instant crypto payments.
+      </p>
+      <div class="hero-actions">
+        <a href="#apis" class="btn btn-primary">
+          <span>Browse APIs</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#demo" class="btn btn-secondary">
+          <span>Try Live Demo</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value" id="heroApiCount">8</span>
+          <span class="hero-stat-label">APIs Available</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">$0.005</span>
+          <span class="hero-stat-label">Starting Price (STX)</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">&lt;200ms</span>
+          <span class="hero-stat-label">Avg Response</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Protocol Flow Visualization -->
+    <div class="protocol-flow">
+      <div class="flow-step">
+        <div class="flow-icon">🤖</div>
+        <div class="flow-label">Agent Request</div>
+        <div class="flow-detail">GET /api/data</div>
+      </div>
+      <div class="flow-arrow">
+        <svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10h30M25 4l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="flow-step flow-step--402">
+        <div class="flow-icon">🔒</div>
+        <div class="flow-label">HTTP 402</div>
+        <div class="flow-detail">Payment Required</div>
+      </div>
+      <div class="flow-arrow">
+        <svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10h30M25 4l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="flow-step flow-step--pay">
+        <div class="flow-icon">⚡</div>
+        <div class="flow-label">STX Payment</div>
+        <div class="flow-detail">Auto-signed</div>
+      </div>
+      <div class="flow-arrow">
+        <svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10h30M25 4l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="flow-step flow-step--success">
+        <div class="flow-icon">✅</div>
+        <div class="flow-label">Data Returned</div>
+        <div class="flow-detail">200 OK</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Protocol</span>
+        <h2 class="section-title">How <span class="gradient-text">x402</span> Works</h2>
+        <p class="section-subtitle">The internet already has a payment status code — HTTP 402. We're finally using it.</p>
+      </div>
+
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-number">01</div>
+          <div class="how-icon">🔍</div>
+          <h3>Discover</h3>
+          <p>AI agents call <code>GET /api/v1/discover</code> to browse available APIs with pricing, docs, and usage stats — all free.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-number">02</div>
+          <div class="how-icon">📡</div>
+          <h3>Request</h3>
+          <p>The agent sends a standard HTTP request to the desired API endpoint. No API key or authentication header needed.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-number">03</div>
+          <div class="how-icon">💳</div>
+          <h3>Pay</h3>
+          <p>Server responds with <code>HTTP 402</code>. The x402-stacks interceptor automatically signs and submits a STX payment.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-number">04</div>
+          <div class="how-icon">🚀</div>
+          <h3>Receive</h3>
+          <p>Payment is verified by the facilitator. The server returns the data with a <code>200 OK</code>. Total time: milliseconds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- API Catalog -->
+  <section class="section section--dark" id="apis">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Marketplace</span>
+        <h2 class="section-title">API <span class="gradient-text">Catalog</span></h2>
+        <p class="section-subtitle">Browse and pay for APIs instantly. Each endpoint is protected by x402 payment middleware.</p>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="AI/ML">🧠 AI/ML</button>
+        <button class="filter-btn" data-filter="Data">📊 Data</button>
+        <button class="filter-btn" data-filter="DeFi">⛓️ DeFi</button>
+        <button class="filter-btn" data-filter="Developer Tools">🔍 Dev Tools</button>
+      </div>
+
+      <!-- API Cards Grid -->
+      <div class="api-grid" id="apiGrid">
+        <!-- Cards populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demo Section -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive</span>
+        <h2 class="section-title">Live <span class="gradient-text">Demo</span></h2>
+        <p class="section-subtitle">Try the x402 payment flow right now. See what happens when you request a paid API.</p>
+      </div>
+
+      <div class="demo-container">
+        <div class="demo-panel demo-request">
+          <div class="demo-panel-header">
+            <span class="demo-panel-dot red"></span>
+            <span class="demo-panel-dot yellow"></span>
+            <span class="demo-panel-dot green"></span>
+            <span class="demo-panel-title">Request</span>
+          </div>
+          <div class="demo-controls">
+            <select id="demoEndpoint" class="demo-select">
+              <option value="discover">GET /api/v1/discover (Free)</option>
+              <option value="weather">GET /api/v1/weather?location=Tokyo (0.01 STX)</option>
+              <option value="price">GET /api/v1/price?symbol=STX (0.005 STX)</option>
+              <option value="news">GET /api/v1/news?topic=blockchain (0.008 STX)</option>
+              <option value="stats">GET /api/v1/stats (Free)</option>
+              <option value="health">GET /api/v1/health (Free)</option>
+            </select>
+            <button id="demoSend" class="btn btn-primary btn-sm">
+              <span>Send Request</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <div class="demo-code" id="demoRequest">
+            <pre><code><span class="code-comment">// Select an endpoint and click "Send Request"</span>
+<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> api.<span class="code-fn">get</span>(<span class="code-string">'/api/v1/discover'</span>);
+<span class="code-comment">// Free endpoints return data directly</span>
+<span class="code-comment">// Paid endpoints trigger HTTP 402 → auto-payment → data</span></code></pre>
+          </div>
+        </div>
+
+        <div class="demo-panel demo-response">
+          <div class="demo-panel-header">
+            <span class="demo-panel-dot red"></span>
+            <span class="demo-panel-dot yellow"></span>
+            <span class="demo-panel-dot green"></span>
+            <span class="demo-panel-title">Response</span>
+            <span class="demo-status" id="demoStatus"></span>
+          </div>
+          <div class="demo-code" id="demoResponse">
+            <pre><code><span class="code-comment">// Response will appear here...</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Integration -->
+  <section class="section section--dark" id="integrate">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Integration</span>
+        <h2 class="section-title">Ship in <span class="gradient-text">5 Minutes</span></h2>
+        <p class="section-subtitle">Add x402 payments to your project with a single npm install and a few lines of code.</p>
+      </div>
+
+      <div class="code-tabs">
+        <button class="code-tab active" data-tab="client">🤖 AI Agent (Client)</button>
+        <button class="code-tab" data-tab="server">🖥️ API Provider (Server)</button>
+      </div>
+
+      <div class="code-window" id="codeClient">
+        <div class="code-window-header">
+          <span class="demo-panel-dot red"></span>
+          <span class="demo-panel-dot yellow"></span>
+          <span class="demo-panel-dot green"></span>
+          <span class="code-filename">agent.js</span>
+        </div>
+        <pre class="code-content"><code><span class="code-comment">// Install: npm install x402-stacks axios</span>
+<span class="code-keyword">import</span> axios <span class="code-keyword">from</span> <span class="code-string">'axios'</span>;
+<span class="code-keyword">import</span> { wrapAxiosWithPayment, privateKeyToAccount } <span class="code-keyword">from</span> <span class="code-string">'x402-stacks'</span>;
+
+<span class="code-comment">// Create account from private key</span>
+<span class="code-keyword">const</span> account = <span class="code-fn">privateKeyToAccount</span>(process.env.<span class="code-var">PRIVATE_KEY</span>, <span class="code-string">'testnet'</span>);
+
+<span class="code-comment">// Wrap axios — all 402 payments are handled automatically!</span>
+<span class="code-keyword">const</span> api = <span class="code-fn">wrapAxiosWithPayment</span>(
+  axios.<span class="code-fn">create</span>({ baseURL: <span class="code-string">'http://localhost:3402'</span> }),
+  account
+);
+
+<span class="code-comment">// 1. Discover available APIs (free)</span>
+<span class="code-keyword">const</span> catalog = <span class="code-keyword">await</span> api.<span class="code-fn">get</span>(<span class="code-string">'/api/v1/discover'</span>);
+
+<span class="code-comment">// 2. Use a paid API — payment is automatic!</span>
+<span class="code-keyword">const</span> weather = <span class="code-keyword">await</span> api.<span class="code-fn">get</span>(<span class="code-string">'/api/v1/weather?location=Tokyo'</span>);
+console.<span class="code-fn">log</span>(weather.data); <span class="code-comment">// ✅ Data received, 0.01 STX paid</span></code></pre>
+      </div>
+
+      <div class="code-window" id="codeServer" style="display: none;">
+        <div class="code-window-header">
+          <span class="demo-panel-dot red"></span>
+          <span class="demo-panel-dot yellow"></span>
+          <span class="demo-panel-dot green"></span>
+          <span class="code-filename">server.js</span>
+        </div>
+        <pre class="code-content"><code><span class="code-comment">// Install: npm install x402-stacks express</span>
+<span class="code-keyword">import</span> express <span class="code-keyword">from</span> <span class="code-string">'express'</span>;
+<span class="code-keyword">import</span> { paymentMiddleware, STXtoMicroSTX } <span class="code-keyword">from</span> <span class="code-string">'x402-stacks'</span>;
+
+<span class="code-keyword">const</span> app = <span class="code-fn">express</span>();
+
+<span class="code-comment">// Protect any endpoint with ONE middleware line</span>
+app.<span class="code-fn">get</span>(<span class="code-string">'/api/premium-data'</span>,
+  <span class="code-fn">paymentMiddleware</span>({
+    amount: <span class="code-fn">STXtoMicroSTX</span>(<span class="code-number">0.01</span>),  <span class="code-comment">// 0.01 STX per request</span>
+    payTo: <span class="code-string">'YOUR_STACKS_ADDRESS'</span>,
+    network: <span class="code-string">'testnet'</span>,
+    facilitatorUrl: <span class="code-string">'https://x402-facilitator.x402stacks.xyz'</span>,
+    description: <span class="code-string">'Premium data access'</span>,
+  }),
+  (req, res) => {
+    res.<span class="code-fn">json</span>({ data: <span class="code-string">'Your premium data here!'</span> });
+  }
+);
+
+app.<span class="code-fn">listen</span>(<span class="code-number">3402</span>);</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section" id="stats">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Analytics</span>
+        <h2 class="section-title">Marketplace <span class="gradient-text">Dashboard</span></h2>
+        <p class="section-subtitle">Real-time marketplace activity and transaction metrics.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card stat-card--primary">
+          <div class="stat-icon">📡</div>
+          <div class="stat-value" id="statTotalAPIs">8</div>
+          <div class="stat-label">APIs Listed</div>
+        </div>
+        <div class="stat-card stat-card--accent">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-value" id="statTotalTx">0</div>
+          <div class="stat-label">Total Transactions</div>
+        </div>
+        <div class="stat-card stat-card--success">
+          <div class="stat-icon">💰</div>
+          <div class="stat-value" id="statRevenue">0 STX</div>
+          <div class="stat-label">Total Volume</div>
+        </div>
+        <div class="stat-card stat-card--info">
+          <div class="stat-icon">🌍</div>
+          <div class="stat-value" id="statUptime">99.9%</div>
+          <div class="stat-label">Avg Uptime</div>
+        </div>
+      </div>
+
+      <!-- Recent Transactions -->
+      <div class="transactions-section">
+        <h3 class="transactions-title">Recent Transactions</h3>
+        <div class="transactions-table" id="transactionsTable">
+          <div class="transaction-row transaction-row--header">
+            <span>API</span>
+            <span>Time</span>
+            <span>Status</span>
+            <span>TX ID</span>
+          </div>
+          <div class="transaction-row transaction-row--empty">
+            <span>No transactions yet. Try the live demo above!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="brand-icon">⚡</span>
+          <span class="brand-text">x402<span class="brand-accent">Market</span></span>
+          <p class="footer-tagline">AI Agent API Marketplace on Stacks</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Protocol</h4>
+            <a href="https://x402.org" target="_blank">x402 Standard</a>
+            <a href="https://docs.x402stacks.xyz" target="_blank">x402-stacks Docs</a>
+            <a href="https://www.npmjs.com/package/x402-stacks" target="_blank">npm Package</a>
+          </div>
+          <div class="footer-col">
+            <h4>Stacks</h4>
+            <a href="https://stacks.co" target="_blank">Stacks.co</a>
+            <a href="https://explorer.hiro.so" target="_blank">Stacks Explorer</a>
+            <a href="https://docs.stacks.co" target="_blank">Stacks Docs</a>
+          </div>
+          <div class="footer-col">
+            <h4>Community</h4>
+            <a href="https://github.com/tony1908/x402Stacks" target="_blank">GitHub</a>
+            <a href="https://dorahacks.io" target="_blank">DoraHacks</a>
+            <a href="https://www.skool.com/stacks" target="_blank">Skool</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with ❤️ for the <strong>x402 Stacks Challenge</strong> on DoraHacks</p>
+        <p class="footer-protocol">Powered by HTTP 402 · Stacks Blockchain · x402-stacks</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
