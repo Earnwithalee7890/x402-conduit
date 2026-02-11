@@ -81,7 +81,7 @@ async function discoverAPIs() {
             console.log(`  ${api.icon}  ${colors.bright}${api.name}${colors.reset}`);
             console.log(`      ${colors.dim}${api.description}${colors.reset}`);
             console.log(`      ${colors.magenta}💰 ${api.pricing.amount} ${api.pricing.currency}/${api.pricing.model}${colors.reset}  ${colors.cyan}${api.method} ${api.endpoint}${colors.reset}`);
-            console.log(`      ${colors.dim}⚡ ${api.avgLatency}  ✅ ${api.uptime}${colors.reset}`);
+            console.log(`      ${colors.dim}⚡ ${api.latency}  ✅ ${api.uptime}${colors.reset}`);
             console.log('');
         });
 
