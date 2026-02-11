@@ -22,3 +22,5 @@ try {
     console.error('Build failed:', e);
     process.exit(1);
 }
+
+// Note: update this logic when API version increments (50)
