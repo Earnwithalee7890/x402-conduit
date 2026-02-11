@@ -1,361 +1,224 @@
 /**
- * x402 Agent Marketplace — Frontend Application
- * Handles API catalog rendering, live demo, stats, and UI interactions
+ * x402 Agent Marketplace — Frontend
  */
 
-// ─── State ──────────────────────────────────────────────────────────────────
-let apiCatalog = [];
-let currentFilter = 'all';
-let statsInterval = null;
+let catalog = [];
 
-// ─── Initialize ─────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
-    loadAPICatalog();
+    loadCatalog();
     initFilters();
-    initDemo();
+    initPlayground();
     initCodeTabs();
     loadStats();
-    startStatsPolling();
-    initScrollAnimations();
+    setInterval(loadStats, 12000);
+    initAnimations();
 });
 
-// ─── Navbar ─────────────────────────────────────────────────────────────────
+// ── Navbar ────────────────────────────────────────────────────────────────
 function initNavbar() {
-    const navbar = document.getElementById('navbar');
+    const nav = document.getElementById('navbar');
     const toggle = document.getElementById('navToggle');
-    const links = document.querySelector('.nav-links');
+    const links = document.getElementById('navLinks');
 
     window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
+        nav.classList.toggle('scrolled', window.scrollY > 40);
     });
 
-    if (toggle) {
+    if (toggle && links) {
         toggle.addEventListener('click', () => {
-            links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-            if (links.style.display === 'flex') {
-                links.style.position = 'absolute';
-                links.style.top = '100%';
-                links.style.left = '0';
-                links.style.right = '0';
-                links.style.flexDirection = 'column';
-                links.style.background = 'rgba(10, 11, 15, 0.95)';
-                links.style.padding = '20px';
-                links.style.borderBottom = '1px solid rgba(148, 163, 184, 0.1)';
-                links.style.gap = '16px';
+            const open = links.style.display === 'flex';
+            links.style.display = open ? '' : 'flex';
+            if (!open) {
+                Object.assign(links.style, {
+                    position: 'absolute', top: '100%', left: '0', right: '0',
+                    flexDirection: 'column', background: 'rgba(6,7,10,0.95)',
+                    padding: '20px', borderBottom: '1px solid rgba(148,163,184,0.08)', gap: '14px',
+                });
             }
         });
     }
 }
 
-// ─── API Catalog ────────────────────────────────────────────────────────────
-async function loadAPICatalog() {
+// ── Catalog ───────────────────────────────────────────────────────────────
+async function loadCatalog() {
     try {
-        const response = await fetch('/api/v1/discover');
-        const data = await response.json();
-        apiCatalog = data.apis;
-        renderAPICatalog(apiCatalog);
-        document.getElementById('heroApiCount').textContent = apiCatalog.length;
-    } catch (err) {
-        console.error('Failed to load API catalog:', err);
-        // Fallback static catalog
-        renderFallbackCatalog();
+        const res = await fetch('/api/v1/discover');
+        const data = await res.json();
+        catalog = data.apis;
+        renderCatalog(catalog);
+    } catch (e) {
+        console.error('Catalog load failed:', e);
     }
 }
 
-function renderAPICatalog(apis) {
+function renderCatalog(apis) {
     const grid = document.getElementById('apiGrid');
     if (!grid) return;
-
     grid.innerHTML = apis.map(api => `
-    <div class="api-card" data-category="${api.category}" data-api-id="${api.id}">
-      <div class="api-card-header">
+    <div class="api-card" data-category="${api.category}" data-endpoint="${api.endpoint}">
+      <div class="api-card-top">
         <div class="api-card-icon">${api.icon}</div>
-        <span class="api-card-category">${api.category}</span>
+        <span class="api-card-badge">${api.category}</span>
       </div>
       <h3 class="api-card-name">${api.name}</h3>
-      <p class="api-card-description">${api.description}</p>
-      <div class="api-card-meta">
+      <p class="api-card-desc">${api.description}</p>
+      <div class="api-card-footer">
         <div class="api-card-price">
-          <span class="api-card-price-value">${api.pricing.amount}</span>
-          <span class="api-card-price-unit">${api.pricing.currency} / ${api.pricing.model}</span>
+          <span class="api-price-val">${api.pricing.amount}</span>
+          <span class="api-price-unit">STX / call</span>
         </div>
         <span class="api-card-method ${api.method === 'POST' ? 'post' : ''}">${api.method}</span>
       </div>
       <div class="api-card-stats">
-        <span class="api-card-stat">⚡ <strong>${api.avgLatency}</strong></span>
+        <span class="api-card-stat">⚡ <strong>${api.latency}</strong></span>
         <span class="api-card-stat">✅ <strong>${api.uptime}</strong></span>
       </div>
     </div>
   `).join('');
 
-    // Add click handlers to scroll to demo
     grid.querySelectorAll('.api-card').forEach(card => {
         card.addEventListener('click', () => {
-            const apiId = card.dataset.apiId;
-            const demoSelect = document.getElementById('demoEndpoint');
-
-            // Try to find matching option
-            const options = demoSelect.options;
-            for (let i = 0; i < options.length; i++) {
-                if (options[i].value === apiId) {
-                    demoSelect.selectedIndex = i;
-                    break;
-                }
-            }
-
-            // Scroll to demo
-            document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('playground').scrollIntoView({ behavior: 'smooth' });
         });
     });
 }
 
-function renderFallbackCatalog() {
-    apiCatalog = [
-        { id: 'weather', name: 'Weather Intelligence API', description: 'Real-time weather data and forecasts', category: 'Data', icon: '🌤️', pricing: { amount: '0.01', currency: 'STX', model: 'per-request' }, method: 'GET', avgLatency: '120ms', uptime: '99.9%' },
-        { id: 'sentiment', name: 'AI Sentiment Analysis', description: 'NLP-powered sentiment analysis', category: 'AI/ML', icon: '🧠', pricing: { amount: '0.02', currency: 'STX', model: 'per-request' }, method: 'POST', avgLatency: '250ms', uptime: '99.7%' },
-        { id: 'price-oracle', name: 'Crypto Price Oracle', description: 'Real-time crypto prices', category: 'DeFi', icon: '📊', pricing: { amount: '0.005', currency: 'STX', model: 'per-request' }, method: 'GET', avgLatency: '80ms', uptime: '99.95%' },
-    ];
-    renderAPICatalog(apiCatalog);
-}
-
-// ─── Filters ────────────────────────────────────────────────────────────────
+// ── Filters ───────────────────────────────────────────────────────────────
 function initFilters() {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            const filter = btn.dataset.filter;
-            currentFilter = filter;
-
-            const cards = document.querySelectorAll('.api-card');
-            cards.forEach(card => {
-                if (filter === 'all' || card.dataset.category === filter) {
-                    card.style.display = '';
-                    card.style.animation = 'fadeInUp 0.3s ease';
-                } else {
-                    card.style.display = 'none';
-                }
+            const f = btn.dataset.filter;
+            document.querySelectorAll('.api-card').forEach(card => {
+                const show = f === 'all' || card.dataset.category === f;
+                card.style.display = show ? '' : 'none';
+                if (show) card.style.animation = 'fadeUp 0.3s var(--ease) forwards';
             });
         });
     });
 }
 
-// ─── Live Demo ──────────────────────────────────────────────────────────────
-function initDemo() {
-    const sendBtn = document.getElementById('demoSend');
-    const select = document.getElementById('demoEndpoint');
-
-    if (sendBtn) {
-        sendBtn.addEventListener('click', executeDemoRequest);
-    }
-
-    if (select) {
-        select.addEventListener('change', updateDemoCode);
-        updateDemoCode(); // Initial
-    }
+// ── Playground ────────────────────────────────────────────────────────────
+function initPlayground() {
+    const sendBtn = document.getElementById('pgSend');
+    const select = document.getElementById('pgEndpoint');
+    if (sendBtn) sendBtn.addEventListener('click', runPlayground);
+    if (select) { select.addEventListener('change', updateRequestCode); updateRequestCode(); }
 }
 
-function updateDemoCode() {
-    const select = document.getElementById('demoEndpoint');
-    const requestPanel = document.getElementById('demoRequest');
-    const value = select.value;
+function updateRequestCode() {
+    const val = document.getElementById('pgEndpoint').value;
+    const panel = document.getElementById('pgRequestCode');
+    const snippets = {
+        discover: `<span class="syn-comment">// GET /api/v1/discover — Free</span>\n<span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/discover'</span>);\n<span class="syn-keyword">const</span> catalog = <span class="syn-keyword">await</span> res.<span class="syn-fn">json</span>();\nconsole.<span class="syn-fn">log</span>(catalog.totalAPIs, <span class="syn-string">'APIs available'</span>);`,
+        stats: `<span class="syn-comment">// GET /api/v1/stats — Free</span>\n<span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/stats'</span>);\n<span class="syn-keyword">const</span> stats = <span class="syn-keyword">await</span> res.<span class="syn-fn">json</span>();`,
+        health: `<span class="syn-comment">// GET /api/v1/health — Free</span>\n<span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/health'</span>);\n<span class="syn-keyword">const</span> health = <span class="syn-keyword">await</span> res.<span class="syn-fn">json</span>();`,
+        weather: `<span class="syn-comment">// GET /api/v1/weather — 0.01 STX per call</span>\n<span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/weather?location=Tokyo'</span>);\n<span class="syn-comment">// Without payment: HTTP 402 Payment Required</span>\n<span class="syn-comment">// With x402-stacks interceptor: auto-pay → 200 OK</span>`,
+        price: `<span class="syn-comment">// GET /api/v1/price — 0.005 STX per call</span>\n<span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/price?symbol=BTC'</span>);\n<span class="syn-comment">// Returns x402 payment challenge</span>`,
+        news: `<span class="syn-comment">// GET /api/v1/news — 0.008 STX per call</span>\n<span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/news?topic=blockchain&limit=5'</span>);\n<span class="syn-comment">// x402 interceptor handles payment automatically</span>`,
+        chain: `<span class="syn-comment">// GET /api/v1/chain-analytics — 0.02 STX per call</span>\n<span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/chain-analytics?address=ST1PQH...'</span>);\n<span class="syn-comment">// Deep on-chain analytics for any Stacks address</span>`,
+    };
+    panel.innerHTML = `<pre><code>${snippets[val] || snippets.discover}</code></pre>`;
+}
+
+async function runPlayground() {
+    const val = document.getElementById('pgEndpoint').value;
+    const resPanel = document.getElementById('pgResponseCode');
+    const status = document.getElementById('pgStatus');
+    const btn = document.getElementById('pgSend');
+
+    btn.disabled = true;
+    btn.innerHTML = '<span>Sending...</span>';
+    status.className = 'pg-status';
+    status.textContent = '...';
+    resPanel.innerHTML = '<pre><code class="shimmer" style="display:block;height:200px;border-radius:8px;"></code></pre>';
 
     const endpoints = {
-        discover: {
-            code: `<span class="code-comment">// GET /api/v1/discover — FREE (no payment required)</span>
-<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(<span class="code-string">'/api/v1/discover'</span>);
-<span class="code-keyword">const</span> catalog = <span class="code-keyword">await</span> response.<span class="code-fn">json</span>();
-
-<span class="code-comment">// Returns full API catalog with pricing</span>
-console.<span class="code-fn">log</span>(catalog.apis.length + <span class="code-string">' APIs available'</span>);`,
-        },
-        weather: {
-            code: `<span class="code-comment">// GET /api/v1/weather — 💰 0.01 STX per request</span>
-<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(
-  <span class="code-string">'/api/v1/weather?location=Tokyo'</span>
-);
-
-<span class="code-comment">// Without payment: HTTP 402 Payment Required</span>
-<span class="code-comment">// With x402-stacks: auto-pays 0.01 STX → gets data</span>
-<span class="code-keyword">const</span> weather = <span class="code-keyword">await</span> response.<span class="code-fn">json</span>();`,
-        },
-        price: {
-            code: `<span class="code-comment">// GET /api/v1/price — 💰 0.005 STX per request</span>
-<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(
-  <span class="code-string">'/api/v1/price?symbol=STX'</span>
-);
-
-<span class="code-comment">// Cheapest API in the marketplace!</span>
-<span class="code-keyword">const</span> price = <span class="code-keyword">await</span> response.<span class="code-fn">json</span>();`,
-        },
-        news: {
-            code: `<span class="code-comment">// GET /api/v1/news — 💰 0.008 STX per request</span>
-<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(
-  <span class="code-string">'/api/v1/news?topic=blockchain&limit=5'</span>
-);
-
-<span class="code-comment">// AI-curated news articles with relevance scoring</span>
-<span class="code-keyword">const</span> news = <span class="code-keyword">await</span> response.<span class="code-fn">json</span>();`,
-        },
-        stats: {
-            code: `<span class="code-comment">// GET /api/v1/stats — FREE (no payment required)</span>
-<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(<span class="code-string">'/api/v1/stats'</span>);
-<span class="code-keyword">const</span> stats = <span class="code-keyword">await</span> response.<span class="code-fn">json</span>();
-
-<span class="code-comment">// Marketplace analytics & recent transactions</span>
-console.<span class="code-fn">log</span>(stats);`,
-        },
-        health: {
-            code: `<span class="code-comment">// GET /api/v1/health — FREE (no payment required)</span>
-<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(<span class="code-string">'/api/v1/health'</span>);
-<span class="code-keyword">const</span> health = <span class="code-keyword">await</span> response.<span class="code-fn">json</span>();
-
-<span class="code-comment">// Quick health check for monitoring</span>`,
-        },
-    };
-
-    const ep = endpoints[value] || endpoints.discover;
-    requestPanel.innerHTML = `<pre><code>${ep.code}</code></pre>`;
-}
-
-async function executeDemoRequest() {
-    const select = document.getElementById('demoEndpoint');
-    const responsePanel = document.getElementById('demoResponse');
-    const statusBadge = document.getElementById('demoStatus');
-    const sendBtn = document.getElementById('demoSend');
-    const value = select.value;
-
-    // Loading state
-    sendBtn.disabled = true;
-    sendBtn.innerHTML = '<span>Sending...</span>';
-    statusBadge.className = 'demo-status';
-    statusBadge.textContent = '...';
-    responsePanel.innerHTML = '<pre><code class="loading-shimmer" style="display:block;height:200px;border-radius:8px;"></code></pre>';
-
-    // Map select values to actual endpoints
-    const endpointMap = {
         discover: '/api/v1/discover',
-        weather: '/api/v1/weather?location=Tokyo',
-        price: '/api/v1/price?symbol=STX',
-        news: '/api/v1/news?topic=blockchain&limit=3',
         stats: '/api/v1/stats',
         health: '/api/v1/health',
+        weather: '/api/v1/weather?location=Tokyo',
+        price: '/api/v1/price?symbol=BTC',
+        news: '/api/v1/news?topic=blockchain&limit=3',
+        chain: '/api/v1/chain-analytics?address=ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
     };
 
-    const freeEndpoints = ['discover', 'stats', 'health'];
-    const isPaid = !freeEndpoints.includes(value);
-    const url = endpointMap[value] || endpointMap.discover;
+    const url = endpoints[val] || endpoints.discover;
+    const t0 = performance.now();
 
     try {
-        // For paid endpoints in demo, we'll explain the 402 flow
-        const startTime = performance.now();
-        const response = await fetch(url);
-        const elapsed = Math.round(performance.now() - startTime);
+        const res = await fetch(url);
+        const ms = Math.round(performance.now() - t0);
+        const data = await res.json();
 
-        if (response.status === 402) {
-            // Show the 402 response
-            const paymentRequired = await response.json();
-            statusBadge.className = 'demo-status status-402';
-            statusBadge.textContent = '402 Payment Required';
+        if (res.status === 402) {
+            status.className = 'pg-status s-402';
+            status.textContent = `402 · ${ms}ms`;
+            resPanel.innerHTML = `<pre><code><span class="syn-comment">// HTTP 402 — Payment Required</span>
+<span class="syn-comment">// The x402 protocol returns payment requirements:</span>
+<span class="syn-comment">// An agent with x402-stacks would auto-pay and retry</span>
 
-            responsePanel.innerHTML = `<pre><code><span class="code-comment">// ⚡ HTTP 402 — Payment Required!</span>
-<span class="code-comment">// The server requires ${getAPIPrice(value)} STX to access this endpoint</span>
-<span class="code-comment">// With x402-stacks, this payment happens automatically</span>
-<span class="code-comment">// Response time: ${elapsed}ms</span>
-
-${syntaxHighlightJSON(paymentRequired)}</code></pre>`;
+${highlightJSON(data)}</code></pre>`;
         } else {
-            const data = await response.json();
-            statusBadge.className = 'demo-status status-200';
-            statusBadge.textContent = `200 OK · ${elapsed}ms`;
+            status.className = 'pg-status s-200';
+            status.textContent = `${res.status} OK · ${ms}ms`;
+            resPanel.innerHTML = `<pre><code><span class="syn-comment">// ${res.status} OK — ${ms}ms</span>
 
-            // Truncate large responses
-            const displayData = truncateObject(data, 3);
-            responsePanel.innerHTML = `<pre><code><span class="code-comment">// ✅ ${response.status} OK — Response received (${elapsed}ms)</span>
-${isPaid ? '<span class="code-comment">// 💰 In production: ' + getAPIPrice(value) + ' STX would be auto-paid via x402</span>' : '<span class="code-comment">// 🆓 Free endpoint — no payment required</span>'}
-
-${syntaxHighlightJSON(displayData)}</code></pre>`;
+${highlightJSON(trimObj(data, 3))}</code></pre>`;
         }
-    } catch (err) {
-        statusBadge.className = 'demo-status';
-        statusBadge.textContent = 'Error';
-        responsePanel.innerHTML = `<pre><code><span class="code-comment">// ❌ Error: ${err.message}</span></code></pre>`;
+    } catch (e) {
+        status.className = 'pg-status s-err';
+        status.textContent = 'Error';
+        resPanel.innerHTML = `<pre><code><span class="syn-comment">// Error: ${e.message}</span></code></pre>`;
     }
 
-    // Reset button
-    sendBtn.disabled = false;
-    sendBtn.innerHTML = `<span>Send Request</span>
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>`;
-
-    // Refresh stats
+    btn.disabled = false;
+    btn.innerHTML = '<span>Send</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
     loadStats();
 }
 
-function getAPIPrice(id) {
-    const prices = { weather: '0.01', sentiment: '0.02', translate: '0.015', 'price-oracle': '0.005', price: '0.005', 'image-gen': '0.05', 'code-review': '0.03', news: '0.008', 'blockchain-analytics': '0.02' };
-    return prices[id] || '0.01';
-}
-
-// ─── JSON Syntax Highlighting ───────────────────────────────────────────────
-function syntaxHighlightJSON(obj) {
-    const json = JSON.stringify(obj, null, 2);
-    return json
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?/g, (match) => {
-            let cls = 'code-string'; // strings
-            if (/:$/.test(match)) {
-                cls = 'code-var'; // keys
-                match = match.replace(/"/g, '').replace(/:$/, ':');
-                return `<span class="${cls}">"${match.slice(0, -1)}"</span>:`;
-            }
-            return `<span class="${cls}">${match}</span>`;
+function highlightJSON(obj) {
+    return JSON.stringify(obj, null, 2)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?/g, m => {
+            if (/:$/.test(m)) return `<span class="syn-var">${m.slice(0, -1)}</span>:`;
+            return `<span class="syn-string">${m}</span>`;
         })
-        .replace(/\b(true|false)\b/g, '<span class="code-keyword">$1</span>')
-        .replace(/\b(null)\b/g, '<span class="code-comment">$1</span>')
-        .replace(/\b(\d+\.?\d*)\b/g, '<span class="code-number">$1</span>');
+        .replace(/\b(true|false)\b/g, '<span class="syn-keyword">$1</span>')
+        .replace(/\b(null)\b/g, '<span class="syn-comment">$1</span>')
+        .replace(/\b(\d+\.?\d*)\b/g, '<span class="syn-number">$1</span>');
 }
 
-function truncateObject(obj, maxDepth, currentDepth = 0) {
-    if (currentDepth >= maxDepth) {
-        if (Array.isArray(obj)) return obj.length > 2 ? [obj[0], `... ${obj.length - 1} more`] : obj;
-        if (typeof obj === 'object' && obj !== null) return '{ ... }';
+function trimObj(obj, depth, d = 0) {
+    if (d >= depth) {
+        if (Array.isArray(obj)) return obj.length > 2 ? [obj[0], `...${obj.length - 1} more`] : obj;
+        if (typeof obj === 'object' && obj !== null) return '...';
         return obj;
     }
-
     if (Array.isArray(obj)) {
-        const items = obj.slice(0, 3).map(item => truncateObject(item, maxDepth, currentDepth + 1));
-        if (obj.length > 3) items.push(`... ${obj.length - 3} more items`);
+        const items = obj.slice(0, 3).map(i => trimObj(i, depth, d + 1));
+        if (obj.length > 3) items.push(`...${obj.length - 3} more`);
         return items;
     }
-
     if (typeof obj === 'object' && obj !== null) {
-        const result = {};
+        const r = {};
         const keys = Object.keys(obj);
-        keys.slice(0, 12).forEach(key => {
-            result[key] = truncateObject(obj[key], maxDepth, currentDepth + 1);
-        });
-        if (keys.length > 12) result['...'] = `${keys.length - 12} more fields`;
-        return result;
+        keys.slice(0, 10).forEach(k => r[k] = trimObj(obj[k], depth, d + 1));
+        if (keys.length > 10) r['...'] = `${keys.length - 10} more`;
+        return r;
     }
-
-    if (typeof obj === 'string' && obj.length > 150) {
-        return obj.substring(0, 150) + '...';
-    }
-
+    if (typeof obj === 'string' && obj.length > 120) return obj.substring(0, 120) + '...';
     return obj;
 }
 
-// ─── Code Tabs ──────────────────────────────────────────────────────────────
+// ── Code Tabs ─────────────────────────────────────────────────────────────
 function initCodeTabs() {
     document.querySelectorAll('.code-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-
             const target = tab.dataset.tab;
             document.getElementById('codeClient').style.display = target === 'client' ? '' : 'none';
             document.getElementById('codeServer').style.display = target === 'server' ? '' : 'none';
@@ -363,72 +226,43 @@ function initCodeTabs() {
     });
 }
 
-// ─── Stats ──────────────────────────────────────────────────────────────────
+// ── Stats ─────────────────────────────────────────────────────────────────
 async function loadStats() {
     try {
-        const response = await fetch('/api/v1/stats');
-        const data = await response.json();
-
-        document.getElementById('statTotalAPIs').textContent = data.stats.totalAPIs;
-        document.getElementById('statTotalTx').textContent = data.stats.totalTransactions;
-
-        // Calculate total volume
-        const volume = data.stats.apiUsage.reduce((acc, api) => acc + api.totalCalls * 0.015, 0);
-        document.getElementById('statRevenue').textContent = volume.toFixed(3) + ' STX';
-
-        // Render recent transactions
-        renderTransactions(data.stats.recentTransactions);
-    } catch (err) {
-        console.error('Failed to load stats:', err);
-    }
+        const res = await fetch('/api/v1/stats');
+        const data = await res.json();
+        document.getElementById('statAPIs').textContent = data.stats.totalAPIs;
+        document.getElementById('statTx').textContent = data.stats.totalTransactions;
+        const vol = data.stats.apiUsage.reduce((a, u) => a + u.totalCalls * 0.015, 0);
+        document.getElementById('statVolume').textContent = vol.toFixed(3) + ' STX';
+        renderTx(data.stats.recentTransactions);
+    } catch (e) { /* silent */ }
 }
 
-function renderTransactions(transactions) {
-    const table = document.getElementById('transactionsTable');
-    if (!table || !transactions.length) return;
-
-    const header = `
-    <div class="transaction-row transaction-row--header">
-      <span>API</span>
-      <span>Time</span>
-      <span>Status</span>
-      <span>TX ID</span>
-    </div>`;
-
-    const rows = transactions.map(tx => {
+function renderTx(txs) {
+    const body = document.getElementById('txBody');
+    if (!body || !txs || !txs.length) return;
+    const head = `<div class="tx-row tx-row--head"><span>API</span><span>Time</span><span>Status</span><span>TX ID</span></div>`;
+    const rows = txs.map(tx => {
         const time = new Date(tx.timestamp).toLocaleTimeString();
-        return `
-      <div class="transaction-row">
-        <span><strong>${tx.apiId}</strong></span>
-        <span>${time}</span>
-        <span class="tx-status">${tx.payment?.status || 'demo'}</span>
-        <span class="tx-id">${tx.payment?.txId ? tx.payment.txId.substring(0, 16) + '...' : 'demo'}</span>
-      </div>`;
+        const txId = tx.payment?.txId || 'pending';
+        return `<div class="tx-row">
+      <span><strong>${tx.apiId}</strong></span>
+      <span>${time}</span>
+      <span class="tx-badge">${tx.payment?.status || 'settled'}</span>
+      <span class="tx-id">${txId.length > 16 ? txId.substring(0, 16) + '...' : txId}</span>
+    </div>`;
     }).join('');
-
-    table.innerHTML = header + rows;
+    body.innerHTML = head + rows;
 }
 
-function startStatsPolling() {
-    statsInterval = setInterval(loadStats, 15000);
-}
+// ── Scroll Animations ─────────────────────────────────────────────────────
+function initAnimations() {
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-// ─── Scroll Animations ─────────────────────────────────────────────────────
-function initScrollAnimations() {
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    document.querySelectorAll('.how-card, .api-card, .stat-card, .section-header').forEach(el => {
-        el.style.opacity = '0';
-        observer.observe(el);
-    });
+    document.querySelectorAll('[data-animate]').forEach(el => obs.observe(el));
 }
