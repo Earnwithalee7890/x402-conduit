@@ -302,7 +302,7 @@
 <span class="syn-comment">// needs to complete payment automatically:</span>
 <span class="syn-comment">//   • Payment amount in microSTX</span>
 <span class="syn-comment">//   • Recipient address</span>
-<span class="syn-comment">//   • Network (testnet/mainnet)</span>
+<span class="syn-comment">//   • Network (mainnet)</span>
 <span class="syn-comment">//   • Facilitator URL for settlement</span></code></pre>
           </div>
         </div>
@@ -339,7 +339,7 @@
 <span class="syn-keyword">import</span> { wrapAxiosWithPayment, privateKeyToAccount } <span class="syn-keyword">from</span> <span class="syn-string">'x402-stacks'</span>;
 
 <span class="syn-comment">// Create account from private key</span>
-<span class="syn-keyword">const</span> account = <span class="syn-fn">privateKeyToAccount</span>(process.env.<span class="syn-var">PRIVATE_KEY</span>, <span class="syn-string">'testnet'</span>);
+<span class="syn-keyword">const</span> account = <span class="syn-fn">privateKeyToAccount</span>(process.env.<span class="syn-var">PRIVATE_KEY</span>, <span class="syn-string">'mainnet'</span>);
 
 <span class="syn-comment">// Wrap axios — all 402 payments are now automatic</span>
 <span class="syn-keyword">const</span> api = <span class="syn-fn">wrapAxiosWithPayment</span>(
@@ -379,7 +379,7 @@ app.<span class="syn-fn">get</span>(<span class="syn-string">'/api/premium-data'
   <span class="syn-fn">paymentMiddleware</span>({
     amount: <span class="syn-fn">STXtoMicroSTX</span>(<span class="syn-number">0.01</span>),
     payTo: <span class="syn-string">'YOUR_STACKS_ADDRESS'</span>,
-    network: <span class="syn-string">'testnet'</span>,
+    network: <span class="syn-string">'mainnet'</span>,
     facilitatorUrl: <span class="syn-string">'https://x402-facilitator.x402stacks.xyz'</span>,
     description: <span class="syn-string">'Premium data access'</span>,
   }),
@@ -429,7 +429,7 @@ app.<span class="syn-fn">listen</span>(<span class="syn-number">3402</span>);</c
         <div class="stat-card">
           <div class="stat-accent accent-cyan"></div>
           <div class="stat-icon">🌐</div>
-          <div class="stat-value">Testnet</div>
+          <div class="stat-value">Mainnet</div>
           <div class="stat-label">Network</div>
         </div>
       </div>

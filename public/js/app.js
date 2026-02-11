@@ -142,7 +142,7 @@ async function runPlayground() {
         weather: '/api/v1/weather?location=Tokyo',
         price: '/api/v1/price?symbol=BTC',
         news: '/api/v1/news?topic=blockchain&limit=3',
-        chain: '/api/v1/chain-analytics?address=ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
+        chain: '/api/v1/chain-analytics?address=SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R',
     };
 
     const url = endpoints[val] || endpoints.discover;

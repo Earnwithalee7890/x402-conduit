@@ -5,7 +5,7 @@
 > AI agents autonomously discover, pay for, and consume APIs using HTTP 402 — no API keys, no subscriptions, just HTTP and STX.
 
 [![Built with x402-stacks](https://img.shields.io/badge/protocol-x402--stacks-6366f1)](https://github.com/tony1908/x402Stacks)
-[![Network](https://img.shields.io/badge/network-Stacks%20Testnet-orange)](https://stacks.co)
+[![Network](https://img.shields.io/badge/network-Stacks%20Mainnet-orange)](https://stacks.co)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 ---
@@ -114,7 +114,7 @@ Open **http://localhost:3402** in your browser.
 import axios from 'axios';
 import { wrapAxiosWithPayment, privateKeyToAccount } from 'x402-stacks';
 
-const account = privateKeyToAccount(process.env.PRIVATE_KEY, 'testnet');
+const account = privateKeyToAccount(process.env.PRIVATE_KEY, 'mainnet');
 
 const api = wrapAxiosWithPayment(
   axios.create({ baseURL: 'http://localhost:3402' }),
@@ -141,7 +141,7 @@ app.get('/api/premium',
   paymentMiddleware({
     amount: STXtoMicroSTX(0.01),
     payTo: 'YOUR_STACKS_ADDRESS',
-    network: 'testnet',
+    network: 'mainnet',
     facilitatorUrl: 'https://x402-facilitator.x402stacks.xyz',
     description: 'Premium data access',
   }),

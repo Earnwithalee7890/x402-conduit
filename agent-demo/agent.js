@@ -9,7 +9,7 @@
  * 
  * Usage: node agent-demo/agent.js
  * 
- * Note: For actual payments, you need a funded testnet wallet.
+ * Note: For actual payments, you need a funded Stacks mainnet wallet.
  * This demo shows the discovery flow and the 402 payment challenge.
  */
 
@@ -20,7 +20,7 @@ const MARKETPLACE_URL = process.env.MARKETPLACE_URL || 'http://localhost:3402';
 
 // For production with real payments, you would use:
 // import { wrapAxiosWithPayment, privateKeyToAccount } from 'x402-stacks';
-// const account = privateKeyToAccount(process.env.PRIVATE_KEY, 'testnet');
+// const account = privateKeyToAccount(process.env.PRIVATE_KEY, 'mainnet');
 // const api = wrapAxiosWithPayment(axios.create({ baseURL: MARKETPLACE_URL }), account);
 
 const api = axios.create({ baseURL: MARKETPLACE_URL });
@@ -217,7 +217,7 @@ function processResults(data, selectedAPI) {
         console.log('');
         console.log(`      ${colors.cyan}// agent.js — Full autonomous payment flow${colors.reset}`);
         console.log(`      ${colors.magenta}import${colors.reset} { wrapAxiosWithPayment, privateKeyToAccount } ${colors.magenta}from${colors.reset} ${colors.green}'x402-stacks'${colors.reset};`);
-        console.log(`      ${colors.magenta}const${colors.reset} account = ${colors.blue}privateKeyToAccount${colors.reset}(process.env.PRIVATE_KEY, ${colors.green}'testnet'${colors.reset});`);
+        console.log(`      ${colors.magenta}const${colors.reset} account = ${colors.blue}privateKeyToAccount${colors.reset}(process.env.PRIVATE_KEY, ${colors.green}'mainnet'${colors.reset});`);
         console.log(`      ${colors.magenta}const${colors.reset} api = ${colors.blue}wrapAxiosWithPayment${colors.reset}(axios.create({ baseURL }), account);`);
         console.log(`      ${colors.magenta}const${colors.reset} data = ${colors.magenta}await${colors.reset} api.get(${colors.green}'${selectedAPI.endpoint}'${colors.reset}); ${colors.dim}// Payment is automatic!${colors.reset}`);
         console.log('');
@@ -247,7 +247,7 @@ function getDefaultParams(apiId) {
         weather: { location: 'Tokyo' },
         'price-oracle': { symbol: 'STX', currency: 'USD' },
         'news-feed': { topic: 'blockchain', limit: '3' },
-        'blockchain-analytics': { address: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM', type: 'profile' },
+        'blockchain-analytics': { address: 'SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R', type: 'profile' },
     };
     return params[apiId] || {};
 }

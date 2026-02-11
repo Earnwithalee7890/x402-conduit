@@ -22,8 +22,8 @@ const app = express();
 const PORT = process.env.PORT || 3402;
 
 // ─── Configuration ───────────────────────────────────────────────────────────
-const NETWORK = process.env.STACKS_NETWORK || 'testnet';
-const SERVER_ADDRESS = process.env.SERVER_ADDRESS || 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+const NETWORK = process.env.STACKS_NETWORK || 'mainnet';
+const SERVER_ADDRESS = process.env.SERVER_ADDRESS || 'SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R';
 const FACILITATOR_URL = process.env.FACILITATOR_URL || 'https://x402-facilitator.x402stacks.xyz';
 
 // ─── Middleware ──────────────────────────────────────────────────────────────
