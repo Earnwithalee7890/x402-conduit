@@ -166,11 +166,62 @@ node agent-demo/agent.js "Get blockchain news"
 
 ---
 
+## Smart Contracts (Clarity)
+
+Conduit includes 4 production-ready Clarity smart contracts that bring the marketplace logic on-chain:
+
+### 1. `api-registry.clar` — On-Chain API Registry
+Providers register APIs with pricing, descriptions, and metadata. Agents discover endpoints by reading contract state.
+
+| Function | Description |
+|----------|-------------|
+| `register-api` | Register a new API with pricing and metadata |
+| `update-api-price` | Update pricing for your API |
+| `toggle-api-status` | Activate/deactivate an API |
+| `get-api-by-id` | Read API details from chain |
+| `get-api-by-slug` | Look up API by name slug |
+
+### 2. `payment-escrow.clar` — Payment Escrow & Settlement
+Handles the full payment lifecycle: deposit → settle → dispute → refund. Includes platform fees and expiry-based auto-refund.
+
+| Function | Description |
+|----------|-------------|
+| `create-payment` | Deposit STX into escrow for an API call |
+| `settle-payment` | Release escrowed STX to provider |
+| `dispute-payment` | Lock funds for admin review |
+| `refund-payment` | Admin refund for disputed payments |
+| `claim-expired-escrow` | Auto-refund after 24h if unsettled |
+
+### 3. `reputation.clar` — On-Chain Reputation System
+Agents rate APIs after paid calls, building a trust layer. Includes 5 tiers: New → Bronze → Silver → Gold → Platinum.
+
+| Function | Description |
+|----------|-------------|
+| `rate-api` | Submit a 1-5 star rating with comment |
+| `get-api-reputation` | Full star distribution for an API |
+| `get-api-average-rating` | Average rating (scaled ×100) |
+| `get-provider-reputation` | Provider's aggregate score and tier |
+| `has-rated` | Check if a user already rated an API |
+
+### 4. `subscription-manager.clar` — Prepaid Credits & Subscriptions
+Agents deposit STX to get credits with volume discounts (up to 100% bonus). Subscription plans with block-based expiry.
+
+| Function | Description |
+|----------|-------------|
+| `purchase-credits` | Buy credits with volume discounts |
+| `spend-credits` | Use credits for API calls |
+| `subscribe` | Subscribe to a prepaid plan |
+| `create-plan` | Admin: create subscription plans |
+| `calculate-credits` | Preview credits for a deposit amount |
+
+---
+
 ## Tech Stack
 
 - **Runtime**: Node.js + Express.js
 - **Protocol**: x402-stacks (HTTP 402 payment protocol)
 - **Blockchain**: Stacks L2 (secured by Bitcoin)
+- **Smart Contracts**: Clarity (Stacks native language)
 - **Asset**: STX (Stacks token)
 - **Frontend**: Vanilla HTML/CSS/JS with premium design
 - **Settlement**: x402 Facilitator service
@@ -181,12 +232,17 @@ node agent-demo/agent.js "Get blockchain news"
 
 ```
 conduit/
-├── server/index.js          # Express server with x402 middleware
+├── contracts/
+│   ├── api-registry.clar        # On-chain API registration & discovery
+│   ├── payment-escrow.clar      # STX escrow, settlement & disputes
+│   ├── reputation.clar          # Rating system with provider tiers
+│   └── subscription-manager.clar # Prepaid credits & subscription plans
+├── server/index.js              # Express server with x402 middleware
 ├── public/
-│   ├── index.html           # Marketplace UI
-│   ├── css/styles.css       # Premium design system
-│   └── js/app.js            # Frontend logic
-├── agent-demo/agent.js      # AI agent demo script
+│   ├── index.html               # Marketplace UI
+│   ├── css/styles.css           # Premium design system
+│   └── js/app.js                # Frontend logic
+├── agent-demo/agent.js          # AI agent demo script
 ├── package.json
 ├── .env.example
 ├── LICENSE
