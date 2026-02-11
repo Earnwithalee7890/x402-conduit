@@ -71,3 +71,5 @@
     (ok true)
   )
 )
+
+;; TODO: optimize gas consumption for this public function (51)
