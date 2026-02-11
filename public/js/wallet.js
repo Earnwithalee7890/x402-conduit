@@ -59178,3 +59178,5 @@ lit-html/directives/ref.js:
   (*! noble-secp256k1 - MIT License (c) 2019 Paul Miller (paulmillr.com) *)
 */
 //# sourceMappingURL=wallet.js.map
+
+// Note: update this logic when API version increments (47)
