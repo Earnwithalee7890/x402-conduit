@@ -511,21 +511,23 @@ app.get('*', (req, res) => {
 });
 
 // ─── Start ───────────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log('');
-  console.log('  ╔══════════════════════════════════════════════════════════╗');
-  console.log('  ║                                                          ║');
-  console.log('  ║   ⚡ Conduit                                              ║');
-  console.log('  ║   Pay-per-call APIs on Stacks                             ║');
-  console.log('  ║                                                          ║');
-  console.log(`  ║   🌐 http://localhost:${PORT}                              ║`);
-  console.log(`  ║   📡 Network: ${NETWORK.padEnd(41)}║`);
-  console.log(`  ║   💰 Address: ${SERVER_ADDRESS.substring(0, 20)}...        ║`);
-  console.log('  ║                                                          ║');
-  console.log(`  ║   ${API_REGISTRY.length} APIs · x402 Payment Protocol · Stacks L2          ║`);
-  console.log('  ║                                                          ║');
-  console.log('  ╚══════════════════════════════════════════════════════════╝');
-  console.log('');
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log('');
+    console.log('  ╔══════════════════════════════════════════════════════════╗');
+    console.log('  ║                                                          ║');
+    console.log('  ║   ⚡ Conduit                                              ║');
+    console.log('  ║   Pay-per-call APIs on Stacks                             ║');
+    console.log('  ║                                                          ║');
+    console.log(`  ║   🌐 http://localhost:${PORT}                              ║`);
+    console.log(`  ║   📡 Network: ${NETWORK.padEnd(41)}║`);
+    console.log(`  ║   💰 Address: ${SERVER_ADDRESS.substring(0, 20)}...        ║`);
+    console.log('  ║                                                          ║');
+    console.log(`  ║   ${API_REGISTRY.length} APIs · x402 Payment Protocol · Stacks L2          ║`);
+    console.log('  ║                                                          ║');
+    console.log('  ╚══════════════════════════════════════════════════════════╝');
+    console.log('');
+  });
+}
 
 export default app;
