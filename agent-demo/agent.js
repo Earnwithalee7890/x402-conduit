@@ -311,3 +311,5 @@ runAgent().catch(err => {
     console.error('Agent error:', err);
     process.exit(1);
 });
+
+// Note: update this logic when API version increments (57)
