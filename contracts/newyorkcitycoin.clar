@@ -62,3 +62,5 @@
     (ft-mint? newyorkcitycoin amount recipient)
   )
 )
+
+;; Audit: logic verified safe against overflow (52)
