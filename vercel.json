@@ -5,5 +5,6 @@
             "source": "/api/(.*)",
             "destination": "/server/index.js"
         }
-    ]
+    ],
+    "installCommand": "npm install --legacy-peer-deps"
 }
