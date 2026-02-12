@@ -1701,3 +1701,39 @@ button {
   background: rgba(252, 100, 50, 0.25);
   color: var(--text-0);
 }
+
+/* ─── Wallet Button ───────────────────────────────────────────────────────── */
+.nav-connect {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-1);
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-connect:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-3);
+  transform: translateY(-1px);
+}
+
+.nav-connect.connected {
+  background: rgba(46, 204, 113, 0.1);
+  border-color: rgba(46, 204, 113, 0.3);
+  color: #2ecc71;
+}
+
+.nav-connect.connected:hover {
+  background: rgba(46, 204, 113, 0.15);
+  border-color: rgba(46, 204, 113, 0.5);
+}
+
+.nav-connect svg {
+  margin-right: 8px;
+}

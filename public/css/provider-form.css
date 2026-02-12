@@ -1,0 +1,87 @@
+/* ── Provider Form ──────────────────────────────────────────────────────── */
+.provider-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-card);
+}
+
+.provider-form::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(85, 70, 255, 0.05), rgba(252, 100, 50, 0.05));
+    pointer-events: none;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.full {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.form-group input,
+.form-group select {
+    background: rgba(6, 7, 16, 0.6);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    color: var(--text-0);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: 0.3s var(--ease);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--stx-purple);
+    box-shadow: 0 0 0 4px rgba(85, 70, 255, 0.1);
+    background: rgba(6, 7, 16, 0.9);
+}
+
+.form-actions {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    grid-column: span 2;
+}
+
+.reg-status {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--text-2);
+}
+
+.reg-status.success {
+    color: var(--green);
+}
+
+.reg-status.error {
+    color: var(--red);
+}

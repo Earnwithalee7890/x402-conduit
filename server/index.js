@@ -506,7 +506,7 @@ app.get('/api/v1/chain-analytics',
 
 
 // ─── Fallback ────────────────────────────────────────────────────────────────
-app.get('*', (req, res) => {
+app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 

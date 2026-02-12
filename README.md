@@ -74,6 +74,7 @@ npm install
 cp .env.example .env
 
 # Run
+npm run build
 npm run dev
 ```
 
