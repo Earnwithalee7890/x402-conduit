@@ -111,3 +111,5 @@ function run() {
 run();
 
 // TODO: investigate potential performance bottleneck here (46)
+
+// Refactor: consider breaking this into smaller helpers (58)
