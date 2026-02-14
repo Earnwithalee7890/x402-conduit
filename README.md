@@ -10,6 +10,11 @@
 
 ---
 
+> **Talent Protocol Update (Feb 2026):**
+> New features added for the hackathon event including on-chain analytics helpers, trust scoring enhancements, and a streamlined event submission flow. See [EVENT_SUBMISSION.md](./EVENT_SUBMISSION.md) for details.
+
+---
+
 ## The Problem
 
 Today's API economy is broken for machines:
