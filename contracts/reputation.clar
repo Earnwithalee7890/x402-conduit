@@ -1,82 +1,56 @@
 ;; =============================================
-;; Conduit — Reputation System
+;; Conduit — Reputation (Clarity 2.1 / Nakamoto)
 ;; =============================================
+;; Distributed trust scoring for API providers.
+;; Fixed: Tuple-based maps for Clarity 2+ compatibility.
 
 (define-constant CONTRACT-OWNER tx-sender)
-(define-constant ERR-INVALID-RATING (err u302))
-(define-constant ERR-SELF-RATING (err u304))
+
+;; Error Codes
 (define-constant ERR-ALREADY-RATED (err u301))
+(define-constant ERR-INVALID-RATING (err u302))
 
-(define-constant MIN-RATING u1)
-(define-constant MAX-RATING u5)
-
-(define-data-var total-ratings uint u0)
-
-(define-map api-reputation
-  { api-id: uint }
-  {
-    total-score: uint,
-    total-ratings: uint,
-    last-rated-block: uint
-  }
+(define-map reputation 
+  { provider: principal }
+  { score: uint, count: uint }
 )
 
-(define-map user-api-ratings
-  { rater: principal, api-id: uint }
-  {
-    rating: uint,
-    rated-at: uint,
-    comment: (string-ascii 128)
-  }
+(define-map ratings 
+  { rater: principal, provider: principal } 
+  { rating: uint, comment: (string-ascii 120) }
 )
 
-(define-public (rate-api
-    (api-id uint)
-    (provider principal)
-    (rating uint)
-    (comment (string-ascii 128))
-  )
+;; Read-Only Functions
+(define-read-only (get-reputation (provider principal))
+  (default-to { score: u0, count: u0 } (map-get? reputation { provider: provider }))
+)
+
+(define-read-only (get-rating-count (provider principal))
+  (get count (get-reputation provider))
+)
+
+;; Public Functions
+(define-public (rate-provider (provider principal) (rating uint) (comment (string-ascii 120)))
   (let
     (
-      (existing-api-rep (default-to 
-        { total-score: u0, total-ratings: u0, last-rated-block: u0 }
-        (map-get? api-reputation { api-id: api-id })
-      ))
+      (current-rep (get-reputation provider))
     )
-    (asserts! (and (>= rating MIN-RATING) (<= rating MAX-RATING)) ERR-INVALID-RATING)
-    (asserts! (not (is-eq tx-sender provider)) ERR-SELF-RATING)
-    (asserts! (is-none (map-get? user-api-ratings { rater: tx-sender, api-id: api-id })) ERR-ALREADY-RATED)
-
-    (map-set user-api-ratings
-      { rater: tx-sender, api-id: api-id }
-      {
-        rating: rating,
-        rated-at: block-height,
-        comment: comment
-      }
-    )
-
-    (map-set api-reputation
-      { api-id: api-id }
-      {
-        total-score: (+ (get total-score existing-api-rep) rating),
-        total-ratings: (+ (get total-ratings existing-api-rep) u1),
-        last-rated-block: block-height
-      }
+    (asserts! (and (>= rating u1) (<= rating u5)) ERR-INVALID-RATING)
+    (asserts! (is-none (map-get? ratings { rater: tx-sender, provider: provider })) ERR-ALREADY-RATED)
+    
+    (map-set ratings
+      { rater: tx-sender, provider: provider }
+      { rating: rating, comment: comment }
     )
     
-    (var-set total-ratings (+ (var-get total-ratings) u1))
+    (map-set reputation
+      { provider: provider }
+      {
+        score: (+ (get score current-rep) rating),
+        count: (+ (get count current-rep) u1)
+      }
+    )
+    (print { event: "provider-rated", provider: provider, score: rating })
     (ok true)
-  )
-)
-
-(define-read-only (get-api-average-rating (api-id uint))
-  (match (map-get? api-reputation { api-id: api-id })
-    rep-data
-      (if (> (get total-ratings rep-data) u0)
-        (ok (/ (* (get total-score rep-data) u100) (get total-ratings rep-data)))
-        (ok u0)
-      )
-    (ok u0)
   )
 )
