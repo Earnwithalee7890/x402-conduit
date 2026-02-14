@@ -53,3 +53,5 @@
 )
 
 ;; Protocol version 1.0.1
+
+;; TODO: optimize gas consumption for this public function (64)
