@@ -411,6 +411,31 @@ button {
   }
 }
 
+.event-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+  background: rgba(85, 70, 255, 0.1);
+  border: 1px solid rgba(85, 70, 255, 0.3);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--stx-purple-light);
+  box-shadow: 0 0 16px rgba(85, 70, 255, 0.15);
+  animation: heroFadeUp 0.9s var(--ease-out) 0.3s both;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--stx-purple-light);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--stx-purple);
+  animation: pulse 2s ease infinite;
+}
+
 .hero-title {
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: 900;
