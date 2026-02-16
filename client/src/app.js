@@ -1,6 +1,8 @@
 import { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } from '@stacks/connect';
 import { STACKS_MAINNET } from '@stacks/network';
-import { uintCV, stringAsciiCV } from '@stacks/transactions';
+
+const NETWORK = STACKS_MAINNET;
+import { uintCV, stringAsciiCV, noneCV } from '@stacks/transactions';
 
 /**
  * Conduit — Frontend
@@ -244,7 +246,7 @@ ${highlightJSON(data)}</code></pre>`;
                     recipient: recipient,
                     amount: amount,
                     memo: memo,
-                    network: STACKS_MAINNET,
+                    network: NETWORK,
                     appDetails: {
                         name: 'Conduit Market',
                         icon: window.location.origin + '/favicon.ico',
@@ -389,20 +391,20 @@ function initProvider() {
             const category = document.getElementById('regCategory').value;
             const contractAddr = document.getElementById('regContractAddr').value;
 
-            if (!name || !desc || !endpoint || !price) {
+            if (!name || !desc || !endpoint || isNaN(price) || price <= 0) {
                 status.className = 'reg-status error';
-                status.textContent = 'Please fill in all fields.';
+                status.textContent = 'Please fill in all fields with valid data.';
                 return;
             }
 
             const [contractAddress, contractName] = contractAddr.includes('.') ? contractAddr.split('.') : [contractAddr, 'api-registry'];
 
             try {
+                // Modified to match the new simplified signature: (name, description, endpoint, price, category)
                 const functionArgs = [
                     stringAsciiCV(name),
                     stringAsciiCV(desc),
                     stringAsciiCV(endpoint),
-                    stringAsciiCV(method),
                     uintCV(Math.floor(price * 1000000)), // to microSTX
                     stringAsciiCV(category)
                 ];
@@ -412,15 +414,15 @@ function initProvider() {
                     contractName: contractName || 'api-registry',
                     functionName: 'register-api',
                     functionArgs: functionArgs,
-                    network: STACKS_MAINNET,
+                    network: NETWORK,
                     appDetails: {
                         name: 'Conduit Market',
                         icon: window.location.origin + '/favicon.ico',
                     },
                     onFinish: (data) => {
-                        console.log('Transaction details:', data);
+                        console.log('Mainnet Transaction Success:', data);
                         status.className = 'reg-status success';
-                        status.textContent = `Transaction broadcasted! TxId: ${data.txId}`;
+                        status.textContent = `Success! Tx: ${data.txId.substring(0, 10)}...`;
                         document.getElementById('regName').value = '';
                     },
                     onCancel: () => {
@@ -429,10 +431,16 @@ function initProvider() {
                     },
                 };
 
+                console.log('Finalizing Mainnet Contract Call...', {
+                    contract: `${options.contractAddress}.${options.contractName}`,
+                    function: options.functionName,
+                    args: functionArgs
+                });
+
                 await openContractCall(options);
 
             } catch (e) {
-                console.error(e);
+                console.error('Contract Call Error:', e);
                 status.className = 'reg-status error';
                 status.textContent = 'Error: ' + e.message;
             }

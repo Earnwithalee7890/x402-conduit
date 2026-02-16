@@ -58644,6 +58644,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var Ae4 = ((r10) => (r10[r10.DEFAULT = 0] = "DEFAULT", r10[r10.ALL = 1] = "ALL", r10[r10.NONE = 2] = "NONE", r10[r10.SINGLE = 3] = "SINGLE", r10[r10.ANYONECANPAY = 128] = "ANYONECANPAY", r10))(Ae4 || {});
 
   // client/src/app.js
+  var NETWORK = STACKS_MAINNET;
   var catalog = [];
   var userData;
   var appConfig = new v7(["store_write", "publish_data"]);
@@ -58872,7 +58873,7 @@ ${highlightJSON(data)}</code></pre>`;
             recipient,
             amount,
             memo,
-            network: STACKS_MAINNET,
+            network: NETWORK,
             appDetails: {
               name: "Conduit Market",
               icon: window.location.origin + "/favicon.ico"
@@ -59000,9 +59001,9 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
         const price = parseFloat(document.getElementById("regPrice").value);
         const category = document.getElementById("regCategory").value;
         const contractAddr = document.getElementById("regContractAddr").value;
-        if (!name2 || !desc || !endpoint || !price) {
+        if (!name2 || !desc || !endpoint || isNaN(price) || price <= 0) {
           status.className = "reg-status error";
-          status.textContent = "Please fill in all fields.";
+          status.textContent = "Please fill in all fields with valid data.";
           return;
         }
         const [contractAddress, contractName] = contractAddr.includes(".") ? contractAddr.split(".") : [contractAddr, "api-registry"];
@@ -59011,7 +59012,6 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
             stringAsciiCV(name2),
             stringAsciiCV(desc),
             stringAsciiCV(endpoint),
-            stringAsciiCV(method),
             uintCV(Math.floor(price * 1e6)),
             // to microSTX
             stringAsciiCV(category)
@@ -59021,15 +59021,15 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
             contractName: contractName || "api-registry",
             functionName: "register-api",
             functionArgs,
-            network: STACKS_MAINNET,
+            network: NETWORK,
             appDetails: {
               name: "Conduit Market",
               icon: window.location.origin + "/favicon.ico"
             },
             onFinish: (data) => {
-              console.log("Transaction details:", data);
+              console.log("Mainnet Transaction Success:", data);
               status.className = "reg-status success";
-              status.textContent = `Transaction broadcasted! TxId: ${data.txId}`;
+              status.textContent = `Success! Tx: ${data.txId.substring(0, 10)}...`;
               document.getElementById("regName").value = "";
             },
             onCancel: () => {
@@ -59037,9 +59037,14 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
               status.textContent = "Transaction cancelled.";
             }
           };
+          console.log("Finalizing Mainnet Contract Call...", {
+            contract: `${options.contractAddress}.${options.contractName}`,
+            function: options.functionName,
+            args: functionArgs
+          });
           await Et6(options);
         } catch (e10) {
-          console.error(e10);
+          console.error("Contract Call Error:", e10);
           status.className = "reg-status error";
           status.textContent = "Error: " + e10.message;
         }

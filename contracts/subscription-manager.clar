@@ -1,75 +1,76 @@
 ;; =============================================
-;; Conduit — Subscription Manager
+;; Conduit — Subscription Manager (Clarity 2.1)
 ;; =============================================
+;; Credits system for API agents.
+;; Fixed: Map syntax with tuples for Clarity 2+ compatibility.
 
 (define-constant CONTRACT-OWNER tx-sender)
+
+;; Error Codes
 (define-constant ERR-NOT-AUTHORIZED (err u400))
-(define-constant ERR-INSUFFICIENT-CREDITS (err u401))
-(define-constant ERR-INSUFFICIENT-AMOUNT (err u402))
+(define-constant ERR-INVALID-AMOUNT (err u402))
 (define-constant ERR-TRANSFER-FAILED (err u403))
+(define-constant ERR-LOW-BALANCE (err u404))
 
-(define-data-var total-credits-issued uint u0)
+(define-data-var base-credit-price uint u10000) ;; 1 Credit = 0.01 STX
 
-(define-map credit-balances
+(define-map balances
   { user: principal }
   {
     credits: uint,
-    total-purchased: uint,
-    last-purchase-block: uint
+    total-spent: uint,
+    last-activity: uint
   }
 )
 
-(define-read-only (get-credits (user principal))
-  (ok (default-to
-    { credits: u0, total-purchased: u0, last-purchase-block: u0 }
-    (map-get? credit-balances { user: user })
-  ))
+;; Read-Only Functions
+(define-read-only (get-user-credits (user principal))
+  (default-to 
+    { credits: u0, total-spent: u0, last-activity: u0 }
+    (map-get? balances { user: user })
+  )
 )
 
-(define-public (purchase-credits (amount-ustx uint))
+;; Public Functions
+(define-public (buy-credits (amount-ustx uint))
   (let
     (
-      (amount-stx (/ amount-ustx u1000000))
-      (new-credits (* amount-stx u100))
-      (existing (default-to
-        { credits: u0, total-purchased: u0, last-purchase-block: u0 }
-        (map-get? credit-balances { user: tx-sender })
-      ))
+      (new-credits (/ amount-ustx (var-get base-credit-price)))
+      (current (get-user-credits tx-sender))
     )
-    (asserts! (> amount-ustx u0) ERR-INSUFFICIENT-AMOUNT)
-
+    (asserts! (>= amount-ustx (var-get base-credit-price)) ERR-INVALID-AMOUNT)
+    
+    ;; Transfer to contract address
     (unwrap! (stx-transfer? amount-ustx tx-sender (as-contract tx-sender)) ERR-TRANSFER-FAILED)
 
-    (map-set credit-balances
+    (map-set balances
       { user: tx-sender }
       {
-        credits: (+ (get credits existing) new-credits),
-        total-purchased: (+ (get total-purchased existing) new-credits),
-        last-purchase-block: block-height
+        credits: (+ (get credits current) new-credits),
+        total-spent: (get total-spent current),
+        last-activity: block-height
       }
     )
 
-    (var-set total-credits-issued (+ (var-get total-credits-issued) new-credits))
+    (print { event: "credits-bought", user: tx-sender, amount: new-credits })
     (ok new-credits)
   )
 )
 
-(define-public (spend-credits (credits-to-spend uint))
+(define-public (consume-credits (user principal) (amount uint))
   (let
     (
-      (existing (unwrap!
-        (map-get? credit-balances { user: tx-sender })
-        ERR-INSUFFICIENT-CREDITS
-      ))
+      (current (get-user-credits user))
     )
-    (asserts! (>= (get credits existing) credits-to-spend) ERR-INSUFFICIENT-CREDITS)
+    (asserts! (or (is-eq tx-sender user) (is-eq tx-sender CONTRACT-OWNER)) ERR-NOT-AUTHORIZED)
+    (asserts! (>= (get credits current) amount) ERR-LOW-BALANCE)
 
-    (map-set credit-balances
-      { user: tx-sender }
+    (map-set balances
+      { user: user }
       {
-        credits: (- (get credits existing) credits-to-spend),
-        total-purchased: (get total-purchased existing),
-        last-purchase-block: (get last-purchase-block existing)
+        credits: (- (get credits current) amount),
+        total-spent: (+ (get total-spent current) amount),
+        last-activity: block-height
       }
     )
     (ok true)
