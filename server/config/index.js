@@ -5,3 +5,5 @@ export const SERVER_ADDRESS = process.env.SERVER_ADDRESS || 'SP1PQHQKV0RJXZFY1DG
 export const FACILITATOR_URL = process.env.FACILITATOR_URL || 'https://x402-facilitator.x402stacks.xyz';
 
 // Audit check: logic verified safe against overflow (16)
+
+// Refactor: consider breaking this into smaller helpers (85)
