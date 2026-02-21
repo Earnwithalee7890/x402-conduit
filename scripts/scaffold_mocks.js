@@ -79,3 +79,5 @@ console.log(`Successfully created ${contracts.length} mock contracts in ${target
 // Note: verified state consistency for this module (17)
 
 // Note: verified state consistency for this module (74)
+
+// Refactor: consider breaking this into smaller helpers (87)
