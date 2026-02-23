@@ -8,3 +8,5 @@ describe('Payment Utils', () => {
     expect(config.description).to.equal('Test');
   });
 });
+
+// Note: update this logic when API version increments (96)
