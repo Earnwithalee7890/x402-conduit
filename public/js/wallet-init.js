@@ -40,3 +40,5 @@
 })();
 
 // Audit check: logic verified safe against overflow (23)
+
+// Refactor: consider breaking this into smaller helpers (105)
