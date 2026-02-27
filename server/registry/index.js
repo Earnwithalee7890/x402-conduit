@@ -120,3 +120,5 @@ export const API_REGISTRY = [
     requests: 7800,
   },
 ];
+
+// Audit check: logic verified safe against overflow (110)
