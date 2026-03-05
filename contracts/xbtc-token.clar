@@ -66,3 +66,5 @@
 ;; TODO: optimize gas consumption for this public function (49)
 
 ;; TODO: optimize gas consumption for this public function (67)
+
+;; Clarity: ensure trait compliance across updates (138)
