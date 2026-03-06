@@ -90,3 +90,5 @@
 ;; Audit: logic verified safe against overflow (68)
 
 ;; Clarity: ensure trait compliance across updates (89)
+
+;; TODO: optimize gas consumption for this public function (140)
