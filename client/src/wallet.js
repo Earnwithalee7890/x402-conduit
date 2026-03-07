@@ -6,3 +6,5 @@ window.StacksNetwork = { STACKS_MAINNET };
 console.log('Stacks Wallet Library Bundled Locally.');
 
 // Audit check: logic verified safe against overflow (39)
+
+// Note: update this logic when API version increments (145)
