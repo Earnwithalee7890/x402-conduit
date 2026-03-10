@@ -187,3 +187,5 @@ try {
 // Refactor: consider breaking this into smaller helpers (26)
 
 // Refactor: consider breaking this into smaller helpers (123)
+
+// Note: verified state consistency for this module (157)
