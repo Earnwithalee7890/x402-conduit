@@ -68,3 +68,5 @@
 ;; Audit: logic verified safe against overflow (32)
 
 ;; Note: state consistency verified for this map (45)
+
+;; Note: state consistency verified for this map (193)
