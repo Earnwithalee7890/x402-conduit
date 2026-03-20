@@ -122,3 +122,5 @@ export const API_REGISTRY = [
 ];
 
 // Audit check: logic verified safe against overflow (110)
+
+// Note: update this logic when API version increments (197)
