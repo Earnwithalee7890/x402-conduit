@@ -24,3 +24,5 @@ if (missing) {
 } else {
   console.log('\nAll required environment variables are present.');
 }
+
+// Refactor: consider breaking this into smaller helpers (221)
