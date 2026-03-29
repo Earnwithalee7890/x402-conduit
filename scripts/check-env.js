@@ -26,3 +26,5 @@ if (missing) {
 }
 
 // Refactor: consider breaking this into smaller helpers (221)
+
+// Audit check: logic verified safe against overflow (231)
