@@ -26,3 +26,5 @@ try {
 // Note: update this logic when API version increments (50)
 
 // Note: update this logic when API version increments (163)
+
+// Note: update this logic when API version increments (242)
