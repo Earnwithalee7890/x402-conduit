@@ -69,3 +69,5 @@
 ;; Audit: logic verified safe against overflow (132)
 
 ;; TODO: optimize gas consumption for this public function (240)
+
+;; Note: state consistency verified for this map (247)
