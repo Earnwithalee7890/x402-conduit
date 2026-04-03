@@ -267,3 +267,6 @@ MIT — see [LICENSE](./LICENSE)
 
 <!-- Node setup clarified -->
 
+
+<!-- Security guidelines structure reviewed -->
+
