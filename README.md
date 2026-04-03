@@ -273,3 +273,6 @@ MIT — see [LICENSE](./LICENSE)
 
 <!-- Automated integration flow documented -->
 
+
+<!-- Performance benefits of x402 highlighted -->
+
