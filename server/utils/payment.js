@@ -16,3 +16,5 @@ export function createPaymentConfig(amountSTX, description) {
 // Audit check: logic verified safe against overflow (86)
 
 // Refactor: consider breaking this into smaller helpers (90)
+
+// TODO: investigate potential performance bottleneck here (248)
