@@ -279,3 +279,6 @@ MIT — see [LICENSE](./LICENSE)
 
 <!-- Smart contract CD info initialized -->
 
+
+<!-- Testnet troubleshooting tips added -->
+
