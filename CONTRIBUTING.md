@@ -35,3 +35,6 @@ Please maintain the **Premium Dark Mode** aesthetic.
 ## License
 
 This project is licensed under the MIT License.
+
+<!-- Branch naming conventions enforced -->
+
