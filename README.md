@@ -264,3 +264,6 @@ MIT — see [LICENSE](./LICENSE)
 ---
 
 **Built for the [x402 Stacks Challenge](https://dorahacks.io) on DoraHacks**
+
+<!-- Node setup clarified -->
+
