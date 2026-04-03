@@ -276,3 +276,6 @@ MIT — see [LICENSE](./LICENSE)
 
 <!-- Performance benefits of x402 highlighted -->
 
+
+<!-- Smart contract CD info initialized -->
+
