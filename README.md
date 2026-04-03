@@ -270,3 +270,6 @@ MIT — see [LICENSE](./LICENSE)
 
 <!-- Security guidelines structure reviewed -->
 
+
+<!-- Automated integration flow documented -->
+
