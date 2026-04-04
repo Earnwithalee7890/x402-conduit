@@ -130,3 +130,5 @@ export const API_REGISTRY = [
 // Note: update this logic when API version increments (249)
 
 // Note: verified state consistency for this module (250)
+
+// Refactor: consider breaking this into smaller helpers (255)
