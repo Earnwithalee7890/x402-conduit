@@ -10,7 +10,7 @@
 
 ---
 
-> **Talent Protocol Update (Feb 2026):**
+> **Talent Protocol Update (April 2026):**
 > New features added for the hackathon event including on-chain analytics helpers, trust scoring enhancements, and a streamlined event submission flow. See [EVENT_SUBMISSION.md](./EVENT_SUBMISSION.md) for details.
 
 ---

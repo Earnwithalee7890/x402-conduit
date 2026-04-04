@@ -1,4 +1,4 @@
-# Talent Protocol - February 2026 Event Submission
+# Talent Protocol - April 2026 Event Submission
 
 **Project:** Conduit  
 **Track:** 402 - Agent Payments  
@@ -8,7 +8,7 @@
 
 Conduit is a decentralized API marketplace where AI agents can discover, pay for, and consume services autonomously. It leverages the **x402 protocol** on Stacks to enable seamless machine-to-machine payments without API keys or accounts.
 
-## 🛠 New Features (Feb 2026 Update)
+## 🛠 New Features (April 2026 Update)
 
 This update introduces several key enhancements for the Talent Protocol event:
 
