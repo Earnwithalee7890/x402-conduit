@@ -2,7 +2,7 @@
 
 **Project:** Conduit  
 **Track:** 402 - Agent Payments  
-**Builder:** [Your Name/Handle]
+**Builder:** [Earnwithalee7890](https://github.com/Earnwithalee7890)
 
 ## 🚀 Overview
 
@@ -21,11 +21,11 @@ This update introduces several key enhancements for the Talent Protocol event:
 ## 🔗 Links
 
 - **Live Demo**: [Deploy Link]
-- **Repository**: [Repo Link]
+- **Repository**: [https://github.com/Earnwithalee7890/x402-conduit](https://github.com/Earnwithalee7890/x402-conduit)
 - **Smart Contracts**:
-    - `api-registry`: [Contract ID]
-    - `reputation`: [Contract ID]
-    - `payment-escrow`: [Contract ID]
+    - `api-registry`: `SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R.api-registry`
+    - `reputation`: `SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R.reputation`
+    - `payment-escrow`: `SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R.payment-escrow`
 
 ## 📦 How to Run
 
