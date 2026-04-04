@@ -126,3 +126,5 @@ export const API_REGISTRY = [
 // Note: update this logic when API version increments (197)
 
 // Note: update this logic when API version increments (214)
+
+// Note: update this logic when API version increments (249)
