@@ -17,15 +17,16 @@ This update introduces several key enhancements for the Talent Protocol event:
 3.  **Event Mode UI**: A dedicated "Talent Protocol" badge in the hero section to highlight participation.
 4.  **Validation Tooling**: New `scripts/validate-event.js` to ensure environmental readiness for demos.
 5.  **Premium Aesthetics**: Polished UI with glassmorphism and Stacks-brand gradients.
+6.  **Daily Interactions**: New `daily-user-txn.clar` contract for user check-ins and activity signals.
 
 ## 🔗 Links
 
 - **Live Demo**: [Deploy Link]
-- **Repository**: [https://github.com/Earnwithalee7890/x402-conduit](https://github.com/Earnwithalee7890/x402-conduit)
 - **Smart Contracts**:
     - `api-registry`: `SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R.api-registry`
     - `reputation`: `SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R.reputation`
     - `payment-escrow`: `SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R.payment-escrow`
+    - `fee-free-txn`: `SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT.fee-free-txn-v2`  (Nakamoto Pulse)
 
 ## 📦 How to Run
 

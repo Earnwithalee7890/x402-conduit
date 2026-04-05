@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadStats();
     setInterval(loadStats, 12000);
     initAnimations();
+    initCheckIn(); // Added check-in init
 });
 
 // ── Wallet ────────────────────────────────────────────────────────────────
@@ -216,7 +217,7 @@ async function runPlayground() {
         weather: '/api/v1/weather?location=Tokyo',
         price: '/api/v1/price?symbol=BTC',
         news: '/api/v1/news?topic=blockchain&limit=3',
-        chain: '/api/v1/chain-analytics?address=SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R',
+        chain: '/api/v1/chain-analytics?address=SP2FGY4PB8QZNYT8GNFBT77K9H0M8XGNFBT',
     };
 
     const url = endpoints[val] || endpoints.discover;
@@ -442,6 +443,65 @@ function initProvider() {
             } catch (e) {
                 console.error('Contract Call Error:', e);
                 status.className = 'reg-status error';
+                status.textContent = 'Error: ' + e.message;
+            }
+        });
+    }
+}
+
+// ── Daily Check-In ────────────────────────────────────────────────────────
+function initCheckIn() {
+    const btn = document.getElementById('btnCheckIn');
+    const status = document.getElementById('checkInStatus');
+
+    if (btn) {
+        btn.addEventListener('click', async () => {
+            if (!userSession || !userSession.isUserSignedIn()) {
+                alert("Please connect your wallet first.");
+                document.getElementById('connectWalletBtn').click();
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<span>Processing...</span>';
+            status.textContent = 'Awaiting signature...';
+
+            // Nakamoto Transition Contract (v2)
+            const contractAddr = 'SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT';
+
+            try {
+                const options = {
+                    contractAddress: contractAddr,
+                    contractName: 'fee-free-txn-v2', 
+                    functionName: 'signal-participation',
+                    functionArgs: [],
+                    network: NETWORK,
+                    appDetails: {
+                        name: 'Conduit Market',
+                        icon: window.location.origin + '/favicon.ico',
+                    },
+                    onFinish: (data) => {
+                        console.log('Daily Signal Sent:', data);
+                        status.className = 'ci-status success';
+                        status.textContent = `Success! Signal recorded: ${data.txId.substring(0, 8)}...`;
+                        btn.innerHTML = '<span>Checked In ✅</span>';
+                        setTimeout(loadStats, 5000);
+                    },
+                    onCancel: () => {
+                        btn.disabled = false;
+                        btn.innerHTML = '<span>Check-In Now</span>';
+                        status.className = 'ci-status error';
+                        status.textContent = 'Transaction cancelled.';
+                    },
+                };
+
+                await openContractCall(options);
+
+            } catch (e) {
+                console.error('Check-in Error:', e);
+                btn.disabled = false;
+                btn.innerHTML = '<span>Check-In Now</span>';
+                status.className = 'ci-status error';
                 status.textContent = 'Error: ' + e.message;
             }
         });

@@ -58660,6 +58660,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     loadStats();
     setInterval(loadStats, 12e3);
     initAnimations();
+    initCheckIn();
   });
   function initWallet() {
     const btn = document.getElementById("connectWalletBtn");
@@ -58849,7 +58850,7 @@ console.<span class="syn-fn">log</span>(catalog.totalAPIs, <span class="syn-stri
       weather: "/api/v1/weather?location=Tokyo",
       price: "/api/v1/price?symbol=BTC",
       news: "/api/v1/news?topic=blockchain&limit=3",
-      chain: "/api/v1/chain-analytics?address=SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R"
+      chain: "/api/v1/chain-analytics?address=SP2FGY4PB8QZNYT8GNFBT77K9H0M8XGNFBT"
     };
     const url = endpoints[val] || endpoints.discover;
     const t0 = performance.now();
@@ -59046,6 +59047,56 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
         } catch (e10) {
           console.error("Contract Call Error:", e10);
           status.className = "reg-status error";
+          status.textContent = "Error: " + e10.message;
+        }
+      });
+    }
+  }
+  function initCheckIn() {
+    const btn = document.getElementById("btnCheckIn");
+    const status = document.getElementById("checkInStatus");
+    if (btn) {
+      btn.addEventListener("click", async () => {
+        if (!userSession || !userSession.isUserSignedIn()) {
+          alert("Please connect your wallet first.");
+          document.getElementById("connectWalletBtn").click();
+          return;
+        }
+        btn.disabled = true;
+        btn.innerHTML = "<span>Processing...</span>";
+        status.textContent = "Awaiting signature...";
+        const contractAddr = "SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT";
+        try {
+          const options = {
+            contractAddress: contractAddr,
+            contractName: "fee-free-txn-v2",
+            functionName: "signal-participation",
+            functionArgs: [],
+            network: NETWORK,
+            appDetails: {
+              name: "Conduit Market",
+              icon: window.location.origin + "/favicon.ico"
+            },
+            onFinish: (data) => {
+              console.log("Daily Signal Sent:", data);
+              status.className = "ci-status success";
+              status.textContent = `Success! Signal recorded: ${data.txId.substring(0, 8)}...`;
+              btn.innerHTML = "<span>Checked In \u2705</span>";
+              setTimeout(loadStats, 5e3);
+            },
+            onCancel: () => {
+              btn.disabled = false;
+              btn.innerHTML = "<span>Check-In Now</span>";
+              status.className = "ci-status error";
+              status.textContent = "Transaction cancelled.";
+            }
+          };
+          await Et6(options);
+        } catch (e10) {
+          console.error("Check-in Error:", e10);
+          btn.disabled = false;
+          btn.innerHTML = "<span>Check-In Now</span>";
+          status.className = "ci-status error";
           status.textContent = "Error: " + e10.message;
         }
       });
