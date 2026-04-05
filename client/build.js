@@ -8,11 +8,10 @@ try {
         entryPoints: ['client/src/app.js', 'client/src/wallet.js'],
         bundle: true,
         outdir: 'public/js',
-        minify: true,
+        minify: false, // Minification breaks SES/lockdown (zt5 error)
         sourcemap: true,
         platform: 'browser',
         target: ['es2018'],
-        external: ['@stacks/connect', '@stacks/network', '@stacks/transactions'],
         define: {
             'process.env.NODE_ENV': '"production"',
             'global': 'window'

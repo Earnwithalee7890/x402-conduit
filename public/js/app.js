@@ -1,22 +1,205 @@
-(()=>{var l={version:1,chainId:1,coreApiUrl:"https://api.mainnet.hiro.so"},r=()=>window.StacksConnect||window.Connect||{};function d(){let e=r(),n=new e.AppConfig(["store_write","publish_data"]);return new e.UserSession({appConfig:n})}var s=[];document.addEventListener("DOMContentLoaded",()=>{console.log("Conduit App Initialized (Nakamoto Ready)"),p(),g(),y(),f(),h(),w()});function p(){let e=d();if(e.isUserSignedIn()){let n=e.loadUserData();m(n)}}function m(e){var a;let n=document.getElementById("walletBtnText"),t=e.profile.stxAddress.mainnet;n&&(n.textContent=t.substring(0,5)+"..."+t.substring(t.length-4)),(a=document.getElementById("connectWalletBtn"))==null||a.classList.add("connected")}var c=[{id:"weather",name:"Weather Intelligence",category:"Data",icon:"\u{1F324}\uFE0F",pricing:{amount:"0.01"},method:"GET",latency:"~120ms",uptime:"99.9%",description:"Real-time weather data and climate analytics."},{id:"sentiment",name:"Sentiment Analysis",category:"AI/ML",icon:"\u{1F9E0}",pricing:{amount:"0.02"},method:"POST",latency:"~250ms",uptime:"99.7%",description:"Emotion detection for text and reviews."},{id:"translate",name:"Neural Translator",category:"AI/ML",icon:"\u{1F30D}",pricing:{amount:"0.015"},method:"POST",latency:"~180ms",uptime:"99.8%",description:"Context-aware translation across 100+ languages."},{id:"price-oracle",name:"Crypto Price Oracle",category:"DeFi",icon:"\u{1F4CA}",pricing:{amount:"0.005"},method:"GET",latency:"~80ms",uptime:"99.95%",description:"Real-time prices for 5000+ tokens."},{id:"image-gen",name:"Image Generation",category:"AI/ML",icon:"\u{1F3A8}",pricing:{amount:"0.05"},method:"POST",latency:"~3.5s",uptime:"99.5%",description:"Diffusion models for high-quality images."},{id:"code-review",name:"Code Review",category:"Developer",icon:"\u{1F50D}",pricing:{amount:"0.03"},method:"POST",latency:"~1.2s",uptime:"99.6%",description:"Automated security auditing and scoring."},{id:"news-feed",name:"News Aggregator",category:"Data",icon:"\u{1F4F0}",pricing:{amount:"0.008"},method:"GET",latency:"~200ms",uptime:"99.8%",description:"AI-curated news with relevance scoring."},{id:"chain-analytics",name:"Chain Analytics",category:"DeFi",icon:"\u26D3\uFE0F",pricing:{amount:"0.02"},method:"GET",latency:"~350ms",uptime:"99.7%",description:"Stacks blockchain intelligence and metrics."}];async function g(){var e;try{let n=await fetch("/api/v1/discover");n.ok&&((e=n.headers.get("content-type"))!=null&&e.includes("application/json"))?s=(await n.json()).apis||c:s=c}catch(n){s=c}u(s)}function u(e){let n=document.getElementById("apiGrid");n&&(n.innerHTML=e.map(t=>`
-    <div class="api-card" data-category="${t.category}" data-endpoint="${t.endpoint||t.id}">
+(() => {
+  // client/src/app.js
+  var NETWORK = {
+    version: 1,
+    // Mainnet
+    chainId: 1,
+    coreApiUrl: "https://api.mainnet.hiro.so"
+  };
+  var getStacksConnect = () => {
+    return window.StacksConnect || window.Connect || {};
+  };
+  function getUserSession() {
+    const connect = getStacksConnect();
+    const appConfig = new connect.AppConfig(["store_write", "publish_data"]);
+    return new connect.UserSession({ appConfig });
+  }
+  var catalog = [];
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Conduit App Initialized (Nakamoto Ready)");
+    initAuth();
+    loadCatalog();
+    loadStats();
+    initCheckIn();
+    initFilters();
+    initPlayground();
+  });
+  function initAuth() {
+    const userSession = getUserSession();
+    if (userSession.isUserSignedIn()) {
+      const userData = userSession.loadUserData();
+      showConnected(userData);
+    }
+  }
+  function showConnected(userData) {
+    var _a;
+    const btnText = document.getElementById("walletBtnText");
+    const addr = userData.profile.stxAddress.mainnet;
+    if (btnText) {
+      btnText.textContent = addr.substring(0, 5) + "..." + addr.substring(addr.length - 4);
+    }
+    (_a = document.getElementById("connectWalletBtn")) == null ? void 0 : _a.classList.add("connected");
+  }
+  var API_REGISTRY_FALLBACK = [
+    { id: "weather", name: "Weather Intelligence", category: "Data", icon: "\u{1F324}\uFE0F", pricing: { amount: "0.01" }, method: "GET", latency: "~120ms", uptime: "99.9%", description: "Real-time weather data and climate analytics." },
+    { id: "sentiment", name: "Sentiment Analysis", category: "AI/ML", icon: "\u{1F9E0}", pricing: { amount: "0.02" }, method: "POST", latency: "~250ms", uptime: "99.7%", description: "Emotion detection for text and reviews." },
+    { id: "translate", name: "Neural Translator", category: "AI/ML", icon: "\u{1F30D}", pricing: { amount: "0.015" }, method: "POST", latency: "~180ms", uptime: "99.8%", description: "Context-aware translation across 100+ languages." },
+    { id: "price-oracle", name: "Crypto Price Oracle", category: "DeFi", icon: "\u{1F4CA}", pricing: { amount: "0.005" }, method: "GET", latency: "~80ms", uptime: "99.95%", description: "Real-time prices for 5000+ tokens." },
+    { id: "image-gen", name: "Image Generation", category: "AI/ML", icon: "\u{1F3A8}", pricing: { amount: "0.05" }, method: "POST", latency: "~3.5s", uptime: "99.5%", description: "Diffusion models for high-quality images." },
+    { id: "code-review", name: "Code Review", category: "Developer", icon: "\u{1F50D}", pricing: { amount: "0.03" }, method: "POST", latency: "~1.2s", uptime: "99.6%", description: "Automated security auditing and scoring." },
+    { id: "news-feed", name: "News Aggregator", category: "Data", icon: "\u{1F4F0}", pricing: { amount: "0.008" }, method: "GET", latency: "~200ms", uptime: "99.8%", description: "AI-curated news with relevance scoring." },
+    { id: "chain-analytics", name: "Chain Analytics", category: "DeFi", icon: "\u26D3\uFE0F", pricing: { amount: "0.02" }, method: "GET", latency: "~350ms", uptime: "99.7%", description: "Stacks blockchain intelligence and metrics." }
+  ];
+  async function loadCatalog() {
+    var _a;
+    try {
+      const res = await fetch("/api/v1/discover");
+      if (res.ok && ((_a = res.headers.get("content-type")) == null ? void 0 : _a.includes("application/json"))) {
+        const data = await res.json();
+        catalog = data.apis || API_REGISTRY_FALLBACK;
+      } else {
+        catalog = API_REGISTRY_FALLBACK;
+      }
+    } catch (e) {
+      catalog = API_REGISTRY_FALLBACK;
+    }
+    renderCatalog(catalog);
+  }
+  function renderCatalog(apis) {
+    const grid = document.getElementById("apiGrid");
+    if (!grid) return;
+    grid.innerHTML = apis.map((api) => `
+    <div class="api-card" data-category="${api.category}" data-endpoint="${api.endpoint || api.id}">
       <div class="api-card-top">
-        <div class="api-card-icon">${t.icon}</div>
-        <span class="api-card-badge">${t.category}</span>
+        <div class="api-card-icon">${api.icon}</div>
+        <span class="api-card-badge">${api.category}</span>
       </div>
-      <h3 class="api-card-name">${t.name}</h3>
-      <p class="api-card-desc">${t.description}</p>
+      <h3 class="api-card-name">${api.name}</h3>
+      <p class="api-card-desc">${api.description}</p>
       <div class="api-card-footer">
         <div class="api-card-price">
-          <span class="api-price-val">${t.pricing.amount}</span>
+          <span class="api-price-val">${api.pricing.amount}</span>
           <span class="api-price-unit">STX / call</span>
         </div>
-        <span class="api-card-method ${t.method==="POST"?"post":""}">${t.method}</span>
+        <span class="api-card-method ${api.method === "POST" ? "post" : ""}">${api.method}</span>
       </div>
       <div class="api-card-stats">
-        <span class="api-card-stat">\u26A1 <strong>${t.latency}</strong></span>
-        <span class="api-card-stat">\u2705 <strong>${t.uptime}</strong></span>
+        <span class="api-card-stat">\u26A1 <strong>${api.latency}</strong></span>
+        <span class="api-card-stat">\u2705 <strong>${api.uptime}</strong></span>
       </div>
     </div>
-  `).join(""))}async function y(){try{let e=await fetch("/api/v1/stats");if(e.ok){let n=await e.json(),t=document.getElementById("heroApiCount");t&&n.stats&&(t.textContent=n.stats.totalAPIs)}}catch(e){console.warn("Stats fetch failed")}}window.signalTransition=async function(){let e=r(),n=d();if(!n.isUserSignedIn()){alert("Please connect your wallet first."),window.connectWallet&&window.connectWallet();return}let t=document.getElementById("btnCheckIn"),a=document.getElementById("checkInStatus");if(!t)return;t.disabled=!0,t.innerHTML="<span>Signalling...</span>",a.textContent="Awaiting signature...";let i="SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT";try{if(!e.openContractCall)throw new Error("Stacks Connect library is missing openContractCall function.");await e.openContractCall({contractAddress:i,contractName:"fee-free-txn-v2",functionName:"signal-participation",functionArgs:[],network:l,appDetails:{name:"Conduit Market",icon:window.location.origin+"/favicon.ico"},userSession:n,onFinish:o=>{a.className="ci-status success",a.textContent="Success! Transition Signal Sent.",t.innerHTML="<span>Signal Sent \u2705</span>",console.log("Signal TX:",o.txId)},onCancel:()=>{t.disabled=!1,t.innerHTML="<span>Signal Transition Now</span>",a.textContent="Cancelled."}})}catch(o){console.error("Signal Error:",o),a.textContent="Error: "+o.message,t.disabled=!1,t.innerHTML="<span>Try Again</span>"}};function f(){let e=document.getElementById("btnCheckIn");e&&(e.onclick=window.signalTransition)}function h(){let e=document.querySelectorAll(".filter-btn");e.forEach(n=>{n.addEventListener("click",()=>{let t=n.dataset.filter;e.forEach(i=>i.classList.remove("active")),n.classList.add("active"),document.querySelectorAll(".api-card").forEach(i=>{t==="all"||i.dataset.category===t?i.style.display="flex":i.style.display="none"})})})}function w(){let e=document.getElementById("pgSend");e&&e.addEventListener("click",async()=>{let n=document.getElementById("pgEndpoint").value,t=document.getElementById("pgStatus"),a=document.getElementById("pgResponseCode");t.textContent="Calling...";try{let i=await fetch(`/api/v1/${n}`,{method:n==="sentiment"||n==="translate"||n==="image-gen"||n==="code-review"?"POST":"GET",headers:{"Content-Type":"application/json"},body:n==="sentiment"?JSON.stringify({text:"x402 is amazing!"}):void 0}),o=await i.json();t.textContent=i.status+" "+i.statusText,a.innerHTML=`<pre><code>${JSON.stringify(o,null,2)}</code></pre>`}catch(i){t.textContent="Error",a&&(a.innerHTML=`<pre><code>${i.message}</code></pre>`)}})}})();
+  `).join("");
+  }
+  async function loadStats() {
+    try {
+      const res = await fetch("/api/v1/stats");
+      if (res.ok) {
+        const data = await res.json();
+        const apiCount = document.getElementById("heroApiCount");
+        if (apiCount && data.stats) apiCount.textContent = data.stats.totalAPIs;
+      }
+    } catch (e) {
+      console.warn("Stats fetch failed");
+    }
+  }
+  window.signalTransition = async function() {
+    const connect = getStacksConnect();
+    const userSession = getUserSession();
+    if (!userSession.isUserSignedIn()) {
+      alert("Please connect your wallet first.");
+      if (window.connectWallet) {
+        window.connectWallet();
+      }
+      return;
+    }
+    const btn = document.getElementById("btnCheckIn");
+    const status = document.getElementById("checkInStatus");
+    if (!btn) return;
+    btn.disabled = true;
+    btn.innerHTML = "<span>Signalling...</span>";
+    status.textContent = "Awaiting signature...";
+    const contractAddr = "SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT";
+    try {
+      if (!connect.openContractCall) {
+        throw new Error("Stacks Connect library is missing openContractCall function.");
+      }
+      await connect.openContractCall({
+        contractAddress: contractAddr,
+        contractName: "fee-free-txn-v2",
+        functionName: "signal-participation",
+        functionArgs: [],
+        network: NETWORK,
+        appDetails: {
+          name: "Conduit Market",
+          icon: window.location.origin + "/favicon.ico"
+        },
+        userSession,
+        onFinish: (data) => {
+          status.className = "ci-status success";
+          status.textContent = "Success! Transition Signal Sent.";
+          btn.innerHTML = "<span>Signal Sent \u2705</span>";
+          console.log("Signal TX:", data.txId);
+        },
+        onCancel: () => {
+          btn.disabled = false;
+          btn.innerHTML = "<span>Signal Transition Now</span>";
+          status.textContent = "Cancelled.";
+        }
+      });
+    } catch (e) {
+      console.error("Signal Error:", e);
+      status.textContent = "Error: " + e.message;
+      btn.disabled = false;
+      btn.innerHTML = "<span>Try Again</span>";
+    }
+  };
+  function initCheckIn() {
+    const btn = document.getElementById("btnCheckIn");
+    if (btn) {
+      btn.onclick = window.signalTransition;
+    }
+  }
+  function initFilters() {
+    const buttons = document.querySelectorAll(".filter-btn");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const cards = document.querySelectorAll(".api-card");
+        cards.forEach((card) => {
+          if (filter === "all" || card.dataset.category === filter) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  }
+  function initPlayground() {
+    const btn = document.getElementById("pgSend");
+    if (btn) {
+      btn.addEventListener("click", async () => {
+        const endpoint = document.getElementById("pgEndpoint").value;
+        const status = document.getElementById("pgStatus");
+        const resPanel = document.getElementById("pgResponseCode");
+        status.textContent = "Calling...";
+        try {
+          const res = await fetch(`/api/v1/${endpoint}`, {
+            method: endpoint === "sentiment" || endpoint === "translate" || endpoint === "image-gen" || endpoint === "code-review" ? "POST" : "GET",
+            headers: { "Content-Type": "application/json" },
+            body: endpoint === "sentiment" ? JSON.stringify({ text: "x402 is amazing!" }) : void 0
+          });
+          const data = await res.json();
+          status.textContent = res.status + " " + res.statusText;
+          resPanel.innerHTML = `<pre><code>${JSON.stringify(data, null, 2)}</code></pre>`;
+        } catch (e) {
+          status.textContent = "Error";
+          if (resPanel) resPanel.innerHTML = `<pre><code>${e.message}</code></pre>`;
+        }
+      });
+    }
+  }
+})();
 //# sourceMappingURL=app.js.map
