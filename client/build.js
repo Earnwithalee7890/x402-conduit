@@ -11,7 +11,7 @@ try {
         minify: false, // Keep it readable for now for debugging
         sourcemap: true,
         platform: 'browser',
-        target: ['es2020'],
+        target: ['es2018'], // More conservative for Agoric/SES compatibility
         define: {
             'process.env.NODE_ENV': '"production"',
             'global': 'window' // Polyfill global for some legacy packages

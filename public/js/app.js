@@ -310,17 +310,17 @@
         //   return null;
         // }
         getBrowserUrl(provider) {
-          var _a2;
-          return (_a2 = provider.chromeWebStoreUrl) !== null && _a2 !== void 0 ? _a2 : provider.mozillaAddOnsUrl;
+          var _a7;
+          return (_a7 = provider.chromeWebStoreUrl) !== null && _a7 !== void 0 ? _a7 : provider.mozillaAddOnsUrl;
         }
         getMobileUrl(provider) {
-          var _a2;
-          return (_a2 = provider.iOSAppStoreUrl) !== null && _a2 !== void 0 ? _a2 : provider.googlePlayStoreUrl;
+          var _a7;
+          return (_a7 = provider.iOSAppStoreUrl) !== null && _a7 !== void 0 ? _a7 : provider.googlePlayStoreUrl;
         }
         getInstallUrl(provider, browser, platform) {
-          var _a2, _b, _c2, _d, _e7, _f2, _g, _h, _j, _k;
+          var _a7, _b2, _c2, _d, _e7, _f2, _g, _h, _j, _k;
           if (platform === "IOS") {
-            return (_b = (_a2 = provider.iOSAppStoreUrl) !== null && _a2 !== void 0 ? _a2 : this.getBrowserUrl(provider)) !== null && _b !== void 0 ? _b : provider.webUrl;
+            return (_b2 = (_a7 = provider.iOSAppStoreUrl) !== null && _a7 !== void 0 ? _a7 : this.getBrowserUrl(provider)) !== null && _b2 !== void 0 ? _b2 : provider.webUrl;
           } else if (browser === "Chrome") {
             return (_d = (_c2 = provider.chromeWebStoreUrl) !== null && _c2 !== void 0 ? _c2 : this.getMobileUrl(provider)) !== null && _d !== void 0 ? _d : provider.webUrl;
           } else if (browser === "Firefox") {
@@ -341,11 +341,11 @@
           const hasInstalled = this.installedProviders.length > 0;
           const hasMore = notInstalledProviders.length > 0;
           return h("div", { key: "486a8b0d4c08fb0f38d26584880b40975ce74939", class: "modal-container animate-in fade-in fixed inset-0 z-[8999] box-border flex h-full w-full items-end bg-[#00000040] md:items-center md:justify-center" }, h("div", { key: "54488652b87fb84e0bfc37e0dce83bdc252b2eee", class: "fixed inset-0 z-[8999]", onClick: () => this.handleCloseModal() }), h("div", { key: "21c5463a21e285951dee580db2b2e097fb071ece", class: "modal-body animate-in md:zoom-in-50 slide-in-from-bottom md:slide-in-from-bottom-0 z-[9000] box-border flex max-h-[calc(100%-24px)] w-full max-w-full cursor-default flex-col overflow-y-scroll rounded-2xl rounded-b-none bg-white p-6 text-sm leading-snug shadow-[0_4px_5px_0_#00000005,0_16px_40px_0_#00000014] md:max-h-[calc(100%-48px)] md:w-[400px] md:rounded-b-2xl" }, h("div", { key: "33064b362a40aafb47fa497bcfe12c7c0b9862e7", class: "flex flex-col space-y-[10px]" }, h("div", { key: "788b6280717355a38938750f5157eade7118ef7f", class: "flex items-center" }, h("div", { key: "327d62d08c8acc81692930cfb99a23e7b45cbae5", class: "flex-1 text-xl font-medium text-[#242629]" }, "Connect a wallet"), h("button", { key: "61e2400cc41284e4f6df15718578558dd1667efd", class: "rounded-full bg-transparent p-1 transition-colors hover:bg-gray-100 active:scale-95", onClick: () => this.handleCloseModal() }, h("span", { key: "5bda5e860b382e9aaf47b66c2e91759cfd02d736", class: "sr-only" }, "Close popup"), h("img", { key: "450a865711c1c31693d90f2cbcfe9763bae553db", src: closeIconSvg }))), hasInstalled ? h("p", null, "Select the wallet you want to connect to.") : h("p", null, "You don't have any wallets in your browser that support this app. You need to install a wallet to proceed.")), hasInstalled && h("div", { key: "2ee090d1eab36f553d6ed7565e2e2588eabcecd7", class: "mt-6" }, h("p", { key: "1bad5b095f034f12c0cfb88f76f0d7a02d23cc13", class: "mb-4 text-sm font-medium" }, "Available wallets"), h("ul", { key: "06140f18abb2ae4334d2c9bfd603246898eac7ef", class: "space-y-3" }, this.installedProviders.map((provider, i10) => {
-            var _a2;
-            return h("li", { class: "flex items-center gap-3 rounded-[10px] border border-[#EFEFF2] p-[14px]", key: (_a2 = provider === null || provider === void 0 ? void 0 : provider.id) !== null && _a2 !== void 0 ? _a2 : i10 }, h("div", { class: "aspect-square basis-9 overflow-hidden" }, h("img", { src: provider.icon, class: "h-full w-full rounded-[10px] bg-gray-700" })), h("div", { class: "flex-1" }, h("div", { class: "text-sm font-medium text-[#242629]" }, provider.name), provider.webUrl && h("a", { href: provider.webUrl, class: "text-sm", rel: "noopener noreferrer" }, new URL(provider.webUrl).hostname)), h("button", { class: "rounded-[10px] border border-[#333] bg-[#323232] px-4 py-2 text-sm font-medium text-[#EFEFEF] shadow-[0_1px_2px_0_#0000000A] outline-[#FFBD7A] transition-all hover:bg-[#0C0C0D] hover:text-white hover:shadow-[0_8px_16px_0_#00000020] focus:outline focus:outline-[3px] active:scale-95", onClick: () => this.handleSelectProvider(provider.id) }, "Connect"));
+            var _a7;
+            return h("li", { class: "flex items-center gap-3 rounded-[10px] border border-[#EFEFF2] p-[14px]", key: (_a7 = provider === null || provider === void 0 ? void 0 : provider.id) !== null && _a7 !== void 0 ? _a7 : i10 }, h("div", { class: "aspect-square basis-9 overflow-hidden" }, h("img", { src: provider.icon, class: "h-full w-full rounded-[10px] bg-gray-700" })), h("div", { class: "flex-1" }, h("div", { class: "text-sm font-medium text-[#242629]" }, provider.name), provider.webUrl && h("a", { href: provider.webUrl, class: "text-sm", rel: "noopener noreferrer" }, new URL(provider.webUrl).hostname)), h("button", { class: "rounded-[10px] border border-[#333] bg-[#323232] px-4 py-2 text-sm font-medium text-[#EFEFEF] shadow-[0_1px_2px_0_#0000000A] outline-[#FFBD7A] transition-all hover:bg-[#0C0C0D] hover:text-white hover:shadow-[0_8px_16px_0_#00000020] focus:outline focus:outline-[3px] active:scale-95", onClick: () => this.handleSelectProvider(provider.id) }, "Connect"));
           }))), hasMore && h("div", { key: "e6869330825d48b2bb7a8bfc7f292dcd1c0cdf9b", class: "mt-6" }, hasInstalled ? h("p", { class: "mb-4 text-sm font-medium" }, "Other wallets") : h("div", { class: "mb-5 flex justify-between" }, h("p", { class: "text-sm font-medium" }, "Recommended wallets"), h("a", { class: "flex cursor-pointer items-center space-x-[5px] text-xs transition-colors hover:text-[#242629] hover:underline focus:underline", href: "https://docs.hiro.so/what-is-a-wallet", rel: "noopener noreferrer", target: "_blank" }, h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "14", height: "14", viewBox: "0 0 16 16", fill: "none" }, h("path", { stroke: "#74777D", "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1.2", d: "M8.006 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" }), h("path", { stroke: "#74777D", "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1.2", d: "M5.97 5.9a2.1 2.1 0 0 1 4.08.7c0 1.4-2.1 2.1-2.1 2.1M8.006 11.5h.01" })), h("p", null, "What is a wallet?\u2009", h("span", { class: "align-text-bottom text-[9px]" }, "\u2197")))), h("ul", { key: "e8ede6e513ebe32e8aee0385a727f9c454b5f9f2", class: "space-y-3" }, notInstalledProviders.map((provider, i10) => {
-            var _a2;
-            return h("li", { class: "flex items-center gap-3 rounded-[10px] border border-[#EFEFF2] p-[14px]", key: (_a2 = provider === null || provider === void 0 ? void 0 : provider.id) !== null && _a2 !== void 0 ? _a2 : i10 }, h("div", { class: "aspect-square basis-9 overflow-hidden" }, h("img", { src: provider.icon, class: "h-full w-full rounded-[10px] bg-gray-700" })), h("div", { class: "flex-1" }, h("div", { class: "text-sm font-medium text-[#242629]" }, provider.name), provider.webUrl && h("a", { href: provider.webUrl, class: "text-sm", rel: "noopener noreferrer" }, new URL(provider.webUrl).hostname)), this.getInstallUrl(provider, browser, mobile) && h("a", { class: "rounded-[10px] border border-[#EFEFF2] px-4 py-2 text-sm font-medium shadow-[0_1px_2px_0_#0000000A] outline-[#FFBD7A] transition-colors hover:text-[#242629] hover:shadow-[0_1px_2px_0_#00000010] focus:outline focus:outline-[3px] active:scale-95", href: this.getInstallUrl(provider, browser, mobile), rel: "noopener noreferrer", target: "_blank" }, provider.id === "AsignaProvider" ? "Open" : "Install", " \u2192"));
+            var _a7;
+            return h("li", { class: "flex items-center gap-3 rounded-[10px] border border-[#EFEFF2] p-[14px]", key: (_a7 = provider === null || provider === void 0 ? void 0 : provider.id) !== null && _a7 !== void 0 ? _a7 : i10 }, h("div", { class: "aspect-square basis-9 overflow-hidden" }, h("img", { src: provider.icon, class: "h-full w-full rounded-[10px] bg-gray-700" })), h("div", { class: "flex-1" }, h("div", { class: "text-sm font-medium text-[#242629]" }, provider.name), provider.webUrl && h("a", { href: provider.webUrl, class: "text-sm", rel: "noopener noreferrer" }, new URL(provider.webUrl).hostname)), this.getInstallUrl(provider, browser, mobile) && h("a", { class: "rounded-[10px] border border-[#EFEFF2] px-4 py-2 text-sm font-medium shadow-[0_1px_2px_0_#0000000A] outline-[#FFBD7A] transition-colors hover:text-[#242629] hover:shadow-[0_1px_2px_0_#00000010] focus:outline focus:outline-[3px] active:scale-95", href: this.getInstallUrl(provider, browser, mobile), rel: "noopener noreferrer", target: "_blank" }, provider.id === "AsignaProvider" ? "Open" : "Install", " \u2192"));
           })))));
         }
         static get assetsDirs() {
@@ -371,8 +371,8 @@
 
   // node_modules/@stacks/connect-ui/dist/esm/index-BnFj5nlp.js
   function queryNonceMetaTagContent(doc) {
-    var _a2, _b, _c2;
-    return (_c2 = (_b = (_a2 = doc.head) == null ? void 0 : _a2.querySelector('meta[name="csp-nonce"]')) == null ? void 0 : _b.getAttribute("content")) != null ? _c2 : void 0;
+    var _a7, _b2, _c2;
+    return (_c2 = (_b2 = (_a7 = doc.head) == null ? void 0 : _a7.querySelector('meta[name="csp-nonce"]')) == null ? void 0 : _b2.getAttribute("content")) != null ? _c2 : void 0;
   }
   function map(result, fn3) {
     if (result.isOk) {
@@ -393,9 +393,9 @@
     return void 0;
   }
   function createShadowRoot(cmpMeta) {
-    var _a2;
+    var _a7;
     const shadowRoot = this.attachShadow({ mode: "open" });
-    if (globalStyleSheet === void 0) globalStyleSheet = (_a2 = createStyleSheetIfNeededAndSupported()) != null ? _a2 : null;
+    if (globalStyleSheet === void 0) globalStyleSheet = (_a7 = createStyleSheetIfNeededAndSupported()) != null ? _a7 : null;
     if (globalStyleSheet) {
       if (supportsMutableAdoptedStyleSheets) {
         shadowRoot.adoptedStyleSheets.push(globalStyleSheet);
@@ -619,7 +619,7 @@
         styles.set(scopeId2, style);
       };
       addStyle = (styleContainerNode, cmpMeta, mode) => {
-        var _a2;
+        var _a7;
         const scopeId2 = getScopeId(cmpMeta);
         const style = styles.get(scopeId2);
         if (!win.document) {
@@ -638,7 +638,7 @@
               {
                 styleElm = win.document.createElement("style");
                 styleElm.innerHTML = style;
-                const nonce = (_a2 = plt.$nonce$) != null ? _a2 : queryNonceMetaTagContent(win.document);
+                const nonce = (_a7 = plt.$nonce$) != null ? _a7 : queryNonceMetaTagContent(win.document);
                 if (nonce != null) {
                   styleElm.setAttribute("nonce", nonce);
                 }
@@ -797,8 +797,8 @@
         return propValue;
       };
       getElement = (ref2) => {
-        var _a2;
-        return (_a2 = getHostRef(ref2)) == null ? void 0 : _a2.$hostElement$;
+        var _a7;
+        return (_a7 = getHostRef(ref2)) == null ? void 0 : _a7.$hostElement$;
       };
       emitEvent = (elm, name2, opts) => {
         const ev = plt.ce(name2, opts);
@@ -1195,7 +1195,7 @@
       }) : fn3();
       isPromisey = (maybePromise) => maybePromise instanceof Promise || maybePromise && maybePromise.then && typeof maybePromise.then === "function";
       updateComponent = async (hostRef, instance, isInitialLoad) => {
-        var _a2;
+        var _a7;
         const elm = hostRef.$hostElement$;
         const endUpdate = createTime("update", hostRef.$cmpMeta$.$tagName$);
         const rc2 = elm["s-rc"];
@@ -1213,7 +1213,7 @@
         endRender();
         endUpdate();
         {
-          const childrenPromises = (_a2 = elm["s-p"]) != null ? _a2 : [];
+          const childrenPromises = (_a7 = elm["s-p"]) != null ? _a7 : [];
           const postUpdate = () => postUpdateComponent(hostRef);
           if (childrenPromises.length === 0) {
             postUpdate();
@@ -1294,8 +1294,8 @@
         return void 0;
       };
       addHydratedFlag = (elm) => {
-        var _a2;
-        return elm.classList.add((_a2 = BUILD.hydratedSelectorName) != null ? _a2 : "hydrated");
+        var _a7;
+        return elm.classList.add((_a7 = BUILD.hydratedSelectorName) != null ? _a7 : "hydrated");
       };
       getValue = (ref2, propName) => getHostRef(ref2).$instanceValues$.get(propName);
       setValue = (ref2, propName, newVal, cmpMeta) => {
@@ -1332,10 +1332,10 @@
         }
       };
       proxyComponent = (Cstr, cmpMeta, flags) => {
-        var _a2, _b;
+        var _a7, _b2;
         const prototype = Cstr.prototype;
         if (cmpMeta.$members$ || BUILD.watchCallback) {
-          const members = Object.entries((_a2 = cmpMeta.$members$) != null ? _a2 : {});
+          const members = Object.entries((_a7 = cmpMeta.$members$) != null ? _a7 : {});
           members.map(([memberName, [memberFlags]]) => {
             if (memberFlags & 31 || flags & 2 && memberFlags & 32) {
               const { get: origGetter, set: origSetter } = Object.getOwnPropertyDescriptor(prototype, memberName) || {};
@@ -1449,7 +1449,7 @@
             };
             Cstr.observedAttributes = Array.from(
               /* @__PURE__ */ new Set([
-                ...Object.keys((_b = cmpMeta.$watchers$) != null ? _b : {}),
+                ...Object.keys((_b2 = cmpMeta.$watchers$) != null ? _b2 : {}),
                 ...members.filter(
                   ([_5, m6]) => m6[0] & 31
                   /* HasAttribute */
@@ -1601,7 +1601,7 @@
         }
       };
       bootstrapLazy = (lazyBundles, options = {}) => {
-        var _a2;
+        var _a7;
         if (!win.document) {
           console.warn("Stencil: No document found. Skipping bootstrapping lazy components.");
           return;
@@ -1676,7 +1676,7 @@
               disconnectedCallback() {
                 plt.jmp(() => disconnectedCallback(this));
                 plt.raf(() => {
-                  var _a3;
+                  var _a32;
                   const hostRef = getHostRef(this);
                   if (!hostRef) {
                     return;
@@ -1685,14 +1685,14 @@
                   if (i22 > -1) {
                     deferredConnectedCallbacks.splice(i22, 1);
                   }
-                  if (((_a3 = hostRef == null ? void 0 : hostRef.$vnode$) == null ? void 0 : _a3.$elm$) instanceof Node && !hostRef.$vnode$.$elm$.isConnected) {
+                  if (((_a32 = hostRef == null ? void 0 : hostRef.$vnode$) == null ? void 0 : _a32.$elm$) instanceof Node && !hostRef.$vnode$.$elm$.isConnected) {
                     delete hostRef.$vnode$.$elm$;
                   }
                 });
               }
               componentOnReady() {
-                var _a3;
-                return (_a3 = getHostRef(this)) == null ? void 0 : _a3.$onReadyPromise$;
+                var _a32;
+                return (_a32 = getHostRef(this)) == null ? void 0 : _a32.$onReadyPromise$;
               }
             };
             cmpMeta.$lazyBundleId$ = lazyBundle[0];
@@ -1719,7 +1719,7 @@
           }
           if (dataStyles.innerHTML.length) {
             dataStyles.setAttribute("data-styles", "");
-            const nonce = (_a2 = plt.$nonce$) != null ? _a2 : queryNonceMetaTagContent(win.document);
+            const nonce = (_a7 = plt.$nonce$) != null ? _a7 : queryNonceMetaTagContent(win.document);
             if (nonce != null) {
               dataStyles.setAttribute("nonce", nonce);
             }
@@ -1883,7 +1883,7 @@
         return hashC;
       }
       exports.wrapConstructorWithOpts = wrapConstructorWithOpts;
-      function randomBytes2(bytesLength = 32) {
+      function randomBytes3(bytesLength = 32) {
         if (crypto_1.crypto.web) {
           return crypto_1.crypto.web.getRandomValues(new Uint8Array(bytesLength));
         } else if (crypto_1.crypto.node) {
@@ -1892,7 +1892,7 @@
           throw new Error("The environment doesn't have randomBytes function");
         }
       }
-      exports.randomBytes = randomBytes2;
+      exports.randomBytes = randomBytes3;
     }
   });
 
@@ -2612,14 +2612,14 @@
       ADDR_STACKS_TO_BITCOIN[exports.versions.mainnet.p2sh] = 5;
       ADDR_STACKS_TO_BITCOIN[exports.versions.testnet.p2pkh] = 111;
       ADDR_STACKS_TO_BITCOIN[exports.versions.testnet.p2sh] = 196;
-      function c32address4(version4, hash160hex) {
+      function c32address5(version4, hash160hex) {
         if (!hash160hex.match(/^[0-9a-fA-F]{40}$/)) {
           throw new Error("Invalid argument: not a hash160 hex string");
         }
         const c32string = (0, checksum_1.c32checkEncode)(version4, hash160hex);
         return `S${c32string}`;
       }
-      exports.c32address = c32address4;
+      exports.c32address = c32address5;
       function c32addressDecode6(c32addr) {
         if (c32addr.length <= 5) {
           throw new Error("Invalid c32 address: invalid length");
@@ -2643,7 +2643,7 @@
         } else {
           stacksVersion = version4;
         }
-        return c32address4(stacksVersion, hash160String);
+        return c32address5(stacksVersion, hash160String);
       }
       exports.b58ToC32 = b58ToC32;
       function c32ToB58(c32string, version4 = -1) {
@@ -4777,7 +4777,7 @@
       r = { pulse: "heartbeat_pulse" };
       i = class _i3 extends n {
         constructor(e10) {
-          super(e10), this.events = new import_events.EventEmitter(), this.interval = s, this.interval = e10?.interval || s;
+          super(e10), this.events = new import_events.EventEmitter(), this.interval = s, this.interval = (e10 == null ? void 0 : e10.interval) || s;
         }
         static async init(e10) {
           const t5 = new _i3(e10);
@@ -4950,10 +4950,11 @@
     return globalThis.btoa(String.fromCodePoint(...input));
   }
   function normalizeKey(key) {
+    var _a7;
     if (!key) {
       return "";
     }
-    return key.split("?")[0]?.replace(/[/\\]/g, ":").replace(/:+/g, ":").replace(/^:|:$/g, "") || "";
+    return ((_a7 = key.split("?")[0]) == null ? void 0 : _a7.replace(/[/\\]/g, ":").replace(/:+/g, ":").replace(/^:|:$/g, "")) || "";
   }
   function joinKeys(...keys2) {
     return normalizeKey(keys2.join(":"));
@@ -5255,13 +5256,14 @@
       },
       // Keys
       async getKeys(base3, opts = {}) {
+        var _a7;
         base3 = normalizeBaseKey(base3);
         const mounts = getMounts(base3, true);
         let maskedMounts = [];
         const allKeys = [];
         let allMountsSupportMaxDepth = true;
         for (const mount of mounts) {
-          if (!mount.driver.flags?.maxDepth) {
+          if (!((_a7 = mount.driver.flags) == null ? void 0 : _a7.maxDepth)) {
             allMountsSupportMaxDepth = false;
           }
           const rawKeys = await asyncCall(
@@ -5342,12 +5344,13 @@
         return storage;
       },
       async unmount(base3, _dispose = true) {
+        var _a7, _b2;
         base3 = normalizeBaseKey(base3);
         if (!base3 || !context.mounts[base3]) {
           return;
         }
         if (context.watching && base3 in context.unwatch) {
-          context.unwatch[base3]?.();
+          (_b2 = (_a7 = context.unwatch)[base3]) == null ? void 0 : _b2.call(_a7);
           delete context.unwatch[base3];
         }
         if (_dispose) {
@@ -5406,10 +5409,12 @@
             return data.has(key);
           },
           getItem(key) {
-            return data.get(key) ?? null;
+            var _a7;
+            return (_a7 = data.get(key)) != null ? _a7 : null;
           },
           getItemRaw(key) {
-            return data.get(key) ?? null;
+            var _a7;
+            return (_a7 = data.get(key)) != null ? _a7 : null;
           },
           setItem(key, value) {
             data.set(key, value);
@@ -5515,7 +5520,7 @@
     }
     try {
       return JSONParse(value);
-    } catch (_a2) {
+    } catch (_a7) {
       return value;
     }
   }
@@ -5557,7 +5562,8 @@
         return i10.dbName && i10.storeName && (n13 = createStore(i10.dbName, i10.storeName)), { name: x, options: i10, async hasItem(s8) {
           return !(typeof await get(e10(s8), n13) > "u");
         }, async getItem(s8) {
-          return await get(e10(s8), n13) ?? null;
+          var _a7;
+          return (_a7 = await get(e10(s8), n13)) != null ? _a7 : null;
         }, setItem(s8, a5) {
           return set(e10(s8), a5, n13);
         }, removeItem(s8) {
@@ -5675,7 +5681,7 @@
           try {
             const e10 = new _();
             O(t5, e10, this.setInitialized);
-          } catch {
+          } catch (e10) {
             this.initialized = true;
           }
         }
@@ -6145,7 +6151,7 @@
 
   // node_modules/@walletconnect/logger/dist/index.es.js
   function k2(r10) {
-    return g(i2({}, r10), { level: r10?.level || c2.level });
+    return g(i2({}, r10), { level: (r10 == null ? void 0 : r10.level) || c2.level });
   }
   function v(r10, e10 = n2) {
     return r10[e10] || "";
@@ -6239,7 +6245,7 @@
       };
       L = class {
         constructor(e10, t5 = l3) {
-          this.level = e10 ?? "error", this.levelValue = import_pino.levels.values[this.level], this.MAX_LOG_SIZE_IN_BYTES = t5, this.logs = new d(this.MAX_LOG_SIZE_IN_BYTES);
+          this.level = e10 != null ? e10 : "error", this.levelValue = import_pino.levels.values[this.level], this.MAX_LOG_SIZE_IN_BYTES = t5, this.logs = new d(this.MAX_LOG_SIZE_IN_BYTES);
         }
         forwardToConsole(e10, t5) {
           t5 === import_pino.levels.values.error ? console.error(e10) : t5 === import_pino.levels.values.warn ? console.warn(e10) : t5 === import_pino.levels.values.debug ? console.debug(e10) : t5 === import_pino.levels.values.trace ? console.trace(e10) : console.log(e10);
@@ -6781,7 +6787,7 @@
     const e10 = gr(t5), { Fp: n13, n: r10, prehash: o13, hash: s8, randomBytes: a5, nByteLength: u5, h: i10 } = e10, D5 = yt << BigInt(u5 * 8) - j2, c12 = n13.create, l10 = _e(e10.n, e10.nBitLength), p8 = e10.uvRatio || ((y9, f13) => {
       try {
         return { isValid: true, value: n13.sqrt(y9 * n13.inv(f13)) };
-      } catch {
+      } catch (e11) {
         return { isValid: false, value: G };
       }
     }), w7 = e10.adjustScalarBytes || ((y9) => y9), h12 = e10.domain || ((y9, f13, b8) => {
@@ -6850,8 +6856,8 @@
         return new d7(c12(-this.ex), this.ey, this.ez, c12(-this.et));
       }
       double() {
-        const { a: f13 } = e10, { ex: b8, ey: E8, ez: B6 } = this, C6 = c12(b8 * b8), A6 = c12(E8 * E8), U5 = c12(yt * c12(B6 * B6)), _5 = c12(f13 * C6), T7 = b8 + E8, $6 = c12(c12(T7 * T7) - C6 - A6), R5 = _5 + A6, V6 = R5 - U5, Y4 = _5 - A6, Z5 = c12($6 * V6), X5 = c12(R5 * Y4), et2 = c12($6 * Y4), pt4 = c12(V6 * R5);
-        return new d7(Z5, X5, pt4, et2);
+        const { a: f13 } = e10, { ex: b8, ey: E8, ez: B6 } = this, C6 = c12(b8 * b8), A6 = c12(E8 * E8), U5 = c12(yt * c12(B6 * B6)), _5 = c12(f13 * C6), T7 = b8 + E8, $6 = c12(c12(T7 * T7) - C6 - A6), R5 = _5 + A6, V6 = R5 - U5, Y4 = _5 - A6, Z5 = c12($6 * V6), X5 = c12(R5 * Y4), et2 = c12($6 * Y4), pt5 = c12(V6 * R5);
+        return new d7(Z5, X5, pt5, et2);
       }
       add(f13) {
         S8(f13);
@@ -6862,7 +6868,7 @@
           const se5 = c12(A6 * yt * R5), ie5 = c12(U5 * yt * $6), ue5 = ie5 + se5, ce5 = oe3 + re4, ae5 = ie5 - se5, Dn3 = c12(ue5 * mt4), dn3 = c12(ce5 * ae5), hn3 = c12(ue5 * ae5), ln3 = c12(mt4 * ce5);
           return new d7(Dn3, dn3, ln3, hn3);
         }
-        const V6 = c12(B6 * _5), Y4 = c12(C6 * T7), Z5 = c12(U5 * E8 * R5), X5 = c12(A6 * $6), et2 = c12((B6 + C6) * (_5 + T7) - V6 - Y4), pt4 = X5 - Z5, ee5 = X5 + Z5, ne5 = c12(Y4 - b8 * V6), un3 = c12(et2 * pt4), cn3 = c12(ee5 * ne5), an3 = c12(et2 * ne5), fn3 = c12(pt4 * ee5);
+        const V6 = c12(B6 * _5), Y4 = c12(C6 * T7), Z5 = c12(U5 * E8 * R5), X5 = c12(A6 * $6), et2 = c12((B6 + C6) * (_5 + T7) - V6 - Y4), pt5 = X5 - Z5, ee5 = X5 + Z5, ne5 = c12(Y4 - b8 * V6), un3 = c12(et2 * pt5), cn3 = c12(ee5 * ne5), an3 = c12(et2 * ne5), fn3 = c12(pt5 * ee5);
         return new d7(un3, cn3, fn3, an3);
       }
       subtract(f13) {
@@ -6955,7 +6961,7 @@
       let _5, T7, $6;
       try {
         _5 = d7.fromHex(b8, C6), T7 = d7.fromHex(y9.slice(0, A6), C6), $6 = m6.multiplyUnsafe(U5);
-      } catch {
+      } catch (e11) {
         return false;
       }
       if (!C6 && _5.isSmallOrder()) return false;
@@ -7217,8 +7223,8 @@
           for (let d7 = 0; d7 < 80; d7++) {
             const m6 = x3.rotrSH(l10, p8, 14) ^ x3.rotrSH(l10, p8, 18) ^ x3.rotrBH(l10, p8, 41), F4 = x3.rotrSL(l10, p8, 14) ^ x3.rotrSL(l10, p8, 18) ^ x3.rotrBL(l10, p8, 41), q3 = l10 & w7 ^ ~l10 & g5, z6 = p8 & h12 ^ ~p8 & S8, I6 = x3.add5L(L7, F4, z6, Yn[d7], Q[d7]), O7 = x3.add5H(I6, v8, m6, q3, Vn[d7], P2[d7]), ot4 = I6 | 0, tt4 = x3.rotrSH(r10, o13, 28) ^ x3.rotrBH(r10, o13, 34) ^ x3.rotrBH(r10, o13, 39), st2 = x3.rotrSL(r10, o13, 28) ^ x3.rotrBL(r10, o13, 34) ^ x3.rotrBL(r10, o13, 39), at3 = r10 & s8 ^ r10 & u5 ^ s8 & u5, Ct4 = o13 & a5 ^ o13 & i10 ^ a5 & i10;
             v8 = g5 | 0, L7 = S8 | 0, g5 = w7 | 0, S8 = h12 | 0, w7 = l10 | 0, h12 = p8 | 0, { h: l10, l: p8 } = x3.add(D5 | 0, c12 | 0, O7 | 0, ot4 | 0), D5 = u5 | 0, c12 = i10 | 0, u5 = s8 | 0, i10 = a5 | 0, s8 = r10 | 0, a5 = o13 | 0;
-            const At4 = x3.add3L(ot4, st2, Ct4);
-            r10 = x3.add3H(At4, O7, tt4, at3), o13 = At4 | 0;
+            const At5 = x3.add3L(ot4, st2, Ct4);
+            r10 = x3.add3H(At5, O7, tt4, at3), o13 = At5 | 0;
           }
           ({ h: r10, l: o13 } = x3.add(this.Ah | 0, this.Al | 0, r10 | 0, o13 | 0)), { h: s8, l: a5 } = x3.add(this.Bh | 0, this.Bl | 0, s8 | 0, a5 | 0), { h: u5, l: i10 } = x3.add(this.Ch | 0, this.Cl | 0, u5 | 0, i10 | 0), { h: D5, l: c12 } = x3.add(this.Dh | 0, this.Dl | 0, D5 | 0, c12 | 0), { h: l10, l: p8 } = x3.add(this.Eh | 0, this.El | 0, l10 | 0, p8 | 0), { h: w7, l: h12 } = x3.add(this.Fh | 0, this.Fl | 0, w7 | 0, h12 | 0), { h: g5, l: S8 } = x3.add(this.Gh | 0, this.Gl | 0, g5 | 0, S8 | 0), { h: v8, l: L7 } = x3.add(this.Hh | 0, this.Hl | 0, v8 | 0, L7 | 0), this.set(r10, o13, s8, a5, u5, i10, D5, c12, l10, p8, w7, h12, g5, S8, v8, L7);
         }
@@ -7496,8 +7502,8 @@
     return getNodeVersion();
   }
   function matchUserAgent(ua2) {
-    return ua2 !== "" && userAgentRules.reduce(function(matched, _a2) {
-      var browser = _a2[0], regex2 = _a2[1];
+    return ua2 !== "" && userAgentRules.reduce(function(matched, _a7) {
+      var browser = _a7[0], regex2 = _a7[1];
       if (matched) {
         return matched;
       }
@@ -7532,7 +7538,7 @@
   }
   function detectOS(ua2) {
     for (var ii4 = 0, count = operatingSystemRules.length; ii4 < count; ii4++) {
-      var _a2 = operatingSystemRules[ii4], os2 = _a2[0], regex2 = _a2[1];
+      var _a7 = operatingSystemRules[ii4], os2 = _a7[0], regex2 = _a7[1];
       var match = regex2.exec(ua2);
       if (match) {
         return os2;
@@ -7884,7 +7890,7 @@
 
   // node_modules/@walletconnect/utils/node_modules/viem/_esm/errors/base.js
   function walk(err2, fn3) {
-    if (fn3?.(err2))
+    if (fn3 == null ? void 0 : fn3(err2))
       return err2;
     if (err2 && typeof err2 === "object" && "cause" in err2 && err2.cause !== void 0)
       return walk(err2.cause, fn3);
@@ -7895,15 +7901,17 @@
     "node_modules/@walletconnect/utils/node_modules/viem/_esm/errors/base.js"() {
       init_version();
       errorConfig = {
-        getDocsUrl: ({ docsBaseUrl, docsPath = "", docsSlug }) => docsPath ? `${docsBaseUrl ?? "https://viem.sh"}${docsPath}${docsSlug ? `#${docsSlug}` : ""}` : void 0,
+        getDocsUrl: ({ docsBaseUrl, docsPath = "", docsSlug }) => docsPath ? `${docsBaseUrl != null ? docsBaseUrl : "https://viem.sh"}${docsPath}${docsSlug ? `#${docsSlug}` : ""}` : void 0,
         version: `viem@${version}`
       };
       BaseError = class _BaseError extends Error {
         constructor(shortMessage, args = {}) {
+          var _a7, _b2;
           const details = (() => {
+            var _a8;
             if (args.cause instanceof _BaseError)
               return args.cause.details;
-            if (args.cause?.message)
+            if ((_a8 = args.cause) == null ? void 0 : _a8.message)
               return args.cause.message;
             return args.details;
           })();
@@ -7912,7 +7920,7 @@
               return args.cause.docsPath || args.docsPath;
             return args.docsPath;
           })();
-          const docsUrl = errorConfig.getDocsUrl?.({ ...args, docsPath });
+          const docsUrl = (_a7 = errorConfig.getDocsUrl) == null ? void 0 : _a7.call(errorConfig, { ...args, docsPath });
           const message = [
             shortMessage || "An error occurred.",
             "",
@@ -7961,7 +7969,7 @@
           this.details = details;
           this.docsPath = docsPath;
           this.metaMessages = args.metaMessages;
-          this.name = args.name ?? this.name;
+          this.name = (_b2 = args.name) != null ? _b2 : this.name;
           this.shortMessage = shortMessage;
           this.version = version;
         }
@@ -8059,10 +8067,10 @@
     if (!signed)
       return value;
     const size4 = (hex.length - 2) / 2;
-    const max = (1n << BigInt(size4) * 8n - 1n) - 1n;
+    const max = (/* @__PURE__ */ BigInt("1") << BigInt(size4) * /* @__PURE__ */ BigInt("8") - /* @__PURE__ */ BigInt("1")) - /* @__PURE__ */ BigInt("1");
     if (value <= max)
       return value;
-    return value - BigInt(`0x${"f".padStart(size4 * 2, "f")}`) - 1n;
+    return value - BigInt(`0x${"f".padStart(size4 * 2, "f")}`) - /* @__PURE__ */ BigInt("1");
   }
   function hexToNumber2(hex, opts = {}) {
     return Number(hexToBigInt2(hex, opts));
@@ -8111,13 +8119,13 @@
     let maxValue;
     if (size4) {
       if (signed)
-        maxValue = (1n << BigInt(size4) * 8n - 1n) - 1n;
+        maxValue = (/* @__PURE__ */ BigInt("1") << BigInt(size4) * /* @__PURE__ */ BigInt("8") - /* @__PURE__ */ BigInt("1")) - /* @__PURE__ */ BigInt("1");
       else
-        maxValue = 2n ** (BigInt(size4) * 8n) - 1n;
+        maxValue = /* @__PURE__ */ BigInt("2") ** (BigInt(size4) * /* @__PURE__ */ BigInt("8")) - /* @__PURE__ */ BigInt("1");
     } else if (typeof value_ === "number") {
       maxValue = BigInt(Number.MAX_SAFE_INTEGER);
     }
-    const minValue = typeof maxValue === "bigint" && signed ? -maxValue - 1n : 0;
+    const minValue = typeof maxValue === "bigint" && signed ? -maxValue - /* @__PURE__ */ BigInt("1") : 0;
     if (maxValue && value > maxValue || value < minValue) {
       const suffix = typeof value_ === "bigint" ? "n" : "";
       throw new IntegerOutOfRangeError({
@@ -8128,7 +8136,7 @@
         value: `${value_}${suffix}`
       });
     }
-    const hex = `0x${(signed && value < 0 ? (1n << BigInt(size4 * 8)) + BigInt(value) : value).toString(16)}`;
+    const hex = `0x${(signed && value < 0 ? (/* @__PURE__ */ BigInt("1") << BigInt(size4 * 8)) + BigInt(value) : value).toString(16)}`;
     if (size4)
       return pad(hex, { size: size4 });
     return hex;
@@ -8355,7 +8363,7 @@
     hashC.create = () => hashCons();
     return hashC;
   }
-  function randomBytes(bytesLength = 32) {
+  function randomBytes2(bytesLength = 32) {
     if (crypto4 && typeof crypto4.getRandomValues === "function") {
       return crypto4.getRandomValues(new Uint8Array(bytesLength));
     }
@@ -8646,7 +8654,7 @@
   });
 
   // node_modules/@walletconnect/utils/node_modules/viem/_esm/accounts/utils/publicKeyToAddress.js
-  function publicKeyToAddress(publicKey) {
+  function publicKeyToAddress2(publicKey) {
     const address2 = keccak256(`0x${publicKey.substring(4)}`).substring(26);
     return checksumAddress(`0x${address2}`);
   }
@@ -10420,7 +10428,7 @@
     function prepSig(msgHash, privateKey, opts = defaultSigOpts) {
       if (["recovered", "canonical"].some((k8) => k8 in opts))
         throw new Error("sign() legacy options not supported");
-      const { hash: hash2, randomBytes: randomBytes2 } = CURVE2;
+      const { hash: hash2, randomBytes: randomBytes3 } = CURVE2;
       let { lowS, prehash, extraEntropy: ent } = opts;
       if (lowS == null)
         lowS = true;
@@ -10432,7 +10440,7 @@
       const d7 = normPrivateKeyToScalar(privateKey);
       const seedArgs = [int2octets2(d7), int2octets2(h1int)];
       if (ent != null && ent !== false) {
-        const e10 = ent === true ? randomBytes2(Fp.BYTES) : ent;
+        const e10 = ent === true ? randomBytes3(Fp.BYTES) : ent;
         seedArgs.push(ensureBytes2("extraEntropy", e10));
       }
       const seed = concatBytes5(...seedArgs);
@@ -10469,6 +10477,7 @@
     }
     Point3.BASE._setWindowSize(8);
     function verify3(signature, msgHash, publicKey, opts = defaultVerOpts) {
+      var _a7;
       const sg = signature;
       msgHash = ensureBytes2("msgHash", msgHash);
       publicKey = ensureBytes2("publicKey", publicKey);
@@ -10510,10 +10519,10 @@
         msgHash = CURVE2.hash(msgHash);
       const { r: r10, s: s8 } = _sig;
       const h12 = bits2int_modN(msgHash);
-      const is2 = invN(s8);
-      const u1 = modN2(h12 * is2);
-      const u22 = modN2(r10 * is2);
-      const R5 = Point3.BASE.multiplyAndAddUnsafe(P7, u1, u22)?.toAffine();
+      const is3 = invN(s8);
+      const u1 = modN2(h12 * is3);
+      const u22 = modN2(r10 * is3);
+      const R5 = (_a7 = Point3.BASE.multiplyAndAddUnsafe(P7, u1, u22)) == null ? void 0 : _a7.toAffine();
       if (!R5)
         return false;
       const v8 = modN2(R5.x);
@@ -10754,7 +10763,7 @@
     return {
       hash: hash2,
       hmac: (key, ...msgs) => hmac2(hash2, key, concatBytes4(...msgs)),
-      randomBytes
+      randomBytes: randomBytes2
     };
   }
   function createCurve(curveDef, defHash) {
@@ -10987,7 +10996,7 @@
   function schnorrGetPublicKey(privateKey) {
     return schnorrGetExtPubKey(privateKey).bytes;
   }
-  function schnorrSign(message, privateKey, auxRand = randomBytes(32)) {
+  function schnorrSign(message, privateKey, auxRand = randomBytes2(32)) {
     const m6 = ensureBytes2("message", message);
     const { bytes: px, scalar: d7 } = schnorrGetExtPubKey(privateKey);
     const a5 = ensureBytes2("auxRand", auxRand, 32);
@@ -11162,7 +11171,7 @@
     const signature_ = (() => {
       if (typeof signature === "object" && "r" in signature && "s" in signature) {
         const { r: r10, s: s8, v: v8, yParity } = signature;
-        const yParityOrV2 = Number(yParity ?? v8);
+        const yParityOrV2 = Number(yParity != null ? yParity : v8);
         const recoveryBit2 = toRecoveryBit(yParityOrV2);
         return new secp256k12.Signature(hexToBigInt2(r10), hexToBigInt2(s8)).addRecoveryBit(recoveryBit2);
       }
@@ -11196,7 +11205,7 @@
 
   // node_modules/@walletconnect/utils/node_modules/viem/_esm/utils/signature/recoverAddress.js
   async function recoverAddress({ hash: hash2, signature }) {
-    return publicKeyToAddress(await recoverPublicKey({ hash: hash2, signature }));
+    return publicKeyToAddress2(await recoverPublicKey({ hash: hash2, signature }));
   }
   var init_recoverAddress = __esm({
     "node_modules/@walletconnect/utils/node_modules/viem/_esm/utils/signature/recoverAddress.js"() {
@@ -11738,16 +11747,17 @@
       DEFAULT_INITIAL_BUFFER_SIZE = 2048;
       Encoder = class _Encoder {
         constructor(options) {
+          var _a7, _b2, _c2, _d, _e7, _f2, _g, _h;
           this.entered = false;
-          this.extensionCodec = options?.extensionCodec ?? ExtensionCodec.defaultCodec;
-          this.context = options?.context;
-          this.useBigInt64 = options?.useBigInt64 ?? false;
-          this.maxDepth = options?.maxDepth ?? DEFAULT_MAX_DEPTH;
-          this.initialBufferSize = options?.initialBufferSize ?? DEFAULT_INITIAL_BUFFER_SIZE;
-          this.sortKeys = options?.sortKeys ?? false;
-          this.forceFloat32 = options?.forceFloat32 ?? false;
-          this.ignoreUndefined = options?.ignoreUndefined ?? false;
-          this.forceIntegerToFloat = options?.forceIntegerToFloat ?? false;
+          this.extensionCodec = (_a7 = options == null ? void 0 : options.extensionCodec) != null ? _a7 : ExtensionCodec.defaultCodec;
+          this.context = options == null ? void 0 : options.context;
+          this.useBigInt64 = (_b2 = options == null ? void 0 : options.useBigInt64) != null ? _b2 : false;
+          this.maxDepth = (_c2 = options == null ? void 0 : options.maxDepth) != null ? _c2 : DEFAULT_MAX_DEPTH;
+          this.initialBufferSize = (_d = options == null ? void 0 : options.initialBufferSize) != null ? _d : DEFAULT_INITIAL_BUFFER_SIZE;
+          this.sortKeys = (_e7 = options == null ? void 0 : options.sortKeys) != null ? _e7 : false;
+          this.forceFloat32 = (_f2 = options == null ? void 0 : options.forceFloat32) != null ? _f2 : false;
+          this.ignoreUndefined = (_g = options == null ? void 0 : options.ignoreUndefined) != null ? _g : false;
+          this.forceIntegerToFloat = (_h = options == null ? void 0 : options.forceIntegerToFloat) != null ? _h : false;
           this.pos = 0;
           this.view = new DataView(new ArrayBuffer(this.initialBufferSize));
           this.bytes = new Uint8Array(this.view.buffer);
@@ -12306,6 +12316,7 @@
       sharedCachedKeyDecoder = new CachedKeyDecoder();
       Decoder = class _Decoder {
         constructor(options) {
+          var _a7, _b2, _c2, _d, _e7, _f2, _g, _h, _i3;
           this.totalPos = 0;
           this.pos = 0;
           this.view = EMPTY_VIEW;
@@ -12313,17 +12324,17 @@
           this.headByte = HEAD_BYTE_REQUIRED;
           this.stack = new StackPool();
           this.entered = false;
-          this.extensionCodec = options?.extensionCodec ?? ExtensionCodec.defaultCodec;
-          this.context = options?.context;
-          this.useBigInt64 = options?.useBigInt64 ?? false;
-          this.rawStrings = options?.rawStrings ?? false;
-          this.maxStrLength = options?.maxStrLength ?? UINT32_MAX;
-          this.maxBinLength = options?.maxBinLength ?? UINT32_MAX;
-          this.maxArrayLength = options?.maxArrayLength ?? UINT32_MAX;
-          this.maxMapLength = options?.maxMapLength ?? UINT32_MAX;
-          this.maxExtLength = options?.maxExtLength ?? UINT32_MAX;
-          this.keyDecoder = options?.keyDecoder !== void 0 ? options.keyDecoder : sharedCachedKeyDecoder;
-          this.mapKeyConverter = options?.mapKeyConverter ?? mapKeyConverter;
+          this.extensionCodec = (_a7 = options == null ? void 0 : options.extensionCodec) != null ? _a7 : ExtensionCodec.defaultCodec;
+          this.context = options == null ? void 0 : options.context;
+          this.useBigInt64 = (_b2 = options == null ? void 0 : options.useBigInt64) != null ? _b2 : false;
+          this.rawStrings = (_c2 = options == null ? void 0 : options.rawStrings) != null ? _c2 : false;
+          this.maxStrLength = (_d = options == null ? void 0 : options.maxStrLength) != null ? _d : UINT32_MAX;
+          this.maxBinLength = (_e7 = options == null ? void 0 : options.maxBinLength) != null ? _e7 : UINT32_MAX;
+          this.maxArrayLength = (_f2 = options == null ? void 0 : options.maxArrayLength) != null ? _f2 : UINT32_MAX;
+          this.maxMapLength = (_g = options == null ? void 0 : options.maxMapLength) != null ? _g : UINT32_MAX;
+          this.maxExtLength = (_h = options == null ? void 0 : options.maxExtLength) != null ? _h : UINT32_MAX;
+          this.keyDecoder = (options == null ? void 0 : options.keyDecoder) !== void 0 ? options.keyDecoder : sharedCachedKeyDecoder;
+          this.mapKeyConverter = (_i3 = options == null ? void 0 : options.mapKeyConverter) != null ? _i3 : mapKeyConverter;
         }
         clone() {
           return new _Decoder({
@@ -12713,6 +12724,7 @@
          * @throws {@link RangeError}
          */
         decodeUtf8String(byteLength, headerOffset) {
+          var _a7;
           if (byteLength > this.maxStrLength) {
             throw new DecodeError(`Max length exceeded: UTF-8 byte length (${byteLength}) > maxStrLength (${this.maxStrLength})`);
           }
@@ -12721,7 +12733,7 @@
           }
           const offset = this.pos + headerOffset;
           let object;
-          if (this.stateIsMapKey() && this.keyDecoder?.canBeCached(byteLength)) {
+          if (this.stateIsMapKey() && ((_a7 = this.keyDecoder) == null ? void 0 : _a7.canBeCached(byteLength))) {
             object = this.keyDecoder.decode(this.bytes, offset, byteLength);
           } else {
             object = utf8Decode(this.bytes, offset, byteLength);
@@ -15129,7 +15141,7 @@ if (cid) {
     var t5;
     try {
       return Bt2() && typeof window < "u" && typeof (window == null ? void 0 : window.Application) < "u" ? (t5 = window.Application) == null ? void 0 : t5.applicationId : void 0;
-    } catch {
+    } catch (e10) {
       return;
     }
   }
@@ -15145,7 +15157,7 @@ if (cid) {
     var e10, n13;
     const r10 = sr2();
     try {
-      return t5 != null && t5.url && r10.url && new URL(t5.url).host !== new URL(r10.url).host && (console.warn(`The configured WalletConnect 'metadata.url':${t5.url} differs from the actual page url:${r10.url}. This is probably unintended and can lead to issues.`), t5.url = r10.url), (e10 = t5?.icons) != null && e10.length && t5.icons.length > 0 && (t5.icons = t5.icons.filter((o13) => o13 !== "")), Ps(Qn2(Qn2({}, r10), t5), { url: t5?.url || r10.url, name: t5?.name || r10.name, description: t5?.description || r10.description, icons: (n13 = t5?.icons) != null && n13.length && t5.icons.length > 0 ? t5.icons : r10.icons });
+      return t5 != null && t5.url && r10.url && new URL(t5.url).host !== new URL(r10.url).host && (console.warn(`The configured WalletConnect 'metadata.url':${t5.url} differs from the actual page url:${r10.url}. This is probably unintended and can lead to issues.`), t5.url = r10.url), (e10 = t5 == null ? void 0 : t5.icons) != null && e10.length && t5.icons.length > 0 && (t5.icons = t5.icons.filter((o13) => o13 !== "")), Ps(Qn2(Qn2({}, r10), t5), { url: (t5 == null ? void 0 : t5.url) || r10.url, name: (t5 == null ? void 0 : t5.name) || r10.name, description: (t5 == null ? void 0 : t5.description) || r10.description, icons: (n13 = t5 == null ? void 0 : t5.icons) != null && n13.length && t5.icons.length > 0 ? t5.icons : r10.icons });
     } catch (o13) {
       return console.warn("Error populating app metadata", o13), t5 || r10;
     }
@@ -15252,7 +15264,7 @@ if (cid) {
     var r10;
     try {
       if (!n13) return;
-      const o13 = typeof n13 == "string" ? JSON.parse(n13) : n13, s8 = o13?.href;
+      const o13 = typeof n13 == "string" ? JSON.parse(n13) : n13, s8 = o13 == null ? void 0 : o13.href;
       if (typeof s8 != "string") return;
       const i10 = dr2(s8, t5, e10), f13 = Pt2();
       if (f13 === J3.browser) {
@@ -15310,7 +15322,7 @@ if (cid) {
   function gr2() {
     try {
       return window.self !== window.top;
-    } catch {
+    } catch (e10) {
       return false;
     }
   }
@@ -15599,10 +15611,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     });
   }
   function Wr2(t5, e10, n13, r10 = {}) {
-    return n13?.sort((o13, s8) => o13.localeCompare(s8)), { att: { [t5]: hn(e10, n13, r10) } };
+    return n13 == null ? void 0 : n13.sort((o13, s8) => o13.localeCompare(s8)), { att: { [t5]: hn(e10, n13, r10) } };
   }
   function hn(t5, e10, n13 = {}) {
-    e10 = e10?.sort((o13, s8) => o13.localeCompare(s8));
+    e10 = e10 == null ? void 0 : e10.sort((o13, s8) => o13.localeCompare(s8));
     const r10 = e10.map((o13) => ({ [`${t5}/${o13}`]: [n13] }));
     return Object.assign({}, ...r10);
   }
@@ -15668,13 +15680,13 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     return Object.values(e10.att).forEach((r10) => {
       Object.values(r10).forEach((o13) => {
         var s8;
-        (s8 = o13?.[0]) != null && s8.chains && n13.push(o13[0].chains);
+        (s8 = o13 == null ? void 0 : o13[0]) != null && s8.chains && n13.push(o13[0].chains);
       });
     }), [...new Set(n13.flat())];
   }
   function Oe2(t5) {
     if (!t5) return;
-    const e10 = t5?.[t5.length - 1];
+    const e10 = t5 == null ? void 0 : t5[t5.length - 1];
     return pn(e10) ? e10 : void 0;
   }
   function Qr2(t5) {
@@ -16210,8 +16222,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       for (let A6 = BigInt(l10 - 1); A6 >= de2; A6--) {
         const T7 = p8 >> A6 & Jt2;
         S8 ^= T7, { x_2: v8, x_3: E8 } = j7(S8, v8, E8), { x_2: B6, x_3: I6 } = j7(S8, B6, I6), S8 = T7;
-        const U5 = v8 + B6, C6 = x8(U5 * U5), H5 = v8 - B6, q3 = x8(H5 * H5), P7 = C6 - q3, K5 = E8 + I6, et2 = E8 - I6, Z5 = x8(et2 * U5), z6 = x8(K5 * H5), Ft4 = Z5 + z6, yt4 = Z5 - z6;
-        E8 = x8(Ft4 * Ft4), I6 = x8(b8 * x8(yt4 * yt4)), v8 = x8(C6 * q3), B6 = x8(P7 * (C6 + x8(h12 * P7)));
+        const U5 = v8 + B6, C6 = x8(U5 * U5), H5 = v8 - B6, q3 = x8(H5 * H5), P7 = C6 - q3, K5 = E8 + I6, et2 = E8 - I6, Z5 = x8(et2 * U5), z6 = x8(K5 * H5), Ft4 = Z5 + z6, yt5 = Z5 - z6;
+        E8 = x8(Ft4 * Ft4), I6 = x8(b8 * x8(yt5 * yt5)), v8 = x8(C6 * q3), B6 = x8(P7 * (C6 + x8(h12 * P7)));
       }
       ({ x_2: v8, x_3: E8 } = j7(S8, v8, E8)), { x_2: B6, x_3: I6 } = j7(S8, B6, I6);
       const O7 = s8(B6);
@@ -16250,7 +16262,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         }
         try {
           i10 = t5.fromBytes(f13);
-        } catch {
+        } catch (e11) {
           throw new Error(`invalid private key: expected ui8a of size ${r10}, got ${typeof s8}`);
         }
       }
@@ -16539,7 +16551,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     const g5 = To2(i10, n13.allowedPrivateKeyLengths, n13.wrapPrivateKey), w7 = { isValidPrivateKey(p8) {
       try {
         return g5(p8), true;
-      } catch {
+      } catch (e11) {
         return false;
       }
     }, normPrivateKeyToScalar: g5, randomPrivateKey: () => {
@@ -16590,8 +16602,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         if (Z5 === he2) return;
         const z6 = i10.create(K5 * i10.create(C6 + Z5 * A6));
         if (z6 === he2) return;
-        let Ft4 = (et2.x === Z5 ? 0 : 2) | Number(et2.y & pe2), yt4 = z6;
-        return E8 && l10(z6) && (yt4 = c12(z6), Ft4 ^= 1), new h12(Z5, yt4, Ft4);
+        let Ft4 = (et2.x === Z5 ? 0 : 2) | Number(et2.y & pe2), yt5 = z6;
+        return E8 && l10(z6) && (yt5 = c12(z6), Ft4 ^= 1), new h12(Z5, yt5, Ft4);
       }
       return { seed: U5, k2sig: H5 };
     }
@@ -16616,13 +16628,13 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         if (A6) {
           try {
             O7 !== "compact" && (U5 = h12.fromDER(E8));
-          } catch (yt4) {
-            if (!(yt4 instanceof vt2.Err)) throw yt4;
+          } catch (yt5) {
+            if (!(yt5 instanceof vt2.Err)) throw yt5;
           }
           !U5 && O7 !== "der" && (U5 = h12.fromCompact(E8));
         }
         C6 = t5.fromHex(v8);
-      } catch {
+      } catch (e11) {
         return false;
       }
       if (!U5 || I6 && U5.hasHighS()) return false;
@@ -16725,16 +16737,16 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     return { type: r10, sealed: f13, iv: i10 };
   }
   function Xc(t5, e10) {
-    const n13 = Me2({ encoded: t5, encoding: e10?.encoding });
-    return Ho2({ type: Vt2(n13.type), senderPublicKey: typeof n13.senderPublicKey < "u" ? toString2(n13.senderPublicKey, tt) : void 0, receiverPublicKey: e10?.receiverPublicKey });
+    const n13 = Me2({ encoded: t5, encoding: e10 == null ? void 0 : e10.encoding });
+    return Ho2({ type: Vt2(n13.type), senderPublicKey: typeof n13.senderPublicKey < "u" ? toString2(n13.senderPublicKey, tt) : void 0, receiverPublicKey: e10 == null ? void 0 : e10.receiverPublicKey });
   }
   function Ho2(t5) {
-    const e10 = t5?.type || Cn2;
+    const e10 = (t5 == null ? void 0 : t5.type) || Cn2;
     if (e10 === ee) {
-      if (typeof t5?.senderPublicKey > "u") throw new Error("missing sender public key");
-      if (typeof t5?.receiverPublicKey > "u") throw new Error("missing receiver public key");
+      if (typeof (t5 == null ? void 0 : t5.senderPublicKey) > "u") throw new Error("missing sender public key");
+      if (typeof (t5 == null ? void 0 : t5.receiverPublicKey) > "u") throw new Error("missing receiver public key");
     }
-    return { type: e10, senderPublicKey: t5?.senderPublicKey, receiverPublicKey: t5?.receiverPublicKey };
+    return { type: e10, senderPublicKey: t5 == null ? void 0 : t5.senderPublicKey, receiverPublicKey: t5 == null ? void 0 : t5.receiverPublicKey };
   }
   function Jc(t5) {
     return t5.type === ee && typeof t5.senderPublicKey == "string" && typeof t5.receiverPublicKey == "string";
@@ -16754,7 +16766,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     return sn(t5).payload;
   }
   function ea(t5) {
-    return t5?.relay || { protocol: Mo2 };
+    return (t5 == null ? void 0 : t5.relay) || { protocol: Mo2 };
   }
   function na(t5) {
     const e10 = C2[t5];
@@ -16847,7 +16859,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
   }
   function Xo(t5) {
     const e10 = {};
-    return t5?.forEach((n13) => {
+    return t5 == null ? void 0 : t5.forEach((n13) => {
       var r10;
       const [o13, s8] = n13.split(":");
       e10[o13] || (e10[o13] = { accounts: [], chains: [], events: [], methods: [] }), e10[o13].accounts.push(n13), (r10 = e10[o13].chains) == null || r10.push(`${o13}:${s8}`);
@@ -16913,7 +16925,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     function e10(n13) {
       try {
         return typeof new URL(n13) < "u";
-      } catch {
+      } catch (e11) {
         return false;
       }
     }
@@ -16923,20 +16935,20 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         const n13 = Qe2(t5);
         return e10(n13);
       }
-    } catch {
+    } catch (e11) {
     }
     return false;
   }
   function wa(t5) {
     var e10;
-    return (e10 = t5?.proposer) == null ? void 0 : e10.publicKey;
+    return (e10 = t5 == null ? void 0 : t5.proposer) == null ? void 0 : e10.publicKey;
   }
   function xa(t5) {
-    return t5?.topic;
+    return t5 == null ? void 0 : t5.topic;
   }
   function va(t5, e10) {
     let n13 = null;
-    return it2(t5?.publicKey, false) || (n13 = Et2("MISSING_OR_INVALID", `${e10} controller public key should be a string`)), n13;
+    return it2(t5 == null ? void 0 : t5.publicKey, false) || (n13 = Et2("MISSING_OR_INVALID", `${e10} controller public key should be a string`)), n13;
   }
   function Hn2(t5) {
     let e10 = true;
@@ -16966,13 +16978,13 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     let n13 = null;
     return Object.values(t5).forEach((r10) => {
       if (n13) return;
-      const o13 = rs(r10?.accounts, `${e10} namespace`);
+      const o13 = rs(r10 == null ? void 0 : r10.accounts, `${e10} namespace`);
       o13 && (n13 = o13);
     }), n13;
   }
   function ss(t5, e10) {
     let n13 = null;
-    return Hn2(t5?.methods) ? Hn2(t5?.events) || (n13 = Kt2("UNSUPPORTED_EVENTS", `${e10}, events should be an array of strings or empty array for no events`)) : n13 = Kt2("UNSUPPORTED_METHODS", `${e10}, methods should be an array of strings or empty array for no methods`), n13;
+    return Hn2(t5 == null ? void 0 : t5.methods) ? Hn2(t5 == null ? void 0 : t5.events) || (n13 = Kt2("UNSUPPORTED_EVENTS", `${e10}, events should be an array of strings or empty array for no events`)) : n13 = Kt2("UNSUPPORTED_METHODS", `${e10}, methods should be an array of strings or empty array for no methods`), n13;
   }
   function Dn(t5, e10) {
     let n13 = null;
@@ -17073,7 +17085,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       if (n13.includes(":")) e10[n13] = t5[n13];
       else {
         const r10 = qt2(t5[n13].accounts);
-        r10?.forEach((o13) => {
+        r10 == null ? void 0 : r10.forEach((o13) => {
           e10[o13] = { accounts: t5[n13].accounts.filter((s8) => s8.includes(`${o13}:`)), methods: t5[n13].methods, events: t5[n13].events };
         });
       }
@@ -17101,12 +17113,12 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     });
   }
   function us() {
-    return zt2() && navigator?.onLine;
+    return zt2() && (navigator == null ? void 0 : navigator.onLine);
   }
   async function ls() {
     if (Bt2() && typeof window < "u" && window != null && window.NetInfo) {
       const t5 = await (window == null ? void 0 : window.NetInfo.fetch());
-      return t5?.isConnected;
+      return t5 == null ? void 0 : t5.isConnected;
     }
     return true;
   }
@@ -17129,7 +17141,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     !Bt2() && zt2() && (window.addEventListener("online", () => t5(true)), window.addEventListener("offline", () => t5(false)));
   }
   function ps(t5) {
-    Bt2() && typeof window < "u" && window != null && window.NetInfo && window?.NetInfo.addEventListener((e10) => t5(e10?.isConnected));
+    Bt2() && typeof window < "u" && window != null && window.NetInfo && (window == null ? void 0 : window.NetInfo.addEventListener((e10) => t5(e10 == null ? void 0 : e10.isConnected)));
   }
   function Pa() {
     var t5;
@@ -17581,7 +17593,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       };
       Dr2 = (t5, e10) => df(t5, hf(e10));
       bf = "did:pkh:";
-      Se2 = (t5) => t5?.split(":");
+      Se2 = (t5) => t5 == null ? void 0 : t5.split(":");
       Mr2 = (t5) => {
         const e10 = t5 && Se2(t5);
         if (e10) return t5.includes(bf) ? e10[3] : e10[1];
@@ -18265,8 +18277,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
   });
 
   // node_modules/@walletconnect/jsonrpc-utils/dist/esm/index.js
-  var esm_exports = {};
-  __export(esm_exports, {
+  var esm_exports2 = {};
+  __export(esm_exports2, {
     DEFAULT_ERROR: () => DEFAULT_ERROR,
     IBaseJsonRpcProvider: () => n4,
     IEvents: () => e,
@@ -18315,7 +18327,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       init_constants();
       init_error();
       init_env();
-      __reExport(esm_exports, env_exports);
+      __reExport(esm_exports2, env_exports);
       init_format();
       init_routing();
       init_types();
@@ -18477,7 +18489,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             });
           }
           return this.url = e10, this.registering = true, new Promise((t5, n13) => {
-            const s8 = (0, esm_exports.isReactNative)() ? void 0 : { rejectUnauthorized: !isLocalhostUrl(e10) }, o13 = new b3(e10, [], s8);
+            const s8 = (0, esm_exports2.isReactNative)() ? void 0 : { rejectUnauthorized: !isLocalhostUrl(e10) }, o13 = new b3(e10, [], s8);
             w2() ? o13.onerror = (i10) => {
               const a5 = i10;
               n13(this.emitError(a5.error));
@@ -18510,7 +18522,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           this.events.getMaxListeners() > h5 && this.events.setMaxListeners(h5);
         }
         emitError(e10) {
-          const t5 = this.parseError(new Error(e10?.message || `WebSocket connection failed for host: ${d3(this.url)}`));
+          const t5 = this.parseError(new Error((e10 == null ? void 0 : e10.message) || `WebSocket connection failed for host: ${d3(this.url)}`));
           return this.events.emit("register_error", t5), t5;
         }
       };
@@ -18665,7 +18677,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       case yo3:
         return r10 === e10;
     }
-    t5 = t5 ?? /* @__PURE__ */ new Map();
+    t5 = t5 != null ? t5 : /* @__PURE__ */ new Map();
     const o13 = t5.get(r10), a5 = t5.get(e10);
     if (o13 != null && a5 != null) return o13 === e10;
     t5.set(r10, e10), t5.set(e10, r10);
@@ -19088,18 +19100,18 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           }), S3(this, "encode", async (s8, n13, o13) => {
             this.isInitialized();
             const a5 = Ho2(o13), c12 = safeJsonStringify(n13);
-            if (Qc(a5)) return Wc(c12, o13?.encoding);
+            if (Qc(a5)) return Wc(c12, o13 == null ? void 0 : o13.encoding);
             if (Jc(a5)) {
               const g5 = a5.senderPublicKey, _5 = a5.receiverPublicKey;
               s8 = await this.generateSharedKey(g5, _5);
             }
             const h12 = this.getSymKey(s8), { type: l10, senderPublicKey: d7 } = a5;
-            return Gc({ type: l10, symKey: h12, message: c12, senderPublicKey: d7, encoding: o13?.encoding });
+            return Gc({ type: l10, symKey: h12, message: c12, senderPublicKey: d7, encoding: o13 == null ? void 0 : o13.encoding });
           }), S3(this, "decode", async (s8, n13, o13) => {
             this.isInitialized();
             const a5 = Xc(n13, o13);
             if (Qc(a5)) {
-              const c12 = Yc(n13, o13?.encoding);
+              const c12 = Yc(n13, o13 == null ? void 0 : o13.encoding);
               return safeJsonParse(c12);
             }
             if (Jc(a5)) {
@@ -19107,7 +19119,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               s8 = await this.generateSharedKey(c12, h12);
             }
             try {
-              const c12 = this.getSymKey(s8), h12 = Zc({ symKey: c12, encoded: n13, encoding: o13?.encoding });
+              const c12 = this.getSymKey(s8), h12 = Zc({ symKey: c12, encoded: n13, encoding: o13 == null ? void 0 : o13.encoding });
               return safeJsonParse(h12);
             } catch (c12) {
               this.logger.error(`Failed to decode message from topic: '${s8}', clientId: '${await this.getClientId()}'`), this.logger.error(c12);
@@ -19133,7 +19145,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           let e10 = "";
           try {
             e10 = this.keychain.get(ke3);
-          } catch {
+          } catch (e11) {
             e10 = qc(), await this.keychain.set(ke3, e10);
           }
           return On3(e10, "base16");
@@ -19266,7 +19278,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           super(e10, t5), this.relayer = e10, this.logger = t5, V2(this, "events", new import_events7.EventEmitter()), V2(this, "name", At2), V2(this, "queue", /* @__PURE__ */ new Map()), V2(this, "publishTimeout", (0, import_time4.toMiliseconds)(import_time4.ONE_MINUTE)), V2(this, "initialPublishTimeout", (0, import_time4.toMiliseconds)(import_time4.ONE_SECOND * 15)), V2(this, "needsTransportRestart", false), V2(this, "publish", async (i10, s8, n13) => {
             var o13;
             this.logger.debug("Publishing Payload"), this.logger.trace({ type: "method", method: "publish", params: { topic: i10, message: s8, opts: n13 } });
-            const a5 = n13?.ttl || je3, c12 = ea(n13), h12 = n13?.prompt || false, l10 = n13?.tag || 0, d7 = n13?.id || getBigIntRpcId().toString(), g5 = { topic: i10, message: s8, opts: { ttl: a5, relay: c12, prompt: h12, tag: l10, id: d7, attestation: n13?.attestation, tvf: n13?.tvf } }, _5 = `Failed to publish payload, please try again. id:${d7} tag:${l10}`;
+            const a5 = (n13 == null ? void 0 : n13.ttl) || je3, c12 = ea(n13), h12 = (n13 == null ? void 0 : n13.prompt) || false, l10 = (n13 == null ? void 0 : n13.tag) || 0, d7 = (n13 == null ? void 0 : n13.id) || getBigIntRpcId().toString(), g5 = { topic: i10, message: s8, opts: { ttl: a5, relay: c12, prompt: h12, tag: l10, id: d7, attestation: n13 == null ? void 0 : n13.attestation, tvf: n13 == null ? void 0 : n13.tvf } }, _5 = `Failed to publish payload, please try again. id:${d7} tag:${l10}`;
             try {
               const u5 = new Promise(async (b8) => {
                 const x8 = ({ id: D5 }) => {
@@ -19274,19 +19286,19 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
                 };
                 this.relayer.events.on(C3.publish, x8);
                 const I6 = ni(new Promise((D5, j7) => {
-                  this.rpcPublish({ topic: i10, message: s8, ttl: a5, prompt: h12, tag: l10, id: d7, attestation: n13?.attestation, tvf: n13?.tvf }).then(D5).catch((T7) => {
-                    this.logger.warn(T7, T7?.message), j7(T7);
+                  this.rpcPublish({ topic: i10, message: s8, ttl: a5, prompt: h12, tag: l10, id: d7, attestation: n13 == null ? void 0 : n13.attestation, tvf: n13 == null ? void 0 : n13.tvf }).then(D5).catch((T7) => {
+                    this.logger.warn(T7, T7 == null ? void 0 : T7.message), j7(T7);
                   });
                 }), this.initialPublishTimeout, `Failed initial publish, retrying.... id:${d7} tag:${l10}`);
                 try {
                   await I6, this.events.removeListener(C3.publish, x8);
                 } catch (D5) {
-                  this.queue.set(d7, Ge2(Ie3({}, g5), { attempt: 1 })), this.logger.warn(D5, D5?.message);
+                  this.queue.set(d7, Ge2(Ie3({}, g5), { attempt: 1 })), this.logger.warn(D5, D5 == null ? void 0 : D5.message);
                 }
               });
               this.logger.trace({ type: "method", method: "publish", params: { id: d7, topic: i10, message: s8, opts: n13 } }), await ni(u5, this.publishTimeout, _5);
             } catch (u5) {
-              if (this.logger.debug("Failed to Publish Payload"), this.logger.error(u5), (o13 = n13?.internal) != null && o13.throwOnFailedPublish) throw u5;
+              if (this.logger.debug("Failed to Publish Payload"), this.logger.error(u5), (o13 = n13 == null ? void 0 : n13.internal) != null && o13.throwOnFailedPublish) throw u5;
             } finally {
               this.queue.delete(d7);
             }
@@ -19384,7 +19396,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           }), f5(this, "subscribe", async (i10, s8) => {
             this.isInitialized(), this.logger.debug("Subscribing Topic"), this.logger.trace({ type: "method", method: "subscribe", params: { topic: i10, opts: s8 } });
             try {
-              const n13 = ea(s8), o13 = { topic: i10, relay: n13, transportType: s8?.transportType };
+              const n13 = ea(s8), o13 = { topic: i10, relay: n13, transportType: s8 == null ? void 0 : s8.transportType };
               this.pending.set(i10, o13);
               const a5 = await this.rpcSubscribe(i10, n13, s8);
               return typeof a5 == "string" && (this.onSubscribe(a5, o13), this.logger.debug("Successfully Subscribed Topic"), this.logger.trace({ type: "method", method: "subscribe", params: { topic: i10, opts: s8 } })), a5;
@@ -19392,7 +19404,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               throw this.logger.debug("Failed to Subscribe Topic"), this.logger.error(n13), n13;
             }
           }), f5(this, "unsubscribe", async (i10, s8) => {
-            this.isInitialized(), typeof s8?.id < "u" ? await this.unsubscribeById(i10, s8.id, s8) : await this.unsubscribeByTopic(i10, s8);
+            this.isInitialized(), typeof (s8 == null ? void 0 : s8.id) < "u" ? await this.unsubscribeById(i10, s8.id, s8) : await this.unsubscribeByTopic(i10, s8);
           }), f5(this, "isSubscribed", (i10) => new Promise((s8) => {
             s8(this.topicMap.topics.includes(i10));
           })), f5(this, "isKnownTopic", (i10) => new Promise((s8) => {
@@ -19454,7 +19466,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           let i10 = false;
           try {
             i10 = this.getSubscription(e10).topic === t5;
-          } catch {
+          } catch (e11) {
           }
           return i10;
         }
@@ -19481,13 +19493,13 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         }
         async rpcSubscribe(e10, t5, i10) {
           var s8;
-          (!i10 || i10?.transportType === Q3.relay) && await this.restartToComplete({ topic: e10, id: e10, relay: t5 });
+          (!i10 || (i10 == null ? void 0 : i10.transportType) === Q3.relay) && await this.restartToComplete({ topic: e10, id: e10, relay: t5 });
           const n13 = { method: na(t5.protocol).subscribe, params: { topic: e10 } };
           this.logger.debug("Outgoing Relay Payload"), this.logger.trace({ type: "payload", direction: "outgoing", request: n13 });
-          const o13 = (s8 = i10?.internal) == null ? void 0 : s8.throwOnFailedPublish;
+          const o13 = (s8 = i10 == null ? void 0 : i10.internal) == null ? void 0 : s8.throwOnFailedPublish;
           try {
             const a5 = await this.getSubscriptionId(e10);
-            if (i10?.transportType === Q3.link_mode) return setTimeout(() => {
+            if ((i10 == null ? void 0 : i10.transportType) === Q3.link_mode) return setTimeout(() => {
               (this.relayer.connected || this.relayer.connecting) && this.relayer.request(n13).catch((l10) => this.logger.warn(l10));
             }, (0, import_time4.toMiliseconds)(import_time4.ONE_SECOND)), a5;
             const c12 = new Promise(async (l10) => {
@@ -19498,11 +19510,11 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               try {
                 const g5 = await ni(new Promise((_5, u5) => {
                   this.relayer.request(n13).catch((b8) => {
-                    this.logger.warn(b8, b8?.message), u5(b8);
+                    this.logger.warn(b8, b8 == null ? void 0 : b8.message), u5(b8);
                   }).then(_5);
                 }), this.initialSubscribeTimeout, `Subscribing to ${e10} failed, please try again`);
                 this.events.removeListener($.created, d7), l10(g5);
-              } catch {
+              } catch (e11) {
               }
             }), h12 = await ni(c12, this.subscribeTimeout, `Subscribing to ${e10} failed, please try again`);
             if (!h12 && o13) throw new Error(`Subscribing to ${e10} failed, please try again`);
@@ -19520,7 +19532,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             await await ni(new Promise((s8) => {
               this.relayer.request(i10).catch((n13) => this.logger.warn(n13)).then(s8);
             }), this.subscribeTimeout, "rpcBatchSubscribe failed, please try again");
-          } catch {
+          } catch (e11) {
             this.relayer.events.emit(C3.connection_stalled);
           }
         }
@@ -19535,7 +19547,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
                 this.logger.warn(a5), o13(a5);
               }).then(n13);
             }), this.subscribeTimeout, "rpcBatchFetchMessages failed, please try again");
-          } catch {
+          } catch (e11) {
             this.relayer.events.emit(C3.connection_stalled);
           }
           return s8;
@@ -19671,7 +19683,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               try {
                 this.logger.debug({}, "pingTimeout: Connection stalled, terminating..."), (n13 = (s8 = (i10 = (t5 = this.provider) == null ? void 0 : t5.connection) == null ? void 0 : i10.socket) == null ? void 0 : s8.terminate) == null || n13.call(s8);
               } catch (o13) {
-                this.logger.warn(o13, o13?.message);
+                this.logger.warn(o13, o13 == null ? void 0 : o13.message);
               }
             }, this.heartBeatTimeout));
           }), y4(this, "onPayloadHandler", (t5) => {
@@ -19684,10 +19696,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             this.logger.fatal(`Fatal socket error: ${t5.message}`), this.events.emit(C3.error, t5), this.logger.fatal("Fatal socket error received, closing transport"), this.transportClose();
           }), y4(this, "registerProviderListeners", () => {
             this.provider.on(L2.payload, this.onPayloadHandler), this.provider.on(L2.connect, this.onConnectHandler), this.provider.on(L2.disconnect, this.onDisconnectHandler), this.provider.on(L2.error, this.onProviderErrorHandler);
-          }), this.core = e10.core, this.logger = typeof e10.logger < "u" && typeof e10.logger != "string" ? E2(e10.logger, this.name) : (0, import_pino2.default)(k2({ level: e10.logger || Nt3 })), this.messages = new Ei2(this.logger, e10.core), this.subscriber = new Ci2(this, this.logger), this.publisher = new Gn2(this, this.logger), this.relayUrl = e10?.relayUrl || Ue3, this.projectId = e10.projectId, Ms() ? this.packageName = qs() : Vs() && (this.bundleId = qs()), this.provider = {};
+          }), this.core = e10.core, this.logger = typeof e10.logger < "u" && typeof e10.logger != "string" ? E2(e10.logger, this.name) : (0, import_pino2.default)(k2({ level: e10.logger || Nt3 })), this.messages = new Ei2(this.logger, e10.core), this.subscriber = new Ci2(this, this.logger), this.publisher = new Gn2(this, this.logger), this.relayUrl = (e10 == null ? void 0 : e10.relayUrl) || Ue3, this.projectId = e10.projectId, Ms() ? this.packageName = qs() : Vs() && (this.bundleId = qs()), this.provider = {};
         }
         async init() {
-          this.logger.trace("Initialized"), this.registerEventListeners(), await Promise.all([this.messages.init(), this.subscriber.init()]), this.initialized = true, this.transportOpen().catch((e10) => this.logger.warn(e10, e10?.message));
+          this.logger.trace("Initialized"), this.registerEventListeners(), await Promise.all([this.messages.init(), this.subscriber.init()]), this.initialized = true, this.transportOpen().catch((e10) => this.logger.warn(e10, e10 == null ? void 0 : e10.message));
         }
         get context() {
           return y2(this.logger);
@@ -19705,8 +19717,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         }
         async subscribe(e10, t5) {
           var i10, s8, n13;
-          this.isInitialized(), (!(t5 != null && t5.transportType) || t5?.transportType === "relay") && await this.toEstablishConnection();
-          const o13 = typeof ((i10 = t5?.internal) == null ? void 0 : i10.throwOnFailedPublish) > "u" ? true : (s8 = t5?.internal) == null ? void 0 : s8.throwOnFailedPublish;
+          this.isInitialized(), (!(t5 != null && t5.transportType) || (t5 == null ? void 0 : t5.transportType) === "relay") && await this.toEstablishConnection();
+          const o13 = typeof ((i10 = t5 == null ? void 0 : t5.internal) == null ? void 0 : i10.throwOnFailedPublish) > "u" ? true : (s8 = t5 == null ? void 0 : t5.internal) == null ? void 0 : s8.throwOnFailedPublish;
           let a5 = ((n13 = this.subscriber.topicMap.get(e10)) == null ? void 0 : n13[0]) || "", c12;
           const h12 = (l10) => {
             l10.topic === e10 && (this.subscriber.off($.created, h12), c12());
@@ -19758,7 +19770,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           if (!await ja()) throw new Error("No internet connection detected. Please restart your network and try again.");
         }
         async handleBatchMessageEvents(e10) {
-          if (e10?.length === 0) {
+          if ((e10 == null ? void 0 : e10.length) === 0) {
             this.logger.trace("Batch message events is empty. Ignoring...");
             return;
           }
@@ -19767,7 +19779,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           for (const i10 of t5) try {
             await this.onMessageEvent(i10);
           } catch (s8) {
-            this.logger.warn(s8, "Error while processing batch message event: " + s8?.message);
+            this.logger.warn(s8, "Error while processing batch message event: " + (s8 == null ? void 0 : s8.message));
           }
           this.logger.trace(`Batch of ${t5.length} message events processed`);
         }
@@ -19825,7 +19837,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               this.resetPingTimeout();
             })), this.resetPingTimeout();
           } catch (o13) {
-            this.logger.warn(o13, o13?.message);
+            this.logger.warn(o13, o13 == null ? void 0 : o13.message);
           }
         }
         async createProvider() {
@@ -19864,18 +19876,18 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         async registerEventListeners() {
           let e10 = await ja();
           ka(async (t5) => {
-            e10 !== t5 && (e10 = t5, t5 ? await this.transportOpen().catch((i10) => this.logger.error(i10, i10?.message)) : (this.hasExperiencedNetworkDisruption = true, await this.transportDisconnect(), this.transportExplicitlyClosed = false));
+            e10 !== t5 && (e10 = t5, t5 ? await this.transportOpen().catch((i10) => this.logger.error(i10, i10 == null ? void 0 : i10.message)) : (this.hasExperiencedNetworkDisruption = true, await this.transportDisconnect(), this.transportExplicitlyClosed = false));
           }), this.core.heartbeat.on(r.pulse, async () => {
             if (!this.transportExplicitlyClosed && !this.connected && Pa()) try {
               await this.confirmOnlineStateOrThrow(), await this.transportOpen();
             } catch (t5) {
-              this.logger.warn(t5, t5?.message);
+              this.logger.warn(t5, t5 == null ? void 0 : t5.message);
             }
           });
         }
         async onProviderDisconnect() {
           clearTimeout(this.pingTimeout), this.events.emit(C3.disconnect), this.connectionAttemptInProgress = false, !this.reconnectInProgress && (this.reconnectInProgress = true, await this.subscriber.stop(), this.subscriber.hasAnyTopics && (this.transportExplicitlyClosed || (this.reconnectTimeout = setTimeout(async () => {
-            await this.transportOpen().catch((e10) => this.logger.error(e10, e10?.message)), this.reconnectTimeout = void 0, this.reconnectInProgress = false;
+            await this.transportOpen().catch((e10) => this.logger.error(e10, e10 == null ? void 0 : e10.message)), this.reconnectTimeout = void 0, this.reconnectInProgress = false;
           }, (0, import_time4.toMiliseconds)(Lt3)))));
         }
         isInitialized() {
@@ -20017,11 +20029,11 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             this.isInitialized(), this.registeredMethods = [.../* @__PURE__ */ new Set([...this.registeredMethods, ...i10])];
           }), p3(this, "create", async (i10) => {
             this.isInitialized();
-            const s8 = qc(), n13 = await this.core.crypto.setSymKey(s8), o13 = ii(import_time4.FIVE_MINUTES), a5 = { protocol: xt3 }, c12 = { topic: n13, expiry: o13, relay: a5, active: false, methods: i10?.methods }, h12 = oa({ protocol: this.core.protocol, version: this.core.version, topic: n13, symKey: s8, relay: a5, expiryTimestamp: o13, methods: i10?.methods });
-            return this.events.emit(re.create, c12), this.core.expirer.set(n13, o13), await this.pairings.set(n13, c12), await this.core.relayer.subscribe(n13, { transportType: i10?.transportType }), { topic: n13, uri: h12 };
+            const s8 = qc(), n13 = await this.core.crypto.setSymKey(s8), o13 = ii(import_time4.FIVE_MINUTES), a5 = { protocol: xt3 }, c12 = { topic: n13, expiry: o13, relay: a5, active: false, methods: i10 == null ? void 0 : i10.methods }, h12 = oa({ protocol: this.core.protocol, version: this.core.version, topic: n13, symKey: s8, relay: a5, expiryTimestamp: o13, methods: i10 == null ? void 0 : i10.methods });
+            return this.events.emit(re.create, c12), this.core.expirer.set(n13, o13), await this.pairings.set(n13, c12), await this.core.relayer.subscribe(n13, { transportType: i10 == null ? void 0 : i10.transportType }), { topic: n13, uri: h12 };
           }), p3(this, "pair", async (i10) => {
             this.isInitialized();
-            const s8 = this.core.eventClient.createEvent({ properties: { topic: i10?.uri, trace: [G3.pairing_started] } });
+            const s8 = this.core.eventClient.createEvent({ properties: { topic: i10 == null ? void 0 : i10.uri, trace: [G3.pairing_started] } });
             this.isValidPair(i10, s8);
             const { topic: n13, symKey: o13, relay: a5, expiryTimestamp: c12, methods: h12 } = ra(i10.uri);
             s8.props.properties.topic = n13, s8.addTrace(G3.pairing_uri_validation_success), s8.addTrace(G3.pairing_uri_not_expired);
@@ -20034,7 +20046,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             this.core.expirer.set(n13, d7), await this.pairings.set(n13, g5), s8.addTrace(G3.store_new_pairing), i10.activatePairing && await this.activate({ topic: n13 }), this.events.emit(re.create, g5), s8.addTrace(G3.emit_inactive_pairing), this.core.crypto.keychain.has(n13) || await this.core.crypto.setSymKey(o13, n13), s8.addTrace(G3.subscribing_pairing_topic);
             try {
               await this.core.relayer.confirmOnlineStateOrThrow();
-            } catch {
+            } catch (e11) {
               s8.setError(Y2.no_internet_connection);
             }
             try {
@@ -20140,8 +20152,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               const { message: a5 } = Et2("MISSING_OR_INVALID", `pair() uri: ${i10.uri}`);
               throw s8.setError(Y2.malformed_pairing_uri), new Error(a5);
             }
-            const o13 = ra(i10?.uri);
-            if (!((n13 = o13?.relay) != null && n13.protocol)) {
+            const o13 = ra(i10 == null ? void 0 : i10.uri);
+            if (!((n13 = o13 == null ? void 0 : o13.relay) != null && n13.protocol)) {
               const { message: a5 } = Et2("MISSING_OR_INVALID", "pair() uri#relay-protocol");
               throw s8.setError(Y2.malformed_pairing_uri), new Error(a5);
             }
@@ -20149,7 +20161,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               const { message: a5 } = Et2("MISSING_OR_INVALID", "pair() uri#symKey");
               throw s8.setError(Y2.malformed_pairing_uri), new Error(a5);
             }
-            if (o13 != null && o13.expiryTimestamp && (0, import_time4.toMiliseconds)(o13?.expiryTimestamp) < Date.now()) {
+            if (o13 != null && o13.expiryTimestamp && (0, import_time4.toMiliseconds)(o13 == null ? void 0 : o13.expiryTimestamp) < Date.now()) {
               s8.setError(Y2.pairing_expired);
               const { message: a5 } = Et2("EXPIRED", "pair() URI has expired. Please try again with a new connection URI.");
               throw new Error(a5);
@@ -20340,7 +20352,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             try {
               const s8 = this.formatTarget(i10);
               return typeof this.getExpiration(s8) < "u";
-            } catch {
+            } catch (e11) {
               return false;
             }
           }), A2(this, "set", (i10, s8) => {
@@ -20502,7 +20514,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               }
             }
             if (!o13) return;
-            const c12 = this.getVerifyUrl(s8?.verifyUrl);
+            const c12 = this.getVerifyUrl(s8 == null ? void 0 : s8.verifyUrl);
             return this.fetchAttestation(o13, c12);
           }), w3(this, "fetchAttestation", async (s8, n13) => {
             this.logger.debug(`resolving attestation: ${s8} from url: ${n13}`);
@@ -20665,18 +20677,18 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             const l10 = { topic: a5, message: c12, publishedAt: Date.now(), transportType: Q3.link_mode };
             this.relayer.onLinkMessageEvent(l10, { sessionExists: h12 });
           });
-          const i10 = this.getGlobalCore(e10?.customStoragePrefix);
+          const i10 = this.getGlobalCore(e10 == null ? void 0 : e10.customStoragePrefix);
           if (i10) try {
             return this.customStoragePrefix = i10.customStoragePrefix, this.logger = i10.logger, this.heartbeat = i10.heartbeat, this.crypto = i10.crypto, this.history = i10.history, this.expirer = i10.expirer, this.storage = i10.storage, this.relayer = i10.relayer, this.pairing = i10.pairing, this.verify = i10.verify, this.echoClient = i10.echoClient, this.linkModeSupportedApps = i10.linkModeSupportedApps, this.eventClient = i10.eventClient, this.initialized = i10.initialized, this.logChunkController = i10.logChunkController, i10;
           } catch (a5) {
             console.warn("Failed to copy global core", a5);
           }
-          this.projectId = e10?.projectId, this.relayUrl = e10?.relayUrl || Ue3, this.customStoragePrefix = e10 != null && e10.customStoragePrefix ? `:${e10.customStoragePrefix}` : "";
-          const s8 = k2({ level: typeof e10?.logger == "string" && e10.logger ? e10.logger : Et3.logger, name: he3 }), { logger: n13, chunkLoggerController: o13 } = A({ opts: s8, maxSizeInBytes: e10?.maxLogBlobSizeInBytes, loggerOverride: e10?.logger });
+          this.projectId = e10 == null ? void 0 : e10.projectId, this.relayUrl = (e10 == null ? void 0 : e10.relayUrl) || Ue3, this.customStoragePrefix = e10 != null && e10.customStoragePrefix ? `:${e10.customStoragePrefix}` : "";
+          const s8 = k2({ level: typeof (e10 == null ? void 0 : e10.logger) == "string" && e10.logger ? e10.logger : Et3.logger, name: he3 }), { logger: n13, chunkLoggerController: o13 } = A({ opts: s8, maxSizeInBytes: e10 == null ? void 0 : e10.maxLogBlobSizeInBytes, loggerOverride: e10 == null ? void 0 : e10.logger });
           this.logChunkController = o13, (t5 = this.logChunkController) != null && t5.downloadLogsBlobInBrowser && (window.downloadLogsBlobInBrowser = async () => {
             var a5, c12;
             (a5 = this.logChunkController) != null && a5.downloadLogsBlobInBrowser && ((c12 = this.logChunkController) == null || c12.downloadLogsBlobInBrowser({ clientId: await this.crypto.getClientId() }));
-          }), this.logger = E2(n13, this.name), this.heartbeat = new i(), this.crypto = new wi2(this, this.logger, e10?.keychain), this.history = new ji2(this, this.logger), this.expirer = new Ui2(this, this.logger), this.storage = e10 != null && e10.storage ? e10.storage : new h2(Gi2(Gi2({}, It3), e10?.storageOptions)), this.relayer = new Oi2({ core: this, logger: this.logger, relayUrl: this.relayUrl, projectId: this.projectId }), this.pairing = new ki2(this, this.logger), this.verify = new Fi2(this, this.logger, this.storage), this.echoClient = new Ki2(this.projectId || "", this.logger), this.linkModeSupportedApps = [], this.eventClient = new Vi2(this, this.logger, e10?.telemetryEnabled), this.setGlobalCore(this);
+          }), this.logger = E2(n13, this.name), this.heartbeat = new i(), this.crypto = new wi2(this, this.logger, e10 == null ? void 0 : e10.keychain), this.history = new ji2(this, this.logger), this.expirer = new Ui2(this, this.logger), this.storage = e10 != null && e10.storage ? e10.storage : new h2(Gi2(Gi2({}, It3), e10 == null ? void 0 : e10.storageOptions)), this.relayer = new Oi2({ core: this, logger: this.logger, relayUrl: this.relayUrl, projectId: this.projectId }), this.pairing = new ki2(this, this.logger), this.verify = new Fi2(this, this.logger, this.storage), this.echoClient = new Ki2(this.projectId || "", this.logger), this.linkModeSupportedApps = [], this.eventClient = new Vi2(this, this.logger, e10 == null ? void 0 : e10.telemetryEnabled), this.setGlobalCore(this);
         }
         static async init(e10) {
           const t5 = new _Te(e10);
@@ -20728,7 +20740,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         isGlobalCoreDisabled() {
           try {
             return typeof process < "u" && process.env.DISABLE_GLOBAL_CORE === "true";
-          } catch {
+          } catch (e10) {
             return true;
           }
         }
@@ -20814,7 +20826,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               const { message: T7 } = Et2("NO_MATCHING_KEY", `connect() pairing topic: ${p8}`);
               throw new Error(T7);
             }
-            const d7 = await this.client.core.crypto.generateKeyPair(), w7 = N11.wc_sessionPropose.req.ttl || import_time5.FIVE_MINUTES, m6 = ii(w7), y9 = x4(I3(I3({ requiredNamespaces: i10, optionalNamespaces: r10, relays: l10 ?? [{ protocol: xt3 }], proposer: { publicKey: d7, metadata: this.client.metadata }, expiryTimestamp: m6, pairingTopic: p8 }, n13 && { sessionProperties: n13 }), a5 && { scopedProperties: a5 }), { id: payloadId() }), E8 = ci("session_connect", y9.id), { reject: _5, resolve: V6, done: C6 } = ei(w7, Me4), v8 = ({ id: T7 }) => {
+            const d7 = await this.client.core.crypto.generateKeyPair(), w7 = N11.wc_sessionPropose.req.ttl || import_time5.FIVE_MINUTES, m6 = ii(w7), y9 = x4(I3(I3({ requiredNamespaces: i10, optionalNamespaces: r10, relays: l10 != null ? l10 : [{ protocol: xt3 }], proposer: { publicKey: d7, metadata: this.client.metadata }, expiryTimestamp: m6, pairingTopic: p8 }, n13 && { sessionProperties: n13 }), a5 && { scopedProperties: a5 }), { id: payloadId() }), E8 = ci("session_connect", y9.id), { reject: _5, resolve: V6, done: C6 } = ei(w7, Me4), v8 = ({ id: T7 }) => {
               T7 === y9.id && (this.client.events.off("proposal_expire", v8), this.pendingSessions.delete(y9.id), this.events.emit(E8, { error: { message: Me4, code: 0 } }));
             };
             return this.client.events.on("proposal_expire", v8), this.events.once(E8, ({ error: T7, session: K5 }) => {
@@ -20829,16 +20841,16 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             }
           }), c5(this, "approve", async (t5) => {
             var e10, s8, i10;
-            const r10 = this.client.core.eventClient.createEvent({ properties: { topic: (e10 = t5?.id) == null ? void 0 : e10.toString(), trace: [tr3.session_approve_started] } });
+            const r10 = this.client.core.eventClient.createEvent({ properties: { topic: (e10 = t5 == null ? void 0 : t5.id) == null ? void 0 : e10.toString(), trace: [tr3.session_approve_started] } });
             try {
               this.isInitialized(), await this.confirmOnlineStateOrThrow();
             } catch (q3) {
               throw r10.setError(ir3.no_internet_connection), q3;
             }
             try {
-              await this.isValidProposalId(t5?.id);
+              await this.isValidProposalId(t5 == null ? void 0 : t5.id);
             } catch (q3) {
-              throw this.client.logger.error(`approve() -> proposal.get(${t5?.id}) failed`), r10.setError(ir3.proposal_not_found), q3;
+              throw this.client.logger.error(`approve() -> proposal.get(${t5 == null ? void 0 : t5.id}) failed`), r10.setError(ir3.proposal_not_found), q3;
             }
             try {
               await this.isValidApprove(t5);
@@ -20850,7 +20862,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             const { pairingTopic: w7, proposer: m6, requiredNamespaces: y9, optionalNamespaces: E8 } = d7;
             let _5 = (s8 = this.client.core.eventClient) == null ? void 0 : s8.getEvent({ topic: w7 });
             _5 || (_5 = (i10 = this.client.core.eventClient) == null ? void 0 : i10.createEvent({ type: tr3.session_approve_started, properties: { topic: w7, trace: [tr3.session_approve_started, tr3.session_namespaces_validation_success] } }));
-            const V6 = await this.client.core.crypto.generateKeyPair(), C6 = m6.publicKey, v8 = await this.client.core.crypto.generateSharedKey(V6, C6), T7 = I3(I3(I3({ relay: { protocol: a5 ?? "irn" }, namespaces: l10, controller: { publicKey: V6, metadata: this.client.metadata }, expiry: ii(X2) }, p8 && { sessionProperties: p8 }), h12 && { scopedProperties: h12 }), u5 && { sessionConfig: u5 }), K5 = Q3.relay;
+            const V6 = await this.client.core.crypto.generateKeyPair(), C6 = m6.publicKey, v8 = await this.client.core.crypto.generateSharedKey(V6, C6), T7 = I3(I3(I3({ relay: { protocol: a5 != null ? a5 : "irn" }, namespaces: l10, controller: { publicKey: V6, metadata: this.client.metadata }, expiry: ii(X2) }, p8 && { sessionProperties: p8 }), h12 && { scopedProperties: h12 }), u5 && { sessionConfig: u5 }), K5 = Q3.relay;
             _5.addTrace(tr3.subscribing_session_topic);
             try {
               await this.client.core.relayer.subscribe(v8, { transportType: K5 });
@@ -20862,9 +20874,9 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             await this.client.session.set(v8, fe5), _5.addTrace(tr3.store_session);
             try {
               _5.addTrace(tr3.publishing_session_settle), await this.sendRequest({ topic: v8, method: "wc_sessionSettle", params: T7, throwOnFailedPublish: true }).catch((q3) => {
-                throw _5?.setError(ir3.session_settle_publish_failure), q3;
-              }), _5.addTrace(tr3.session_settle_publish_success), _5.addTrace(tr3.publishing_session_approve), await this.sendResult({ id: n13, topic: w7, result: { relay: { protocol: a5 ?? "irn" }, responderPublicKey: V6 }, throwOnFailedPublish: true }).catch((q3) => {
-                throw _5?.setError(ir3.session_approve_publish_failure), q3;
+                throw _5 == null ? void 0 : _5.setError(ir3.session_settle_publish_failure), q3;
+              }), _5.addTrace(tr3.session_settle_publish_success), _5.addTrace(tr3.publishing_session_approve), await this.sendResult({ id: n13, topic: w7, result: { relay: { protocol: a5 != null ? a5 : "irn" }, responderPublicKey: V6 }, throwOnFailedPublish: true }).catch((q3) => {
+                throw _5 == null ? void 0 : _5.setError(ir3.session_approve_publish_failure), q3;
               }), _5.addTrace(tr3.session_approve_publish_success);
             } catch (q3) {
               throw this.client.logger.error(q3), this.client.session.delete(v8, Kt2("USER_DISCONNECTED")), await this.client.core.relayer.unsubscribe(v8), q3;
@@ -20919,7 +20931,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               throw this.client.logger.error("request() -> isValidRequest() failed"), y9;
             }
             const { chainId: e10, request: s8, topic: i10, expiry: r10 = N11.wc_sessionRequest.req.ttl } = t5, n13 = this.client.session.get(i10);
-            n13?.transportType === Q3.relay && await this.confirmOnlineStateOrThrow();
+            (n13 == null ? void 0 : n13.transportType) === Q3.relay && await this.confirmOnlineStateOrThrow();
             const a5 = payloadId(), l10 = getBigIntRpcId().toString(), { done: p8, resolve: h12, reject: u5 } = ei(r10, "Request expired. Please try again.");
             this.events.once(ci("session_request", a5), ({ error: y9, result: E8 }) => {
               y9 ? u5(y9) : h12(E8);
@@ -20983,10 +20995,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               let k8 = Ef(O7, "request", m6);
               Oe2(E8) && (k8 = Bf(k8, E8.pop())), E8.push(k8);
             }
-            const T7 = y9 && y9 > N11.wc_sessionAuthenticate.req.ttl ? y9 : N11.wc_sessionAuthenticate.req.ttl, K5 = { authPayload: { type: u5 ?? "caip122", chains: n13, statement: a5, aud: l10, domain: p8, version: "1", nonce: h12, iat: (/* @__PURE__ */ new Date()).toISOString(), exp: d7, nbf: w7, resources: E8 }, requester: { publicKey: C6, metadata: this.client.metadata }, expiryTimestamp: ii(T7) }, fe5 = { eip155: { chains: n13, methods: [.../* @__PURE__ */ new Set(["personal_sign", ...m6])], events: ["chainChanged", "accountsChanged"] } }, q3 = { requiredNamespaces: {}, optionalNamespaces: fe5, relays: [{ protocol: "irn" }], pairingTopic: _5, proposer: { publicKey: C6, metadata: this.client.metadata }, expiryTimestamp: ii(N11.wc_sessionPropose.req.ttl), id: payloadId() }, { done: It5, resolve: Ue5, reject: Se5 } = ei(T7, "Request expired"), te5 = payloadId(), le6 = ci("session_connect", q3.id), Re4 = ci("session_request", te5), pe6 = async ({ error: O7, session: k8 }) => {
-              this.events.off(Re4, ve5), O7 ? Se5(O7) : k8 && Ue5({ session: k8 });
+            const T7 = y9 && y9 > N11.wc_sessionAuthenticate.req.ttl ? y9 : N11.wc_sessionAuthenticate.req.ttl, K5 = { authPayload: { type: u5 != null ? u5 : "caip122", chains: n13, statement: a5, aud: l10, domain: p8, version: "1", nonce: h12, iat: (/* @__PURE__ */ new Date()).toISOString(), exp: d7, nbf: w7, resources: E8 }, requester: { publicKey: C6, metadata: this.client.metadata }, expiryTimestamp: ii(T7) }, fe5 = { eip155: { chains: n13, methods: [.../* @__PURE__ */ new Set(["personal_sign", ...m6])], events: ["chainChanged", "accountsChanged"] } }, q3 = { requiredNamespaces: {}, optionalNamespaces: fe5, relays: [{ protocol: "irn" }], pairingTopic: _5, proposer: { publicKey: C6, metadata: this.client.metadata }, expiryTimestamp: ii(N11.wc_sessionPropose.req.ttl), id: payloadId() }, { done: It6, resolve: Ue5, reject: Se5 } = ei(T7, "Request expired"), te5 = payloadId(), le6 = ci("session_connect", q3.id), Re5 = ci("session_request", te5), pe6 = async ({ error: O7, session: k8 }) => {
+              this.events.off(Re5, ve5), O7 ? Se5(O7) : k8 && Ue5({ session: k8 });
             }, ve5 = async (O7) => {
-              var k8, Ge5, je5;
+              var k8, Ge5, je6;
               if (await this.deletePendingAuthRequest(te5, { message: "fulfilled", code: 0 }), O7.error) {
                 const ie5 = Kt2("WC_METHOD_UNSUPPORTED", "wc_sessionAuthenticate");
                 return O7.error.code === ie5.code ? void 0 : (this.events.off(le6, pe6), Se5(O7.error.message));
@@ -20995,18 +21007,18 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               const { cacaos: Fe4, responder: Q5 } = O7.result, Te6 = [], Qe5 = [];
               for (const ie5 of Fe4) {
                 await yf({ cacao: ie5, projectId: this.client.core.projectId }) || (this.client.logger.error(ie5, "Signature verification failed"), Se5(Kt2("SESSION_SETTLEMENT_FAILED", "Signature verification failed")));
-                const { p: qe6 } = ie5, Pe6 = Oe2(qe6.resources), He5 = [Vr2(qe6.iss)], Tt5 = dn(qe6.iss);
+                const { p: qe6 } = ie5, Pe6 = Oe2(qe6.resources), He5 = [Vr2(qe6.iss)], Tt6 = dn(qe6.iss);
                 if (Pe6) {
-                  const Ne5 = If(Pe6), qt4 = Af(Pe6);
-                  Te6.push(...Ne5), He5.push(...qt4);
+                  const Ne5 = If(Pe6), qt5 = Af(Pe6);
+                  Te6.push(...Ne5), He5.push(...qt5);
                 }
-                for (const Ne5 of He5) Qe5.push(`${Ne5}:${Tt5}`);
+                for (const Ne5 of He5) Qe5.push(`${Ne5}:${Tt6}`);
               }
               const se5 = await this.client.core.crypto.generateSharedKey(C6, Q5.publicKey);
               let he5;
-              Te6.length > 0 && (he5 = { topic: se5, acknowledged: true, self: { publicKey: C6, metadata: this.client.metadata }, peer: Q5, controller: Q5.publicKey, expiry: ii(X2), requiredNamespaces: {}, optionalNamespaces: {}, relay: { protocol: "irn" }, pairingTopic: _5, namespaces: ga([...new Set(Te6)], [...new Set(Qe5)]), transportType: r10 }, await this.client.core.relayer.subscribe(se5, { transportType: r10 }), await this.client.session.set(se5, he5), _5 && await this.client.core.pairing.updateMetadata({ topic: _5, metadata: Q5.metadata }), he5 = this.client.session.get(se5)), (k8 = this.client.metadata.redirect) != null && k8.linkMode && (Ge5 = Q5.metadata.redirect) != null && Ge5.linkMode && (je5 = Q5.metadata.redirect) != null && je5.universal && e10 && (this.client.core.addLinkModeSupportedApp(Q5.metadata.redirect.universal), this.client.session.update(se5, { transportType: Q3.link_mode })), Ue5({ auths: Fe4, session: he5 });
+              Te6.length > 0 && (he5 = { topic: se5, acknowledged: true, self: { publicKey: C6, metadata: this.client.metadata }, peer: Q5, controller: Q5.publicKey, expiry: ii(X2), requiredNamespaces: {}, optionalNamespaces: {}, relay: { protocol: "irn" }, pairingTopic: _5, namespaces: ga([...new Set(Te6)], [...new Set(Qe5)]), transportType: r10 }, await this.client.core.relayer.subscribe(se5, { transportType: r10 }), await this.client.session.set(se5, he5), _5 && await this.client.core.pairing.updateMetadata({ topic: _5, metadata: Q5.metadata }), he5 = this.client.session.get(se5)), (k8 = this.client.metadata.redirect) != null && k8.linkMode && (Ge5 = Q5.metadata.redirect) != null && Ge5.linkMode && (je6 = Q5.metadata.redirect) != null && je6.universal && e10 && (this.client.core.addLinkModeSupportedApp(Q5.metadata.redirect.universal), this.client.session.update(se5, { transportType: Q3.link_mode })), Ue5({ auths: Fe4, session: he5 });
             };
-            this.events.once(le6, pe6), this.events.once(Re4, ve5);
+            this.events.once(le6, pe6), this.events.once(Re5, ve5);
             let Ie6;
             try {
               if (i10) {
@@ -21016,9 +21028,9 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
                 Ie6 = sa(e10, _5, k8);
               } else await Promise.all([this.sendRequest({ topic: _5, method: "wc_sessionAuthenticate", params: K5, expiry: t5.expiry, throwOnFailedPublish: true, clientRpcId: te5 }), this.sendRequest({ topic: _5, method: "wc_sessionPropose", params: q3, expiry: N11.wc_sessionPropose.req.ttl, throwOnFailedPublish: true, clientRpcId: q3.id })]);
             } catch (O7) {
-              throw this.events.off(le6, pe6), this.events.off(Re4, ve5), O7;
+              throw this.events.off(le6, pe6), this.events.off(Re5, ve5), O7;
             }
-            return await this.setProposal(q3.id, q3), await this.setAuthRequest(te5, { request: x4(I3({}, K5), { verifyContext: {} }), pairingTopic: _5, transportType: r10 }), { uri: Ie6 ?? V6, response: It5 };
+            return await this.setProposal(q3.id, q3), await this.setAuthRequest(te5, { request: x4(I3({}, K5), { verifyContext: {} }), pairingTopic: _5, transportType: r10 }), { uri: Ie6 != null ? Ie6 : V6, response: It6 };
           }), c5(this, "approveSessionAuthenticate", async (t5) => {
             const { id: e10, auths: s8 } = t5, i10 = this.client.core.eventClient.createEvent({ properties: { topic: e10.toString(), trace: [sr3.authenticated_session_approve_started] } });
             try {
@@ -21048,7 +21060,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             const w7 = await this.client.core.crypto.generateSharedKey(l10, a5);
             i10.addTrace(sr3.create_authenticated_session_topic);
             let m6;
-            if (u5?.length > 0) {
+            if ((u5 == null ? void 0 : u5.length) > 0) {
               m6 = { topic: w7, acknowledged: true, self: { publicKey: l10, metadata: this.client.metadata }, peer: { publicKey: a5, metadata: r10.requester.metadata }, controller: a5, expiry: ii(X2), authentication: s8, requiredNamespaces: {}, optionalNamespaces: {}, relay: { protocol: "irn" }, pairingTopic: r10.pairingTopic, namespaces: ga([...new Set(u5)], [...new Set(d7)]), transportType: n13 }, i10.addTrace(sr3.subscribing_authenticated_session_topic);
               try {
                 await this.client.core.relayer.subscribe(w7, { transportType: n13 });
@@ -21104,8 +21116,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           }), c5(this, "deleteProposal", async (t5, e10) => {
             if (e10) try {
               const s8 = this.client.proposal.get(t5), i10 = this.client.core.eventClient.getEvent({ topic: s8.pairingTopic });
-              i10?.setError(ir3.proposal_expired);
-            } catch {
+              i10 == null ? void 0 : i10.setError(ir3.proposal_expired);
+            } catch (e11) {
             }
             await Promise.all([this.client.proposal.delete(t5, Kt2("USER_DISCONNECTED")), e10 ? Promise.resolve() : this.client.core.expirer.del(t5)]), this.addToRecentlyDeleted(t5, "proposal");
           }), c5(this, "deletePendingSessionRequest", async (t5, e10, s8 = false) => {
@@ -21163,7 +21175,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               try {
                 d7 = this.getTVFParams(e10, w7.params, i10);
               } catch (m6) {
-                this.client.logger.warn(`sendResult() -> getTVFParams() failed: ${m6?.message}`);
+                this.client.logger.warn(`sendResult() -> getTVFParams() failed: ${m6 == null ? void 0 : m6.message}`);
               }
             } catch (w7) {
               throw this.client.logger.error(`sendResult() -> history.get(${s8}, ${e10}) failed`), w7;
@@ -21281,11 +21293,11 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             const { topic: e10, payload: s8, attestation: i10, encryptedId: r10 } = t5, { params: n13, id: a5 } = s8;
             try {
               const l10 = this.client.core.eventClient.getEvent({ topic: e10 });
-              this.client.events.listenerCount("session_proposal") === 0 && (console.warn("No listener for session_proposal event"), l10?.setError(Y2.proposal_listener_not_found)), this.isValidConnect(I3({}, s8.params));
+              this.client.events.listenerCount("session_proposal") === 0 && (console.warn("No listener for session_proposal event"), l10 == null ? void 0 : l10.setError(Y2.proposal_listener_not_found)), this.isValidConnect(I3({}, s8.params));
               const p8 = n13.expiryTimestamp || ii(N11.wc_sessionPropose.req.ttl), h12 = I3({ id: a5, pairingTopic: e10, expiryTimestamp: p8, attestation: i10, encryptedId: r10 }, n13);
               await this.setProposal(a5, h12);
               const u5 = await this.getVerifyContext({ attestationId: i10, hash: zc(JSON.stringify(s8)), encryptedId: r10, metadata: h12.proposer.metadata });
-              l10?.addTrace(G3.emit_session_proposal), this.client.events.emit("session_proposal", { id: a5, params: h12, verifyContext: u5 });
+              l10 == null ? void 0 : l10.addTrace(G3.emit_session_proposal), this.client.events.emit("session_proposal", { id: a5, params: h12, verifyContext: u5 });
             } catch (l10) {
               await this.sendError({ id: a5, topic: e10, error: l10, rpcOpts: N11.wc_sessionPropose.autoReject }), this.client.logger.error(l10);
             }
@@ -21578,7 +21590,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             try {
               await this.isValidSessionTopic(s8);
             } catch (r10) {
-              throw (e10 = t5?.response) != null && e10.id && this.cleanupAfterResponse(t5), r10;
+              throw (e10 = t5 == null ? void 0 : t5.response) != null && e10.id && this.cleanupAfterResponse(t5), r10;
             }
             if (!Oa(i10)) {
               const { message: r10 } = Et2("MISSING_OR_INVALID", `respond() response: ${JSON.stringify(i10)}`);
@@ -21667,10 +21679,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             }
           }), c5(this, "isLinkModeEnabled", (t5, e10) => {
             var s8, i10, r10, n13, a5, l10, p8, h12, u5;
-            return !t5 || e10 !== Q3.link_mode ? false : ((i10 = (s8 = this.client.metadata) == null ? void 0 : s8.redirect) == null ? void 0 : i10.linkMode) === true && ((n13 = (r10 = this.client.metadata) == null ? void 0 : r10.redirect) == null ? void 0 : n13.universal) !== void 0 && ((l10 = (a5 = this.client.metadata) == null ? void 0 : a5.redirect) == null ? void 0 : l10.universal) !== "" && ((p8 = t5?.redirect) == null ? void 0 : p8.universal) !== void 0 && ((h12 = t5?.redirect) == null ? void 0 : h12.universal) !== "" && ((u5 = t5?.redirect) == null ? void 0 : u5.linkMode) === true && this.client.core.linkModeSupportedApps.includes(t5.redirect.universal) && typeof (window == null ? void 0 : window.Linking) < "u";
+            return !t5 || e10 !== Q3.link_mode ? false : ((i10 = (s8 = this.client.metadata) == null ? void 0 : s8.redirect) == null ? void 0 : i10.linkMode) === true && ((n13 = (r10 = this.client.metadata) == null ? void 0 : r10.redirect) == null ? void 0 : n13.universal) !== void 0 && ((l10 = (a5 = this.client.metadata) == null ? void 0 : a5.redirect) == null ? void 0 : l10.universal) !== "" && ((p8 = t5 == null ? void 0 : t5.redirect) == null ? void 0 : p8.universal) !== void 0 && ((h12 = t5 == null ? void 0 : t5.redirect) == null ? void 0 : h12.universal) !== "" && ((u5 = t5 == null ? void 0 : t5.redirect) == null ? void 0 : u5.linkMode) === true && this.client.core.linkModeSupportedApps.includes(t5.redirect.universal) && typeof (window == null ? void 0 : window.Linking) < "u";
           }), c5(this, "getAppLinkIfEnabled", (t5, e10) => {
             var s8;
-            return this.isLinkModeEnabled(t5, e10) ? (s8 = t5?.redirect) == null ? void 0 : s8.universal : void 0;
+            return this.isLinkModeEnabled(t5, e10) ? (s8 = t5 == null ? void 0 : t5.redirect) == null ? void 0 : s8.universal : void 0;
           }), c5(this, "handleLinkModeMessage", ({ url: t5 }) => {
             if (!t5 || !t5.includes("wc_ev") || !t5.includes("topic")) return;
             const e10 = li(t5, "topic") || "", s8 = decodeURIComponent(li(t5, "wc_ev") || ""), i10 = this.client.session.keys.includes(e10);
@@ -21702,11 +21714,11 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             var e10;
             if (!t5) return false;
             try {
-              const s8 = t5?.data || ((e10 = t5?.[0]) == null ? void 0 : e10.data);
+              const s8 = (t5 == null ? void 0 : t5.data) || ((e10 = t5 == null ? void 0 : t5[0]) == null ? void 0 : e10.data);
               if (!s8.startsWith("0x")) return false;
               const i10 = s8.slice(2);
               return /^[0-9a-fA-F]*$/.test(i10) ? i10.length % 2 === 0 : false;
-            } catch {
+            } catch (e11) {
             }
             return false;
           }), c5(this, "extractTxHashesFromResult", (t5, e10) => {
@@ -21736,7 +21748,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             const o13 = this.client.session.keys, t5 = this.client.core.relayer.messages.getWithoutAck(o13);
             for (const [e10, s8] of Object.entries(t5)) for (const i10 of s8) try {
               await this.onProviderMessageEvent({ topic: e10, message: i10, publishedAt: Date.now() });
-            } catch {
+            } catch (e11) {
               this.client.logger.warn(`Error processing pending message event for topic: ${e10}, message: ${i10}`);
             }
           } catch (o13) {
@@ -21987,9 +21999,9 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             } catch (s8) {
               throw this.logger.error(s8.message), s8;
             }
-          }), this.name = o13?.name || we3.name, this.metadata = Ks(o13?.metadata), this.signConfig = o13?.signConfig;
-          const t5 = typeof o13?.logger < "u" && typeof o13?.logger != "string" ? o13.logger : (0, import_pino2.default)(k2({ level: o13?.logger || we3.logger }));
-          this.core = o13?.core || new Zo3(o13), this.logger = E2(t5, this.name), this.session = new vt3(this.core, this.logger), this.proposal = new ks2(this.core, this.logger), this.pendingRequest = new Ds(this.core, this.logger), this.engine = new Cs2(this), this.auth = new Gs2(this.core, this.logger);
+          }), this.name = (o13 == null ? void 0 : o13.name) || we3.name, this.metadata = Ks(o13 == null ? void 0 : o13.metadata), this.signConfig = o13 == null ? void 0 : o13.signConfig;
+          const t5 = typeof (o13 == null ? void 0 : o13.logger) < "u" && typeof (o13 == null ? void 0 : o13.logger) != "string" ? o13.logger : (0, import_pino2.default)(k2({ level: (o13 == null ? void 0 : o13.logger) || we3.logger }));
+          this.core = (o13 == null ? void 0 : o13.core) || new Zo3(o13), this.logger = E2(t5, this.name), this.session = new vt3(this.core, this.logger), this.proposal = new ks2(this.core, this.logger), this.pendingRequest = new Ds(this.core, this.logger), this.engine = new Cs2(this), this.auth = new Gs2(this.core, this.logger);
         }
         static async init(o13) {
           const t5 = new _Ee(o13);
@@ -22700,7 +22712,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     return $3(i10, void 0, i10, /* @__PURE__ */ new Map(), t5);
   }
   function $3(i10, t5, e10, s8 = /* @__PURE__ */ new Map(), n13 = void 0) {
-    const a5 = n13?.(i10, t5, e10, s8);
+    const a5 = n13 == null ? void 0 : n13(i10, t5, e10, s8);
     if (a5 != null) return a5;
     if (W4(i10)) return i10;
     if (s8.has(i10)) return s8.get(i10);
@@ -22795,13 +22807,13 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
   }
   function he4(i10, t5) {
     return ce3(i10, (e10, s8, n13, a5) => {
-      const r10 = t5?.(e10, s8, n13, a5);
+      const r10 = t5 == null ? void 0 : t5(e10, s8, n13, a5);
       if (r10 != null) return r10;
       if (typeof i10 == "object") switch (Object.prototype.toString.call(i10)) {
         case ht4:
         case ot2:
         case pt3: {
-          const c12 = new i10.constructor(i10?.valueOf());
+          const c12 = new i10.constructor(i10 == null ? void 0 : i10.valueOf());
           return y5(c12, i10), c12;
         }
         case dt4: {
@@ -22828,11 +22840,12 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     return K3(i10);
   }
   function ue3(i10) {
+    var _a7;
     if (typeof i10 != "object" || i10 == null) return false;
     if (Object.getPrototypeOf(i10) === null) return true;
     if (Object.prototype.toString.call(i10) !== "[object Object]") {
       const e10 = i10[Symbol.toStringTag];
-      return e10 == null || !Object.getOwnPropertyDescriptor(i10, Symbol.toStringTag)?.writable ? false : i10.toString() === `[object ${e10}]`;
+      return e10 == null || !((_a7 = Object.getOwnPropertyDescriptor(i10, Symbol.toStringTag)) == null ? void 0 : _a7.writable) ? false : i10.toString() === `[object ${e10}]`;
     }
     let t5 = i10;
     for (; Object.getPrototypeOf(t5) !== null; ) t5 = Object.getPrototypeOf(t5);
@@ -22869,11 +22882,12 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     return n13;
   }
   function x5(i10, t5, e10, s8) {
+    var _a7;
     if (W4(i10) && (i10 = Object(i10)), t5 == null || typeof t5 != "object") return i10;
     if (s8.has(t5)) return le4(s8.get(t5));
     if (s8.set(t5, i10), Array.isArray(t5)) {
       t5 = t5.slice();
-      for (let a5 = 0; a5 < t5.length; a5++) t5[a5] = t5[a5] ?? void 0;
+      for (let a5 = 0; a5 < t5.length; a5++) t5[a5] = (_a7 = t5[a5]) != null ? _a7 : void 0;
     }
     const n13 = [...Object.keys(t5), ...at2(t5)];
     for (let a5 = 0; a5 < n13.length; a5++) {
@@ -22918,7 +22932,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
   function Pt4(i10) {
     return Object.fromEntries(Object.entries(i10).filter(([t5, e10]) => {
       var s8, n13;
-      return ((s8 = e10?.chains) == null ? void 0 : s8.length) && ((n13 = e10?.chains) == null ? void 0 : n13.length) > 0;
+      return ((s8 = e10 == null ? void 0 : e10.chains) == null ? void 0 : s8.length) && ((n13 = e10 == null ? void 0 : e10.chains) == null ? void 0 : n13.length) > 0;
     }));
   }
   function M4(i10 = {}, t5 = {}) {
@@ -23031,9 +23045,9 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           const o13 = Ee4(c12);
           if (!o13) continue;
           a5[Y3(o13)] = r10;
-          const p8 = n13?.[`${Ct3}:${o13}`];
+          const p8 = n13 == null ? void 0 : n13[`${Ct3}:${o13}`];
           if (p8) {
-            const v8 = p8?.[`${Ct3}:${o13}:${t5}`];
+            const v8 = p8 == null ? void 0 : p8[`${Ct3}:${o13}:${t5}`];
             a5[Y3(o13)] = At3(At3({}, a5[Y3(o13)]), Et5(v8 || p8));
           }
         }
@@ -23187,7 +23201,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           var e10, s8, n13, a5, r10;
           const c12 = (s8 = (e10 = t5.request) == null ? void 0 : e10.params) == null ? void 0 : s8[0], o13 = ((a5 = (n13 = t5.request) == null ? void 0 : n13.params) == null ? void 0 : a5[1]) || [];
           if (!c12) throw new Error("Missing address parameter in `wallet_getCapabilities` request");
-          const p8 = this.client.session.get(t5.topic), v8 = ((r10 = p8?.sessionProperties) == null ? void 0 : r10.capabilities) || {}, w7 = `${c12}${o13.join(",")}`, P7 = v8?.[w7];
+          const p8 = this.client.session.get(t5.topic), v8 = ((r10 = p8 == null ? void 0 : p8.sessionProperties) == null ? void 0 : r10.capabilities) || {}, w7 = `${c12}${o13.join(",")}`, P7 = v8 == null ? void 0 : v8[w7];
           if (P7) return P7;
           let d7;
           try {
@@ -23738,7 +23752,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       f8 = (i10, t5, e10) => Z2(i10, typeof t5 != "symbol" ? t5 + "" : t5, e10);
       G4 = class _G {
         constructor(t5) {
-          f8(this, "client"), f8(this, "namespaces"), f8(this, "optionalNamespaces"), f8(this, "sessionProperties"), f8(this, "scopedProperties"), f8(this, "events", new import_events10.default()), f8(this, "rpcProviders", {}), f8(this, "session"), f8(this, "providerOpts"), f8(this, "logger"), f8(this, "uri"), f8(this, "disableProviderPing", false), this.providerOpts = t5, this.logger = typeof t5?.logger < "u" && typeof t5?.logger != "string" ? t5.logger : (0, import_pino2.default)(k2({ level: t5?.logger || rt3 })), this.disableProviderPing = t5?.disableProviderPing || false;
+          f8(this, "client"), f8(this, "namespaces"), f8(this, "optionalNamespaces"), f8(this, "sessionProperties"), f8(this, "scopedProperties"), f8(this, "events", new import_events10.default()), f8(this, "rpcProviders", {}), f8(this, "session"), f8(this, "providerOpts"), f8(this, "logger"), f8(this, "uri"), f8(this, "disableProviderPing", false), this.providerOpts = t5, this.logger = typeof (t5 == null ? void 0 : t5.logger) < "u" && typeof (t5 == null ? void 0 : t5.logger) != "string" ? t5.logger : (0, import_pino2.default)(k2({ level: (t5 == null ? void 0 : t5.logger) || rt3 })), this.disableProviderPing = (t5 == null ? void 0 : t5.disableProviderPing) || false;
         }
         static async init(t5) {
           const e10 = new _G(t5);
@@ -23847,7 +23861,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           X3("client", this.client), X3("events", this.events), X3("disableProviderPing", this.disableProviderPing), t5.forEach((e10) => {
             if (!this.session) return;
             const s8 = Ie4(e10, this.session);
-            if (s8?.length === 0) return;
+            if ((s8 == null ? void 0 : s8.length) === 0) return;
             const n13 = gt4(s8), a5 = M4(this.namespaces, this.optionalNamespaces), r10 = T4(B3({}, a5[e10]), { accounts: s8, chains: n13 });
             switch (e10) {
               case "eip155":
@@ -23930,7 +23944,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           this.optionalNamespaces = M4(e10, s8), this.sessionProperties = n13, this.scopedProperties = a5;
         }
         validateChain(t5) {
-          const [e10, s8] = t5?.split(":") || ["", ""];
+          const [e10, s8] = (t5 == null ? void 0 : t5.split(":")) || ["", ""];
           if (!this.namespaces || !Object.keys(this.namespaces).length) return [e10, s8];
           if (e10 && !Object.keys(this.namespaces || {}).map((r10) => Yo2(r10)).includes(e10)) throw new Error(`Namespace '${e10}' is not configured. Please call connect() first with namespace config.`);
           if (e10 && s8) return [e10, s8];
@@ -24104,12 +24118,13 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           return typeof chainId === "string" ? this.caipNetworkIdToNumber(chainId) : chainId;
         },
         getNetworksByNamespace(networks, namespace) {
-          return networks?.filter((network) => network.chainNamespace === namespace) || [];
+          return (networks == null ? void 0 : networks.filter((network) => network.chainNamespace === namespace)) || [];
         },
         getFirstNetworkByNamespace(networks, namespace) {
           return this.getNetworksByNamespace(networks, namespace)[0];
         },
         getNetworkNameByCaipNetworkId(caipNetworks, caipNetworkId) {
+          var _a7;
           if (!caipNetworkId) {
             return void 0;
           }
@@ -24118,7 +24133,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             return caipNetwork.name;
           }
           const [namespace] = caipNetworkId.split(":");
-          return ConstantsUtil.CHAIN_NAME_MAP?.[namespace] || void 0;
+          return ((_a7 = ConstantsUtil.CHAIN_NAME_MAP) == null ? void 0 : _a7[namespace]) || void 0;
         }
       };
       AVAILABLE_NAMESPACES = [
@@ -24289,7 +24304,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           y9.c = [y9.e = 0];
           return y9;
         }
-        var bl, bt4, n13, cmp, ri4, bz = b8.slice(), ai4 = bl = b8.length, al = a5.length, r10 = a5.slice(0, bl), rl = r10.length, q3 = y9, qc2 = q3.c = [], qi3 = 0, p8 = dp + (q3.e = x8.e - y9.e) + 1;
+        var bl, bt5, n13, cmp, ri4, bz = b8.slice(), ai4 = bl = b8.length, al = a5.length, r10 = a5.slice(0, bl), rl = r10.length, q3 = y9, qc2 = q3.c = [], qi3 = 0, p8 = dp + (q3.e = x8.e - y9.e) + 1;
         q3.s = k8;
         k8 = p8 < 0 ? 0 : p8;
         bz.unshift(0);
@@ -24307,14 +24322,14 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               }
             }
             if (cmp < 0) {
-              for (bt4 = rl == bl ? b8 : bz; rl; ) {
-                if (r10[--rl] < bt4[rl]) {
+              for (bt5 = rl == bl ? b8 : bz; rl; ) {
+                if (r10[--rl] < bt5[rl]) {
                   ri4 = rl;
                   for (; ri4 && !r10[--ri4]; ) r10[ri4] = 9;
                   --r10[ri4];
                   r10[rl] += 10;
                 }
-                r10[rl] -= bt4[rl];
+                r10[rl] -= bt5[rl];
               }
               for (; !r10[0]; ) r10.shift();
             } else {
@@ -24816,7 +24831,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
     "node_modules/@reown/appkit-common/dist/esm/src/utils/ParseUtil.js"() {
       ParseUtil = {
         validateCaipAddress(address2) {
-          if (address2.split(":")?.length !== 3) {
+          var _a7;
+          if (((_a7 = address2.split(":")) == null ? void 0 : _a7.length) !== 3) {
             throw new Error("Invalid CAIP Address");
           }
           return address2;
@@ -24924,12 +24940,12 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
   function getW3mThemeVariables(themeVariables, themeType) {
     if (themeType === "light") {
       return {
-        "--w3m-accent": themeVariables?.["--w3m-accent"] || "hsla(231, 100%, 70%, 1)",
+        "--w3m-accent": (themeVariables == null ? void 0 : themeVariables["--w3m-accent"]) || "hsla(231, 100%, 70%, 1)",
         "--w3m-background": "#fff"
       };
     }
     return {
-      "--w3m-accent": themeVariables?.["--w3m-accent"] || "hsla(230, 100%, 67%, 1)",
+      "--w3m-accent": (themeVariables == null ? void 0 : themeVariables["--w3m-accent"]) || "hsla(230, 100%, 67%, 1)",
       "--w3m-background": "#121313"
     };
   }
@@ -25022,11 +25038,11 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       }
     };
     const removePropListener = (prop) => {
-      var _a2;
+      var _a7;
       const entry = propProxyStates.get(prop);
       if (entry) {
         propProxyStates.delete(prop);
-        (_a2 = entry[1]) == null ? void 0 : _a2.call(entry);
+        (_a7 = entry[1]) == null ? void 0 : _a7.call(entry);
       }
     };
     const addListener = (listener) => {
@@ -25661,7 +25677,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         setWalletConnectDeepLink({ name: name2, href }) {
           try {
             SafeLocalStorage.setItem(SafeLocalStorageKeys.DEEPLINK_CHOICE, JSON.stringify({ href, name: name2 }));
-          } catch {
+          } catch (e10) {
             console.info("Unable to set WalletConnect deep link");
           }
         },
@@ -25671,7 +25687,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             if (deepLink) {
               return JSON.parse(deepLink);
             }
-          } catch {
+          } catch (e10) {
             console.info("Unable to get WalletConnect deep link");
           }
           return void 0;
@@ -25679,14 +25695,14 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         deleteWalletConnectDeepLink() {
           try {
             SafeLocalStorage.removeItem(SafeLocalStorageKeys.DEEPLINK_CHOICE);
-          } catch {
+          } catch (e10) {
             console.info("Unable to delete WalletConnect deep link");
           }
         },
         setActiveNamespace(namespace) {
           try {
             SafeLocalStorage.setItem(SafeLocalStorageKeys.ACTIVE_NAMESPACE, namespace);
-          } catch {
+          } catch (e10) {
             console.info("Unable to set active namespace");
           }
         },
@@ -25694,14 +25710,14 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             SafeLocalStorage.setItem(SafeLocalStorageKeys.ACTIVE_CAIP_NETWORK_ID, caipNetworkId);
             StorageUtil.setActiveNamespace(caipNetworkId.split(":")[0]);
-          } catch {
+          } catch (e10) {
             console.info("Unable to set active caip network id");
           }
         },
         getActiveCaipNetworkId() {
           try {
             return SafeLocalStorage.getItem(SafeLocalStorageKeys.ACTIVE_CAIP_NETWORK_ID);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get active caip network id");
             return void 0;
           }
@@ -25709,7 +25725,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         deleteActiveCaipNetworkId() {
           try {
             SafeLocalStorage.removeItem(SafeLocalStorageKeys.ACTIVE_CAIP_NETWORK_ID);
-          } catch {
+          } catch (e10) {
             console.info("Unable to delete active caip network id");
           }
         },
@@ -25717,7 +25733,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const key = getSafeConnectorIdKey(namespace);
             SafeLocalStorage.removeItem(key);
-          } catch {
+          } catch (e10) {
             console.info("Unable to delete connected connector id");
           }
         },
@@ -25732,7 +25748,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               }
               SafeLocalStorage.setItem(SafeLocalStorageKeys.RECENT_WALLETS, JSON.stringify(recentWallets));
             }
-          } catch {
+          } catch (e10) {
             console.info("Unable to set AppKit recent");
           }
         },
@@ -25740,7 +25756,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const recent = SafeLocalStorage.getItem(SafeLocalStorageKeys.RECENT_WALLETS);
             return recent ? JSON.parse(recent) : [];
-          } catch {
+          } catch (e10) {
             console.info("Unable to get AppKit recent");
           }
           return [];
@@ -25749,7 +25765,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const key = getSafeConnectorIdKey(namespace);
             SafeLocalStorage.setItem(key, connectorId);
-          } catch {
+          } catch (e10) {
             console.info("Unable to set Connected Connector Id");
           }
         },
@@ -25757,7 +25773,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const activeNamespace = SafeLocalStorage.getItem(SafeLocalStorageKeys.ACTIVE_NAMESPACE);
             return activeNamespace;
-          } catch {
+          } catch (e10) {
             console.info("Unable to get active namespace");
           }
           return void 0;
@@ -25777,14 +25793,14 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         setConnectedSocialProvider(socialProvider) {
           try {
             SafeLocalStorage.setItem(SafeLocalStorageKeys.CONNECTED_SOCIAL, socialProvider);
-          } catch {
+          } catch (e10) {
             console.info("Unable to set connected social provider");
           }
         },
         getConnectedSocialProvider() {
           try {
             return SafeLocalStorage.getItem(SafeLocalStorageKeys.CONNECTED_SOCIAL);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get connected social provider");
           }
           return void 0;
@@ -25792,45 +25808,46 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         deleteConnectedSocialProvider() {
           try {
             SafeLocalStorage.removeItem(SafeLocalStorageKeys.CONNECTED_SOCIAL);
-          } catch {
+          } catch (e10) {
             console.info("Unable to delete connected social provider");
           }
         },
         getConnectedSocialUsername() {
           try {
             return SafeLocalStorage.getItem(SafeLocalStorageKeys.CONNECTED_SOCIAL_USERNAME);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get connected social username");
           }
           return void 0;
         },
         getStoredActiveCaipNetworkId() {
+          var _a7;
           const storedCaipNetworkId = SafeLocalStorage.getItem(SafeLocalStorageKeys.ACTIVE_CAIP_NETWORK_ID);
-          const networkId = storedCaipNetworkId?.split(":")?.[1];
+          const networkId = (_a7 = storedCaipNetworkId == null ? void 0 : storedCaipNetworkId.split(":")) == null ? void 0 : _a7[1];
           return networkId;
         },
         setConnectionStatus(status) {
           try {
             SafeLocalStorage.setItem(SafeLocalStorageKeys.CONNECTION_STATUS, status);
-          } catch {
+          } catch (e10) {
             console.info("Unable to set connection status");
           }
         },
         getConnectionStatus() {
           try {
             return SafeLocalStorage.getItem(SafeLocalStorageKeys.CONNECTION_STATUS);
-          } catch {
+          } catch (e10) {
             return void 0;
           }
         },
         getConnectedNamespaces() {
           try {
             const namespaces = SafeLocalStorage.getItem(SafeLocalStorageKeys.CONNECTED_NAMESPACES);
-            if (!namespaces?.length) {
+            if (!(namespaces == null ? void 0 : namespaces.length)) {
               return [];
             }
             return namespaces.split(",");
-          } catch {
+          } catch (e10) {
             return [];
           }
         },
@@ -25838,7 +25855,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const uniqueNamespaces = Array.from(new Set(namespaces));
             SafeLocalStorage.setItem(SafeLocalStorageKeys.CONNECTED_NAMESPACES, uniqueNamespaces.join(","));
-          } catch {
+          } catch (e10) {
             console.info("Unable to set namespaces in storage");
           }
         },
@@ -25849,7 +25866,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               namespaces.push(namespace);
               StorageUtil.setConnectedNamespaces(namespaces);
             }
-          } catch {
+          } catch (e10) {
             console.info("Unable to add connected namespace");
           }
         },
@@ -25861,14 +25878,14 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               namespaces.splice(index2, 1);
               StorageUtil.setConnectedNamespaces(namespaces);
             }
-          } catch {
+          } catch (e10) {
             console.info("Unable to remove connected namespace");
           }
         },
         getTelegramSocialProvider() {
           try {
             return SafeLocalStorage.getItem(SafeLocalStorageKeys.TELEGRAM_SOCIAL_PROVIDER);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get telegram social provider");
             return null;
           }
@@ -25876,14 +25893,14 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         setTelegramSocialProvider(socialProvider) {
           try {
             SafeLocalStorage.setItem(SafeLocalStorageKeys.TELEGRAM_SOCIAL_PROVIDER, socialProvider);
-          } catch {
+          } catch (e10) {
             console.info("Unable to set telegram social provider");
           }
         },
         removeTelegramSocialProvider() {
           try {
             SafeLocalStorage.removeItem(SafeLocalStorageKeys.TELEGRAM_SOCIAL_PROVIDER);
-          } catch {
+          } catch (e10) {
             console.info("Unable to remove telegram social provider");
           }
         },
@@ -25892,7 +25909,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const result = SafeLocalStorage.getItem(SafeLocalStorageKeys.PORTFOLIO_CACHE);
             cache = result ? JSON.parse(result) : {};
-          } catch {
+          } catch (e10) {
             console.info("Unable to get balance cache");
           }
           return cache;
@@ -25901,7 +25918,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const cache = StorageUtil.getBalanceCache();
             SafeLocalStorage.setItem(SafeLocalStorageKeys.PORTFOLIO_CACHE, JSON.stringify({ ...cache, [caipAddress]: void 0 }));
-          } catch {
+          } catch (e10) {
             console.info("Unable to remove address from balance cache", caipAddress);
           }
         },
@@ -25913,7 +25930,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               return balanceCache.balance;
             }
             StorageUtil.removeAddressFromBalanceCache(caipAddress);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get balance cache for address", caipAddress);
           }
           return void 0;
@@ -25923,7 +25940,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             const cache = StorageUtil.getBalanceCache();
             cache[params.caipAddress] = params;
             SafeLocalStorage.setItem(SafeLocalStorageKeys.PORTFOLIO_CACHE, JSON.stringify(cache));
-          } catch {
+          } catch (e10) {
             console.info("Unable to update balance cache", params);
           }
         },
@@ -25932,7 +25949,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const result = SafeLocalStorage.getItem(SafeLocalStorageKeys.NATIVE_BALANCE_CACHE);
             cache = result ? JSON.parse(result) : {};
-          } catch {
+          } catch (e10) {
             console.info("Unable to get balance cache");
           }
           return cache;
@@ -25941,7 +25958,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const cache = StorageUtil.getBalanceCache();
             SafeLocalStorage.setItem(SafeLocalStorageKeys.NATIVE_BALANCE_CACHE, JSON.stringify({ ...cache, [caipAddress]: void 0 }));
-          } catch {
+          } catch (e10) {
             console.info("Unable to remove address from balance cache", caipAddress);
           }
         },
@@ -25954,7 +25971,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             }
             console.info("Discarding cache for address", caipAddress);
             StorageUtil.removeAddressFromBalanceCache(caipAddress);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get balance cache for address", caipAddress);
           }
           return void 0;
@@ -25964,7 +25981,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             const cache = StorageUtil.getNativeBalanceCache();
             cache[params.caipAddress] = params;
             SafeLocalStorage.setItem(SafeLocalStorageKeys.NATIVE_BALANCE_CACHE, JSON.stringify(cache));
-          } catch {
+          } catch (e10) {
             console.info("Unable to update balance cache", params);
           }
         },
@@ -25973,7 +25990,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const result = SafeLocalStorage.getItem(SafeLocalStorageKeys.ENS_CACHE);
             cache = result ? JSON.parse(result) : {};
-          } catch {
+          } catch (e10) {
             console.info("Unable to get ens name cache");
           }
           return cache;
@@ -25986,7 +26003,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               return ensCache.ens;
             }
             StorageUtil.removeEnsFromCache(address2);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get ens name from cache", address2);
           }
           return void 0;
@@ -25996,7 +26013,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             const cache = StorageUtil.getEnsCache();
             cache[params.address] = params;
             SafeLocalStorage.setItem(SafeLocalStorageKeys.ENS_CACHE, JSON.stringify(cache));
-          } catch {
+          } catch (e10) {
             console.info("Unable to update ens name cache", params);
           }
         },
@@ -26004,7 +26021,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const cache = StorageUtil.getEnsCache();
             SafeLocalStorage.setItem(SafeLocalStorageKeys.ENS_CACHE, JSON.stringify({ ...cache, [address2]: void 0 }));
-          } catch {
+          } catch (e10) {
             console.info("Unable to remove ens name from cache", address2);
           }
         },
@@ -26013,7 +26030,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const result = SafeLocalStorage.getItem(SafeLocalStorageKeys.IDENTITY_CACHE);
             cache = result ? JSON.parse(result) : {};
-          } catch {
+          } catch (e10) {
             console.info("Unable to get identity cache");
           }
           return cache;
@@ -26026,7 +26043,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               return identityCache.identity;
             }
             StorageUtil.removeIdentityFromCache(address2);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get identity from cache", address2);
           }
           return void 0;
@@ -26039,7 +26056,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               timestamp: params.timestamp
             };
             SafeLocalStorage.setItem(SafeLocalStorageKeys.IDENTITY_CACHE, JSON.stringify(cache));
-          } catch {
+          } catch (e10) {
             console.info("Unable to update identity cache", params);
           }
         },
@@ -26047,7 +26064,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const cache = StorageUtil.getIdentityCache();
             SafeLocalStorage.setItem(SafeLocalStorageKeys.IDENTITY_CACHE, JSON.stringify({ ...cache, [address2]: void 0 }));
-          } catch {
+          } catch (e10) {
             console.info("Unable to remove identity from cache", address2);
           }
         },
@@ -26058,14 +26075,14 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             SafeLocalStorage.removeItem(SafeLocalStorageKeys.ENS_CACHE);
             SafeLocalStorage.removeItem(SafeLocalStorageKeys.IDENTITY_CACHE);
             SafeLocalStorage.removeItem(SafeLocalStorageKeys.HISTORY_TRANSACTIONS_CACHE);
-          } catch {
+          } catch (e10) {
             console.info("Unable to clear address cache");
           }
         },
         setPreferredAccountTypes(accountTypes) {
           try {
             SafeLocalStorage.setItem(SafeLocalStorageKeys.PREFERRED_ACCOUNT_TYPES, JSON.stringify(accountTypes));
-          } catch {
+          } catch (e10) {
             console.info("Unable to set preferred account types", accountTypes);
           }
         },
@@ -26076,15 +26093,16 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               return {};
             }
             return JSON.parse(result);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get preferred account types");
           }
           return {};
         },
         setConnections(connections, chainNamespace) {
+          var _a7;
           try {
             const existingConnections = StorageUtil.getConnections();
-            const existing = existingConnections[chainNamespace] ?? [];
+            const existing = (_a7 = existingConnections[chainNamespace]) != null ? _a7 : [];
             const connectorConnectionMap = /* @__PURE__ */ new Map();
             for (const conn of existing) {
               connectorConnectionMap.set(conn.connectorId, { ...conn });
@@ -26122,9 +26140,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           }
         },
         deleteAddressFromConnection({ connectorId, address: address2, namespace }) {
+          var _a7;
           try {
             const connections = StorageUtil.getConnections();
-            const namespaceConnections = connections[namespace] ?? [];
+            const namespaceConnections = (_a7 = connections[namespace]) != null ? _a7 : [];
             const connectionMap = new Map(namespaceConnections.map((conn) => [conn.connectorId, conn]));
             const connector = connectionMap.get(connectorId);
             if (connector) {
@@ -26142,7 +26161,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               ...connections,
               [namespace]: Array.from(connectionMap.values())
             }));
-          } catch {
+          } catch (e10) {
             console.error(`Unable to remove address "${address2}" from connector "${connectorId}" in namespace "${namespace}"`);
           }
         },
@@ -26153,43 +26172,46 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               return {};
             }
             return JSON.parse(result);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get disconnected connector ids");
           }
           return {};
         },
         addDisconnectedConnectorId(connectorId, chainNamespace) {
+          var _a7;
           try {
             const currentDisconnectedConnectorIds = StorageUtil.getDisconnectedConnectorIds();
-            const disconnectedConnectorIdsByNamespace = currentDisconnectedConnectorIds[chainNamespace] ?? [];
+            const disconnectedConnectorIdsByNamespace = (_a7 = currentDisconnectedConnectorIds[chainNamespace]) != null ? _a7 : [];
             disconnectedConnectorIdsByNamespace.push(connectorId);
             SafeLocalStorage.setItem(SafeLocalStorageKeys.DISCONNECTED_CONNECTOR_IDS, JSON.stringify({
               ...currentDisconnectedConnectorIds,
               [chainNamespace]: Array.from(new Set(disconnectedConnectorIdsByNamespace))
             }));
-          } catch {
+          } catch (e10) {
             console.error(`Unable to set disconnected connector id "${connectorId}" for namespace "${chainNamespace}"`);
           }
         },
         removeDisconnectedConnectorId(connectorId, chainNamespace) {
+          var _a7;
           try {
             const currentDisconnectedConnectorIds = StorageUtil.getDisconnectedConnectorIds();
-            let disconnectedConnectorIdsByNamespace = currentDisconnectedConnectorIds[chainNamespace] ?? [];
+            let disconnectedConnectorIdsByNamespace = (_a7 = currentDisconnectedConnectorIds[chainNamespace]) != null ? _a7 : [];
             disconnectedConnectorIdsByNamespace = disconnectedConnectorIdsByNamespace.filter((id) => id.toLowerCase() !== connectorId.toLowerCase());
             SafeLocalStorage.setItem(SafeLocalStorageKeys.DISCONNECTED_CONNECTOR_IDS, JSON.stringify({
               ...currentDisconnectedConnectorIds,
               [chainNamespace]: Array.from(new Set(disconnectedConnectorIdsByNamespace))
             }));
-          } catch {
+          } catch (e10) {
             console.error(`Unable to remove disconnected connector id "${connectorId}" for namespace "${chainNamespace}"`);
           }
         },
         isConnectorDisconnected(connectorId, chainNamespace) {
+          var _a7;
           try {
             const currentDisconnectedConnectorIds = StorageUtil.getDisconnectedConnectorIds();
-            const disconnectedConnectorIdsByNamespace = currentDisconnectedConnectorIds[chainNamespace] ?? [];
+            const disconnectedConnectorIdsByNamespace = (_a7 = currentDisconnectedConnectorIds[chainNamespace]) != null ? _a7 : [];
             return disconnectedConnectorIdsByNamespace.some((id) => id.toLowerCase() === connectorId.toLowerCase());
-          } catch {
+          } catch (e10) {
             console.info(`Unable to get disconnected connector id "${connectorId}" for namespace "${chainNamespace}"`);
           }
           return false;
@@ -26198,20 +26220,21 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const result = SafeLocalStorage.getItem(SafeLocalStorageKeys.HISTORY_TRANSACTIONS_CACHE);
             return result ? JSON.parse(result) : {};
-          } catch {
+          } catch (e10) {
             console.info("Unable to get transactions cache");
           }
           return {};
         },
         getTransactionsCacheForAddress({ address: address2, chainId = "" }) {
+          var _a7;
           try {
             const cache = StorageUtil.getTransactionsCache();
-            const transactionsCache = cache[address2]?.[chainId];
+            const transactionsCache = (_a7 = cache[address2]) == null ? void 0 : _a7[chainId];
             if (transactionsCache && !this.isCacheExpired(transactionsCache.timestamp, this.cacheExpiry.transactionsHistory)) {
               return transactionsCache.transactions;
             }
             StorageUtil.removeTransactionsCache({ address: address2, chainId });
-          } catch {
+          } catch (e10) {
             console.info("Unable to get transactions cache");
           }
           return void 0;
@@ -26227,7 +26250,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               }
             };
             SafeLocalStorage.setItem(SafeLocalStorageKeys.HISTORY_TRANSACTIONS_CACHE, JSON.stringify(cache));
-          } catch {
+          } catch (e10) {
             console.info("Unable to update transactions cache", {
               address: address2,
               chainId,
@@ -26239,13 +26262,13 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         removeTransactionsCache({ address: address2, chainId }) {
           try {
             const cache = StorageUtil.getTransactionsCache();
-            const addressCache = cache?.[address2] || {};
+            const addressCache = (cache == null ? void 0 : cache[address2]) || {};
             const { [chainId]: _removed, ...updatedChainData } = addressCache;
             SafeLocalStorage.setItem(SafeLocalStorageKeys.HISTORY_TRANSACTIONS_CACHE, JSON.stringify({
               ...cache,
               [address2]: updatedChainData
             }));
-          } catch {
+          } catch (e10) {
             console.info("Unable to remove transactions cache", { address: address2, chainId });
           }
         },
@@ -26253,7 +26276,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const result = SafeLocalStorage.getItem(SafeLocalStorageKeys.TOKEN_PRICE_CACHE);
             return result ? JSON.parse(result) : {};
-          } catch {
+          } catch (e10) {
             console.info("Unable to get token price cache");
           }
           return {};
@@ -26266,7 +26289,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               return tokenPriceCache.tokenPrice;
             }
             StorageUtil.removeTokenPriceCache(addresses);
-          } catch {
+          } catch (e10) {
             console.info("Unable to get token price cache for addresses", addresses);
           }
           return void 0;
@@ -26279,7 +26302,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               tokenPrice: params.tokenPrice
             };
             SafeLocalStorage.setItem(SafeLocalStorageKeys.TOKEN_PRICE_CACHE, JSON.stringify(cache));
-          } catch {
+          } catch (e10) {
             console.info("Unable to update token price cache", params);
           }
         },
@@ -26287,7 +26310,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           try {
             const cache = StorageUtil.getTokenPriceCache();
             SafeLocalStorage.setItem(SafeLocalStorageKeys.TOKEN_PRICE_CACHE, JSON.stringify({ ...cache, [addresses.join(",")]: void 0 }));
-          } catch {
+          } catch (e10) {
             console.info("Unable to remove token price cache", addresses);
           }
         }
@@ -26304,33 +26327,34 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       init_StorageUtil();
       CoreHelperUtil = {
         isMobile() {
+          var _a7;
           if (this.isClient()) {
-            return Boolean(window?.matchMedia && typeof window.matchMedia === "function" && window.matchMedia("(pointer:coarse)")?.matches || /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/u.test(navigator.userAgent));
+            return Boolean((window == null ? void 0 : window.matchMedia) && typeof window.matchMedia === "function" && ((_a7 = window.matchMedia("(pointer:coarse)")) == null ? void 0 : _a7.matches) || /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/u.test(navigator.userAgent));
           }
           return false;
         },
         checkCaipNetwork(network, networkName = "") {
-          return network?.caipNetworkId.toLocaleLowerCase().includes(networkName.toLowerCase());
+          return network == null ? void 0 : network.caipNetworkId.toLocaleLowerCase().includes(networkName.toLowerCase());
         },
         isAndroid() {
           if (!this.isMobile()) {
             return false;
           }
-          const ua2 = window?.navigator.userAgent.toLowerCase();
+          const ua2 = window == null ? void 0 : window.navigator.userAgent.toLowerCase();
           return CoreHelperUtil.isMobile() && ua2.includes("android");
         },
         isIos() {
           if (!this.isMobile()) {
             return false;
           }
-          const ua2 = window?.navigator.userAgent.toLowerCase();
+          const ua2 = window == null ? void 0 : window.navigator.userAgent.toLowerCase();
           return ua2.includes("iphone") || ua2.includes("ipad");
         },
         isSafari() {
           if (!this.isClient()) {
             return false;
           }
-          const ua2 = window?.navigator.userAgent.toLowerCase();
+          const ua2 = window == null ? void 0 : window.navigator.userAgent.toLowerCase();
           return ua2.includes("safari");
         },
         isClient() {
@@ -26347,22 +26371,23 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         },
         isIframe() {
           try {
-            return window?.self !== window?.top;
+            return (window == null ? void 0 : window.self) !== (window == null ? void 0 : window.top);
           } catch (e10) {
             return false;
           }
         },
         isSafeApp() {
+          var _a7, _b2;
           if (CoreHelperUtil.isClient() && window.self !== window.top) {
             try {
-              const ancestor = window?.location?.ancestorOrigins?.[0];
+              const ancestor = (_b2 = (_a7 = window == null ? void 0 : window.location) == null ? void 0 : _a7.ancestorOrigins) == null ? void 0 : _b2[0];
               const safeAppUrl = "https://app.safe.global";
               if (ancestor) {
                 const ancestorUrl = new URL(ancestor);
                 const safeUrl = new URL(safeAppUrl);
                 return ancestorUrl.hostname === safeUrl.hostname;
               }
-            } catch {
+            } catch (e10) {
               return false;
             }
           }
@@ -26372,10 +26397,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           return Date.now() + ConstantsUtil2.FOUR_MINUTES_MS;
         },
         getNetworkId(caipAddress) {
-          return caipAddress?.split(":")[1];
+          return caipAddress == null ? void 0 : caipAddress.split(":")[1];
         },
         getPlainAddress(caipAddress) {
-          return caipAddress?.split(":")[2];
+          return caipAddress == null ? void 0 : caipAddress.split(":")[2];
         },
         async wait(milliseconds) {
           return new Promise((resolve) => {
@@ -26411,7 +26436,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           if (!safeAppUrl.endsWith("/")) {
             safeAppUrl = `${safeAppUrl}/`;
           }
-          if (safeUniversalLink && !safeUniversalLink?.endsWith("/")) {
+          if (safeUniversalLink && !(safeUniversalLink == null ? void 0 : safeUniversalLink.endsWith("/"))) {
             safeUniversalLink = `${safeUniversalLink}/`;
           }
           if (this.isTelegram() && this.isAndroid()) {
@@ -26451,10 +26476,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           return target;
         },
         openHref(href, target, features) {
-          window?.open(href, this.getOpenTargetForPlatform(target), features || "noreferrer noopener");
+          window == null ? void 0 : window.open(href, this.getOpenTargetForPlatform(target), features || "noreferrer noopener");
         },
         returnOpenHref(href, target, features) {
-          return window?.open(href, this.getOpenTargetForPlatform(target), features || "noreferrer noopener");
+          return window == null ? void 0 : window.open(href, this.getOpenTargetForPlatform(target), features || "noreferrer noopener");
         },
         isTelegram() {
           return typeof window !== "undefined" && // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26463,11 +26488,12 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           Boolean(window.TelegramWebviewProxyProto));
         },
         isPWA() {
+          var _a7, _b2;
           if (typeof window === "undefined") {
             return false;
           }
-          const isStandaloneDisplayMode = window?.matchMedia && typeof window.matchMedia === "function" ? window.matchMedia("(display-mode: standalone)")?.matches : false;
-          const isIOSStandalone = window?.navigator?.standalone;
+          const isStandaloneDisplayMode = (window == null ? void 0 : window.matchMedia) && typeof window.matchMedia === "function" ? (_a7 = window.matchMedia("(display-mode: standalone)")) == null ? void 0 : _a7.matches : false;
+          const isIOSStandalone = (_b2 = window == null ? void 0 : window.navigator) == null ? void 0 : _b2.standalone;
           return Boolean(isStandaloneDisplayMode || isIOSStandalone);
         },
         async preloadImage(src2) {
@@ -26494,17 +26520,18 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           return `${formattedBalance}${symbol ? ` ${symbol}` : ""}`;
         },
         formatBalance2(balance, symbol) {
+          var _a7;
           let formattedBalance = void 0;
           if (balance === "0") {
             formattedBalance = "0";
           } else if (typeof balance === "string") {
             const number2 = Number(balance);
             if (number2) {
-              formattedBalance = number2.toString().match(/^-?\d+(?:\.\d{0,3})?/u)?.[0];
+              formattedBalance = (_a7 = number2.toString().match(/^-?\d+(?:\.\d{0,3})?/u)) == null ? void 0 : _a7[0];
             }
           }
           return {
-            value: formattedBalance ?? "0",
+            value: formattedBalance != null ? formattedBalance : "0",
             rest: formattedBalance === "0" ? "000" : "",
             symbol
           };
@@ -26519,7 +26546,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           return ConstantsUtil.PULSE_API_URL;
         },
         getUUID() {
-          if (crypto?.randomUUID) {
+          if (crypto == null ? void 0 : crypto.randomUUID) {
             return crypto.randomUUID();
           }
           return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/gu, (c12) => {
@@ -26530,9 +26557,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         parseError(error2) {
+          var _a7, _b2;
           if (typeof error2 === "string") {
             return error2;
-          } else if (typeof error2?.issues?.[0]?.message === "string") {
+          } else if (typeof ((_b2 = (_a7 = error2 == null ? void 0 : error2.issues) == null ? void 0 : _a7[0]) == null ? void 0 : _b2.message) === "string") {
             return error2.issues[0].message;
           } else if (error2 instanceof Error) {
             return error2.message;
@@ -26561,9 +26589,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           return requestedNetworks;
         },
         calculateBalance(array) {
+          var _a7;
           let sum = 0;
           for (const item of array) {
-            sum += item.value ?? 0;
+            sum += (_a7 = item.value) != null ? _a7 : 0;
           }
           return sum;
         },
@@ -26640,11 +26669,11 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           };
         },
         isMac() {
-          const ua2 = window?.navigator.userAgent.toLowerCase();
+          const ua2 = window == null ? void 0 : window.navigator.userAgent.toLowerCase();
           return ua2.includes("macintosh") && !ua2.includes("safari");
         },
         formatTelegramSocialLoginUrl(url) {
-          const valueToInject = `--${encodeURIComponent(window?.location.href)}`;
+          const valueToInject = `--${encodeURIComponent(window == null ? void 0 : window.location.href)}`;
           const paramToInject = "state=";
           const parsedUrl = new URL(url);
           if (parsedUrl.host === "auth.magic.link") {
@@ -26759,7 +26788,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       init_CoreHelperUtil();
       OptionsUtil = {
         getFeatureValue(key, features) {
-          const optionValue = features?.[key];
+          const optionValue = features == null ? void 0 : features[key];
           if (optionValue === void 0) {
             return ConstantsUtil2.DEFAULT_FEATURES[key];
           }
@@ -26813,20 +26842,22 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           Object.assign(state, options);
         },
         setRemoteFeatures(remoteFeatures) {
+          var _a7, _b2;
           if (!remoteFeatures) {
             return;
           }
           const newRemoteFeatures = { ...state.remoteFeatures, ...remoteFeatures };
           state.remoteFeatures = newRemoteFeatures;
-          if (state.remoteFeatures?.socials) {
+          if ((_a7 = state.remoteFeatures) == null ? void 0 : _a7.socials) {
             state.remoteFeatures.socials = OptionsUtil.filterSocialsByPlatform(state.remoteFeatures.socials);
           }
-          if (state.features?.pay) {
+          if ((_b2 = state.features) == null ? void 0 : _b2.pay) {
             state.remoteFeatures.email = false;
             state.remoteFeatures.socials = false;
           }
         },
         setFeatures(features) {
+          var _a7;
           if (!features) {
             return;
           }
@@ -26835,7 +26866,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           }
           const newFeatures = { ...state.features, ...features };
           state.features = newFeatures;
-          if (state.features?.pay && state.remoteFeatures) {
+          if (((_a7 = state.features) == null ? void 0 : _a7.pay) && state.remoteFeatures) {
             state.remoteFeatures.email = false;
             state.remoteFeatures.socials = false;
           }
@@ -26907,9 +26938,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           state.experimental_preferUniversalLinks = preferUniversalLinks;
         },
         setSIWX(siwx) {
+          var _a7;
           if (siwx) {
             for (const [key, isVal] of Object.entries(ConstantsUtil2.SIWX_DEFAULTS)) {
-              siwx[key] ?? (siwx[key] = isVal);
+              (_a7 = siwx[key]) != null ? _a7 : siwx[key] = isVal;
             }
           }
           state.siwx = siwx;
@@ -27046,7 +27078,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
                 }
               }
             });
-          } catch {
+          } catch (e10) {
           }
         },
         enable() {
@@ -27367,19 +27399,20 @@ ${originalFrames}`;
           return AssetController.state.walletImages[imageId];
         },
         getWalletImage(wallet) {
-          if (wallet?.image_url) {
-            return wallet?.image_url;
+          if (wallet == null ? void 0 : wallet.image_url) {
+            return wallet == null ? void 0 : wallet.image_url;
           }
-          if (wallet?.image_id) {
+          if (wallet == null ? void 0 : wallet.image_id) {
             return AssetController.state.walletImages[wallet.image_id];
           }
           return void 0;
         },
         getNetworkImage(network) {
-          if (network?.assets?.imageUrl) {
-            return network?.assets?.imageUrl;
+          var _a7, _b2, _c2;
+          if ((_a7 = network == null ? void 0 : network.assets) == null ? void 0 : _a7.imageUrl) {
+            return (_b2 = network == null ? void 0 : network.assets) == null ? void 0 : _b2.imageUrl;
           }
-          if (network?.assets?.imageId) {
+          if ((_c2 = network == null ? void 0 : network.assets) == null ? void 0 : _c2.imageId) {
             return AssetController.state.networkImages[network.assets.imageId];
           }
           return void 0;
@@ -27391,13 +27424,14 @@ ${originalFrames}`;
           return AssetController.state.networkImages[imageId];
         },
         getConnectorImage(connector) {
-          if (connector?.imageUrl) {
+          var _a7;
+          if (connector == null ? void 0 : connector.imageUrl) {
             return connector.imageUrl;
           }
-          if (connector?.info?.icon) {
+          if ((_a7 = connector == null ? void 0 : connector.info) == null ? void 0 : _a7.icon) {
             return connector.info.icon;
           }
-          if (connector?.imageId) {
+          if (connector == null ? void 0 : connector.imageId) {
             return AssetController.state.connectorImages[connector.imageId];
           }
           return void 0;
@@ -27514,9 +27548,10 @@ ${originalFrames}`;
           }
         },
         sendEvent(data) {
+          var _a7;
           state6.timestamp = Date.now();
           state6.data = data;
-          if (OptionsController.state.features?.analytics || data.event === "INITIALIZE") {
+          if (((_a7 = OptionsController.state.features) == null ? void 0 : _a7.analytics) || data.event === "INITIALIZE") {
             EventsController._sendAnalyticsEvent(state6);
           }
         }
@@ -27609,7 +27644,7 @@ ${originalFrames}`;
           AssetController.setTokenImage(symbol, URL.createObjectURL(blob));
         },
         _filterWalletsByPlatform(wallets) {
-          const filteredWallets = CoreHelperUtil.isMobile() ? wallets?.filter((w7) => {
+          const filteredWallets = CoreHelperUtil.isMobile() ? wallets == null ? void 0 : wallets.filter((w7) => {
             if (w7.mobile_link) {
               return true;
             }
@@ -27651,7 +27686,7 @@ ${originalFrames}`;
         },
         async fetchNetworkImages() {
           const requestedCaipNetworks = ChainController.getAllRequestedCaipNetworks();
-          const ids = requestedCaipNetworks?.map(({ assets }) => assets?.imageId).filter(Boolean).filter((imageId) => !AssetUtil.getNetworkImageById(imageId));
+          const ids = requestedCaipNetworks == null ? void 0 : requestedCaipNetworks.map(({ assets }) => assets == null ? void 0 : assets.imageId).filter(Boolean).filter((imageId) => !AssetUtil.getNetworkImageById(imageId));
           if (ids) {
             await Promise.allSettled(ids.map((id) => ApiController._fetchNetworkImage(id)));
           }
@@ -27668,7 +27703,8 @@ ${originalFrames}`;
           await Promise.allSettled(tokens.map((token) => ApiController._fetchTokenImage(token)));
         },
         async fetchWallets(params) {
-          const exclude = params.exclude ?? [];
+          var _a7, _b2;
+          const exclude = (_a7 = params.exclude) != null ? _a7 : [];
           const sdkProperties = ApiController._getSdkProperties();
           if (sdkProperties.sv.startsWith("html-core-")) {
             exclude.push(...Object.values(CUSTOM_DEEPLINK_WALLETS).map((w7) => w7.id));
@@ -27680,24 +27716,25 @@ ${originalFrames}`;
               ...params,
               page: String(params.page),
               entries: String(params.entries),
-              include: params.include?.join(","),
+              include: (_b2 = params.include) == null ? void 0 : _b2.join(","),
               exclude: exclude.join(",")
             }
           });
-          const filteredWallets = ApiController._filterWalletsByPlatform(wallets?.data);
+          const filteredWallets = ApiController._filterWalletsByPlatform(wallets == null ? void 0 : wallets.data);
           return {
             data: filteredWallets || [],
             // Keep original count for display on main page
-            count: wallets?.count
+            count: wallets == null ? void 0 : wallets.count
           };
         },
         async fetchFeaturedWallets() {
+          var _a7;
           const { featuredWalletIds } = OptionsController.state;
-          if (featuredWalletIds?.length) {
+          if (featuredWalletIds == null ? void 0 : featuredWalletIds.length) {
             const params = {
               ...ApiController._getSdkProperties(),
               page: 1,
-              entries: featuredWalletIds?.length ?? recommendedEntries,
+              entries: (_a7 = featuredWalletIds == null ? void 0 : featuredWalletIds.length) != null ? _a7 : recommendedEntries,
               include: featuredWalletIds
             };
             const { data } = await ApiController.fetchWallets(params);
@@ -27712,7 +27749,7 @@ ${originalFrames}`;
           try {
             state7.isFetchingRecommendedWallets = true;
             const { includeWalletIds, excludeWalletIds, featuredWalletIds } = OptionsController.state;
-            const exclude = [...excludeWalletIds ?? [], ...featuredWalletIds ?? []].filter(Boolean);
+            const exclude = [...excludeWalletIds != null ? excludeWalletIds : [], ...featuredWalletIds != null ? featuredWalletIds : []].filter(Boolean);
             const chains = ChainController.getRequestedCaipNetworkIds().join(",");
             const params = {
               page: 1,
@@ -27728,8 +27765,8 @@ ${originalFrames}`;
             await Promise.allSettled([...recommendedImages, ...recentImages].map((id) => ApiController._fetchWalletImage(id)));
             state7.recommended = data;
             state7.allRecommended = data;
-            state7.count = count ?? 0;
-          } catch {
+            state7.count = count != null ? count : 0;
+          } catch (e10) {
           } finally {
             state7.isFetchingRecommendedWallets = false;
           }
@@ -27739,8 +27776,8 @@ ${originalFrames}`;
           const chains = ChainController.getRequestedCaipNetworkIds().join(",");
           const exclude = [
             ...state7.recommended.map(({ id }) => id),
-            ...excludeWalletIds ?? [],
-            ...featuredWalletIds ?? []
+            ...excludeWalletIds != null ? excludeWalletIds : [],
+            ...featuredWalletIds != null ? featuredWalletIds : []
           ].filter(Boolean);
           const params = {
             page,
@@ -27752,7 +27789,10 @@ ${originalFrames}`;
           const { data, count } = await ApiController.fetchWallets(params);
           const images = data.slice(0, imageCountToFetch).map((w7) => w7.image_id).filter(Boolean);
           await Promise.allSettled(images.map((id) => ApiController._fetchWalletImage(id)));
-          state7.wallets = CoreHelperUtil.uniqueBy([...state7.wallets, ...ApiController._filterOutExtensions(data)], "id").filter((w7) => w7.chains?.some((chain3) => chains.includes(chain3)));
+          state7.wallets = CoreHelperUtil.uniqueBy([...state7.wallets, ...ApiController._filterOutExtensions(data)], "id").filter((w7) => {
+            var _a7;
+            return (_a7 = w7.chains) == null ? void 0 : _a7.some((chain3) => chains.includes(chain3));
+          });
           state7.count = count > state7.count ? count : state7.count;
           state7.page = page;
         },
@@ -27776,7 +27816,7 @@ ${originalFrames}`;
           const params = {
             page: 1,
             entries: 100,
-            search: search?.trim(),
+            search: search == null ? void 0 : search.trim(),
             badge_type: badge,
             include: includeWalletIds,
             exclude: excludeWalletIds,
@@ -27786,7 +27826,7 @@ ${originalFrames}`;
           EventsController.sendEvent({
             type: "track",
             event: "SEARCH_WALLET",
-            properties: { badge: badge ?? "", search: search ?? "" }
+            properties: { badge: badge != null ? badge : "", search: search != null ? search : "" }
           });
           const images = data.map((w7) => w7.image_id).filter(Boolean);
           await Promise.allSettled([
@@ -27812,7 +27852,8 @@ ${originalFrames}`;
           return Promise.allSettled(promises);
         },
         prefetchAnalyticsConfig() {
-          if (OptionsController.state.features?.analytics) {
+          var _a7;
+          if ((_a7 = OptionsController.state.features) == null ? void 0 : _a7.analytics) {
             ApiController.fetchAnalyticsConfig();
           }
         },
@@ -27828,15 +27869,24 @@ ${originalFrames}`;
           }
         },
         filterByNamespaces(namespaces) {
-          if (!namespaces?.length) {
+          if (!(namespaces == null ? void 0 : namespaces.length)) {
             state7.featured = state7.allFeatured;
             state7.recommended = state7.allRecommended;
             return;
           }
           const caipNetworkIds = ChainController.getRequestedCaipNetworkIds().join(",");
-          state7.featured = state7.allFeatured.filter((wallet) => wallet.chains?.some((chain3) => caipNetworkIds.includes(chain3)));
-          state7.recommended = state7.allRecommended.filter((wallet) => wallet.chains?.some((chain3) => caipNetworkIds.includes(chain3)));
-          state7.filteredWallets = state7.wallets.filter((wallet) => wallet.chains?.some((chain3) => caipNetworkIds.includes(chain3)));
+          state7.featured = state7.allFeatured.filter((wallet) => {
+            var _a7;
+            return (_a7 = wallet.chains) == null ? void 0 : _a7.some((chain3) => caipNetworkIds.includes(chain3));
+          });
+          state7.recommended = state7.allRecommended.filter((wallet) => {
+            var _a7;
+            return (_a7 = wallet.chains) == null ? void 0 : _a7.some((chain3) => caipNetworkIds.includes(chain3));
+          });
+          state7.filteredWallets = state7.wallets.filter((wallet) => {
+            var _a7;
+            return (_a7 = wallet.chains) == null ? void 0 : _a7.some((chain3) => caipNetworkIds.includes(chain3));
+          });
         },
         clearFilterByNamespaces() {
           state7.filteredWallets = [];
@@ -27848,9 +27898,18 @@ ${originalFrames}`;
             return;
           }
           const caipNetworkIds = ChainController.getRequestedCaipNetworkIds().join(",");
-          state7.featured = state7.allFeatured.filter((wallet) => wallet.chains?.some((chain3) => caipNetworkIds.includes(chain3)));
-          state7.recommended = state7.allRecommended.filter((wallet) => wallet.chains?.some((chain3) => caipNetworkIds.includes(chain3)));
-          state7.filteredWallets = state7.wallets.filter((wallet) => wallet.chains?.some((chain3) => caipNetworkIds.includes(chain3)));
+          state7.featured = state7.allFeatured.filter((wallet) => {
+            var _a7;
+            return (_a7 = wallet.chains) == null ? void 0 : _a7.some((chain3) => caipNetworkIds.includes(chain3));
+          });
+          state7.recommended = state7.allRecommended.filter((wallet) => {
+            var _a7;
+            return (_a7 = wallet.chains) == null ? void 0 : _a7.some((chain3) => caipNetworkIds.includes(chain3));
+          });
+          state7.filteredWallets = state7.wallets.filter((wallet) => {
+            var _a7;
+            return (_a7 = wallet.chains) == null ? void 0 : _a7.some((chain3) => caipNetworkIds.includes(chain3));
+          });
         }
       };
     }
@@ -27889,14 +27948,14 @@ ${originalFrames}`;
           const { onSuccess, onError, onCancel } = action;
           switch (status) {
             case "success":
-              onSuccess?.();
+              onSuccess == null ? void 0 : onSuccess();
               break;
             case "error":
-              onError?.();
+              onError == null ? void 0 : onError();
               RouterController.goBack();
               break;
             case "cancel":
-              onCancel?.();
+              onCancel == null ? void 0 : onCancel();
               RouterController.goBack();
               break;
             default:
@@ -27924,6 +27983,7 @@ ${originalFrames}`;
           }
         },
         goBack() {
+          var _a7;
           const isConnected = ChainController.state.activeCaipAddress;
           const isFarcasterView = RouterController.state.view === "ConnectingFarcaster";
           const shouldReload = !isConnected && isFarcasterView;
@@ -27941,16 +28001,17 @@ ${originalFrames}`;
           } else {
             ModalController.close();
           }
-          if (state8.data?.wallet) {
+          if ((_a7 = state8.data) == null ? void 0 : _a7.wallet) {
             state8.data.wallet = void 0;
           }
           setTimeout(() => {
+            var _a8, _b2, _c2;
             if (shouldReload) {
               AccountController.setFarcasterUrl(void 0, ChainController.state.activeChain);
               const authConnector = ConnectorController.getAuthConnector();
-              authConnector?.provider?.reload();
+              (_a8 = authConnector == null ? void 0 : authConnector.provider) == null ? void 0 : _a8.reload();
               const optionsState = snapshot(OptionsController.state);
-              authConnector?.provider?.syncDappData?.({
+              (_c2 = (_b2 = authConnector == null ? void 0 : authConnector.provider) == null ? void 0 : _b2.syncDappData) == null ? void 0 : _c2.call(_b2, {
                 metadata: optionsState.metadata,
                 sdkVersion: optionsState.sdkVersion,
                 projectId: optionsState.projectId,
@@ -28010,7 +28071,7 @@ ${originalFrames}`;
                 w3mThemeVariables: getW3mThemeVariables(themeVariables, themeMode)
               });
             }
-          } catch {
+          } catch (e10) {
             console.info("Unable to sync theme to auth connector");
           }
         },
@@ -28025,7 +28086,7 @@ ${originalFrames}`;
                 w3mThemeVariables: getW3mThemeVariables(state9.themeVariables, state9.themeMode)
               });
             }
-          } catch {
+          } catch (e10) {
             console.info("Unable to sync theme to auth connector");
           }
         },
@@ -28136,7 +28197,7 @@ ${originalFrames}`;
           const mergedConnectors = [];
           connectorsByNameMap.forEach((keyConnectors) => {
             const firstItem = keyConnectors[0];
-            const isAuthConnector = firstItem?.id === ConstantsUtil.CONNECTOR_ID.AUTH;
+            const isAuthConnector = (firstItem == null ? void 0 : firstItem.id) === ConstantsUtil.CONNECTOR_ID.AUTH;
             if (keyConnectors.length > 1 && firstItem) {
               mergedConnectors.push({
                 name: firstItem.name,
@@ -28146,7 +28207,7 @@ ${originalFrames}`;
                 type: isAuthConnector ? "AUTH" : "MULTI_CHAIN",
                 // These values are just placeholders, we don't use them in multi-chain connector select screen
                 chain: "eip155",
-                id: firstItem?.id || ""
+                id: (firstItem == null ? void 0 : firstItem.id) || ""
               });
             } else if (firstItem) {
               mergedConnectors.push(firstItem);
@@ -28190,18 +28251,19 @@ ${originalFrames}`;
           return uniqueConnectors;
         },
         addConnector(connector) {
+          var _a7, _b2, _c2;
           if (connector.id === ConstantsUtil.CONNECTOR_ID.AUTH) {
             const authConnector = connector;
             const optionsState = snapshot(OptionsController.state);
             const themeMode = ThemeController.getSnapshot().themeMode;
             const themeVariables = ThemeController.getSnapshot().themeVariables;
-            authConnector?.provider?.syncDappData?.({
+            (_b2 = (_a7 = authConnector == null ? void 0 : authConnector.provider) == null ? void 0 : _a7.syncDappData) == null ? void 0 : _b2.call(_a7, {
               metadata: optionsState.metadata,
               sdkVersion: optionsState.sdkVersion,
               projectId: optionsState.projectId,
               sdkType: optionsState.sdkType
             });
-            authConnector?.provider?.syncTheme({
+            (_c2 = authConnector == null ? void 0 : authConnector.provider) == null ? void 0 : _c2.syncTheme({
               themeMode,
               themeVariables,
               w3mThemeVariables: getW3mThemeVariables(themeVariables, themeMode)
@@ -28212,19 +28274,23 @@ ${originalFrames}`;
           }
         },
         getAuthConnector(chainNamespace) {
+          var _a7;
           const activeNamespace = chainNamespace || ChainController.state.activeChain;
           const authConnector = state10.connectors.find((c12) => c12.id === ConstantsUtil.CONNECTOR_ID.AUTH);
           if (!authConnector) {
             return void 0;
           }
-          if (authConnector?.connectors?.length) {
+          if ((_a7 = authConnector == null ? void 0 : authConnector.connectors) == null ? void 0 : _a7.length) {
             const connector = authConnector.connectors.find((c12) => c12.chain === activeNamespace);
             return connector;
           }
           return authConnector;
         },
         getAnnouncedConnectorRdns() {
-          return state10.connectors.filter((c12) => c12.type === "ANNOUNCED").map((c12) => c12.info?.rdns);
+          return state10.connectors.filter((c12) => c12.type === "ANNOUNCED").map((c12) => {
+            var _a7;
+            return (_a7 = c12.info) == null ? void 0 : _a7.rdns;
+          });
         },
         getConnectorById(id) {
           return state10.allConnectors.find((c12) => c12.id === id);
@@ -28232,9 +28298,13 @@ ${originalFrames}`;
         getConnector({ id, rdns, namespace }) {
           const namespaceToUse = namespace || ChainController.state.activeChain;
           const connectorsByNamespace = state10.allConnectors.filter((c12) => c12.chain === namespaceToUse);
-          return connectorsByNamespace.find((c12) => c12.explorerId === id || c12.info?.rdns === rdns);
+          return connectorsByNamespace.find((c12) => {
+            var _a7;
+            return c12.explorerId === id || ((_a7 = c12.info) == null ? void 0 : _a7.rdns) === rdns;
+          });
         },
         syncIfAuthConnector(connector) {
+          var _a7, _b2;
           if (connector.id !== "ID_AUTH") {
             return;
           }
@@ -28242,7 +28312,7 @@ ${originalFrames}`;
           const optionsState = snapshot(OptionsController.state);
           const themeMode = ThemeController.getSnapshot().themeMode;
           const themeVariables = ThemeController.getSnapshot().themeVariables;
-          authConnector?.provider?.syncDappData?.({
+          (_b2 = (_a7 = authConnector == null ? void 0 : authConnector.provider) == null ? void 0 : _a7.syncDappData) == null ? void 0 : _b2.call(_a7, {
             metadata: optionsState.metadata,
             sdkVersion: optionsState.sdkVersion,
             sdkType: optionsState.sdkType,
@@ -28272,7 +28342,7 @@ ${originalFrames}`;
             id: wallet.id,
             rdns: wallet.rdns
           });
-          MobileWalletUtil.handleMobileDeeplinkRedirect(connector?.explorerId || wallet.id, ChainController.state.activeChain);
+          MobileWalletUtil.handleMobileDeeplinkRedirect((connector == null ? void 0 : connector.explorerId) || wallet.id, ChainController.state.activeChain);
           if (connector) {
             RouterController.push("ConnectingExternal", { connector, wallet });
           } else {
@@ -28366,7 +28436,7 @@ ${originalFrames}`;
             if (walletConnect) {
               ConnectorController.setActiveConnector(connector);
             }
-            onOpen?.(CoreHelperUtil.isMobile() && walletConnect);
+            onOpen == null ? void 0 : onOpen(CoreHelperUtil.isMobile() && walletConnect);
             if (redirectViewOnModalClose) {
               const unsubscribeModalController = ModalController.subscribeKey("open", (val) => {
                 if (!val) {
@@ -28380,7 +28450,7 @@ ${originalFrames}`;
             }
             const unsubscribeChainController = ChainController.subscribeKey("activeCaipAddress", (val) => {
               if (val) {
-                onConnect?.();
+                onConnect == null ? void 0 : onConnect();
                 if (closeModalOnConnect) {
                   ModalController.close();
                 }
@@ -28421,7 +28491,8 @@ ${originalFrames}`;
           });
           return new Promise((resolve, reject) => {
             async function handleSocialConnection(event) {
-              if (event.data?.resultUri) {
+              var _a7, _b2;
+              if ((_a7 = event.data) == null ? void 0 : _a7.resultUri) {
                 if (event.origin === ConstantsUtil.SECURE_SITE_SDK_ORIGIN) {
                   window.removeEventListener("message", handleSocialConnection, false);
                   try {
@@ -28459,7 +28530,7 @@ ${originalFrames}`;
                           event: "SOCIAL_LOGIN_SUCCESS",
                           properties: {
                             provider: socialProvider,
-                            caipNetworkId: ChainController.getActiveCaipNetwork()?.caipNetworkId
+                            caipNetworkId: (_b2 = ChainController.getActiveCaipNetwork()) == null ? void 0 : _b2.caipNetworkId
                           }
                         });
                       }
@@ -28494,11 +28565,11 @@ ${originalFrames}`;
                 });
               }
               if (socialProvider === "farcaster") {
-                onOpenFarcaster?.();
+                onOpenFarcaster == null ? void 0 : onOpenFarcaster();
                 const unsubscribeModalController = ModalController.subscribeKey("open", (val) => {
                   if (!val && social === "farcaster") {
                     reject(new Error("Popup closed"));
-                    onConnect?.();
+                    onConnect == null ? void 0 : onConnect();
                     unsubscribeModalController();
                   }
                 });
@@ -28508,7 +28579,7 @@ ${originalFrames}`;
                     try {
                       const { url } = await authConnector.provider.getFarcasterUri();
                       AccountController.setFarcasterUrl(url, namespaceToUse);
-                    } catch {
+                    } catch (e10) {
                       reject(new Error("Failed to connect to farcaster"));
                     }
                   }
@@ -28526,20 +28597,20 @@ ${originalFrames}`;
                       socialWindow = AccountController.state.socialWindow;
                       popupWindow.location.href = uri;
                       const interval = setInterval(() => {
-                        if (socialWindow?.closed && !connectingSocial) {
+                        if ((socialWindow == null ? void 0 : socialWindow.closed) && !connectingSocial) {
                           reject(new Error("Popup closed"));
                           clearInterval(interval);
                         }
                       }, 1e3);
                       window.addEventListener("message", handleSocialConnection, false);
                     } else {
-                      popupWindow?.close();
+                      popupWindow == null ? void 0 : popupWindow.close();
                       reject(new Error("Failed to initiate social connection"));
                     }
                   }
-                } catch {
+                } catch (e10) {
                   reject(new Error("Failed to initiate social connection"));
-                  popupWindow?.close();
+                  popupWindow == null ? void 0 : popupWindow.close();
                 }
               }
             }
@@ -28548,7 +28619,7 @@ ${originalFrames}`;
         },
         connectEmail({ closeModalOnConnect = true, redirectViewOnModalClose = "Connect", onOpen, onConnect }) {
           return new Promise((resolve, reject) => {
-            onOpen?.();
+            onOpen == null ? void 0 : onOpen();
             if (redirectViewOnModalClose) {
               const unsubscribeModalController = ModalController.subscribeKey("open", (val) => {
                 if (!val) {
@@ -28562,7 +28633,7 @@ ${originalFrames}`;
             }
             const unsubscribeChainController = ChainController.subscribeKey("activeCaipAddress", (val) => {
               if (val) {
-                onConnect?.();
+                onConnect == null ? void 0 : onConnect();
                 if (closeModalOnConnect) {
                   ModalController.close();
                 }
@@ -28573,6 +28644,7 @@ ${originalFrames}`;
           });
         },
         async updateEmail() {
+          var _a7;
           const connectorId = StorageUtil.getConnectedConnectorId(ChainController.state.activeChain);
           const authConnector = ConnectorController.getAuthConnector();
           if (!authConnector) {
@@ -28581,7 +28653,7 @@ ${originalFrames}`;
           if (connectorId !== ConstantsUtil.CONNECTOR_ID.AUTH) {
             throw new Error("Not connected to email or social");
           }
-          const initialEmail = authConnector.provider.getEmail() ?? "";
+          const initialEmail = (_a7 = authConnector.provider.getEmail()) != null ? _a7 : "";
           await ModalController.open({
             view: "UpdateEmailWallet",
             data: {
@@ -28591,7 +28663,8 @@ ${originalFrames}`;
           });
           return new Promise((resolve, reject) => {
             const interval = setInterval(() => {
-              const newEmail = authConnector.provider.getEmail() ?? "";
+              var _a8;
+              const newEmail = (_a8 = authConnector.provider.getEmail()) != null ? _a8 : "";
               if (newEmail !== initialEmail) {
                 ModalController.close();
                 clearInterval(interval);
@@ -28621,18 +28694,21 @@ ${originalFrames}`;
 
   // node_modules/@reown/appkit-controllers/dist/esm/src/utils/ChainControllerUtil.js
   function getActiveNetworkTokenAddress() {
-    const namespace = ChainController.state.activeCaipNetwork?.chainNamespace || "eip155";
-    const chainId = ChainController.state.activeCaipNetwork?.id || 1;
+    var _a7, _b2;
+    const namespace = ((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.chainNamespace) || "eip155";
+    const chainId = ((_b2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _b2.id) || 1;
     const address2 = ConstantsUtil2.NATIVE_TOKEN_ADDRESS[namespace];
     return `${namespace}:${chainId}:${address2}`;
   }
   function getPreferredAccountType(namespace) {
-    const preferredAccountType = ChainController.getAccountData(namespace)?.preferredAccountType;
+    var _a7;
+    const preferredAccountType = (_a7 = ChainController.getAccountData(namespace)) == null ? void 0 : _a7.preferredAccountType;
     return preferredAccountType;
   }
   function getActiveCaipNetwork(chainNamespace) {
+    var _a7, _b2;
     if (chainNamespace) {
-      return ChainController.state.chains.get(chainNamespace)?.networkState?.caipNetwork;
+      return (_b2 = (_a7 = ChainController.state.chains.get(chainNamespace)) == null ? void 0 : _a7.networkState) == null ? void 0 : _b2.caipNetwork;
     }
     return ChainController.state.activeCaipNetwork;
   }
@@ -28685,15 +28761,16 @@ ${originalFrames}`;
           return connections.filter((c12) => c12.connectorId.toLowerCase() === connectorId.toLowerCase());
         },
         getConnectionsData(namespace) {
-          const isMultiWalletEnabled = Boolean(OptionsController.state.remoteFeatures?.multiWallet);
+          var _a7, _b2;
+          const isMultiWalletEnabled = Boolean((_a7 = OptionsController.state.remoteFeatures) == null ? void 0 : _a7.multiWallet);
           const activeConnectorId = ConnectorController.state.activeConnectorIds[namespace];
           const connections = ConnectionController.getConnections(namespace);
-          const recentConnections = ConnectionController.state.recentConnections.get(namespace) ?? [];
+          const recentConnections = (_b2 = ConnectionController.state.recentConnections.get(namespace)) != null ? _b2 : [];
           const recentConnectionsWithCurrentActiveConnectors = recentConnections.filter((connection) => ConnectorController.getConnectorById(connection.connectorId));
           const dedupedRecentConnections = ConnectionControllerUtil.excludeExistingConnections([...connections.map((c12) => c12.connectorId), ...activeConnectorId ? [activeConnectorId] : []], recentConnectionsWithCurrentActiveConnectors);
           if (!isMultiWalletEnabled) {
             return {
-              connections: connections.filter((c12) => c12.connectorId.toLowerCase() === activeConnectorId?.toLowerCase()),
+              connections: connections.filter((c12) => c12.connectorId.toLowerCase() === (activeConnectorId == null ? void 0 : activeConnectorId.toLowerCase())),
               recentConnections: []
             };
           }
@@ -28801,6 +28878,7 @@ ${originalFrames}`;
           state12.lastNetworkInView = lastNetworkInView;
         },
         async fetchTransactions(accountAddress) {
+          var _a7;
           if (!accountAddress) {
             throw new Error("Transactions can't be fetched without an accountAddress");
           }
@@ -28809,7 +28887,7 @@ ${originalFrames}`;
             const response = await BlockchainApiController.fetchTransactions({
               account: accountAddress,
               cursor: state12.next,
-              chainId: ChainController.state.activeCaipNetwork?.caipNetworkId
+              chainId: (_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId
             });
             const nonSpamTransactions = TransactionsController.filterSpamTransactions(response.data);
             const sameChainTransactions = TransactionsController.filterByConnectedChain(nonSpamTransactions);
@@ -28840,10 +28918,11 @@ ${originalFrames}`;
         groupTransactionsByYearAndMonth(transactionsMap = {}, transactions = []) {
           const grouped = transactionsMap;
           transactions.forEach((transaction) => {
+            var _a7, _b2;
             const year = new Date(transaction.metadata.minedAt).getFullYear();
             const month = new Date(transaction.metadata.minedAt).getMonth();
-            const yearTransactions = grouped[year] ?? {};
-            const monthTransactions = yearTransactions[month] ?? [];
+            const yearTransactions = (_a7 = grouped[year]) != null ? _a7 : {};
+            const monthTransactions = (_b2 = yearTransactions[month]) != null ? _b2 : [];
             const newMonthTransactions = monthTransactions.filter((tx) => tx.id !== transaction.id);
             grouped[year] = {
               ...yearTransactions,
@@ -28854,12 +28933,16 @@ ${originalFrames}`;
         },
         filterSpamTransactions(transactions) {
           return transactions.filter((transaction) => {
-            const isAllSpam = transaction.transfers.every((transfer) => transfer.nft_info?.flags.is_spam === true);
+            const isAllSpam = transaction.transfers.every((transfer) => {
+              var _a7;
+              return ((_a7 = transfer.nft_info) == null ? void 0 : _a7.flags.is_spam) === true;
+            });
             return !isAllSpam;
           });
         },
         filterByConnectedChain(transactions) {
-          const chainId = ChainController.state.activeCaipNetwork?.caipNetworkId;
+          var _a7;
+          const chainId = (_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId;
           const filteredTransactions = transactions.filter((transaction) => transaction.metadata.chain === chainId);
           return filteredTransactions;
         },
@@ -28926,59 +29009,65 @@ ${originalFrames}`;
           ConnectionController.syncStorageConnections(namespaces);
         },
         syncStorageConnections(namespaces) {
+          var _a7;
           const storageConnections = StorageUtil.getConnections();
-          const namespacesToSync = namespaces ?? Array.from(ChainController.state.chains.keys());
+          const namespacesToSync = namespaces != null ? namespaces : Array.from(ChainController.state.chains.keys());
           for (const namespace of namespacesToSync) {
-            const storageConnectionsByNamespace = storageConnections[namespace] ?? [];
+            const storageConnectionsByNamespace = (_a7 = storageConnections[namespace]) != null ? _a7 : [];
             const recentConnectionsMap = new Map(state13.recentConnections);
             recentConnectionsMap.set(namespace, storageConnectionsByNamespace);
             state13.recentConnections = recentConnectionsMap;
           }
         },
         getConnections(namespace) {
-          return namespace ? state13.connections.get(namespace) ?? [] : [];
+          var _a7;
+          return namespace ? (_a7 = state13.connections.get(namespace)) != null ? _a7 : [] : [];
         },
         hasAnyConnection(connectorId) {
           const connections = ConnectionController.state.connections;
           return Array.from(connections.values()).flatMap((_connections) => _connections).some(({ connectorId: _connectorId }) => _connectorId === connectorId);
         },
         async connectWalletConnect() {
+          var _a7, _b2, _c2, _d;
           if (CoreHelperUtil.isTelegram() || CoreHelperUtil.isSafari() && CoreHelperUtil.isIos()) {
             if (wcConnectionPromise) {
               await wcConnectionPromise;
               wcConnectionPromise = void 0;
               return;
             }
-            if (!CoreHelperUtil.isPairingExpired(state13?.wcPairingExpiry)) {
+            if (!CoreHelperUtil.isPairingExpired(state13 == null ? void 0 : state13.wcPairingExpiry)) {
               const link = state13.wcUri;
               state13.wcUri = link;
               return;
             }
-            wcConnectionPromise = ConnectionController._getClient()?.connectWalletConnect?.().catch(() => void 0);
+            wcConnectionPromise = (_b2 = (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.connectWalletConnect) == null ? void 0 : _b2.call(_a7).catch(() => void 0);
             ConnectionController.state.status = "connecting";
             await wcConnectionPromise;
             wcConnectionPromise = void 0;
             state13.wcPairingExpiry = void 0;
             ConnectionController.state.status = "connected";
           } else {
-            await ConnectionController._getClient()?.connectWalletConnect?.();
+            await ((_d = (_c2 = ConnectionController._getClient()) == null ? void 0 : _c2.connectWalletConnect) == null ? void 0 : _d.call(_c2));
           }
         },
         async connectExternal(options, chain3, setChain = true) {
-          const connectData = await ConnectionController._getClient()?.connectExternal?.(options);
+          var _a7, _b2;
+          const connectData = await ((_b2 = (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.connectExternal) == null ? void 0 : _b2.call(_a7, options));
           if (setChain) {
             ChainController.setActiveNamespace(chain3);
           }
           return connectData;
         },
         async reconnectExternal(options) {
-          await ConnectionController._getClient()?.reconnectExternal?.(options);
+          var _a7, _b2;
+          await ((_b2 = (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.reconnectExternal) == null ? void 0 : _b2.call(_a7, options));
           const namespace = options.chain || ChainController.state.activeChain;
           if (namespace) {
             ConnectorController.setConnectorId(options.id, namespace);
           }
         },
         async setPreferredAccountType(accountType, namespace) {
+          var _a7;
           if (!namespace) {
             return;
           }
@@ -29005,45 +29094,57 @@ ${originalFrames}`;
             event: "SET_PREFERRED_ACCOUNT_TYPE",
             properties: {
               accountType,
-              network: ChainController.state.activeCaipNetwork?.caipNetworkId || ""
+              network: ((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId) || ""
             }
           });
         },
         async signMessage(message) {
-          return ConnectionController._getClient()?.signMessage(message);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.signMessage(message);
         },
         parseUnits(value, decimals) {
-          return ConnectionController._getClient()?.parseUnits(value, decimals);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.parseUnits(value, decimals);
         },
         formatUnits(value, decimals) {
-          return ConnectionController._getClient()?.formatUnits(value, decimals);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.formatUnits(value, decimals);
         },
         async sendTransaction(args) {
-          return ConnectionController._getClient()?.sendTransaction(args);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.sendTransaction(args);
         },
         async getCapabilities(params) {
-          return ConnectionController._getClient()?.getCapabilities(params);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.getCapabilities(params);
         },
         async grantPermissions(params) {
-          return ConnectionController._getClient()?.grantPermissions(params);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.grantPermissions(params);
         },
         async walletGetAssets(params) {
-          return ConnectionController._getClient()?.walletGetAssets(params) ?? {};
+          var _a7, _b2;
+          return (_b2 = (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.walletGetAssets(params)) != null ? _b2 : {};
         },
         async estimateGas(args) {
-          return ConnectionController._getClient()?.estimateGas(args);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.estimateGas(args);
         },
         async writeContract(args) {
-          return ConnectionController._getClient()?.writeContract(args);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.writeContract(args);
         },
         async getEnsAddress(value) {
-          return ConnectionController._getClient()?.getEnsAddress(value);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.getEnsAddress(value);
         },
         async getEnsAvatar(value) {
-          return ConnectionController._getClient()?.getEnsAvatar(value);
+          var _a7;
+          return (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.getEnsAvatar(value);
         },
         checkInstalled(ids) {
-          return ConnectionController._getClient()?.checkInstalled?.(ids) || false;
+          var _a7, _b2;
+          return ((_b2 = (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.checkInstalled) == null ? void 0 : _b2.call(_a7, ids)) || false;
         },
         resetWcConnection() {
           state13.wcUri = void 0;
@@ -29060,6 +29161,7 @@ ${originalFrames}`;
           wcConnectionPromise = void 0;
         },
         finalizeWcConnection() {
+          var _a7, _b2, _c2;
           const { wcLinking, recentWallet } = ConnectionController.state;
           if (wcLinking) {
             StorageUtil.setWalletConnectDeepLink(wcLinking);
@@ -29072,8 +29174,8 @@ ${originalFrames}`;
             event: "CONNECT_SUCCESS",
             properties: {
               method: wcLinking ? "mobile" : "qrcode",
-              name: RouterController.state.data?.wallet?.name || "Unknown",
-              caipNetworkId: ChainController.getActiveCaipNetwork()?.caipNetworkId
+              name: ((_b2 = (_a7 = RouterController.state.data) == null ? void 0 : _a7.wallet) == null ? void 0 : _b2.name) || "Unknown",
+              caipNetworkId: (_c2 = ChainController.getActiveCaipNetwork()) == null ? void 0 : _c2.caipNetworkId
             }
           });
         },
@@ -29104,12 +29206,13 @@ ${originalFrames}`;
           state13.isSwitchingConnection = isSwitchingConnection;
         },
         async disconnect({ id, namespace, initialDisconnect } = {}) {
+          var _a7;
           try {
-            await ConnectionController._getClient()?.disconnect({
+            await ((_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.disconnect({
               id,
               chainNamespace: namespace,
               initialDisconnect
-            });
+            }));
           } catch (error2) {
             throw new AppKitError("Failed to disconnect", "INTERNAL_SDK_ERROR", error2);
           }
@@ -29120,7 +29223,8 @@ ${originalFrames}`;
           state13.connections = connectionsMap;
         },
         async handleAuthAccountSwitch({ address: address2, namespace }) {
-          const smartAccount = AccountController.state.user?.accounts?.find((c12) => c12.type === "smartAccount");
+          var _a7, _b2;
+          const smartAccount = (_b2 = (_a7 = AccountController.state.user) == null ? void 0 : _a7.accounts) == null ? void 0 : _b2.find((c12) => c12.type === "smartAccount");
           const accountType = smartAccount && smartAccount.address.toLowerCase() === address2.toLowerCase() && ConnectorControllerUtil.canSwitchToSmartAccount(namespace) ? "smartAccount" : "eoa";
           await ConnectionController.setPreferredAccountType(accountType, namespace);
         },
@@ -29138,15 +29242,16 @@ ${originalFrames}`;
               address: address2,
               chain: namespace
             }, namespace);
-            return connectData?.address;
+            return connectData == null ? void 0 : connectData.address;
           } else if (isAuthConnector && address2) {
             await ConnectionController.handleAuthAccountSwitch({ address: address2, namespace });
           }
           return address2;
         },
         async handleDisconnectedConnection({ connection, namespace, address: address2, closeModalOnConnect }) {
+          var _a7, _b2;
           const connector = ConnectorController.getConnectorById(connection.connectorId);
-          const authName = connection.auth?.name?.toLowerCase();
+          const authName = (_b2 = (_a7 = connection.auth) == null ? void 0 : _a7.name) == null ? void 0 : _b2.toLowerCase();
           const isAuthConnector = connection.connectorId === ConstantsUtil.CONNECTOR_ID.AUTH;
           const isWCConnector = connection.connectorId === ConstantsUtil.CONNECTOR_ID.WALLET_CONNECT;
           if (!connector) {
@@ -29225,7 +29330,7 @@ ${originalFrames}`;
               });
               if (currentAddress && newAddress) {
                 const hasSwitchedAccount = newAddress.toLowerCase() !== currentAddress.toLowerCase();
-                onChange?.({
+                onChange == null ? void 0 : onChange({
                   address: newAddress,
                   namespace,
                   hasSwitchedAccount,
@@ -29242,7 +29347,7 @@ ${originalFrames}`;
                 closeModalOnConnect
               });
               if (newAddress) {
-                onChange?.({
+                onChange == null ? void 0 : onChange({
                   address: newAddress,
                   namespace,
                   hasSwitchedAccount: true,
@@ -29300,11 +29405,12 @@ ${originalFrames}`;
       init_ChainControllerUtil();
       SwapApiUtil = {
         async getTokenList() {
+          var _a7;
           const caipNetwork = ChainController.state.activeCaipNetwork;
           const response = await BlockchainApiController.fetchSwapTokens({
-            chainId: caipNetwork?.caipNetworkId
+            chainId: caipNetwork == null ? void 0 : caipNetwork.caipNetworkId
           });
-          const tokens = response?.tokens?.map((token) => ({
+          const tokens = ((_a7 = response == null ? void 0 : response.tokens) == null ? void 0 : _a7.map((token) => ({
             ...token,
             eip2612: false,
             quantity: {
@@ -29313,10 +29419,11 @@ ${originalFrames}`;
             },
             price: 0,
             value: 0
-          })) || [];
+          }))) || [];
           return tokens;
         },
         async fetchGasPrice() {
+          var _a7, _b2;
           const caipNetwork = ChainController.state.activeCaipNetwork;
           if (!caipNetwork) {
             return null;
@@ -29324,7 +29431,7 @@ ${originalFrames}`;
           try {
             switch (caipNetwork.chainNamespace) {
               case "solana":
-                const lamportsPerSignature = (await ConnectionController?.estimateGas({ chainNamespace: "solana" }))?.toString();
+                const lamportsPerSignature = (_b2 = await ((_a7 = ConnectionController) == null ? void 0 : _a7.estimateGas({ chainNamespace: "solana" }))) == null ? void 0 : _b2.toString();
                 return {
                   standard: lamportsPerSignature,
                   fast: lamportsPerSignature,
@@ -29336,7 +29443,7 @@ ${originalFrames}`;
                   chainId: caipNetwork.caipNetworkId
                 });
             }
-          } catch {
+          } catch (e10) {
             return null;
           }
         },
@@ -29345,7 +29452,7 @@ ${originalFrames}`;
             tokenAddress,
             userAddress
           });
-          if (response?.allowance && sourceTokenAmount && sourceTokenDecimals) {
+          if ((response == null ? void 0 : response.allowance) && sourceTokenAmount && sourceTokenDecimals) {
             const parsedValue = ConnectionController.parseUnits(sourceTokenAmount, sourceTokenDecimals) || 0;
             const hasAllowance = BigInt(response.allowance) >= parsedValue;
             return hasAllowance;
@@ -29363,13 +29470,13 @@ ${originalFrames}`;
          * @returns SwapTokenWithBalance[]
          */
         mapBalancesToSwapTokens(balances) {
-          return balances?.map((token) => ({
+          return (balances == null ? void 0 : balances.map((token) => ({
             ...token,
-            address: token?.address ? token.address : getActiveNetworkTokenAddress(),
+            address: (token == null ? void 0 : token.address) ? token.address : getActiveNetworkTokenAddress(),
             decimals: parseInt(token.quantity.decimals, 10),
             logoUri: token.iconUrl,
             eip2612: false
-          })) || [];
+          }))) || [];
         }
       };
     }
@@ -29432,9 +29539,10 @@ ${originalFrames}`;
           state15.loading = loading;
         },
         async sendToken() {
+          var _a7;
           try {
             SendController.setLoading(true);
-            switch (ChainController.state.activeCaipNetwork?.chainNamespace) {
+            switch ((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.chainNamespace) {
               case "eip155":
                 await SendController.sendEvmToken();
                 return;
@@ -29449,6 +29557,7 @@ ${originalFrames}`;
           }
         },
         async sendEvmToken() {
+          var _a7, _b2, _c2;
           const activeChainNamespace = ChainController.state.activeChain;
           if (!activeChainNamespace) {
             throw new Error("SendController:sendEvmToken - activeChainNamespace is required");
@@ -29460,7 +29569,7 @@ ${originalFrames}`;
           if (!SendController.state.token) {
             throw new Error("A token is required");
           }
-          if (SendController.state.token?.address) {
+          if ((_a7 = SendController.state.token) == null ? void 0 : _a7.address) {
             EventsController.sendEvent({
               type: "track",
               event: "SEND_INITIATED",
@@ -29468,7 +29577,7 @@ ${originalFrames}`;
                 isSmartAccount: activeAccountType === W3mFrameRpcConstants.ACCOUNT_TYPES.SMART_ACCOUNT,
                 token: SendController.state.token.address,
                 amount: SendController.state.sendTokenAmount,
-                network: ChainController.state.activeCaipNetwork?.caipNetworkId || ""
+                network: ((_b2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _b2.caipNetworkId) || ""
               }
             });
             await SendController.sendERC20Token({
@@ -29485,7 +29594,7 @@ ${originalFrames}`;
                 isSmartAccount: activeAccountType === W3mFrameRpcConstants.ACCOUNT_TYPES.SMART_ACCOUNT,
                 token: SendController.state.token.symbol || "",
                 amount: SendController.state.sendTokenAmount,
-                network: ChainController.state.activeCaipNetwork?.caipNetworkId || ""
+                network: ((_c2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _c2.caipNetworkId) || ""
               }
             });
             await SendController.sendNativeToken({
@@ -29496,9 +29605,10 @@ ${originalFrames}`;
           }
         },
         async fetchTokenBalance(onError) {
+          var _a7, _b2;
           state15.loading = true;
-          const chainId = ChainController.state.activeCaipNetwork?.caipNetworkId;
-          const chain3 = ChainController.state.activeCaipNetwork?.chainNamespace;
+          const chainId = (_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId;
+          const chain3 = (_b2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _b2.chainNamespace;
           const caipAddress = ChainController.state.activeCaipAddress;
           const address2 = caipAddress ? CoreHelperUtil.getPlainAddress(caipAddress) : void 0;
           if (state15.lastRetry && !CoreHelperUtil.isAllowedRetry(state15.lastRetry, 30 * ConstantsUtil2.ONE_SEC_MS)) {
@@ -29514,7 +29624,7 @@ ${originalFrames}`;
             }
           } catch (error2) {
             state15.lastRetry = Date.now();
-            onError?.(error2);
+            onError == null ? void 0 : onError(error2);
             SnackController.showError("Token Balance Unavailable");
           } finally {
             state15.loading = false;
@@ -29536,6 +29646,7 @@ ${originalFrames}`;
           state15.networkBalanceInUSD = networkToken ? NumberUtil.multiply(networkToken.quantity.numeric, networkToken.price).toString() : "0";
         },
         async sendNativeToken(params) {
+          var _a7, _b2, _c2;
           RouterController.pushTransactionStack({});
           const to4 = params.receiverAddress;
           const address2 = AccountController.state.address;
@@ -29546,19 +29657,19 @@ ${originalFrames}`;
             to: to4,
             address: address2,
             data,
-            value: value ?? BigInt(0)
+            value: value != null ? value : BigInt(0)
           });
           EventsController.sendEvent({
             type: "track",
             event: "SEND_SUCCESS",
             properties: {
               isSmartAccount: getPreferredAccountType("eip155") === W3mFrameRpcConstants.ACCOUNT_TYPES.SMART_ACCOUNT,
-              token: SendController.state.token?.symbol || "",
+              token: ((_a7 = SendController.state.token) == null ? void 0 : _a7.symbol) || "",
               amount: params.sendTokenAmount,
-              network: ChainController.state.activeCaipNetwork?.caipNetworkId || ""
+              network: ((_b2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _b2.caipNetworkId) || ""
             }
           });
-          ConnectionController._getClient()?.updateBalance("eip155");
+          (_c2 = ConnectionController._getClient()) == null ? void 0 : _c2.updateBalance("eip155");
           SendController.resetSend();
         },
         async sendERC20Token(params) {
@@ -29576,7 +29687,7 @@ ${originalFrames}`;
             await ConnectionController.writeContract({
               fromAddress: AccountController.state.address,
               tokenAddress,
-              args: [params.receiverAddress, amount ?? BigInt(0)],
+              args: [params.receiverAddress, amount != null ? amount : BigInt(0)],
               method: "transfer",
               abi: ContractUtil.getERC20Abi(tokenAddress),
               chainNamespace: ConstantsUtil.CHAIN.EVM
@@ -29585,6 +29696,7 @@ ${originalFrames}`;
           }
         },
         async sendSolanaToken() {
+          var _a7;
           if (!SendController.state.sendTokenAmount || !SendController.state.receiverAddress) {
             throw new Error("An amount and receiver address are required");
           }
@@ -29598,7 +29710,7 @@ ${originalFrames}`;
             to: SendController.state.receiverAddress,
             value: SendController.state.sendTokenAmount
           });
-          ConnectionController._getClient()?.updateBalance("solana");
+          (_a7 = ConnectionController._getClient()) == null ? void 0 : _a7.updateBalance("solana");
           SendController.resetSend();
         },
         resetSend() {
@@ -29673,9 +29785,10 @@ ${originalFrames}`;
         subscribeChainProp(property, callback, chain3) {
           let prev = void 0;
           return subscribe(state16.chains, () => {
+            var _a7;
             const activeChain = chain3 || state16.activeChain;
             if (activeChain) {
-              const nextValue = state16.chains.get(activeChain)?.[property];
+              const nextValue = (_a7 = state16.chains.get(activeChain)) == null ? void 0 : _a7[property];
               if (prev !== nextValue) {
                 prev = nextValue;
                 callback(nextValue);
@@ -29684,44 +29797,46 @@ ${originalFrames}`;
           });
         },
         initialize(adapters, caipNetworks, clients) {
+          var _a7;
           const { chainId: activeChainId, namespace: activeNamespace } = StorageUtil.getActiveNetworkProps();
-          const activeCaipNetwork = caipNetworks?.find((network) => network.id.toString() === activeChainId?.toString());
-          const defaultAdapter = adapters.find((adapter) => adapter?.namespace === activeNamespace);
-          const adapterToActivate = defaultAdapter || adapters?.[0];
+          const activeCaipNetwork = caipNetworks == null ? void 0 : caipNetworks.find((network) => network.id.toString() === (activeChainId == null ? void 0 : activeChainId.toString()));
+          const defaultAdapter = adapters.find((adapter) => (adapter == null ? void 0 : adapter.namespace) === activeNamespace);
+          const adapterToActivate = defaultAdapter || (adapters == null ? void 0 : adapters[0]);
           const namespacesFromAdapters = adapters.map((a5) => a5.namespace).filter((n13) => n13 !== void 0);
-          const namespaces = OptionsController.state.enableEmbedded ? /* @__PURE__ */ new Set([...namespacesFromAdapters]) : /* @__PURE__ */ new Set([...caipNetworks?.map((network) => network.chainNamespace) ?? []]);
-          if (adapters?.length === 0 || !adapterToActivate) {
+          const namespaces = OptionsController.state.enableEmbedded ? /* @__PURE__ */ new Set([...namespacesFromAdapters]) : /* @__PURE__ */ new Set([...(_a7 = caipNetworks == null ? void 0 : caipNetworks.map((network) => network.chainNamespace)) != null ? _a7 : []]);
+          if ((adapters == null ? void 0 : adapters.length) === 0 || !adapterToActivate) {
             state16.noAdapters = true;
           }
           if (!state16.noAdapters) {
-            state16.activeChain = adapterToActivate?.namespace;
+            state16.activeChain = adapterToActivate == null ? void 0 : adapterToActivate.namespace;
             state16.activeCaipNetwork = activeCaipNetwork;
-            ChainController.setChainNetworkData(adapterToActivate?.namespace, {
+            ChainController.setChainNetworkData(adapterToActivate == null ? void 0 : adapterToActivate.namespace, {
               caipNetwork: activeCaipNetwork
             });
             if (state16.activeChain) {
-              PublicStateController.set({ activeChain: adapterToActivate?.namespace });
+              PublicStateController.set({ activeChain: adapterToActivate == null ? void 0 : adapterToActivate.namespace });
             }
           }
           namespaces.forEach((namespace) => {
-            const namespaceNetworks = caipNetworks?.filter((network) => network.chainNamespace === namespace);
+            const namespaceNetworks = caipNetworks == null ? void 0 : caipNetworks.filter((network) => network.chainNamespace === namespace);
             const storedAccountTypes = StorageUtil.getPreferredAccountTypes() || {};
             const defaultTypes = { ...OptionsController.state.defaultAccountTypes, ...storedAccountTypes };
             ChainController.state.chains.set(namespace, {
               namespace,
-              networkState: proxy({ ...networkState, caipNetwork: namespaceNetworks?.[0] }),
+              networkState: proxy({ ...networkState, caipNetwork: namespaceNetworks == null ? void 0 : namespaceNetworks[0] }),
               accountState: proxy({ ...accountState, preferredAccountType: defaultTypes[namespace] }),
-              caipNetworks: namespaceNetworks ?? [],
+              caipNetworks: namespaceNetworks != null ? namespaceNetworks : [],
               ...clients
             });
-            ChainController.setRequestedCaipNetworks(namespaceNetworks ?? [], namespace);
+            ChainController.setRequestedCaipNetworks(namespaceNetworks != null ? namespaceNetworks : [], namespace);
           });
         },
         removeAdapter(namespace) {
+          var _a7, _b2;
           if (state16.activeChain === namespace) {
             const nextAdapter = Array.from(state16.chains.entries()).find(([chainNamespace]) => chainNamespace !== namespace);
             if (nextAdapter) {
-              const caipNetwork = nextAdapter[1]?.caipNetworks?.[0];
+              const caipNetwork = (_b2 = (_a7 = nextAdapter[1]) == null ? void 0 : _a7.caipNetworks) == null ? void 0 : _b2[0];
               if (caipNetwork) {
                 ChainController.setActiveCaipNetwork(caipNetwork);
               }
@@ -29730,6 +29845,7 @@ ${originalFrames}`;
           state16.chains.delete(namespace);
         },
         addAdapter(adapter, { networkControllerClient, connectionControllerClient }, caipNetworks) {
+          var _a7;
           if (!adapter.namespace) {
             throw new Error("ChainController:addAdapter - adapter must have a namespace");
           }
@@ -29741,13 +29857,14 @@ ${originalFrames}`;
             connectionControllerClient,
             networkControllerClient
           });
-          ChainController.setRequestedCaipNetworks(caipNetworks?.filter((caipNetwork) => caipNetwork.chainNamespace === adapter.namespace) ?? [], adapter.namespace);
+          ChainController.setRequestedCaipNetworks((_a7 = caipNetworks == null ? void 0 : caipNetworks.filter((caipNetwork) => caipNetwork.chainNamespace === adapter.namespace)) != null ? _a7 : [], adapter.namespace);
         },
         addNetwork(network) {
+          var _a7;
           const chainAdapter = state16.chains.get(network.chainNamespace);
           if (chainAdapter) {
             const newNetworks = [...chainAdapter.caipNetworks || []];
-            if (!chainAdapter.caipNetworks?.find((caipNetwork) => caipNetwork.id === network.id)) {
+            if (!((_a7 = chainAdapter.caipNetworks) == null ? void 0 : _a7.find((caipNetwork) => caipNetwork.id === network.id))) {
               newNetworks.push(network);
             }
             state16.chains.set(network.chainNamespace, { ...chainAdapter, caipNetworks: newNetworks });
@@ -29756,13 +29873,14 @@ ${originalFrames}`;
           }
         },
         removeNetwork(namespace, networkId) {
+          var _a7, _b2, _c2;
           const chainAdapter = state16.chains.get(namespace);
           if (chainAdapter) {
-            const isActiveNetwork = state16.activeCaipNetwork?.id === networkId;
+            const isActiveNetwork = ((_a7 = state16.activeCaipNetwork) == null ? void 0 : _a7.id) === networkId;
             const newCaipNetworksOfAdapter = [
-              ...chainAdapter.caipNetworks?.filter((network) => network.id !== networkId) || []
+              ...((_b2 = chainAdapter.caipNetworks) == null ? void 0 : _b2.filter((network) => network.id !== networkId)) || []
             ];
-            if (isActiveNetwork && chainAdapter?.caipNetworks?.[0]) {
+            if (isActiveNetwork && ((_c2 = chainAdapter == null ? void 0 : chainAdapter.caipNetworks) == null ? void 0 : _c2[0])) {
               ChainController.setActiveCaipNetwork(chainAdapter.caipNetworks[0]);
             }
             state16.chains.set(namespace, { ...chainAdapter, caipNetworks: newCaipNetworksOfAdapter });
@@ -29813,21 +29931,23 @@ ${originalFrames}`;
           ChainController.setChainAccountData(chain3, { [prop]: value }, replaceState);
         },
         setActiveNamespace(chain3) {
+          var _a7, _b2;
           state16.activeChain = chain3;
           const newAdapter = chain3 ? state16.chains.get(chain3) : void 0;
-          const caipNetwork = newAdapter?.networkState?.caipNetwork;
-          if (caipNetwork?.id && chain3) {
-            state16.activeCaipAddress = newAdapter?.accountState?.caipAddress;
+          const caipNetwork = (_a7 = newAdapter == null ? void 0 : newAdapter.networkState) == null ? void 0 : _a7.caipNetwork;
+          if ((caipNetwork == null ? void 0 : caipNetwork.id) && chain3) {
+            state16.activeCaipAddress = (_b2 = newAdapter == null ? void 0 : newAdapter.accountState) == null ? void 0 : _b2.caipAddress;
             state16.activeCaipNetwork = caipNetwork;
             ChainController.setChainNetworkData(chain3, { caipNetwork });
-            StorageUtil.setActiveCaipNetworkId(caipNetwork?.caipNetworkId);
+            StorageUtil.setActiveCaipNetworkId(caipNetwork == null ? void 0 : caipNetwork.caipNetworkId);
             PublicStateController.set({
               activeChain: chain3,
-              selectedNetworkId: caipNetwork?.caipNetworkId
+              selectedNetworkId: caipNetwork == null ? void 0 : caipNetwork.caipNetworkId
             });
           }
         },
         setActiveCaipNetwork(caipNetwork) {
+          var _a7, _b2, _c2;
           if (!caipNetwork) {
             return;
           }
@@ -29838,8 +29958,8 @@ ${originalFrames}`;
           state16.activeChain = caipNetwork.chainNamespace;
           state16.activeCaipNetwork = caipNetwork;
           ChainController.setChainNetworkData(caipNetwork.chainNamespace, { caipNetwork });
-          if (newAdapter?.accountState?.address) {
-            state16.activeCaipAddress = `${caipNetwork.chainNamespace}:${caipNetwork.id}:${newAdapter?.accountState?.address}`;
+          if ((_a7 = newAdapter == null ? void 0 : newAdapter.accountState) == null ? void 0 : _a7.address) {
+            state16.activeCaipAddress = `${caipNetwork.chainNamespace}:${caipNetwork.id}:${(_b2 = newAdapter == null ? void 0 : newAdapter.accountState) == null ? void 0 : _b2.address}`;
           } else {
             state16.activeCaipAddress = void 0;
           }
@@ -29850,7 +29970,7 @@ ${originalFrames}`;
           SendController.resetSend();
           PublicStateController.set({
             activeChain: state16.activeChain,
-            selectedNetworkId: state16.activeCaipNetwork?.caipNetworkId
+            selectedNetworkId: (_c2 = state16.activeCaipNetwork) == null ? void 0 : _c2.caipNetworkId
           });
           StorageUtil.setActiveCaipNetworkId(caipNetwork.caipNetworkId);
           const isSupported = ChainController.checkIfSupportedNetwork(caipNetwork.chainNamespace);
@@ -29859,32 +29979,38 @@ ${originalFrames}`;
           }
         },
         addCaipNetwork(caipNetwork) {
+          var _a7;
           if (!caipNetwork) {
             return;
           }
           const chain3 = state16.chains.get(caipNetwork.chainNamespace);
           if (chain3) {
-            chain3?.caipNetworks?.push(caipNetwork);
+            (_a7 = chain3 == null ? void 0 : chain3.caipNetworks) == null ? void 0 : _a7.push(caipNetwork);
           }
         },
         async switchActiveNamespace(namespace) {
+          var _a7;
           if (!namespace) {
             return;
           }
           const isDifferentChain = namespace !== ChainController.state.activeChain;
-          const caipNetworkOfNamespace = ChainController.getNetworkData(namespace)?.caipNetwork;
-          const firstNetworkWithChain = ChainController.getCaipNetworkByNamespace(namespace, caipNetworkOfNamespace?.id);
+          const caipNetworkOfNamespace = (_a7 = ChainController.getNetworkData(namespace)) == null ? void 0 : _a7.caipNetwork;
+          const firstNetworkWithChain = ChainController.getCaipNetworkByNamespace(namespace, caipNetworkOfNamespace == null ? void 0 : caipNetworkOfNamespace.id);
           if (isDifferentChain && firstNetworkWithChain) {
             await ChainController.switchActiveNetwork(firstNetworkWithChain);
           }
         },
         async switchActiveNetwork(network) {
+          var _a7;
           const namespace = ChainController.state.activeChain;
           if (!namespace) {
             throw new Error("ChainController:switchActiveNetwork - namespace is required");
           }
           const activeAdapter = ChainController.state.chains.get(namespace);
-          const unsupportedNetwork = !activeAdapter?.caipNetworks?.some((caipNetwork) => caipNetwork.id === state16.activeCaipNetwork?.id);
+          const unsupportedNetwork = !((_a7 = activeAdapter == null ? void 0 : activeAdapter.caipNetworks) == null ? void 0 : _a7.some((caipNetwork) => {
+            var _a8;
+            return caipNetwork.id === ((_a8 = state16.activeCaipNetwork) == null ? void 0 : _a8.id);
+          }));
           const networkControllerClient = ChainController.getNetworkControllerClient(network.chainNamespace);
           if (networkControllerClient) {
             try {
@@ -29922,13 +30048,14 @@ ${originalFrames}`;
             throw new Error("Chain is required to get connection controller client");
           }
           const chainAdapter = state16.chains.get(chain3);
-          if (!chainAdapter?.connectionControllerClient) {
+          if (!(chainAdapter == null ? void 0 : chainAdapter.connectionControllerClient)) {
             throw new Error("ConnectionController client not set");
           }
           return chainAdapter.connectionControllerClient;
         },
         getNetworkProp(key, namespace) {
-          const chainNetworkState = state16.chains.get(namespace)?.networkState;
+          var _a7;
+          const chainNetworkState = (_a7 = state16.chains.get(namespace)) == null ? void 0 : _a7.networkState;
           if (!chainNetworkState) {
             return void 0;
           }
@@ -29936,9 +30063,9 @@ ${originalFrames}`;
         },
         getRequestedCaipNetworks(chainToFilter) {
           const adapter = state16.chains.get(chainToFilter);
-          const { approvedCaipNetworkIds = [], requestedCaipNetworks = [] } = adapter?.networkState || {};
+          const { approvedCaipNetworkIds = [], requestedCaipNetworks = [] } = (adapter == null ? void 0 : adapter.networkState) || {};
           const sortedNetworks = CoreHelperUtil.sortRequestedNetworks(approvedCaipNetworkIds, requestedCaipNetworks);
-          const filteredNetworks = sortedNetworks.filter((network) => network?.id);
+          const filteredNetworks = sortedNetworks.filter((network) => network == null ? void 0 : network.id);
           return filteredNetworks;
         },
         getAllRequestedCaipNetworks() {
@@ -29971,8 +30098,9 @@ ${originalFrames}`;
           return approvedCaipNetworkIds;
         },
         getActiveCaipNetwork(chainNamespace) {
+          var _a7, _b2;
           if (chainNamespace) {
-            return state16.chains.get(chainNamespace)?.networkState?.caipNetwork;
+            return (_b2 = (_a7 = state16.chains.get(chainNamespace)) == null ? void 0 : _a7.networkState) == null ? void 0 : _b2.caipNetwork;
           }
           return state16.activeCaipNetwork;
         },
@@ -29980,52 +30108,55 @@ ${originalFrames}`;
           return state16.activeCaipAddress;
         },
         getApprovedCaipNetworkIds(namespace) {
+          var _a7;
           const adapter = state16.chains.get(namespace);
-          const approvedCaipNetworkIds = adapter?.networkState?.approvedCaipNetworkIds || [];
+          const approvedCaipNetworkIds = ((_a7 = adapter == null ? void 0 : adapter.networkState) == null ? void 0 : _a7.approvedCaipNetworkIds) || [];
           return approvedCaipNetworkIds;
         },
         async setApprovedCaipNetworksData(namespace) {
           const networkControllerClient = ChainController.getNetworkControllerClient();
-          const data = await networkControllerClient?.getApprovedCaipNetworksData();
+          const data = await (networkControllerClient == null ? void 0 : networkControllerClient.getApprovedCaipNetworksData());
           ChainController.setAdapterNetworkState(namespace, {
-            approvedCaipNetworkIds: data?.approvedCaipNetworkIds,
-            supportsAllNetworks: data?.supportsAllNetworks
+            approvedCaipNetworkIds: data == null ? void 0 : data.approvedCaipNetworkIds,
+            supportsAllNetworks: data == null ? void 0 : data.supportsAllNetworks
           });
         },
         checkIfSupportedNetwork(namespace, caipNetworkId) {
-          const activeCaipNetworkId = caipNetworkId || state16.activeCaipNetwork?.caipNetworkId;
+          var _a7;
+          const activeCaipNetworkId = caipNetworkId || ((_a7 = state16.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           const requestedCaipNetworks = ChainController.getRequestedCaipNetworks(namespace);
           if (!requestedCaipNetworks.length) {
             return true;
           }
-          return requestedCaipNetworks?.some((network) => network.caipNetworkId === activeCaipNetworkId);
+          return requestedCaipNetworks == null ? void 0 : requestedCaipNetworks.some((network) => network.caipNetworkId === activeCaipNetworkId);
         },
         checkIfSupportedChainId(chainId) {
           if (!state16.activeChain) {
             return true;
           }
           const requestedCaipNetworks = ChainController.getRequestedCaipNetworks(state16.activeChain);
-          return requestedCaipNetworks?.some((network) => network.id === chainId);
+          return requestedCaipNetworks == null ? void 0 : requestedCaipNetworks.some((network) => network.id === chainId);
         },
         // Smart Account Network Handlers
         setSmartAccountEnabledNetworks(smartAccountEnabledNetworks, chain3) {
           ChainController.setAdapterNetworkState(chain3, { smartAccountEnabledNetworks });
         },
         checkIfSmartAccountEnabled() {
-          const networkId = NetworkUtil.caipNetworkIdToNumber(state16.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const networkId = NetworkUtil.caipNetworkIdToNumber((_a7 = state16.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           const activeChain = state16.activeChain;
           if (!activeChain || !networkId) {
             return false;
           }
           const smartAccountEnabledNetworks = ChainController.getNetworkProp("smartAccountEnabledNetworks", activeChain);
-          return Boolean(smartAccountEnabledNetworks?.includes(Number(networkId)));
+          return Boolean(smartAccountEnabledNetworks == null ? void 0 : smartAccountEnabledNetworks.includes(Number(networkId)));
         },
         showUnsupportedChainUI() {
           ModalController.open({ view: "UnsupportedChain" });
         },
         checkIfNamesSupported() {
           const activeCaipNetwork = state16.activeCaipNetwork;
-          return Boolean(activeCaipNetwork?.chainNamespace && ConstantsUtil2.NAMES_SUPPORTED_CHAIN_NAMESPACES.includes(activeCaipNetwork.chainNamespace));
+          return Boolean((activeCaipNetwork == null ? void 0 : activeCaipNetwork.chainNamespace) && ConstantsUtil2.NAMES_SUPPORTED_CHAIN_NAMESPACES.includes(activeCaipNetwork.chainNamespace));
         },
         resetNetwork(namespace) {
           ChainController.setAdapterNetworkState(namespace, {
@@ -30034,11 +30165,12 @@ ${originalFrames}`;
           });
         },
         resetAccount(chain3) {
+          var _a7, _b2;
           const chainToWrite = chain3;
           if (!chainToWrite) {
             throw new Error("Chain is required to set account prop");
           }
-          const currentAccountType = ChainController.state.chains.get(chainToWrite)?.accountState?.preferredAccountType;
+          const currentAccountType = (_b2 = (_a7 = ChainController.state.chains.get(chainToWrite)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.preferredAccountType;
           const optionsAccountType = OptionsController.state.defaultAccountTypes[chainToWrite];
           state16.activeCaipAddress = void 0;
           ChainController.setChainAccountData(chainToWrite, {
@@ -30066,6 +30198,7 @@ ${originalFrames}`;
           state16.isSwitchingNamespace = isSwitchingNamespace;
         },
         getFirstCaipNetworkSupportsAuthConnector() {
+          var _a7, _b2;
           const availableChains = [];
           let firstCaipNetwork = void 0;
           state16.chains.forEach((chain3) => {
@@ -30077,35 +30210,38 @@ ${originalFrames}`;
           });
           if (availableChains.length > 0) {
             const firstAvailableChain = availableChains[0];
-            firstCaipNetwork = firstAvailableChain ? state16.chains.get(firstAvailableChain)?.caipNetworks?.[0] : void 0;
+            firstCaipNetwork = firstAvailableChain ? (_b2 = (_a7 = state16.chains.get(firstAvailableChain)) == null ? void 0 : _a7.caipNetworks) == null ? void 0 : _b2[0] : void 0;
             return firstCaipNetwork;
           }
           return void 0;
         },
         getAccountData(chainNamespace) {
+          var _a7;
           const namespace = chainNamespace || state16.activeChain;
           if (!namespace) {
             return void 0;
           }
-          return ChainController.state.chains.get(namespace)?.accountState;
+          return (_a7 = ChainController.state.chains.get(namespace)) == null ? void 0 : _a7.accountState;
         },
         getNetworkData(chainNamespace) {
+          var _a7;
           const namespace = chainNamespace || state16.activeChain;
           if (!namespace) {
             return void 0;
           }
-          return ChainController.state.chains.get(namespace)?.networkState;
+          return (_a7 = ChainController.state.chains.get(namespace)) == null ? void 0 : _a7.networkState;
         },
         getCaipNetworkByNamespace(chainNamespace, chainId) {
+          var _a7, _b2, _c2;
           if (!chainNamespace) {
             return void 0;
           }
           const chain3 = ChainController.state.chains.get(chainNamespace);
-          const byChainId = chain3?.caipNetworks?.find((network) => network.id === chainId);
+          const byChainId = (_a7 = chain3 == null ? void 0 : chain3.caipNetworks) == null ? void 0 : _a7.find((network) => network.id === chainId);
           if (byChainId) {
             return byChainId;
           }
-          return chain3?.networkState?.caipNetwork || chain3?.caipNetworks?.[0];
+          return ((_b2 = chain3 == null ? void 0 : chain3.networkState) == null ? void 0 : _b2.caipNetwork) || ((_c2 = chain3 == null ? void 0 : chain3.caipNetworks) == null ? void 0 : _c2[0]);
         },
         /**
          * Get the requested CaipNetwork IDs for a given namespace. If namespace is not provided, all requested CaipNetwork IDs will be returned
@@ -30115,7 +30251,7 @@ ${originalFrames}`;
         getRequestedCaipNetworkIds() {
           const namespace = ConnectorController.state.filterByNamespace;
           const chains = namespace ? [state16.chains.get(namespace)] : Array.from(state16.chains.values());
-          return chains.flatMap((chain3) => chain3?.caipNetworks || []).map((caipNetwork) => caipNetwork.caipNetworkId);
+          return chains.flatMap((chain3) => (chain3 == null ? void 0 : chain3.caipNetworks) || []).map((caipNetwork) => caipNetwork.caipNetworkId);
         },
         getCaipNetworks(namespace) {
           if (namespace) {
@@ -30270,7 +30406,7 @@ ${originalFrames}`;
             });
             state17.supportedChains = supportedChains;
             return supportedChains;
-          } catch {
+          } catch (e10) {
             return state17.supportedChains;
           }
         },
@@ -30297,7 +30433,8 @@ ${originalFrames}`;
           return result;
         },
         async fetchTransactions({ account, cursor, signal, cache, chainId }) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { data: [], next: void 0 };
           }
@@ -30326,7 +30463,8 @@ ${originalFrames}`;
           return result;
         },
         async fetchSwapQuote({ amount, userAddress, from: from3, to: to4, gasPrice }) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { quotes: [] };
           }
@@ -30345,7 +30483,8 @@ ${originalFrames}`;
           });
         },
         async fetchSwapTokens({ chainId }) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { tokens: [] };
           }
@@ -30355,7 +30494,8 @@ ${originalFrames}`;
           });
         },
         async fetchTokenPrice({ addresses }) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { fungibles: [] };
           }
@@ -30382,7 +30522,8 @@ ${originalFrames}`;
           return result;
         },
         async fetchSwapAllowance({ tokenAddress, userAddress }) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { allowance: "0" };
           }
@@ -30398,8 +30539,9 @@ ${originalFrames}`;
           });
         },
         async fetchGasPrice({ chainId }) {
+          var _a7;
           const { st: st2, sv } = BlockchainApiController.getSdkProperties();
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             throw new Error("Network not supported for Gas Price");
           }
@@ -30416,7 +30558,8 @@ ${originalFrames}`;
           });
         },
         async generateSwapCalldata({ amount, from: from3, to: to4, userAddress, disableEstimate }) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             throw new Error("Network not supported for Swaps");
           }
@@ -30439,8 +30582,9 @@ ${originalFrames}`;
           });
         },
         async generateApproveCalldata({ from: from3, to: to4, userAddress }) {
+          var _a7;
           const { st: st2, sv } = BlockchainApiController.getSdkProperties();
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             throw new Error("Network not supported for Swaps");
           }
@@ -30459,8 +30603,9 @@ ${originalFrames}`;
           });
         },
         async getBalance(address2, chainId, forceUpdate) {
+          var _a7;
           const { st: st2, sv } = BlockchainApiController.getSdkProperties();
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             SnackController.showError("Token Balance Unavailable");
             return { balances: [] };
@@ -30488,7 +30633,8 @@ ${originalFrames}`;
           return balance;
         },
         async lookupEnsName(name2) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { addresses: {}, attributes: [] };
           }
@@ -30498,7 +30644,8 @@ ${originalFrames}`;
           });
         },
         async reverseLookupEnsName({ address: address2 }) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return [];
           }
@@ -30511,7 +30658,8 @@ ${originalFrames}`;
           });
         },
         async getEnsNameSuggestions(name2) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { suggestions: [] };
           }
@@ -30521,7 +30669,8 @@ ${originalFrames}`;
           });
         },
         async registerEnsName({ coinType, address: address2, message, signature }) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { success: false };
           }
@@ -30534,7 +30683,8 @@ ${originalFrames}`;
           });
         },
         async generateOnRampURL({ destinationWallets, partnerUserId, defaultNetwork, purchaseAmount, paymentAmount }) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return "";
           }
@@ -30555,7 +30705,8 @@ ${originalFrames}`;
           return response.url;
         },
         async getOnrampOptions() {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { paymentCurrencies: [], purchaseCurrencies: [] };
           }
@@ -30569,8 +30720,9 @@ ${originalFrames}`;
           }
         },
         async getOnrampQuote({ purchaseCurrency, paymentCurrency, amount, network }) {
+          var _a7;
           try {
-            const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+            const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
             if (!isSupported) {
               return null;
             }
@@ -30598,7 +30750,8 @@ ${originalFrames}`;
           }
         },
         async getSmartSessions(caipAddress) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return [];
           }
@@ -30607,7 +30760,8 @@ ${originalFrames}`;
           });
         },
         async revokeSmartSession(address2, pci, signature) {
-          const isSupported = await BlockchainApiController.isNetworkSupported(ChainController.state.activeCaipNetwork?.caipNetworkId);
+          var _a7;
+          const isSupported = await BlockchainApiController.isNetworkSupported((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId);
           if (!isSupported) {
             return { success: false };
           }
@@ -30665,7 +30819,7 @@ ${originalFrames}`;
 
   // node_modules/viem/_esm/errors/base.js
   function walk2(err2, fn3) {
-    if (fn3?.(err2))
+    if (fn3 == null ? void 0 : fn3(err2))
       return err2;
     if (err2 && typeof err2 === "object" && "cause" in err2 && err2.cause !== void 0)
       return walk2(err2.cause, fn3);
@@ -30676,15 +30830,17 @@ ${originalFrames}`;
     "node_modules/viem/_esm/errors/base.js"() {
       init_version2();
       errorConfig2 = {
-        getDocsUrl: ({ docsBaseUrl, docsPath = "", docsSlug }) => docsPath ? `${docsBaseUrl ?? "https://viem.sh"}${docsPath}${docsSlug ? `#${docsSlug}` : ""}` : void 0,
+        getDocsUrl: ({ docsBaseUrl, docsPath = "", docsSlug }) => docsPath ? `${docsBaseUrl != null ? docsBaseUrl : "https://viem.sh"}${docsPath}${docsSlug ? `#${docsSlug}` : ""}` : void 0,
         version: `viem@${version3}`
       };
       BaseError2 = class _BaseError extends Error {
         constructor(shortMessage, args = {}) {
+          var _a7, _b2;
           const details = (() => {
+            var _a8;
             if (args.cause instanceof _BaseError)
               return args.cause.details;
-            if (args.cause?.message)
+            if ((_a8 = args.cause) == null ? void 0 : _a8.message)
               return args.cause.message;
             return args.details;
           })();
@@ -30693,7 +30849,7 @@ ${originalFrames}`;
               return args.cause.docsPath || args.docsPath;
             return args.docsPath;
           })();
-          const docsUrl = errorConfig2.getDocsUrl?.({ ...args, docsPath });
+          const docsUrl = (_a7 = errorConfig2.getDocsUrl) == null ? void 0 : _a7.call(errorConfig2, { ...args, docsPath });
           const message = [
             shortMessage || "An error occurred.",
             "",
@@ -30742,7 +30898,7 @@ ${originalFrames}`;
           this.details = details;
           this.docsPath = docsPath;
           this.metaMessages = args.metaMessages;
-          this.name = args.name ?? this.name;
+          this.name = (_b2 = args.name) != null ? _b2 : this.name;
           this.shortMessage = shortMessage;
           this.version = version3;
         }
@@ -30876,13 +31032,13 @@ ${originalFrames}`;
     let maxValue;
     if (size4) {
       if (signed)
-        maxValue = (1n << BigInt(size4) * 8n - 1n) - 1n;
+        maxValue = (/* @__PURE__ */ BigInt("1") << BigInt(size4) * /* @__PURE__ */ BigInt("8") - /* @__PURE__ */ BigInt("1")) - /* @__PURE__ */ BigInt("1");
       else
-        maxValue = 2n ** (BigInt(size4) * 8n) - 1n;
+        maxValue = /* @__PURE__ */ BigInt("2") ** (BigInt(size4) * /* @__PURE__ */ BigInt("8")) - /* @__PURE__ */ BigInt("1");
     } else if (typeof value_ === "number") {
       maxValue = BigInt(Number.MAX_SAFE_INTEGER);
     }
-    const minValue = typeof maxValue === "bigint" && signed ? -maxValue - 1n : 0;
+    const minValue = typeof maxValue === "bigint" && signed ? -maxValue - /* @__PURE__ */ BigInt("1") : 0;
     if (maxValue && value > maxValue || value < minValue) {
       const suffix = typeof value_ === "bigint" ? "n" : "";
       throw new IntegerOutOfRangeError2({
@@ -30893,7 +31049,7 @@ ${originalFrames}`;
         value: `${value_}${suffix}`
       });
     }
-    const hex = `0x${(signed && value < 0 ? (1n << BigInt(size4 * 8)) + BigInt(value) : value).toString(16)}`;
+    const hex = `0x${(signed && value < 0 ? (/* @__PURE__ */ BigInt("1") << BigInt(size4 * 8)) + BigInt(value) : value).toString(16)}`;
     if (size4)
       return pad2(hex, { size: size4 });
     return hex;
@@ -31120,7 +31276,7 @@ ${originalFrames}`;
           super(shortMessage, {
             cause,
             docsPath,
-            metaMessages: metaMessages || cause?.metaMessages,
+            metaMessages: metaMessages || (cause == null ? void 0 : cause.metaMessages),
             name: name2 || "RpcError"
           });
           Object.defineProperty(this, "code", {
@@ -31130,7 +31286,7 @@ ${originalFrames}`;
             value: void 0
           });
           this.name = name2 || cause.name;
-          this.code = cause instanceof RpcRequestError ? cause.code : code2 ?? unknownErrorCode;
+          this.code = cause instanceof RpcRequestError ? cause.code : code2 != null ? code2 : unknownErrorCode;
         }
       };
       ProviderRpcError = class extends RpcError {
@@ -31566,7 +31722,8 @@ ${originalFrames}`;
       init_base3();
       ExecutionRevertedError = class extends BaseError2 {
         constructor({ cause, message } = {}) {
-          const reason = message?.replace("execution reverted: ", "")?.replace("execution reverted", "");
+          var _a7;
+          const reason = (_a7 = message == null ? void 0 : message.replace("execution reverted: ", "")) == null ? void 0 : _a7.replace("execution reverted", "");
           super(`Execution reverted ${reason ? `with reason: ${reason}` : "for an unknown reason"}.`, {
             cause,
             name: "ExecutionRevertedError"
@@ -31764,12 +31921,12 @@ ${originalFrames}`;
           data.sort(sort);
         for (let i10 = 0; i10 < scheduler.length; i10++) {
           const { resolve } = scheduler[i10];
-          resolve?.([data[i10], data]);
+          resolve == null ? void 0 : resolve([data[i10], data]);
         }
       }).catch((err2) => {
         for (let i10 = 0; i10 < scheduler.length; i10++) {
           const { reject } = scheduler[i10];
-          reject?.(err2);
+          reject == null ? void 0 : reject(err2);
         }
       });
     };
@@ -31781,7 +31938,7 @@ ${originalFrames}`;
       flush: flush2,
       async schedule(args) {
         const { promise, resolve, reject } = withResolvers();
-        const split3 = shouldSplitBatch?.([...getBatchedArgs(), args]);
+        const split3 = shouldSplitBatch == null ? void 0 : shouldSplitBatch([...getBatchedArgs(), args]);
         if (split3)
           exec();
         const hasActiveScheduler = getScheduler().length > 0;
@@ -31880,16 +32037,17 @@ ${originalFrames}`;
   // node_modules/viem/_esm/utils/buildRequest.js
   function buildRequest(request, options = {}) {
     return async (args, overrideOptions = {}) => {
+      var _a7;
       const { dedupe = false, methods, retryDelay = 150, retryCount = 3, uid: uid2 } = {
         ...options,
         ...overrideOptions
       };
       const { method } = args;
-      if (methods?.exclude?.includes(method))
+      if ((_a7 = methods == null ? void 0 : methods.exclude) == null ? void 0 : _a7.includes(method))
         throw new MethodNotSupportedRpcError(new Error("method not supported"), {
           method
         });
-      if (methods?.include && !methods.include.includes(method))
+      if ((methods == null ? void 0 : methods.include) && !methods.include.includes(method))
         throw new MethodNotSupportedRpcError(new Error("method not supported"), {
           method
         });
@@ -31993,9 +32151,10 @@ ${originalFrames}`;
         }
       }, {
         delay: ({ count, error: error2 }) => {
+          var _a8;
           if (error2 && error2 instanceof HttpRequestError) {
-            const retryAfter = error2?.headers?.get("Retry-After");
-            if (retryAfter?.match(/\d/))
+            const retryAfter = (_a8 = error2 == null ? void 0 : error2.headers) == null ? void 0 : _a8.get("Retry-After");
+            if (retryAfter == null ? void 0 : retryAfter.match(/\d/))
               return Number.parseInt(retryAfter, 10) * 1e3;
           }
           return ~~(1 << count) * retryDelay;
@@ -32065,9 +32224,9 @@ ${originalFrames}`;
               }
             }, timeout);
           }
-          resolve(await fn3({ signal: controller16?.signal || null }));
+          resolve(await fn3({ signal: (controller16 == null ? void 0 : controller16.signal) || null }));
         } catch (err2) {
-          if (err2?.name === "AbortError")
+          if ((err2 == null ? void 0 : err2.name) === "AbortError")
             reject(errorInstance);
           reject(err2);
         } finally {
@@ -32105,23 +32264,28 @@ ${originalFrames}`;
     const { url, headers: headers_url } = parseUrl(url_);
     return {
       async request(params) {
-        const { body, fetchFn = options.fetchFn ?? fetch, onRequest = options.onRequest, onResponse = options.onResponse, timeout = options.timeout ?? 1e4 } = params;
+        var _a7, _b2, _c2, _d, _e7;
+        const { body, fetchFn = (_a7 = options.fetchFn) != null ? _a7 : fetch, onRequest = options.onRequest, onResponse = options.onResponse, timeout = (_b2 = options.timeout) != null ? _b2 : 1e4 } = params;
         const fetchOptions = {
-          ...options.fetchOptions ?? {},
-          ...params.fetchOptions ?? {}
+          ...(_c2 = options.fetchOptions) != null ? _c2 : {},
+          ...(_d = params.fetchOptions) != null ? _d : {}
         };
         const { headers, method, signal: signal_ } = fetchOptions;
         try {
           const response = await withTimeout(async ({ signal }) => {
+            var _a8, _b3, _c3;
             const init = {
               ...fetchOptions,
-              body: Array.isArray(body) ? stringify5(body.map((body2) => ({
+              body: Array.isArray(body) ? stringify5(body.map((body2) => {
+                var _a9;
+                return {
+                  jsonrpc: "2.0",
+                  id: (_a9 = body2.id) != null ? _a9 : idCache.take(),
+                  ...body2
+                };
+              })) : stringify5({
                 jsonrpc: "2.0",
-                id: body2.id ?? idCache.take(),
-                ...body2
-              }))) : stringify5({
-                jsonrpc: "2.0",
-                id: body.id ?? idCache.take(),
+                id: (_a8 = body.id) != null ? _a8 : idCache.take(),
                 ...body
               }),
               headers: {
@@ -32133,8 +32297,8 @@ ${originalFrames}`;
               signal: signal_ || (timeout > 0 ? signal : null)
             };
             const request = new Request(url, init);
-            const args = await onRequest?.(request, init) ?? { ...init, url };
-            const response2 = await fetchFn(args.url ?? url, args);
+            const args = (_b3 = await (onRequest == null ? void 0 : onRequest(request, init))) != null ? _b3 : { ...init, url };
+            const response2 = await fetchFn((_c3 = args.url) != null ? _c3 : url, args);
             return response2;
           }, {
             errorInstance: new TimeoutError({ body, url }),
@@ -32144,7 +32308,7 @@ ${originalFrames}`;
           if (onResponse)
             await onResponse(response);
           let data;
-          if (response.headers.get("Content-Type")?.startsWith("application/json"))
+          if ((_e7 = response.headers.get("Content-Type")) == null ? void 0 : _e7.startsWith("application/json"))
             data = await response.json();
           else {
             data = await response.text();
@@ -32196,7 +32360,7 @@ ${originalFrames}`;
         return;
       })();
       return { url: url.toString(), ...result };
-    } catch {
+    } catch (e10) {
       return { url: url_ };
     }
   }
@@ -32238,6 +32402,7 @@ ${originalFrames}`;
   function fallback(transports_, config = {}) {
     const { key = "fallback", name: name2 = "Fallback", rank = false, shouldThrow: shouldThrow_ = shouldThrow, retryCount, retryDelay } = config;
     return (({ chain: chain3, pollingInterval = 4e3, timeout, ...rest }) => {
+      var _a7;
       let transports = transports_;
       let onResponse = () => {
       };
@@ -32278,14 +32443,14 @@ ${originalFrames}`;
                 throw err2;
               if (i10 === transports.length - 1)
                 throw err2;
-              includes ?? (includes = transports.slice(i10 + 1).some((transport3) => {
+              includes != null ? includes : includes = transports.slice(i10 + 1).some((transport3) => {
                 const { include, exclude } = transport3({ chain: chain3 }).config.methods || {};
                 if (include)
                   return include.includes(method);
                 if (exclude)
                   return !exclude.includes(method);
                 return true;
-              }));
+              });
               if (!includes)
                 throw err2;
               return fetch2(i10 + 1);
@@ -32304,7 +32469,7 @@ ${originalFrames}`;
         const rankOptions = typeof rank === "object" ? rank : {};
         rankTransports({
           chain: chain3,
-          interval: rankOptions.interval ?? pollingInterval,
+          interval: (_a7 = rankOptions.interval) != null ? _a7 : pollingInterval,
           onTransports: (transports_2) => transports = transports_2,
           ping: rankOptions.ping,
           sampleCount: rankOptions.sampleCount,
@@ -32335,7 +32500,7 @@ ${originalFrames}`;
         try {
           await (ping ? ping({ transport: transport_ }) : transport_.request({ method: "net_listening" }));
           success = 1;
-        } catch {
+        } catch (e10) {
           success = 0;
         } finally {
           end = Date.now();
@@ -32395,10 +32560,11 @@ ${originalFrames}`;
   function http(url, config = {}) {
     const { batch, fetchFn, fetchOptions, key = "http", methods, name: name2 = "HTTP JSON-RPC", onFetchRequest, onFetchResponse, retryDelay, raw } = config;
     return ({ chain: chain3, retryCount: retryCount_, timeout: timeout_ }) => {
+      var _a7, _b2;
       const { batchSize = 1e3, wait: wait2 = 0 } = typeof batch === "object" ? batch : {};
-      const retryCount = config.retryCount ?? retryCount_;
-      const timeout = timeout_ ?? config.timeout ?? 1e4;
-      const url_ = url || chain3?.rpcUrls.default.http[0];
+      const retryCount = (_a7 = config.retryCount) != null ? _a7 : retryCount_;
+      const timeout = (_b2 = timeout_ != null ? timeout_ : config.timeout) != null ? _b2 : 1e4;
+      const url_ = url || (chain3 == null ? void 0 : chain3.rpcUrls.default.http[0]);
       if (!url_)
         throw new UrlRequiredError();
       const rpcClient = getHttpRpcClient(url_, {
@@ -32620,10 +32786,11 @@ ${originalFrames}`;
          * @returns The balances of the user's tokens on the EIP155 network
          */
         async getEIP155Balances(address2, caipNetwork) {
+          var _a7, _b2;
           try {
             const chainIdHex = ERC7811Utils.getChainIdHexFromCAIP2ChainId(caipNetwork.caipNetworkId);
             const walletCapabilities = await ConnectionController.getCapabilities(address2);
-            if (!walletCapabilities?.[chainIdHex]?.["assetDiscovery"]?.supported) {
+            if (!((_b2 = (_a7 = walletCapabilities == null ? void 0 : walletCapabilities[chainIdHex]) == null ? void 0 : _a7["assetDiscovery"]) == null ? void 0 : _b2.supported)) {
               return null;
             }
             const walletGetAssetsResponse = await ConnectionController.walletGetAssets({
@@ -32705,10 +32872,11 @@ ${originalFrames}`;
           ChainController.setAccountProp("status", status, chain3);
         },
         getCaipAddress(chain3) {
+          var _a7, _b2;
           if (!chain3) {
             return void 0;
           }
-          return ChainController.state.chains.get(chain3)?.accountState?.caipAddress;
+          return (_b2 = (_a7 = ChainController.state.chains.get(chain3)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.caipAddress;
         },
         setCaipAddress(caipAddress, chain3) {
           const newAddress = caipAddress ? CoreHelperUtil.getPlainAddress(caipAddress) : void 0;
@@ -32749,18 +32917,20 @@ ${originalFrames}`;
           ChainController.setAccountProp("shouldUpdateToAddress", address2, chain3);
         },
         addAddressLabel(address2, label, chain3) {
+          var _a7, _b2;
           if (!chain3) {
             return;
           }
-          const map2 = ChainController.state.chains.get(chain3)?.accountState?.addressLabels || /* @__PURE__ */ new Map();
+          const map2 = ((_b2 = (_a7 = ChainController.state.chains.get(chain3)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.addressLabels) || /* @__PURE__ */ new Map();
           map2.set(address2, label);
           ChainController.setAccountProp("addressLabels", map2, chain3);
         },
         removeAddressLabel(address2, chain3) {
+          var _a7, _b2;
           if (!chain3) {
             return;
           }
-          const map2 = ChainController.state.chains.get(chain3)?.accountState?.addressLabels || /* @__PURE__ */ new Map();
+          const map2 = ((_b2 = (_a7 = ChainController.state.chains.get(chain3)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.addressLabels) || /* @__PURE__ */ new Map();
           map2.delete(address2);
           ChainController.setAccountProp("addressLabels", map2, chain3);
         },
@@ -32782,9 +32952,10 @@ ${originalFrames}`;
           ChainController.setAccountProp("farcasterUrl", farcasterUrl, chain3);
         },
         async fetchTokenBalance(onError) {
+          var _a7, _b2;
           state18.balanceLoading = true;
-          const chainId = ChainController.state.activeCaipNetwork?.caipNetworkId;
-          const chain3 = ChainController.state.activeCaipNetwork?.chainNamespace;
+          const chainId = (_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId;
+          const chain3 = (_b2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _b2.chainNamespace;
           const caipAddress = ChainController.state.activeCaipAddress;
           const address2 = caipAddress ? CoreHelperUtil.getPlainAddress(caipAddress) : void 0;
           if (state18.lastRetry && !CoreHelperUtil.isAllowedRetry(state18.lastRetry, 30 * ConstantsUtil2.ONE_SEC_MS)) {
@@ -32801,7 +32972,7 @@ ${originalFrames}`;
             }
           } catch (error2) {
             state18.lastRetry = Date.now();
-            onError?.(error2);
+            onError == null ? void 0 : onError(error2);
             SnackController.showError("Token Balance Unavailable");
           } finally {
             state18.balanceLoading = false;
@@ -32836,7 +33007,7 @@ ${originalFrames}`;
         onSwitchNetwork({ network, ignoreSwitchConfirmation = false }) {
           const currentNetwork = ChainController.state.activeCaipNetwork;
           const routerData = RouterController.state.data;
-          const isSameNetwork = network.id === currentNetwork?.id;
+          const isSameNetwork = network.id === (currentNetwork == null ? void 0 : currentNetwork.id);
           if (isSameNetwork) {
             return;
           }
@@ -32901,19 +33072,20 @@ ${originalFrames}`;
           return subscribeKey(state19, key, callback);
         },
         async open(options) {
-          const namespace = options?.namespace;
+          var _a7, _b2;
+          const namespace = options == null ? void 0 : options.namespace;
           const currentNamespace = ChainController.state.activeChain;
           const isSwitchingNamespace = namespace && namespace !== currentNamespace;
-          const caipAddress = ChainController.getAccountData(options?.namespace)?.caipAddress;
+          const caipAddress = (_a7 = ChainController.getAccountData(options == null ? void 0 : options.namespace)) == null ? void 0 : _a7.caipAddress;
           if (ConnectionController.state.wcBasic) {
             ApiController.prefetch({ fetchNetworkImages: false, fetchConnectorImages: false });
           } else {
             await ApiController.prefetch();
           }
-          ConnectorController.setFilterByNamespace(options?.namespace);
+          ConnectorController.setFilterByNamespace(options == null ? void 0 : options.namespace);
           ModalController.setLoading(true, namespace);
           if (namespace && isSwitchingNamespace) {
-            const namespaceNetwork = ChainController.getNetworkData(namespace)?.caipNetwork || ChainController.getRequestedCaipNetworks(namespace)[0];
+            const namespaceNetwork = ((_b2 = ChainController.getNetworkData(namespace)) == null ? void 0 : _b2.caipNetwork) || ChainController.getRequestedCaipNetworks(namespace)[0];
             if (namespaceNetwork) {
               NetworkUtil2.onSwitchNetwork({ network: namespaceNetwork, ignoreSwitchConfirmation: true });
             }
@@ -32925,7 +33097,7 @@ ${originalFrames}`;
               } else {
                 RouterController.reset("ConnectingWalletConnectBasic");
               }
-            } else if (options?.view) {
+            } else if (options == null ? void 0 : options.view) {
               RouterController.reset(options.view, options.data);
             } else if (caipAddress) {
               RouterController.reset("Account");
@@ -33058,10 +33230,11 @@ ${originalFrames}`;
           return subscribeKey(state20, key, callback);
         },
         setSelectedProvider(provider) {
+          var _a7, _b2, _c2;
           if (provider && provider.name === "meld") {
             const activeChain = ChainController.state.activeChain;
             const currency = activeChain === ConstantsUtil.CHAIN.SOLANA ? "SOL" : "USDC";
-            const address2 = activeChain ? ChainController.state.chains.get(activeChain)?.accountState?.address ?? "" : "";
+            const address2 = activeChain ? (_c2 = (_b2 = (_a7 = ChainController.state.chains.get(activeChain)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.address) != null ? _c2 : "" : "";
             const url = new URL(provider.url);
             url.searchParams.append("publicKey", MELD_PUBLIC_KEY);
             url.searchParams.append("destinationCurrencyCode", currency);
@@ -33103,16 +33276,17 @@ ${originalFrames}`;
           await ApiController.fetchTokenImages(options.purchaseCurrencies.map((currency) => currency.symbol));
         },
         async getQuote() {
+          var _a7, _b2;
           state20.quotesLoading = true;
           try {
             const quote = await BlockchainApiController.getOnrampQuote({
               purchaseCurrency: state20.purchaseCurrency,
               paymentCurrency: state20.paymentCurrency,
-              amount: state20.paymentAmount?.toString() || "0",
-              network: state20.purchaseCurrency?.symbol
+              amount: ((_a7 = state20.paymentAmount) == null ? void 0 : _a7.toString()) || "0",
+              network: (_b2 = state20.purchaseCurrency) == null ? void 0 : _b2.symbol
             });
             state20.quotesLoading = false;
-            state20.purchaseAmount = Number(quote?.purchaseAmount.amount);
+            state20.purchaseAmount = Number(quote == null ? void 0 : quote.purchaseAmount.amount);
             return quote;
           } catch (error2) {
             state20.error = error2.message;
@@ -33229,18 +33403,19 @@ ${originalFrames}`;
           return subscribeKey(state22, key, callback);
         },
         async resolveName(name2) {
+          var _a7, _b2;
           try {
             return await BlockchainApiController.lookupEnsName(name2);
           } catch (e10) {
             const error2 = e10;
-            throw new Error(error2?.reasons?.[0]?.description || "Error resolving name");
+            throw new Error(((_b2 = (_a7 = error2 == null ? void 0 : error2.reasons) == null ? void 0 : _a7[0]) == null ? void 0 : _b2.description) || "Error resolving name");
           }
         },
         async isNameRegistered(name2) {
           try {
             await BlockchainApiController.lookupEnsName(name2);
             return true;
-          } catch {
+          } catch (e10) {
             return false;
           }
         },
@@ -33333,8 +33508,9 @@ ${originalFrames}`;
           return /^[a-zA-Z0-9-]{4,}$/u.test(name2);
         },
         parseEnsApiError(error2, defaultError) {
+          var _a7, _b2;
           const ensError = error2;
-          return ensError?.reasons?.[0]?.description || defaultError;
+          return ((_b2 = (_a7 = ensError == null ? void 0 : ensError.reasons) == null ? void 0 : _a7[0]) == null ? void 0 : _b2.description) || defaultError;
         }
       };
       EnsController = withErrorBoundary(controller15);
@@ -33365,6 +33541,7 @@ ${originalFrames}`;
           return OptionsController.state.siwx;
         },
         async initializeIfEnabled(caipAddress = ChainController.getActiveCaipAddress()) {
+          var _a7, _b2, _c2, _d;
           const siwx = OptionsController.state.siwx;
           if (!(siwx && caipAddress)) {
             return;
@@ -33374,12 +33551,12 @@ ${originalFrames}`;
             return;
           }
           try {
-            if (OptionsController.state.remoteFeatures?.emailCapture) {
-              const user = ChainController.getAccountData(namespace)?.user;
+            if ((_a7 = OptionsController.state.remoteFeatures) == null ? void 0 : _a7.emailCapture) {
+              const user = (_b2 = ChainController.getAccountData(namespace)) == null ? void 0 : _b2.user;
               await ModalController.open({
                 view: "DataCapture",
                 data: {
-                  email: user?.email ?? void 0
+                  email: (_c2 = user == null ? void 0 : user.email) != null ? _c2 : void 0
                 }
               });
               return;
@@ -33401,7 +33578,7 @@ ${originalFrames}`;
               event: "SIWX_AUTH_ERROR",
               properties: this.getSIWXEventProperties()
             });
-            await ConnectionController._getClient()?.disconnect().catch(console.error);
+            await ((_d = ConnectionController._getClient()) == null ? void 0 : _d.disconnect().catch(console.error));
             RouterController.reset("Connect");
             SnackController.showError("A problem occurred while trying initialize authentication");
           }
@@ -33463,13 +33640,14 @@ ${originalFrames}`;
           }
         },
         async cancelSignMessage() {
+          var _a7;
           try {
             const siwx = this.getSIWX();
-            const isRequired = siwx?.getRequired?.();
+            const isRequired = (_a7 = siwx == null ? void 0 : siwx.getRequired) == null ? void 0 : _a7.call(siwx);
             if (isRequired) {
               const lastNetwork = ChainController.getLastConnectedSIWECaipNetwork();
               if (lastNetwork) {
-                const sessions = await siwx?.getSessions(lastNetwork?.caipNetworkId, CoreHelperUtil.getPlainAddress(ChainController.getActiveCaipAddress()) || "");
+                const sessions = await (siwx == null ? void 0 : siwx.getSessions(lastNetwork == null ? void 0 : lastNetwork.caipNetworkId, CoreHelperUtil.getPlainAddress(ChainController.getActiveCaipAddress()) || ""));
                 if (sessions && sessions.length > 0) {
                   await ChainController.switchActiveNetwork(lastNetwork);
                 } else {
@@ -33496,7 +33674,7 @@ ${originalFrames}`;
           const allRequestedCaipNetworks = ChainController.getAllRequestedCaipNetworks();
           const sessions = [];
           await Promise.all(allRequestedCaipNetworks.map(async (caipNetwork) => {
-            const session = await siwx?.getSessions(caipNetwork.caipNetworkId, CoreHelperUtil.getPlainAddress(ChainController.getActiveCaipAddress()) || "");
+            const session = await (siwx == null ? void 0 : siwx.getSessions(caipNetwork.caipNetworkId, CoreHelperUtil.getPlainAddress(ChainController.getActiveCaipAddress()) || ""));
             if (session) {
               sessions.push(...session);
             }
@@ -33505,15 +33683,15 @@ ${originalFrames}`;
         },
         async getSessions(args) {
           const siwx = OptionsController.state.siwx;
-          let address2 = args?.address;
+          let address2 = args == null ? void 0 : args.address;
           if (!address2) {
             const activeCaipAddress = ChainController.getActiveCaipAddress();
             address2 = CoreHelperUtil.getPlainAddress(activeCaipAddress);
           }
-          let network = args?.caipNetworkId;
+          let network = args == null ? void 0 : args.caipNetworkId;
           if (!network) {
             const activeCaipNetwork = ChainController.getActiveCaipNetwork();
-            network = activeCaipNetwork?.caipNetworkId;
+            network = activeCaipNetwork == null ? void 0 : activeCaipNetwork.caipNetworkId;
           }
           if (!(siwx && address2 && network)) {
             return [];
@@ -33521,20 +33699,22 @@ ${originalFrames}`;
           return siwx.getSessions(network, address2);
         },
         async isSIWXCloseDisabled() {
+          var _a7;
           const siwx = this.getSIWX();
           if (siwx) {
             const isApproveSignScreen = RouterController.state.view === "ApproveTransaction";
             const isSiwxSignMessage = RouterController.state.view === "SIWXSignMessage";
             if (isApproveSignScreen || isSiwxSignMessage) {
-              return siwx.getRequired?.() && (await this.getSessions()).length === 0;
+              return ((_a7 = siwx.getRequired) == null ? void 0 : _a7.call(siwx)) && (await this.getSessions()).length === 0;
             }
           }
           return false;
         },
         async authConnectorAuthenticate({ authConnector, chainId, socialUri, preferredAccountType, chainNamespace }) {
+          var _a7;
           const siwx = SIWXUtil.getSIWX();
           if (!siwx || !chainNamespace.includes(ConstantsUtil.CHAIN.EVM) || // Request to input email and sign message when email capture is enabled
-          OptionsController.state.remoteFeatures?.emailCapture) {
+          ((_a7 = OptionsController.state.remoteFeatures) == null ? void 0 : _a7.emailCapture)) {
             const result2 = await authConnector.connect({
               chainId,
               socialUri,
@@ -33602,13 +33782,14 @@ ${originalFrames}`;
           return addEmbeddedWalletSessionPromise;
         },
         async universalProviderAuthenticate({ universalProvider, chains, methods }) {
+          var _a7, _b2, _c2;
           const siwx = SIWXUtil.getSIWX();
           const namespaces = new Set(chains.map((chain3) => chain3.split(":")[0]));
           if (!siwx || namespaces.size !== 1 || !namespaces.has("eip155")) {
             return false;
           }
           const siwxMessage = await siwx.createMessage({
-            chainId: getActiveCaipNetwork()?.caipNetworkId || "",
+            chainId: ((_a7 = getActiveCaipNetwork()) == null ? void 0 : _a7.caipNetworkId) || "",
             accountAddress: ""
           });
           const result = await universalProvider.authenticate({
@@ -33631,10 +33812,10 @@ ${originalFrames}`;
           AccountController.setConnectedWalletInfo({
             ...result.session.peer.metadata,
             name: result.session.peer.metadata.name,
-            icon: result.session.peer.metadata.icons?.[0],
+            icon: (_b2 = result.session.peer.metadata.icons) == null ? void 0 : _b2[0],
             type: "WALLET_CONNECT"
           }, Array.from(namespaces)[0]);
-          if (result?.auths?.length) {
+          if ((_c2 = result == null ? void 0 : result.auths) == null ? void 0 : _c2.length) {
             const sessions = result.auths.map((cacao) => {
               const message = universalProvider.client.formatAuthMessage({
                 request: cacao.p,
@@ -33679,12 +33860,13 @@ ${originalFrames}`;
           return true;
         },
         getSIWXEventProperties() {
+          var _a7;
           const namespace = ChainController.state.activeChain;
           if (!namespace) {
             throw new Error("SIWXUtil:getSIWXEventProperties - namespace is required");
           }
           return {
-            network: ChainController.state.activeCaipNetwork?.caipNetworkId || "",
+            network: ((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.caipNetworkId) || "",
             isSmartAccount: getPreferredAccountType(namespace) === W3mFrameRpcConstants.ACCOUNT_TYPES.SMART_ACCOUNT
           };
         },
@@ -33931,7 +34113,7 @@ ${originalFrames}`;
           return caipTokens;
         },
         isLowerCaseMatch(str1, str2) {
-          return str1?.toLowerCase() === str2?.toLowerCase();
+          return (str1 == null ? void 0 : str1.toLowerCase()) === (str2 == null ? void 0 : str2.toLowerCase());
         },
         getActiveNamespaceConnectedToAuth() {
           const activeChain = ChainController.state.activeChain;
@@ -34159,19 +34341,21 @@ ${originalFrames}`;
           return `${ConstantsUtil.CHAIN.EVM}:${network.id}`;
         },
         getDefaultRpcUrl(caipNetwork, caipNetworkId, projectId) {
-          const defaultRpcUrl = caipNetwork.rpcUrls?.default?.http?.[0];
+          var _a7, _b2, _c2;
+          const defaultRpcUrl = (_c2 = (_b2 = (_a7 = caipNetwork.rpcUrls) == null ? void 0 : _a7.default) == null ? void 0 : _b2.http) == null ? void 0 : _c2[0];
           if (WC_HTTP_RPC_SUPPORTED_CHAINS.includes(caipNetworkId)) {
             return getBlockchainApiRpcUrl(caipNetworkId, projectId);
           }
           return defaultRpcUrl || "";
         },
         extendCaipNetwork(caipNetwork, { customNetworkImageUrls, projectId, customRpcUrls }) {
+          var _a7, _b2, _c2, _d, _e7, _f2, _g;
           const chainNamespace = this.getChainNamespace(caipNetwork);
           const caipNetworkId = this.getCaipNetworkId(caipNetwork);
-          const networkDefaultRpcUrl = caipNetwork.rpcUrls?.default?.http?.[0];
+          const networkDefaultRpcUrl = (_c2 = (_b2 = (_a7 = caipNetwork.rpcUrls) == null ? void 0 : _a7.default) == null ? void 0 : _b2.http) == null ? void 0 : _c2[0];
           const reownRpcUrl = this.getDefaultRpcUrl(caipNetwork, caipNetworkId, projectId);
-          const chainDefaultRpcUrl = caipNetwork?.rpcUrls?.["chainDefault"]?.http?.[0] || networkDefaultRpcUrl;
-          const customRpcUrlsOfNetwork = customRpcUrls?.[caipNetworkId]?.map((i10) => i10.url) || [];
+          const chainDefaultRpcUrl = ((_f2 = (_e7 = (_d = caipNetwork == null ? void 0 : caipNetwork.rpcUrls) == null ? void 0 : _d["chainDefault"]) == null ? void 0 : _e7.http) == null ? void 0 : _f2[0]) || networkDefaultRpcUrl;
+          const customRpcUrlsOfNetwork = ((_g = customRpcUrls == null ? void 0 : customRpcUrls[caipNetworkId]) == null ? void 0 : _g.map((i10) => i10.url)) || [];
           const rpcUrls = [...customRpcUrlsOfNetwork, ...reownRpcUrl ? [reownRpcUrl] : []];
           const rpcUrlsWithoutReown = [...customRpcUrlsOfNetwork];
           if (chainDefaultRpcUrl && !rpcUrlsWithoutReown.includes(chainDefaultRpcUrl)) {
@@ -34183,7 +34367,7 @@ ${originalFrames}`;
             caipNetworkId,
             assets: {
               imageId: PresetsUtil.NetworkImageIds[caipNetwork.id],
-              imageUrl: customNetworkImageUrls?.[caipNetwork.id]
+              imageUrl: customNetworkImageUrls == null ? void 0 : customNetworkImageUrls[caipNetwork.id]
             },
             rpcUrls: {
               ...caipNetwork.rpcUrls,
@@ -34204,8 +34388,9 @@ ${originalFrames}`;
           }));
         },
         getViemTransport(caipNetwork, projectId, customRpcUrls) {
+          var _a7, _b2, _c2;
           const transports = [];
-          customRpcUrls?.forEach((rpcUrl) => {
+          customRpcUrls == null ? void 0 : customRpcUrls.forEach((rpcUrl) => {
             transports.push(http(rpcUrl.url, rpcUrl.config));
           });
           if (WC_HTTP_RPC_SUPPORTED_CHAINS.includes(caipNetwork.caipNetworkId)) {
@@ -34217,7 +34402,7 @@ ${originalFrames}`;
               }
             }));
           }
-          caipNetwork?.rpcUrls?.default?.http?.forEach((rpcUrl) => {
+          (_c2 = (_b2 = (_a7 = caipNetwork == null ? void 0 : caipNetwork.rpcUrls) == null ? void 0 : _a7.default) == null ? void 0 : _b2.http) == null ? void 0 : _c2.forEach((rpcUrl) => {
             transports.push(http(rpcUrl));
           });
           return fallback(transports);
@@ -34248,12 +34433,13 @@ ${originalFrames}`;
           };
         },
         getCaipNetworkFromStorage(defaultCaipNetwork) {
+          var _a7;
           const caipNetworkIdFromStorage = StorageUtil.getActiveCaipNetworkId();
           const caipNetworks = ChainController.getAllRequestedCaipNetworks();
-          const availableNamespaces = Array.from(ChainController.state.chains?.keys() || []);
-          const namespace = caipNetworkIdFromStorage?.split(":")[0];
+          const availableNamespaces = Array.from(((_a7 = ChainController.state.chains) == null ? void 0 : _a7.keys()) || []);
+          const namespace = caipNetworkIdFromStorage == null ? void 0 : caipNetworkIdFromStorage.split(":")[0];
           const isNamespaceAvailable = namespace ? availableNamespaces.includes(namespace) : false;
-          const caipNetwork = caipNetworks?.find((cn3) => cn3.caipNetworkId === caipNetworkIdFromStorage);
+          const caipNetwork = caipNetworks == null ? void 0 : caipNetworks.find((cn3) => cn3.caipNetworkId === caipNetworkIdFromStorage);
           const isUnsupportedNetwork = isNamespaceAvailable && !caipNetwork && caipNetworkIdFromStorage;
           if (isUnsupportedNetwork) {
             return this.getUnsupportedNetwork(caipNetworkIdFromStorage);
@@ -34264,7 +34450,7 @@ ${originalFrames}`;
           if (defaultCaipNetwork) {
             return defaultCaipNetwork;
           }
-          return caipNetworks?.[0];
+          return caipNetworks == null ? void 0 : caipNetworks[0];
         }
       };
     }
@@ -34382,7 +34568,10 @@ ${originalFrames}`;
         filterOutDuplicatesByRDNS(wallets) {
           const connectors = OptionsController.state.enableEIP6963 ? ConnectorController.state.connectors : [];
           const recent = StorageUtil.getRecentWallets();
-          const connectorRDNSs = connectors.map((connector) => connector.info?.rdns).filter(Boolean);
+          const connectorRDNSs = connectors.map((connector) => {
+            var _a7;
+            return (_a7 = connector.info) == null ? void 0 : _a7.rdns;
+          }).filter(Boolean);
           const recentRDNSs = recent.map((wallet) => wallet.rdns).filter(Boolean);
           const allRDNSs = connectorRDNSs.concat(recentRDNSs);
           if (allRDNSs.includes("io.metamask.mobile") && CoreHelperUtil.isMobile()) {
@@ -34390,10 +34579,10 @@ ${originalFrames}`;
             allRDNSs[index2] = "io.metamask";
           }
           const filtered = wallets.filter((wallet) => {
-            if (wallet?.rdns && allRDNSs.includes(String(wallet.rdns))) {
+            if ((wallet == null ? void 0 : wallet.rdns) && allRDNSs.includes(String(wallet.rdns))) {
               return false;
             }
-            if (!wallet?.rdns) {
+            if (!(wallet == null ? void 0 : wallet.rdns)) {
               const hasMatchingConnectorName = connectors.some((connector) => connector.name === wallet.name);
               if (hasMatchingConnectorName) {
                 return false;
@@ -34409,7 +34598,7 @@ ${originalFrames}`;
           const connectorIds = connectors.map((connector) => connector.explorerId);
           const recentIds = recent.map((wallet) => wallet.id);
           const allIds = connectorIds.concat(recentIds);
-          const filtered = wallets.filter((wallet) => !allIds.includes(wallet?.id));
+          const filtered = wallets.filter((wallet) => !allIds.includes(wallet == null ? void 0 : wallet.id));
           return filtered;
         },
         filterOutDuplicateWallets(wallets) {
@@ -34421,22 +34610,26 @@ ${originalFrames}`;
           const { connectors } = ConnectorController.state;
           const { featuredWalletIds } = OptionsController.state;
           const installedWalletRdnsMap = connectors.filter((connector) => connector.type === "ANNOUNCED").reduce((rdnsMap, connector) => {
-            if (!connector.info?.rdns) {
+            var _a7;
+            if (!((_a7 = connector.info) == null ? void 0 : _a7.rdns)) {
               return rdnsMap;
             }
             rdnsMap[connector.info.rdns] = true;
             return rdnsMap;
           }, {});
-          const walletsWithInstallationStatus = wallets.map((wallet) => ({
-            ...wallet,
-            installed: Boolean(wallet.rdns) && Boolean(installedWalletRdnsMap[wallet.rdns ?? ""])
-          }));
+          const walletsWithInstallationStatus = wallets.map((wallet) => {
+            var _a7;
+            return {
+              ...wallet,
+              installed: Boolean(wallet.rdns) && Boolean(installedWalletRdnsMap[(_a7 = wallet.rdns) != null ? _a7 : ""])
+            };
+          });
           const sortedWallets = walletsWithInstallationStatus.sort((walletA, walletB) => {
             const installationComparison = Number(walletB.installed) - Number(walletA.installed);
             if (installationComparison !== 0) {
               return installationComparison;
             }
-            if (featuredWalletIds?.length) {
+            if (featuredWalletIds == null ? void 0 : featuredWalletIds.length) {
               const walletAFeaturedIndex = featuredWalletIds.indexOf(walletA.id);
               const walletBFeaturedIndex = featuredWalletIds.indexOf(walletB.id);
               if (walletAFeaturedIndex !== -1 && walletBFeaturedIndex !== -1) {
@@ -34454,7 +34647,8 @@ ${originalFrames}`;
           return sortedWallets;
         },
         getConnectOrderMethod(_features, _connectors) {
-          const connectMethodOrder = _features?.connectMethodsOrder || OptionsController.state.features?.connectMethodsOrder;
+          var _a7;
+          const connectMethodOrder = (_features == null ? void 0 : _features.connectMethodsOrder) || ((_a7 = OptionsController.state.features) == null ? void 0 : _a7.connectMethodsOrder);
           const connectors = _connectors || ConnectorController.state.connectors;
           if (connectMethodOrder) {
             return connectMethodOrder;
@@ -34509,7 +34703,8 @@ ${originalFrames}`;
           };
         },
         showConnector(connector) {
-          const rdns = connector.info?.rdns;
+          var _a7;
+          const rdns = (_a7 = connector.info) == null ? void 0 : _a7.rdns;
           const isRDNSExcluded = Boolean(rdns) && ApiController.state.excludedWallets.some((wallet) => Boolean(wallet.rdns) && wallet.rdns === rdns);
           const isNameExcluded = Boolean(connector.name) && ApiController.state.excludedWallets.some((wallet) => HelpersUtil.isLowerCaseMatch(wallet.name, connector.name));
           if (connector.type === "INJECTED") {
@@ -34539,7 +34734,7 @@ ${originalFrames}`;
           });
           return isConnectedWithWC;
         },
-        getConnectorTypeOrder({ recommended, featured, custom, recent, announced, injected, multiChain, external, overriddenConnectors = OptionsController.state.features?.connectorTypeOrder ?? [] }) {
+        getConnectorTypeOrder({ recommended, featured, custom, recent, announced, injected, multiChain, external, overriddenConnectors = ((_b2) => (_b2 = ((_a7) => (_a7 = OptionsController.state.features) == null ? void 0 : _a7.connectorTypeOrder)()) != null ? _b2 : [])() }) {
           const isWCEnabled = OptionsController.state.enableWalletConnect;
           const allConnectors = [
             { type: "walletConnect", isEnabled: isWCEnabled },
@@ -34569,6 +34764,7 @@ ${originalFrames}`;
           return email.length > 30 ? `${email.slice(0, -3)}...` : email;
         },
         async fetchProviderData(connector) {
+          var _a7, _b2;
           try {
             if (connector.name === "Browser Wallet" && !CoreHelperUtil.isMobile()) {
               return { accounts: [], chainId: void 0 };
@@ -34577,8 +34773,8 @@ ${originalFrames}`;
               return { accounts: [], chainId: void 0 };
             }
             const [accounts, chainId] = await Promise.all([
-              connector.provider?.request({ method: "eth_accounts" }),
-              connector.provider?.request({ method: "eth_chainId" }).then((hexChainId) => Number(hexChainId))
+              (_a7 = connector.provider) == null ? void 0 : _a7.request({ method: "eth_accounts" }),
+              (_b2 = connector.provider) == null ? void 0 : _b2.request({ method: "eth_chainId" }).then((hexChainId) => Number(hexChainId))
             ]);
             return { accounts, chainId };
           } catch (err2) {
@@ -34647,7 +34843,7 @@ ${originalFrames}`;
   });
 
   // node_modules/@lit/reactive-element/reactive-element.js
-  var i5, e3, h7, r4, o6, n6, a3, c8, l8, p5, d5, u3, f9, b5, y6;
+  var i5, e3, h7, r4, o6, n6, a3, c8, l8, p5, d5, u3, f9, b5, _a2, _b, y6, _a3;
   var init_reactive_element = __esm({
     "node_modules/@lit/reactive-element/reactive-element.js"() {
       init_css_tag();
@@ -34689,10 +34885,11 @@ ${originalFrames}`;
       } };
       f9 = (t5, s8) => !i5(t5, s8);
       b5 = { attribute: true, type: String, converter: u3, reflect: false, useDefault: false, hasChanged: f9 };
-      Symbol.metadata ?? (Symbol.metadata = /* @__PURE__ */ Symbol("metadata")), a3.litPropertyMetadata ?? (a3.litPropertyMetadata = /* @__PURE__ */ new WeakMap());
+      (_a2 = Symbol.metadata) != null ? _a2 : Symbol.metadata = /* @__PURE__ */ Symbol("metadata"), (_b = a3.litPropertyMetadata) != null ? _b : a3.litPropertyMetadata = /* @__PURE__ */ new WeakMap();
       y6 = class extends HTMLElement {
         static addInitializer(t5) {
-          this._$Ei(), (this.l ?? (this.l = [])).push(t5);
+          var _a7;
+          this._$Ei(), ((_a7 = this.l) != null ? _a7 : this.l = []).push(t5);
         }
         static get observedAttributes() {
           return this.finalize(), this._$Eh && [...this._$Eh.keys()];
@@ -34704,18 +34901,20 @@ ${originalFrames}`;
           }
         }
         static getPropertyDescriptor(t5, s8, i10) {
-          const { get: e10, set: r10 } = h7(this.prototype, t5) ?? { get() {
+          var _a7;
+          const { get: e10, set: r10 } = (_a7 = h7(this.prototype, t5)) != null ? _a7 : { get() {
             return this[s8];
           }, set(t6) {
             this[s8] = t6;
           } };
           return { get: e10, set(s9) {
-            const h12 = e10?.call(this);
-            r10?.call(this, s9), this.requestUpdate(t5, h12, i10);
+            const h12 = e10 == null ? void 0 : e10.call(this);
+            r10 == null ? void 0 : r10.call(this, s9), this.requestUpdate(t5, h12, i10);
           }, configurable: true, enumerable: true };
         }
         static getPropertyOptions(t5) {
-          return this.elementProperties.get(t5) ?? b5;
+          var _a7;
+          return (_a7 = this.elementProperties.get(t5)) != null ? _a7 : b5;
         }
         static _$Ei() {
           if (this.hasOwnProperty(d5("elementProperties"))) return;
@@ -34756,13 +34955,16 @@ ${originalFrames}`;
           super(), this._$Ep = void 0, this.isUpdatePending = false, this.hasUpdated = false, this._$Em = null, this._$Ev();
         }
         _$Ev() {
-          this._$ES = new Promise((t5) => this.enableUpdating = t5), this._$AL = /* @__PURE__ */ new Map(), this._$E_(), this.requestUpdate(), this.constructor.l?.forEach((t5) => t5(this));
+          var _a7;
+          this._$ES = new Promise((t5) => this.enableUpdating = t5), this._$AL = /* @__PURE__ */ new Map(), this._$E_(), this.requestUpdate(), (_a7 = this.constructor.l) == null ? void 0 : _a7.forEach((t5) => t5(this));
         }
         addController(t5) {
-          (this._$EO ?? (this._$EO = /* @__PURE__ */ new Set())).add(t5), void 0 !== this.renderRoot && this.isConnected && t5.hostConnected?.();
+          var _a7, _b2;
+          ((_a7 = this._$EO) != null ? _a7 : this._$EO = /* @__PURE__ */ new Set()).add(t5), void 0 !== this.renderRoot && this.isConnected && ((_b2 = t5.hostConnected) == null ? void 0 : _b2.call(t5));
         }
         removeController(t5) {
-          this._$EO?.delete(t5);
+          var _a7;
+          (_a7 = this._$EO) == null ? void 0 : _a7.delete(t5);
         }
         _$E_() {
           const t5 = /* @__PURE__ */ new Map(), s8 = this.constructor.elementProperties;
@@ -34770,46 +34972,59 @@ ${originalFrames}`;
           t5.size > 0 && (this._$Ep = t5);
         }
         createRenderRoot() {
-          const t5 = this.shadowRoot ?? this.attachShadow(this.constructor.shadowRootOptions);
+          var _a7;
+          const t5 = (_a7 = this.shadowRoot) != null ? _a7 : this.attachShadow(this.constructor.shadowRootOptions);
           return S5(t5, this.constructor.elementStyles), t5;
         }
         connectedCallback() {
-          this.renderRoot ?? (this.renderRoot = this.createRenderRoot()), this.enableUpdating(true), this._$EO?.forEach((t5) => t5.hostConnected?.());
+          var _a7, _b2;
+          (_a7 = this.renderRoot) != null ? _a7 : this.renderRoot = this.createRenderRoot(), this.enableUpdating(true), (_b2 = this._$EO) == null ? void 0 : _b2.forEach((t5) => {
+            var _a8;
+            return (_a8 = t5.hostConnected) == null ? void 0 : _a8.call(t5);
+          });
         }
         enableUpdating(t5) {
         }
         disconnectedCallback() {
-          this._$EO?.forEach((t5) => t5.hostDisconnected?.());
+          var _a7;
+          (_a7 = this._$EO) == null ? void 0 : _a7.forEach((t5) => {
+            var _a8;
+            return (_a8 = t5.hostDisconnected) == null ? void 0 : _a8.call(t5);
+          });
         }
         attributeChangedCallback(t5, s8, i10) {
           this._$AK(t5, i10);
         }
         _$ET(t5, s8) {
+          var _a7;
           const i10 = this.constructor.elementProperties.get(t5), e10 = this.constructor._$Eu(t5, i10);
           if (void 0 !== e10 && true === i10.reflect) {
-            const h12 = (void 0 !== i10.converter?.toAttribute ? i10.converter : u3).toAttribute(s8, i10.type);
+            const h12 = (void 0 !== ((_a7 = i10.converter) == null ? void 0 : _a7.toAttribute) ? i10.converter : u3).toAttribute(s8, i10.type);
             this._$Em = t5, null == h12 ? this.removeAttribute(e10) : this.setAttribute(e10, h12), this._$Em = null;
           }
         }
         _$AK(t5, s8) {
+          var _a7, _b2, _c2;
           const i10 = this.constructor, e10 = i10._$Eh.get(t5);
           if (void 0 !== e10 && this._$Em !== e10) {
-            const t6 = i10.getPropertyOptions(e10), h12 = "function" == typeof t6.converter ? { fromAttribute: t6.converter } : void 0 !== t6.converter?.fromAttribute ? t6.converter : u3;
+            const t6 = i10.getPropertyOptions(e10), h12 = "function" == typeof t6.converter ? { fromAttribute: t6.converter } : void 0 !== ((_a7 = t6.converter) == null ? void 0 : _a7.fromAttribute) ? t6.converter : u3;
             this._$Em = e10;
             const r10 = h12.fromAttribute(s8, t6.type);
-            this[e10] = r10 ?? this._$Ej?.get(e10) ?? r10, this._$Em = null;
+            this[e10] = (_c2 = r10 != null ? r10 : (_b2 = this._$Ej) == null ? void 0 : _b2.get(e10)) != null ? _c2 : r10, this._$Em = null;
           }
         }
         requestUpdate(t5, s8, i10, e10 = false, h12) {
+          var _a7, _b2;
           if (void 0 !== t5) {
             const r10 = this.constructor;
-            if (false === e10 && (h12 = this[t5]), i10 ?? (i10 = r10.getPropertyOptions(t5)), !((i10.hasChanged ?? f9)(h12, s8) || i10.useDefault && i10.reflect && h12 === this._$Ej?.get(t5) && !this.hasAttribute(r10._$Eu(t5, i10)))) return;
+            if (false === e10 && (h12 = this[t5]), i10 != null ? i10 : i10 = r10.getPropertyOptions(t5), !(((_a7 = i10.hasChanged) != null ? _a7 : f9)(h12, s8) || i10.useDefault && i10.reflect && h12 === ((_b2 = this._$Ej) == null ? void 0 : _b2.get(t5)) && !this.hasAttribute(r10._$Eu(t5, i10)))) return;
             this.C(t5, s8, i10);
           }
           false === this.isUpdatePending && (this._$ES = this._$EP());
         }
         C(t5, s8, { useDefault: i10, reflect: e10, wrapped: h12 }, r10) {
-          i10 && !(this._$Ej ?? (this._$Ej = /* @__PURE__ */ new Map())).has(t5) && (this._$Ej.set(t5, r10 ?? s8 ?? this[t5]), true !== h12 || void 0 !== r10) || (this._$AL.has(t5) || (this.hasUpdated || i10 || (s8 = void 0), this._$AL.set(t5, s8)), true === e10 && this._$Em !== t5 && (this._$Eq ?? (this._$Eq = /* @__PURE__ */ new Set())).add(t5));
+          var _a7, _b2, _c2;
+          i10 && !((_a7 = this._$Ej) != null ? _a7 : this._$Ej = /* @__PURE__ */ new Map()).has(t5) && (this._$Ej.set(t5, (_b2 = r10 != null ? r10 : s8) != null ? _b2 : this[t5]), true !== h12 || void 0 !== r10) || (this._$AL.has(t5) || (this.hasUpdated || i10 || (s8 = void 0), this._$AL.set(t5, s8)), true === e10 && this._$Em !== t5 && ((_c2 = this._$Eq) != null ? _c2 : this._$Eq = /* @__PURE__ */ new Set()).add(t5));
         }
         async _$EP() {
           this.isUpdatePending = true;
@@ -34825,9 +35040,10 @@ ${originalFrames}`;
           return this.performUpdate();
         }
         performUpdate() {
+          var _a7, _b2;
           if (!this.isUpdatePending) return;
           if (!this.hasUpdated) {
-            if (this.renderRoot ?? (this.renderRoot = this.createRenderRoot()), this._$Ep) {
+            if ((_a7 = this.renderRoot) != null ? _a7 : this.renderRoot = this.createRenderRoot(), this._$Ep) {
               for (const [t7, s9] of this._$Ep) this[t7] = s9;
               this._$Ep = void 0;
             }
@@ -34840,7 +35056,10 @@ ${originalFrames}`;
           let t5 = false;
           const s8 = this._$AL;
           try {
-            t5 = this.shouldUpdate(s8), t5 ? (this.willUpdate(s8), this._$EO?.forEach((t6) => t6.hostUpdate?.()), this.update(s8)) : this._$EM();
+            t5 = this.shouldUpdate(s8), t5 ? (this.willUpdate(s8), (_b2 = this._$EO) == null ? void 0 : _b2.forEach((t6) => {
+              var _a8;
+              return (_a8 = t6.hostUpdate) == null ? void 0 : _a8.call(t6);
+            }), this.update(s8)) : this._$EM();
           } catch (s9) {
             throw t5 = false, this._$EM(), s9;
           }
@@ -34849,7 +35068,11 @@ ${originalFrames}`;
         willUpdate(t5) {
         }
         _$AE(t5) {
-          this._$EO?.forEach((t6) => t6.hostUpdated?.()), this.hasUpdated || (this.hasUpdated = true, this.firstUpdated(t5)), this.updated(t5);
+          var _a7;
+          (_a7 = this._$EO) == null ? void 0 : _a7.forEach((t6) => {
+            var _a8;
+            return (_a8 = t6.hostUpdated) == null ? void 0 : _a8.call(t6);
+          }), this.hasUpdated || (this.hasUpdated = true, this.firstUpdated(t5)), this.updated(t5);
         }
         _$EM() {
           this._$AL = /* @__PURE__ */ new Map(), this.isUpdatePending = false;
@@ -34871,7 +35094,7 @@ ${originalFrames}`;
         firstUpdated(t5) {
         }
       };
-      y6.elementStyles = [], y6.shadowRootOptions = { mode: "open" }, y6[d5("elementProperties")] = /* @__PURE__ */ new Map(), y6[d5("finalized")] = /* @__PURE__ */ new Map(), p5?.({ ReactiveElement: y6 }), (a3.reactiveElementVersions ?? (a3.reactiveElementVersions = [])).push("2.1.2");
+      y6.elementStyles = [], y6.shadowRootOptions = { mode: "open" }, y6[d5("elementProperties")] = /* @__PURE__ */ new Map(), y6[d5("finalized")] = /* @__PURE__ */ new Map(), p5 == null ? void 0 : p5({ ReactiveElement: y6 }), ((_a3 = a3.reactiveElementVersions) != null ? _a3 : a3.reactiveElementVersions = []).push("2.1.2");
     }
   });
 
@@ -34881,12 +35104,13 @@ ${originalFrames}`;
     return void 0 !== e4 ? e4.createHTML(i10) : i10;
   }
   function M5(t5, i10, s8 = t5, e10) {
+    var _a7, _b2, _c2;
     if (i10 === E6) return i10;
-    let h12 = void 0 !== e10 ? s8._$Co?.[e10] : s8._$Cl;
+    let h12 = void 0 !== e10 ? (_a7 = s8._$Co) == null ? void 0 : _a7[e10] : s8._$Cl;
     const o13 = a4(i10) ? void 0 : i10._$litDirective$;
-    return h12?.constructor !== o13 && (h12?._$AO?.(false), void 0 === o13 ? h12 = void 0 : (h12 = new o13(t5), h12._$AT(t5, s8, e10)), void 0 !== e10 ? (s8._$Co ?? (s8._$Co = []))[e10] = h12 : s8._$Cl = h12), void 0 !== h12 && (i10 = M5(t5, h12._$AS(t5, i10.values), h12, e10)), i10;
+    return (h12 == null ? void 0 : h12.constructor) !== o13 && ((_b2 = h12 == null ? void 0 : h12._$AO) == null ? void 0 : _b2.call(h12, false), void 0 === o13 ? h12 = void 0 : (h12 = new o13(t5), h12._$AT(t5, s8, e10)), void 0 !== e10 ? ((_c2 = s8._$Co) != null ? _c2 : s8._$Co = [])[e10] = h12 : s8._$Cl = h12), void 0 !== h12 && (i10 = M5(t5, h12._$AS(t5, i10.values), h12, e10)), i10;
   }
-  var t2, i6, s4, e4, h8, o7, n7, r5, l9, c9, a4, u4, d6, f10, v6, _3, m4, p6, g4, $4, y7, x6, b6, w5, T5, E6, A5, C5, P6, N13, S6, R4, k6, H3, I5, L5, z4, Z3, j5, B4, D4;
+  var t2, i6, s4, e4, h8, o7, n7, r5, l9, c9, a4, u4, d6, f10, v6, _3, m4, p6, g4, $4, y7, x6, b6, w5, T5, E6, A5, C5, P6, N13, S6, R4, k6, H3, I5, L5, z4, Z3, j5, B4, _a4, D4;
   var init_lit_html = __esm({
     "node_modules/lit-html/lit-html.js"() {
       t2 = globalThis;
@@ -34901,7 +35125,7 @@ ${originalFrames}`;
       c9 = () => l9.createComment("");
       a4 = (t5) => null === t5 || "object" != typeof t5 && "function" != typeof t5;
       u4 = Array.isArray;
-      d6 = (t5) => u4(t5) || "function" == typeof t5?.[Symbol.iterator];
+      d6 = (t5) => u4(t5) || "function" == typeof (t5 == null ? void 0 : t5[Symbol.iterator]);
       f10 = "[ 	\n\f\r]";
       v6 = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g;
       _3 = /-->/g;
@@ -34925,7 +35149,7 @@ ${originalFrames}`;
         for (let i11 = 0; i11 < s8; i11++) {
           const s9 = t5[i11];
           let a5, u5, d7 = -1, f13 = 0;
-          for (; f13 < s9.length && (c12.lastIndex = f13, u5 = c12.exec(s9), null !== u5); ) f13 = c12.lastIndex, c12 === v6 ? "!--" === u5[1] ? c12 = _3 : void 0 !== u5[1] ? c12 = m4 : void 0 !== u5[2] ? (y7.test(u5[2]) && (n13 = RegExp("</" + u5[2], "g")), c12 = p6) : void 0 !== u5[3] && (c12 = p6) : c12 === p6 ? ">" === u5[0] ? (c12 = n13 ?? v6, d7 = -1) : void 0 === u5[1] ? d7 = -2 : (d7 = c12.lastIndex - u5[2].length, a5 = u5[1], c12 = void 0 === u5[3] ? p6 : '"' === u5[3] ? $4 : g4) : c12 === $4 || c12 === g4 ? c12 = p6 : c12 === _3 || c12 === m4 ? c12 = v6 : (c12 = p6, n13 = void 0);
+          for (; f13 < s9.length && (c12.lastIndex = f13, u5 = c12.exec(s9), null !== u5); ) f13 = c12.lastIndex, c12 === v6 ? "!--" === u5[1] ? c12 = _3 : void 0 !== u5[1] ? c12 = m4 : void 0 !== u5[2] ? (y7.test(u5[2]) && (n13 = RegExp("</" + u5[2], "g")), c12 = p6) : void 0 !== u5[3] && (c12 = p6) : c12 === p6 ? ">" === u5[0] ? (c12 = n13 != null ? n13 : v6, d7 = -1) : void 0 === u5[1] ? d7 = -2 : (d7 = c12.lastIndex - u5[2].length, a5 = u5[1], c12 = void 0 === u5[3] ? p6 : '"' === u5[3] ? $4 : g4) : c12 === $4 || c12 === g4 ? c12 = p6 : c12 === _3 || c12 === m4 ? c12 = v6 : (c12 = p6, n13 = void 0);
           const x8 = c12 === p6 && t5[i11 + 1].startsWith("/>") ? " " : "";
           l10 += c12 === v6 ? s9 + r5 : d7 >= 0 ? (e10.push(a5), s9.slice(0, d7) + h8 + s9.slice(d7) + o7 + x8) : s9 + o7 + (-2 === d7 ? i11 : x8);
         }
@@ -34979,7 +35203,8 @@ ${originalFrames}`;
           return this._$AM._$AU;
         }
         u(t5) {
-          const { el: { content: i10 }, parts: s8 } = this._$AD, e10 = (t5?.creationScope ?? l9).importNode(i10, true);
+          var _a7;
+          const { el: { content: i10 }, parts: s8 } = this._$AD, e10 = ((_a7 = t5 == null ? void 0 : t5.creationScope) != null ? _a7 : l9).importNode(i10, true);
           P6.currentNode = e10;
           let h12 = P6.nextNode(), o13 = 0, n13 = 0, r10 = s8[0];
           for (; void 0 !== r10; ) {
@@ -34987,7 +35212,7 @@ ${originalFrames}`;
               let i11;
               2 === r10.type ? i11 = new k6(h12, h12.nextSibling, this, t5) : 1 === r10.type ? i11 = new r10.ctor(h12, r10.name, r10.strings, this, t5) : 6 === r10.type && (i11 = new Z3(h12, this, t5)), this._$AV.push(i11), r10 = s8[++n13];
             }
-            o13 !== r10?.index && (h12 = P6.nextNode(), o13++);
+            o13 !== (r10 == null ? void 0 : r10.index) && (h12 = P6.nextNode(), o13++);
           }
           return P6.currentNode = l9, e10;
         }
@@ -34998,15 +35223,17 @@ ${originalFrames}`;
       };
       k6 = class _k {
         get _$AU() {
-          return this._$AM?._$AU ?? this._$Cv;
+          var _a7, _b2;
+          return (_b2 = (_a7 = this._$AM) == null ? void 0 : _a7._$AU) != null ? _b2 : this._$Cv;
         }
         constructor(t5, i10, s8, e10) {
-          this.type = 2, this._$AH = A5, this._$AN = void 0, this._$AA = t5, this._$AB = i10, this._$AM = s8, this.options = e10, this._$Cv = e10?.isConnected ?? true;
+          var _a7;
+          this.type = 2, this._$AH = A5, this._$AN = void 0, this._$AA = t5, this._$AB = i10, this._$AM = s8, this.options = e10, this._$Cv = (_a7 = e10 == null ? void 0 : e10.isConnected) != null ? _a7 : true;
         }
         get parentNode() {
           let t5 = this._$AA.parentNode;
           const i10 = this._$AM;
-          return void 0 !== i10 && 11 === t5?.nodeType && (t5 = i10.parentNode), t5;
+          return void 0 !== i10 && 11 === (t5 == null ? void 0 : t5.nodeType) && (t5 = i10.parentNode), t5;
         }
         get startNode() {
           return this._$AA;
@@ -35027,8 +35254,9 @@ ${originalFrames}`;
           this._$AH !== A5 && a4(this._$AH) ? this._$AA.nextSibling.data = t5 : this.T(l9.createTextNode(t5)), this._$AH = t5;
         }
         $(t5) {
+          var _a7;
           const { values: i10, _$litType$: s8 } = t5, e10 = "number" == typeof s8 ? this._$AC(t5) : (void 0 === s8.el && (s8.el = S6.createElement(V4(s8.h, s8.h[0]), this.options)), s8);
-          if (this._$AH?._$AD === e10) this._$AH.p(i10);
+          if (((_a7 = this._$AH) == null ? void 0 : _a7._$AD) === e10) this._$AH.p(i10);
           else {
             const t6 = new R4(e10, this), s9 = t6.u(this.options);
             t6.p(i10), this.T(s9), this._$AH = t6;
@@ -35046,13 +35274,15 @@ ${originalFrames}`;
           e10 < i10.length && (this._$AR(s8 && s8._$AB.nextSibling, e10), i10.length = e10);
         }
         _$AR(t5 = this._$AA.nextSibling, s8) {
-          for (this._$AP?.(false, true, s8); t5 !== this._$AB; ) {
+          var _a7;
+          for ((_a7 = this._$AP) == null ? void 0 : _a7.call(this, false, true, s8); t5 !== this._$AB; ) {
             const s9 = i6(t5).nextSibling;
             i6(t5).remove(), t5 = s9;
           }
         }
         setConnected(t5) {
-          void 0 === this._$AM && (this._$Cv = t5, this._$AP?.(t5));
+          var _a7;
+          void 0 === this._$AM && (this._$Cv = t5, (_a7 = this._$AP) == null ? void 0 : _a7.call(this, t5));
         }
       };
       H3 = class {
@@ -35072,12 +35302,12 @@ ${originalFrames}`;
           else {
             const e11 = t5;
             let n13, r10;
-            for (t5 = h12[0], n13 = 0; n13 < h12.length - 1; n13++) r10 = M5(this, e11[s8 + n13], i10, n13), r10 === E6 && (r10 = this._$AH[n13]), o13 || (o13 = !a4(r10) || r10 !== this._$AH[n13]), r10 === A5 ? t5 = A5 : t5 !== A5 && (t5 += (r10 ?? "") + h12[n13 + 1]), this._$AH[n13] = r10;
+            for (t5 = h12[0], n13 = 0; n13 < h12.length - 1; n13++) r10 = M5(this, e11[s8 + n13], i10, n13), r10 === E6 && (r10 = this._$AH[n13]), o13 || (o13 = !a4(r10) || r10 !== this._$AH[n13]), r10 === A5 ? t5 = A5 : t5 !== A5 && (t5 += (r10 != null ? r10 : "") + h12[n13 + 1]), this._$AH[n13] = r10;
           }
           o13 && !e10 && this.j(t5);
         }
         j(t5) {
-          t5 === A5 ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, t5 ?? "");
+          t5 === A5 ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, t5 != null ? t5 : "");
         }
       };
       I5 = class extends H3 {
@@ -35101,12 +35331,14 @@ ${originalFrames}`;
           super(t5, i10, s8, e10, h12), this.type = 5;
         }
         _$AI(t5, i10 = this) {
-          if ((t5 = M5(this, t5, i10, 0) ?? A5) === E6) return;
+          var _a7;
+          if ((t5 = (_a7 = M5(this, t5, i10, 0)) != null ? _a7 : A5) === E6) return;
           const s8 = this._$AH, e10 = t5 === A5 && s8 !== A5 || t5.capture !== s8.capture || t5.once !== s8.once || t5.passive !== s8.passive, h12 = t5 !== A5 && (s8 === A5 || e10);
           e10 && this.element.removeEventListener(this.name, this, s8), h12 && this.element.addEventListener(this.name, this, t5), this._$AH = t5;
         }
         handleEvent(t5) {
-          "function" == typeof this._$AH ? this._$AH.call(this.options?.host ?? this.element, t5) : this._$AH.handleEvent(t5);
+          var _a7, _b2;
+          "function" == typeof this._$AH ? this._$AH.call((_b2 = (_a7 = this.options) == null ? void 0 : _a7.host) != null ? _b2 : this.element, t5) : this._$AH.handleEvent(t5);
         }
       };
       Z3 = class {
@@ -35122,13 +35354,14 @@ ${originalFrames}`;
       };
       j5 = { M: h8, P: o7, A: n7, C: 1, L: N13, R: R4, D: d6, V: M5, I: k6, H: H3, N: L5, U: z4, B: I5, F: Z3 };
       B4 = t2.litHtmlPolyfillSupport;
-      B4?.(S6, k6), (t2.litHtmlVersions ?? (t2.litHtmlVersions = [])).push("3.3.2");
+      B4 == null ? void 0 : B4(S6, k6), ((_a4 = t2.litHtmlVersions) != null ? _a4 : t2.litHtmlVersions = []).push("3.3.2");
       D4 = (t5, i10, s8) => {
-        const e10 = s8?.renderBefore ?? i10;
+        var _a7, _b2;
+        const e10 = (_a7 = s8 == null ? void 0 : s8.renderBefore) != null ? _a7 : i10;
         let h12 = e10._$litPart$;
         if (void 0 === h12) {
-          const t6 = s8?.renderBefore ?? null;
-          e10._$litPart$ = h12 = new k6(i10.insertBefore(c9(), t6), t6, void 0, s8 ?? {});
+          const t6 = (_b2 = s8 == null ? void 0 : s8.renderBefore) != null ? _b2 : null;
+          e10._$litPart$ = h12 = new k6(i10.insertBefore(c9(), t6), t6, void 0, s8 != null ? s8 : {});
         }
         return h12._$AI(t5), h12;
       };
@@ -35136,7 +35369,7 @@ ${originalFrames}`;
   });
 
   // node_modules/lit-element/lit-element.js
-  var s5, i7, o8;
+  var s5, i7, _a5, o8, _a6;
   var init_lit_element = __esm({
     "node_modules/lit-element/lit-element.js"() {
       init_reactive_element();
@@ -35149,28 +35382,30 @@ ${originalFrames}`;
           super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
         }
         createRenderRoot() {
-          var _a2;
+          var _a7, _b2;
           const t5 = super.createRenderRoot();
-          return (_a2 = this.renderOptions).renderBefore ?? (_a2.renderBefore = t5.firstChild), t5;
+          return (_b2 = (_a7 = this.renderOptions).renderBefore) != null ? _b2 : _a7.renderBefore = t5.firstChild, t5;
         }
         update(t5) {
           const r10 = this.render();
           this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t5), this._$Do = D4(r10, this.renderRoot, this.renderOptions);
         }
         connectedCallback() {
-          super.connectedCallback(), this._$Do?.setConnected(true);
+          var _a7;
+          super.connectedCallback(), (_a7 = this._$Do) == null ? void 0 : _a7.setConnected(true);
         }
         disconnectedCallback() {
-          super.disconnectedCallback(), this._$Do?.setConnected(false);
+          var _a7;
+          super.disconnectedCallback(), (_a7 = this._$Do) == null ? void 0 : _a7.setConnected(false);
         }
         render() {
           return E6;
         }
       };
-      i7._$litElement$ = true, i7["finalized"] = true, s5.litElementHydrateSupport?.({ LitElement: i7 });
+      i7._$litElement$ = true, i7["finalized"] = true, (_a5 = s5.litElementHydrateSupport) == null ? void 0 : _a5.call(s5, { LitElement: i7 });
       o8 = s5.litElementPolyfillSupport;
-      o8?.({ LitElement: i7 });
-      (s5.litElementVersions ?? (s5.litElementVersions = [])).push("4.2.2");
+      o8 == null ? void 0 : o8({ LitElement: i7 });
+      ((_a6 = s5.litElementVersions) != null ? _a6 : s5.litElementVersions = []).push("4.2.2");
     }
   });
 
@@ -35275,11 +35510,11 @@ ${originalFrames}`;
       }
       :root {
         --w3m-modal-width: 360px;
-        --w3m-color-mix-strength: ${r3(themeVariables?.["--w3m-color-mix-strength"] ? `${themeVariables["--w3m-color-mix-strength"]}%` : "0%")};
-        --w3m-font-family: ${r3(themeVariables?.["--w3m-font-family"] || "Inter, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;")};
-        --w3m-font-size-master: ${r3(themeVariables?.["--w3m-font-size-master"] || "10px")};
-        --w3m-border-radius-master: ${r3(themeVariables?.["--w3m-border-radius-master"] || "4px")};
-        --w3m-z-index: ${r3(themeVariables?.["--w3m-z-index"] || 999)};
+        --w3m-color-mix-strength: ${r3((themeVariables == null ? void 0 : themeVariables["--w3m-color-mix-strength"]) ? `${themeVariables["--w3m-color-mix-strength"]}%` : "0%")};
+        --w3m-font-family: ${r3((themeVariables == null ? void 0 : themeVariables["--w3m-font-family"]) || "Inter, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;")};
+        --w3m-font-size-master: ${r3((themeVariables == null ? void 0 : themeVariables["--w3m-font-size-master"]) || "10px")};
+        --w3m-border-radius-master: ${r3((themeVariables == null ? void 0 : themeVariables["--w3m-border-radius-master"]) || "4px")};
+        --w3m-z-index: ${r3((themeVariables == null ? void 0 : themeVariables["--w3m-z-index"]) || 999)};
 
         --wui-font-family: var(--w3m-font-family);
 
@@ -35708,7 +35943,7 @@ ${originalFrames}`;
     `,
       light: i4`
       :root {
-        --w3m-color-mix: ${r3(themeVariables?.["--w3m-color-mix"] || "#fff")};
+        --w3m-color-mix: ${r3((themeVariables == null ? void 0 : themeVariables["--w3m-color-mix"]) || "#fff")};
         --w3m-accent: ${r3(getW3mThemeVariables(themeVariables, "dark")["--w3m-accent"])};
         --w3m-default: #fff;
 
@@ -35815,7 +36050,7 @@ ${originalFrames}`;
     `,
       dark: i4`
       :root {
-        --w3m-color-mix: ${r3(themeVariables?.["--w3m-color-mix"] || "#000")};
+        --w3m-color-mix: ${r3((themeVariables == null ? void 0 : themeVariables["--w3m-color-mix"]) || "#000")};
         --w3m-accent: ${r3(getW3mThemeVariables(themeVariables, "light")["--w3m-accent"])};
         --w3m-default: #000;
 
@@ -36158,7 +36393,7 @@ ${originalFrames}`;
           const baseColor = hash2.substring(0, 6).padEnd(6, "0");
           const rgbColor = this.hexToRgb(baseColor);
           const masterBorderRadius = getComputedStyle(document.documentElement).getPropertyValue("--w3m-border-radius-master");
-          const radius = Number(masterBorderRadius?.replace("px", ""));
+          const radius = Number(masterBorderRadius == null ? void 0 : masterBorderRadius.replace("px", ""));
           const edge = 100 - 3 * radius;
           const gradientCircle = `${edge}% ${edge}% at 65% 40%`;
           const colors = [];
@@ -36196,10 +36431,11 @@ ${originalFrames}`;
           return regex2.number.test(character);
         },
         getColorTheme(theme) {
+          var _a7;
           if (theme) {
             return theme;
           } else if (typeof window !== "undefined" && window.matchMedia && typeof window.matchMedia === "function") {
-            if (window.matchMedia("(prefers-color-scheme: dark)")?.matches) {
+            if ((_a7 = window.matchMedia("(prefers-color-scheme: dark)")) == null ? void 0 : _a7.matches) {
               return "dark";
             }
             return "light";
@@ -36508,7 +36744,7 @@ ${originalFrames}`;
   var init_if_defined = __esm({
     "node_modules/lit-html/directives/if-defined.js"() {
       init_lit_html();
-      o10 = (o13) => o13 ?? A5;
+      o10 = (o13) => o13 != null ? o13 : A5;
     }
   });
 
@@ -36572,9 +36808,10 @@ ${originalFrames}`;
       init_directive();
       init_directive();
       s6 = (i10, t5) => {
+        var _a7;
         const e10 = i10._$AN;
         if (void 0 === e10) return false;
-        for (const i11 of e10) i11._$AO?.(t5, false), s6(i11, t5);
+        for (const i11 of e10) (_a7 = i11._$AO) == null ? void 0 : _a7.call(i11, t5, false), s6(i11, t5);
         return true;
       };
       o11 = (i10) => {
@@ -36582,7 +36819,7 @@ ${originalFrames}`;
         do {
           if (void 0 === (t5 = i10._$AM)) break;
           e10 = t5._$AN, e10.delete(i10), i10 = t5;
-        } while (0 === e10?.size);
+        } while (0 === (e10 == null ? void 0 : e10.size));
       };
       r9 = (i10) => {
         for (let t5; t5 = i10._$AM; i10 = t5) {
@@ -36593,7 +36830,8 @@ ${originalFrames}`;
         }
       };
       c10 = (i10) => {
-        i10.type == t4.CHILD && (i10._$AP ?? (i10._$AP = n10), i10._$AQ ?? (i10._$AQ = h9));
+        var _a7, _b2;
+        i10.type == t4.CHILD && ((_a7 = i10._$AP) != null ? _a7 : i10._$AP = n10, (_b2 = i10._$AQ) != null ? _b2 : i10._$AQ = h9);
       };
       f11 = class extends i8 {
         constructor() {
@@ -36603,7 +36841,8 @@ ${originalFrames}`;
           super._$AT(i10, t5, e10), r9(this), this.isConnected = i10._$AU;
         }
         _$AO(i10, t5 = true) {
-          i10 !== this.isConnected && (this.isConnected = i10, i10 ? this.reconnected?.() : this.disconnected?.()), t5 && (s6(this, i10), o11(this));
+          var _a7, _b2;
+          i10 !== this.isConnected && (this.isConnected = i10, i10 ? (_a7 = this.reconnected) == null ? void 0 : _a7.call(this) : (_b2 = this.disconnected) == null ? void 0 : _b2.call(this)), t5 && (s6(this, i10), o11(this));
         }
         setValue(t5) {
           if (r8(this._$Ct)) this._$Ct._$AI(t5, this);
@@ -36646,10 +36885,12 @@ ${originalFrames}`;
           return this.Y;
         }
         pause() {
-          this.Y ?? (this.Y = new Promise((t5) => this.Z = t5));
+          var _a7;
+          (_a7 = this.Y) != null ? _a7 : this.Y = new Promise((t5) => this.Z = t5);
         }
         resume() {
-          this.Z?.(), this.Y = this.Z = void 0;
+          var _a7;
+          (_a7 = this.Z) == null ? void 0 : _a7.call(this), this.Y = this.Z = void 0;
         }
       };
     }
@@ -36671,7 +36912,8 @@ ${originalFrames}`;
           super(...arguments), this._$Cwt = h10, this._$Cbt = [], this._$CK = new s7(this), this._$CX = new i9();
         }
         render(...s8) {
-          return s8.find((t5) => !n11(t5)) ?? E6;
+          var _a7;
+          return (_a7 = s8.find((t5) => !n11(t5))) != null ? _a7 : E6;
         }
         update(s8, i10) {
           const e10 = this._$Cbt;
@@ -38640,10 +38882,11 @@ ${originalFrames}`;
 
   // node_modules/@reown/appkit-ui/dist/esm/src/components/wui-icon/index.js
   async function getSvg(name2) {
+    var _a7;
     if (globalSvgCache.has(name2)) {
       return globalSvgCache.get(name2);
     }
-    const importFn = ICONS[name2] ?? ICONS.copy;
+    const importFn = (_a7 = ICONS[name2]) != null ? _a7 : ICONS.copy;
     const svgPromise = importFn();
     globalSvgCache.set(name2, svgPromise);
     return svgPromise;
@@ -38794,22 +39037,24 @@ ${originalFrames}`;
       init_directive();
       e7 = e6(class extends i8 {
         constructor(t5) {
-          if (super(t5), t5.type !== t4.ATTRIBUTE || "class" !== t5.name || t5.strings?.length > 2) throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.");
+          var _a7;
+          if (super(t5), t5.type !== t4.ATTRIBUTE || "class" !== t5.name || ((_a7 = t5.strings) == null ? void 0 : _a7.length) > 2) throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.");
         }
         render(t5) {
           return " " + Object.keys(t5).filter((s8) => t5[s8]).join(" ") + " ";
         }
         update(s8, [i10]) {
+          var _a7, _b2;
           if (void 0 === this.st) {
             this.st = /* @__PURE__ */ new Set(), void 0 !== s8.strings && (this.nt = new Set(s8.strings.join(" ").split(/\s/).filter((t5) => "" !== t5)));
-            for (const t5 in i10) i10[t5] && !this.nt?.has(t5) && this.st.add(t5);
+            for (const t5 in i10) i10[t5] && !((_a7 = this.nt) == null ? void 0 : _a7.has(t5)) && this.st.add(t5);
             return this.render(i10);
           }
           const r10 = s8.element.classList;
           for (const t5 of this.st) t5 in i10 || (r10.remove(t5), this.st.delete(t5));
           for (const t5 in i10) {
             const s9 = !!i10[t5];
-            s9 === this.st.has(t5) || this.nt?.has(t5) || (s9 ? (r10.add(t5), this.st.add(t5)) : (r10.remove(t5), this.st.delete(t5)));
+            s9 === this.st.has(t5) || ((_b2 = this.nt) == null ? void 0 : _b2.has(t5)) || (s9 ? (r10.add(t5), this.st.add(t5)) : (r10.remove(t5), this.st.delete(t5)));
           }
           return E6;
         }
@@ -39919,19 +40164,20 @@ ${originalFrames}`;
         }
         render() {
           const announcedConnectors = this.connectors.filter((connector) => connector.type === "ANNOUNCED");
-          if (!announcedConnectors?.length) {
+          if (!(announcedConnectors == null ? void 0 : announcedConnectors.length)) {
             this.style.cssText = `display: none`;
             return null;
           }
           return b6`
       <wui-flex flexDirection="column" gap="xs">
         ${announcedConnectors.filter(ConnectorUtil.showConnector).map((connector) => {
-            const connectionsByNamespace = this.connections.get(connector.chain) ?? [];
+            var _a7, _b2;
+            const connectionsByNamespace = (_a7 = this.connections.get(connector.chain)) != null ? _a7 : [];
             const isAlreadyConnected = connectionsByNamespace.some((c12) => HelpersUtil.isLowerCaseMatch(c12.connectorId, connector.id));
             return b6`
             <wui-list-wallet
               imageSrc=${o10(AssetUtil.getConnectorImage(connector))}
-              name=${connector.name ?? "Unknown"}
+              name=${(_b2 = connector.name) != null ? _b2 : "Unknown"}
               @click=${() => this.onConnector(connector)}
               tagVariant=${isAlreadyConnected ? "shade" : "success"}
               tagLabel=${isAlreadyConnected ? "connected" : "installed"}
@@ -40008,17 +40254,19 @@ ${originalFrames}`;
         }
         render() {
           const { customWallets } = OptionsController.state;
-          if (!customWallets?.length) {
+          if (!(customWallets == null ? void 0 : customWallets.length)) {
             this.style.cssText = `display: none`;
             return null;
           }
           const wallets = this.filterOutDuplicateWallets(customWallets);
           const hasWcConnection = ConnectionController.hasAnyConnection(ConstantsUtil.CONNECTOR_ID.WALLET_CONNECT);
           return b6`<wui-flex flexDirection="column" gap="xs">
-      ${wallets.map((wallet) => b6`
+      ${wallets.map((wallet) => {
+            var _a7;
+            return b6`
           <wui-list-wallet
             imageSrc=${o10(AssetUtil.getWalletImage(wallet))}
-            name=${wallet.name ?? "Unknown"}
+            name=${(_a7 = wallet.name) != null ? _a7 : "Unknown"}
             @click=${() => this.onConnectWallet(wallet)}
             data-testid=${`wallet-selector-${wallet.id}`}
             tabIdx=${o10(this.tabIdx)}
@@ -40026,19 +40274,23 @@ ${originalFrames}`;
             ?disabled=${hasWcConnection}
           >
           </wui-list-wallet>
-        `)}
+        `;
+          })}
     </wui-flex>`;
         }
         filterOutDuplicateWallets(wallets) {
           const recent = StorageUtil.getRecentWallets();
-          const connectorRDNSs = this.connectors.map((connector) => connector.info?.rdns).filter(Boolean);
+          const connectorRDNSs = this.connectors.map((connector) => {
+            var _a7;
+            return (_a7 = connector.info) == null ? void 0 : _a7.rdns;
+          }).filter(Boolean);
           const recentRDNSs = recent.map((wallet) => wallet.rdns).filter(Boolean);
           const allRDNSs = connectorRDNSs.concat(recentRDNSs);
           if (allRDNSs.includes("io.metamask.mobile") && CoreHelperUtil.isMobile()) {
             const index2 = allRDNSs.indexOf("io.metamask.mobile");
             allRDNSs[index2] = "io.metamask";
           }
-          const filtered = wallets.filter((wallet) => !allRDNSs.includes(String(wallet?.rdns)));
+          const filtered = wallets.filter((wallet) => !allRDNSs.includes(String(wallet == null ? void 0 : wallet.rdns)));
           return filtered;
         }
         onConnectWallet(wallet) {
@@ -40097,25 +40349,28 @@ ${originalFrames}`;
           const externalConnectors = this.connectors.filter((connector) => connector.type === "EXTERNAL");
           const filteredOutExcludedConnectors = externalConnectors.filter(ConnectorUtil.showConnector);
           const filteredOutCoinbaseConnectors = filteredOutExcludedConnectors.filter((connector) => connector.id !== ConstantsUtil.CONNECTOR_ID.COINBASE_SDK);
-          if (!filteredOutCoinbaseConnectors?.length) {
+          if (!(filteredOutCoinbaseConnectors == null ? void 0 : filteredOutCoinbaseConnectors.length)) {
             this.style.cssText = `display: none`;
             return null;
           }
           const hasWcConnection = ConnectionController.hasAnyConnection(ConstantsUtil.CONNECTOR_ID.WALLET_CONNECT);
           return b6`
       <wui-flex flexDirection="column" gap="xs">
-        ${filteredOutCoinbaseConnectors.map((connector) => b6`
+        ${filteredOutCoinbaseConnectors.map((connector) => {
+            var _a7;
+            return b6`
             <wui-list-wallet
               imageSrc=${o10(AssetUtil.getConnectorImage(connector))}
               .installed=${true}
-              name=${connector.name ?? "Unknown"}
+              name=${(_a7 = connector.name) != null ? _a7 : "Unknown"}
               data-testid=${`wallet-selector-external-${connector.id}`}
               @click=${() => this.onConnector(connector)}
               tabIdx=${o10(this.tabIdx)}
               ?disabled=${hasWcConnection}
             >
             </wui-list-wallet>
-          `)}
+          `;
+          })}
       </wui-flex>
     `;
         }
@@ -40167,17 +40422,20 @@ ${originalFrames}`;
           const hasWcConnection = ConnectionController.hasAnyConnection(ConstantsUtil.CONNECTOR_ID.WALLET_CONNECT);
           return b6`
       <wui-flex flexDirection="column" gap="xs">
-        ${this.wallets.map((wallet) => b6`
+        ${this.wallets.map((wallet) => {
+            var _a7;
+            return b6`
             <wui-list-wallet
               data-testid=${`wallet-selector-featured-${wallet.id}`}
               imageSrc=${o10(AssetUtil.getWalletImage(wallet))}
-              name=${wallet.name ?? "Unknown"}
+              name=${(_a7 = wallet.name) != null ? _a7 : "Unknown"}
               @click=${() => this.onConnectWallet(wallet)}
               tabIdx=${o10(this.tabIdx)}
               ?disabled=${hasWcConnection}
             >
             </wui-list-wallet>
-          `)}
+          `;
+          })}
       </wui-flex>
     `;
         }
@@ -40234,13 +40492,14 @@ ${originalFrames}`;
           return b6`
       <wui-flex flexDirection="column" gap="xs">
         ${injectedConnectors.map((connector) => {
-            const connectionsByNamespace = this.connections.get(connector.chain) ?? [];
+            var _a7, _b2;
+            const connectionsByNamespace = (_a7 = this.connections.get(connector.chain)) != null ? _a7 : [];
             const isAlreadyConnected = connectionsByNamespace.some((c12) => HelpersUtil.isLowerCaseMatch(c12.connectorId, connector.id));
             return b6`
             <wui-list-wallet
               imageSrc=${o10(AssetUtil.getConnectorImage(connector))}
               .installed=${true}
-              name=${connector.name ?? "Unknown"}
+              name=${(_b2 = connector.name) != null ? _b2 : "Unknown"}
               tagVariant=${isAlreadyConnected ? "shade" : "success"}
               tagLabel=${isAlreadyConnected ? "connected" : "installed"}
               data-testid=${`wallet-selector-${connector.id}`}
@@ -40303,17 +40562,19 @@ ${originalFrames}`;
         }
         render() {
           const multiChainConnectors = this.connectors.filter((connector) => connector.type === "MULTI_CHAIN" && connector.name !== "WalletConnect");
-          if (!multiChainConnectors?.length) {
+          if (!(multiChainConnectors == null ? void 0 : multiChainConnectors.length)) {
             this.style.cssText = `display: none`;
             return null;
           }
           return b6`
       <wui-flex flexDirection="column" gap="xs">
-        ${multiChainConnectors.map((connector) => b6`
+        ${multiChainConnectors.map((connector) => {
+            var _a7;
+            return b6`
             <wui-list-wallet
               imageSrc=${o10(AssetUtil.getConnectorImage(connector))}
               .installed=${true}
-              name=${connector.name ?? "Unknown"}
+              name=${(_a7 = connector.name) != null ? _a7 : "Unknown"}
               tagVariant="shade"
               tagLabel="multichain"
               data-testid=${`wallet-selector-${connector.id}`}
@@ -40321,7 +40582,8 @@ ${originalFrames}`;
               tabIdx=${o10(this.tabIdx)}
             >
             </wui-list-wallet>
-          `)}
+          `;
+          })}
       </wui-flex>
     `;
         }
@@ -40384,10 +40646,12 @@ ${originalFrames}`;
           const hasWcConnection = ConnectionController.hasAnyConnection(ConstantsUtil.CONNECTOR_ID.WALLET_CONNECT);
           return b6`
       <wui-flex flexDirection="column" gap="xs">
-        ${filteredRecentWallets.map((wallet) => b6`
+        ${filteredRecentWallets.map((wallet) => {
+            var _a7;
+            return b6`
             <wui-list-wallet
               imageSrc=${o10(AssetUtil.getWalletImage(wallet))}
-              name=${wallet.name ?? "Unknown"}
+              name=${(_a7 = wallet.name) != null ? _a7 : "Unknown"}
               @click=${() => this.onConnectWallet(wallet)}
               tagLabel="recent"
               tagVariant="shade"
@@ -40396,7 +40660,8 @@ ${originalFrames}`;
               ?disabled=${hasWcConnection}
             >
             </wui-list-wallet>
-          `)}
+          `;
+          })}
       </wui-flex>
     `;
         }
@@ -40490,17 +40755,20 @@ ${originalFrames}`;
           const hasWcConnection = ConnectionController.hasAnyConnection(ConstantsUtil.CONNECTOR_ID.WALLET_CONNECT);
           return b6`
       <wui-flex flexDirection="column" gap="xs">
-        ${wallets.map((wallet) => b6`
+        ${wallets.map((wallet) => {
+            var _a7;
+            return b6`
             <wui-list-wallet
               imageSrc=${o10(AssetUtil.getWalletImage(wallet))}
-              name=${wallet?.name ?? "Unknown"}
+              name=${(_a7 = wallet == null ? void 0 : wallet.name) != null ? _a7 : "Unknown"}
               @click=${() => this.onConnectWallet(wallet)}
               tabIdx=${o10(this.tabIdx)}
               ?loading=${this.loading}
               ?disabled=${hasWcConnection}
             >
             </wui-list-wallet>
-          `)}
+          `;
+          })}
       </wui-flex>
     `;
         }
@@ -40564,6 +40832,7 @@ ${originalFrames}`;
           this.unsubscribe.forEach((unsubscribe) => unsubscribe());
         }
         render() {
+          var _a7, _b2;
           if (CoreHelperUtil.isMobile()) {
             this.style.cssText = `display: none`;
             return null;
@@ -40573,12 +40842,12 @@ ${originalFrames}`;
             this.style.cssText = `display: none`;
             return null;
           }
-          const connectorImage = connector.imageUrl || this.connectorImages[connector?.imageId ?? ""];
+          const connectorImage = connector.imageUrl || this.connectorImages[(_a7 = connector == null ? void 0 : connector.imageId) != null ? _a7 : ""];
           const hasWcConnection = ConnectionController.hasAnyConnection(ConstantsUtil.CONNECTOR_ID.WALLET_CONNECT);
           return b6`
       <wui-list-wallet
         imageSrc=${o10(connectorImage)}
-        name=${connector.name ?? "Unknown"}
+        name=${(_b2 = connector.name) != null ? _b2 : "Unknown"}
         @click=${() => this.onConnector(connector)}
         tagLabel="qr code"
         tagVariant="main"
@@ -40907,13 +41176,14 @@ ${originalFrames}`;
     `;
           this.dataset["type"] = this.isDense ? "flex" : "block";
           return this.tabs.map((tab, index2) => {
+            var _a7;
             const isActive = index2 === this.activeTab;
             return b6`
         <button
           ?disabled=${this.disabled}
           @click=${() => this.onTabClick(index2)}
           data-active=${isActive}
-          data-testid="tab-${tab.label?.toLowerCase()}"
+          data-testid="tab-${(_a7 = tab.label) == null ? void 0 : _a7.toLowerCase()}"
         >
           ${this.iconTemplate(tab)}
           <wui-text variant="small-600" color="inherit"> ${tab.label} </wui-text>
@@ -40945,10 +41215,10 @@ ${originalFrames}`;
         animateTabs(index2, initialAnimation) {
           const passiveBtn = this.buttons[this.activeTab];
           const activeBtn = this.buttons[index2];
-          const passiveBtnText = passiveBtn?.querySelector("wui-text");
-          const activeBtnText = activeBtn?.querySelector("wui-text");
-          const activeBtnBounds = activeBtn?.getBoundingClientRect();
-          const activeBtnTextBounds = activeBtnText?.getBoundingClientRect();
+          const passiveBtnText = passiveBtn == null ? void 0 : passiveBtn.querySelector("wui-text");
+          const activeBtnText = activeBtn == null ? void 0 : activeBtn.querySelector("wui-text");
+          const activeBtnBounds = activeBtn == null ? void 0 : activeBtn.getBoundingClientRect();
+          const activeBtnTextBounds = activeBtnText == null ? void 0 : activeBtnText.getBoundingClientRect();
           if (passiveBtn && passiveBtnText && !initialAnimation && index2 !== this.activeTab) {
             passiveBtnText.animate([{ opacity: 0 }], {
               duration: 50,
@@ -41067,9 +41337,10 @@ ${originalFrames}`;
           return tabs;
         }
         onTabChange(index2) {
+          var _a7;
           const tab = this.platformTabs[index2];
           if (tab) {
-            this.onSelectPlatfrom?.(tab);
+            (_a7 = this.onSelectPlatfrom) == null ? void 0 : _a7.call(this, tab);
           }
         }
       };
@@ -41485,13 +41756,14 @@ ${originalFrames}`;
           this.borderRadius = "m";
         }
         render() {
+          var _a7;
           this.style.cssText = `
     --local-width: ${this.fullWidth ? "100%" : "auto"};
     --local-opacity-100: ${this.loading ? 0 : 1};
     --local-opacity-000: ${this.loading ? 1 : 0};
     --local-border-radius: var(--wui-border-radius-${this.borderRadius});
     `;
-          const textVariant = this.textVariant ?? TEXT_VARIANT_BY_SIZE[this.size];
+          const textVariant = (_a7 = this.textVariant) != null ? _a7 : TEXT_VARIANT_BY_SIZE[this.size];
           return b6`
       <button
         data-variant=${this.variant}
@@ -42137,17 +42409,20 @@ ${originalFrames}`;
           return null;
         }
         onAppStore() {
-          if (this.wallet?.app_store) {
+          var _a7;
+          if ((_a7 = this.wallet) == null ? void 0 : _a7.app_store) {
             CoreHelperUtil.openHref(this.wallet.app_store, "_blank");
           }
         }
         onPlayStore() {
-          if (this.wallet?.play_store) {
+          var _a7;
+          if ((_a7 = this.wallet) == null ? void 0 : _a7.play_store) {
             CoreHelperUtil.openHref(this.wallet.play_store, "_blank");
           }
         }
         onHomePage() {
-          if (this.wallet?.homepage) {
+          var _a7;
+          if ((_a7 = this.wallet) == null ? void 0 : _a7.homepage) {
             CoreHelperUtil.openHref(this.wallet.homepage, "_blank");
           }
         }
@@ -42258,9 +42533,10 @@ ${originalFrames}`;
       };
       W3mConnectingWidget = class extends i7 {
         constructor() {
+          var _a7, _b2, _c2, _d, _e7, _f2, _g, _h;
           super();
-          this.wallet = RouterController.state.data?.wallet;
-          this.connector = RouterController.state.data?.connector;
+          this.wallet = (_a7 = RouterController.state.data) == null ? void 0 : _a7.wallet;
+          this.connector = (_b2 = RouterController.state.data) == null ? void 0 : _b2.connector;
           this.timeout = void 0;
           this.secondaryBtnIcon = "refresh";
           this.onConnect = void 0;
@@ -42268,8 +42544,8 @@ ${originalFrames}`;
           this.onAutoConnect = void 0;
           this.isWalletConnect = true;
           this.unsubscribe = [];
-          this.imageSrc = AssetUtil.getWalletImage(this.wallet) ?? AssetUtil.getConnectorImage(this.connector);
-          this.name = this.wallet?.name ?? this.connector?.name ?? "Wallet";
+          this.imageSrc = (_c2 = AssetUtil.getWalletImage(this.wallet)) != null ? _c2 : AssetUtil.getConnectorImage(this.connector);
+          this.name = (_g = (_f2 = (_d = this.wallet) == null ? void 0 : _d.name) != null ? _f2 : (_e7 = this.connector) == null ? void 0 : _e7.name) != null ? _g : "Wallet";
           this.isRetrying = false;
           this.uri = ConnectionController.state.wcUri;
           this.error = ConnectionController.state.wcError;
@@ -42283,20 +42559,22 @@ ${originalFrames}`;
           this.onRetry = void 0;
           this.unsubscribe.push(...[
             ConnectionController.subscribeKey("wcUri", (val) => {
+              var _a8;
               this.uri = val;
               if (this.isRetrying && this.onRetry) {
                 this.isRetrying = false;
-                this.onConnect?.();
+                (_a8 = this.onConnect) == null ? void 0 : _a8.call(this);
               }
             }),
             ConnectionController.subscribeKey("wcError", (val) => this.error = val)
           ]);
           if ((CoreHelperUtil.isTelegram() || CoreHelperUtil.isSafari()) && CoreHelperUtil.isIos() && ConnectionController.state.wcUri) {
-            this.onConnect?.();
+            (_h = this.onConnect) == null ? void 0 : _h.call(this);
           }
         }
         firstUpdated() {
-          this.onAutoConnect?.();
+          var _a7;
+          (_a7 = this.onAutoConnect) == null ? void 0 : _a7.call(this);
           this.showRetry = !this.onAutoConnect;
         }
         disconnectedCallback() {
@@ -42305,7 +42583,8 @@ ${originalFrames}`;
           clearTimeout(this.timeout);
         }
         render() {
-          this.onRender?.();
+          var _a7;
+          (_a7 = this.onRender) == null ? void 0 : _a7.call(this);
           this.onShowRetry();
           const subLabel = this.error ? "Connection can be declined if a previous request is still active" : this.secondaryLabel;
           let label = "";
@@ -42380,22 +42659,24 @@ ${originalFrames}`;
     `;
         }
         onShowRetry() {
+          var _a7;
           if (this.error && !this.showRetry) {
             this.showRetry = true;
-            const retryButton = this.shadowRoot?.querySelector("wui-button");
-            retryButton?.animate([{ opacity: 0 }, { opacity: 1 }], {
+            const retryButton = (_a7 = this.shadowRoot) == null ? void 0 : _a7.querySelector("wui-button");
+            retryButton == null ? void 0 : retryButton.animate([{ opacity: 0 }, { opacity: 1 }], {
               fill: "forwards",
               easing: "ease"
             });
           }
         }
         onTryAgain() {
+          var _a7, _b2;
           ConnectionController.setWcError(false);
           if (this.onRetry) {
             this.isRetrying = true;
-            this.onRetry?.();
+            (_a7 = this.onRetry) == null ? void 0 : _a7.call(this);
           } else {
-            this.onConnect?.();
+            (_b2 = this.onConnect) == null ? void 0 : _b2.call(this);
           }
         }
         loaderTemplate() {
@@ -42409,7 +42690,7 @@ ${originalFrames}`;
               CoreHelperUtil.copyToClopboard(this.uri);
               SnackController.showSuccess("Link copied");
             }
-          } catch {
+          } catch (e10) {
             SnackController.showError("Failed to copy");
           }
         }
@@ -42466,6 +42747,7 @@ ${originalFrames}`;
       };
       W3mConnectingWcBrowser = class W3mConnectingWcBrowser2 extends W3mConnectingWidget {
         constructor() {
+          var _a7;
           super();
           if (!this.wallet) {
             throw new Error("w3m-connecting-wc-browser: No wallet provided");
@@ -42478,15 +42760,19 @@ ${originalFrames}`;
             properties: {
               name: this.wallet.name,
               platform: "browser",
-              displayIndex: this.wallet?.display_index
+              displayIndex: (_a7 = this.wallet) == null ? void 0 : _a7.display_index
             }
           });
         }
         async onConnectProxy() {
+          var _a7, _b2, _c2;
           try {
             this.error = false;
             const { connectors } = ConnectorController.state;
-            const connector = connectors.find((c12) => c12.type === "ANNOUNCED" && c12.info?.rdns === this.wallet?.rdns || c12.type === "INJECTED" || c12.name === this.wallet?.name);
+            const connector = connectors.find((c12) => {
+              var _a8, _b3, _c3;
+              return c12.type === "ANNOUNCED" && ((_a8 = c12.info) == null ? void 0 : _a8.rdns) === ((_b3 = this.wallet) == null ? void 0 : _b3.rdns) || c12.type === "INJECTED" || c12.name === ((_c3 = this.wallet) == null ? void 0 : _c3.name);
+            });
             if (connector) {
               await ConnectionController.connectExternal(connector, connector.chain);
             } else {
@@ -42498,15 +42784,15 @@ ${originalFrames}`;
               event: "CONNECT_SUCCESS",
               properties: {
                 method: "browser",
-                name: this.wallet?.name || "Unknown",
-                caipNetworkId: ChainController.getActiveCaipNetwork()?.caipNetworkId
+                name: ((_a7 = this.wallet) == null ? void 0 : _a7.name) || "Unknown",
+                caipNetworkId: (_b2 = ChainController.getActiveCaipNetwork()) == null ? void 0 : _b2.caipNetworkId
               }
             });
           } catch (error2) {
             EventsController.sendEvent({
               type: "track",
               event: "CONNECT_ERROR",
-              properties: { message: error2?.message ?? "Unknown" }
+              properties: { message: (_c2 = error2 == null ? void 0 : error2.message) != null ? _c2 : "Unknown" }
             });
             this.error = true;
           }
@@ -42533,6 +42819,7 @@ ${originalFrames}`;
       };
       W3mConnectingWcDesktop = class W3mConnectingWcDesktop2 extends W3mConnectingWidget {
         constructor() {
+          var _a7;
           super();
           if (!this.wallet) {
             throw new Error("w3m-connecting-wc-desktop: No wallet provided");
@@ -42545,18 +42832,20 @@ ${originalFrames}`;
             properties: {
               name: this.wallet.name,
               platform: "desktop",
-              displayIndex: this.wallet?.display_index
+              displayIndex: (_a7 = this.wallet) == null ? void 0 : _a7.display_index
             }
           });
         }
         onRenderProxy() {
+          var _a7;
           if (!this.ready && this.uri) {
             this.ready = true;
-            this.onConnect?.();
+            (_a7 = this.onConnect) == null ? void 0 : _a7.call(this);
           }
         }
         onConnectProxy() {
-          if (this.wallet?.desktop_link && this.uri) {
+          var _a7;
+          if (((_a7 = this.wallet) == null ? void 0 : _a7.desktop_link) && this.uri) {
             try {
               this.error = false;
               const { desktop_link, name: name2 } = this.wallet;
@@ -42564,7 +42853,7 @@ ${originalFrames}`;
               ConnectionController.setWcLinking({ name: name2, href });
               ConnectionController.setRecentWallet(this.wallet);
               CoreHelperUtil.openHref(redirect, "_blank");
-            } catch {
+            } catch (e10) {
               this.error = true;
             }
           }
@@ -42592,6 +42881,7 @@ ${originalFrames}`;
       };
       W3mConnectingWcMobile = class W3mConnectingWcMobile2 extends W3mConnectingWidget {
         constructor() {
+          var _a7;
           super();
           this.btnLabelTimeout = void 0;
           this.redirectDeeplink = void 0;
@@ -42600,7 +42890,8 @@ ${originalFrames}`;
           this.preferUniversalLinks = OptionsController.state.experimental_preferUniversalLinks;
           this.isLoading = true;
           this.onConnect = () => {
-            if (this.wallet?.mobile_link && this.uri) {
+            var _a8;
+            if (((_a8 = this.wallet) == null ? void 0 : _a8.mobile_link) && this.uri) {
               try {
                 this.error = false;
                 const { mobile_link, link_mode, name: name2 } = this.wallet;
@@ -42646,7 +42937,7 @@ ${originalFrames}`;
             properties: {
               name: this.wallet.name,
               platform: "mobile",
-              displayIndex: this.wallet?.display_index
+              displayIndex: (_a7 = this.wallet) == null ? void 0 : _a7.display_index
             }
           });
         }
@@ -42655,15 +42946,17 @@ ${originalFrames}`;
           clearTimeout(this.btnLabelTimeout);
         }
         onHandleURI() {
+          var _a7;
           this.isLoading = !this.uri;
           if (!this.ready && this.uri) {
             this.ready = true;
-            this.onConnect?.();
+            (_a7 = this.onConnect) == null ? void 0 : _a7.call(this);
           }
         }
         onTryAgain() {
+          var _a7;
           ConnectionController.setWcError(false);
-          this.onConnect?.();
+          (_a7 = this.onConnect) == null ? void 0 : _a7.call(this);
         }
       };
       __decorate34([
@@ -44883,8 +45176,9 @@ ${originalFrames}`;
           });
           const circlesToConnect = {};
           circles.forEach(([cx, cy]) => {
+            var _a7;
             if (circlesToConnect[cx]) {
-              circlesToConnect[cx]?.push(cy);
+              (_a7 = circlesToConnect[cx]) == null ? void 0 : _a7.push(cy);
             } else {
               circlesToConnect[cx] = [cy];
             }
@@ -45019,11 +45313,12 @@ ${originalFrames}`;
           this.farcaster = void 0;
         }
         render() {
+          var _a7;
           this.dataset["theme"] = this.theme;
           this.dataset["clear"] = String(this.arenaClear);
           this.style.cssText = `
      --local-size: ${this.size}px;
-     --local-icon-color: ${this.color ?? DEFAULT_ICON_COLOR}
+     --local-icon-color: ${(_a7 = this.color) != null ? _a7 : DEFAULT_ICON_COLOR}
     `;
           return b6`${this.templateVisual()} ${this.templateSvg()}`;
         }
@@ -45041,8 +45336,9 @@ ${originalFrames}`;
     `;
         }
         templateVisual() {
+          var _a7;
           if (this.imageSrc) {
-            return b6`<wui-image src=${this.imageSrc} alt=${this.alt ?? "logo"}></wui-image>`;
+            return b6`<wui-image src=${this.imageSrc} alt=${(_a7 = this.alt) != null ? _a7 : "logo"}></wui-image>`;
           }
           if (this.farcaster) {
             return b6`<wui-icon
@@ -45342,6 +45638,7 @@ ${originalFrames}`;
       };
       W3mConnectingWcQrcode = class W3mConnectingWcQrcode2 extends W3mConnectingWidget {
         constructor() {
+          var _a7, _b2, _c2;
           super();
           this.forceUpdate = () => {
             this.requestUpdate();
@@ -45351,15 +45648,16 @@ ${originalFrames}`;
             type: "track",
             event: "SELECT_WALLET",
             properties: {
-              name: this.wallet?.name ?? "WalletConnect",
+              name: (_b2 = (_a7 = this.wallet) == null ? void 0 : _a7.name) != null ? _b2 : "WalletConnect",
               platform: "qrcode",
-              displayIndex: this.wallet?.display_index
+              displayIndex: (_c2 = this.wallet) == null ? void 0 : _c2.display_index
             }
           });
         }
         disconnectedCallback() {
+          var _a7;
           super.disconnectedCallback();
-          this.unsubscribe?.forEach((unsub) => unsub());
+          (_a7 = this.unsubscribe) == null ? void 0 : _a7.forEach((unsub) => unsub());
           window.removeEventListener("resize", this.forceUpdate);
         }
         render() {
@@ -45446,8 +45744,9 @@ ${originalFrames}`;
       };
       W3mConnectingWcUnsupported = class W3mConnectingWcUnsupported2 extends i7 {
         constructor() {
+          var _a7, _b2;
           super();
-          this.wallet = RouterController.state.data?.wallet;
+          this.wallet = (_a7 = RouterController.state.data) == null ? void 0 : _a7.wallet;
           if (!this.wallet) {
             throw new Error("w3m-connecting-wc-unsupported: No wallet provided");
           }
@@ -45457,7 +45756,7 @@ ${originalFrames}`;
             properties: {
               name: this.wallet.name,
               platform: "browser",
-              displayIndex: this.wallet?.display_index
+              displayIndex: (_b2 = this.wallet) == null ? void 0 : _b2.display_index
             }
           });
         }
@@ -45503,6 +45802,7 @@ ${originalFrames}`;
       };
       W3mConnectingWcWeb = class W3mConnectingWcWeb2 extends W3mConnectingWidget {
         constructor() {
+          var _a7;
           super();
           this.isLoading = true;
           if (!this.wallet) {
@@ -45522,7 +45822,7 @@ ${originalFrames}`;
             properties: {
               name: this.wallet.name,
               platform: "web",
-              displayIndex: this.wallet?.display_index
+              displayIndex: (_a7 = this.wallet) == null ? void 0 : _a7.display_index
             }
           });
         }
@@ -45530,7 +45830,8 @@ ${originalFrames}`;
           this.isLoading = !this.uri;
         }
         onConnectProxy() {
-          if (this.wallet?.webapp_link && this.uri) {
+          var _a7;
+          if (((_a7 = this.wallet) == null ? void 0 : _a7.webapp_link) && this.uri) {
             try {
               this.error = false;
               const { webapp_link, name: name2 } = this.wallet;
@@ -45538,7 +45839,7 @@ ${originalFrames}`;
               ConnectionController.setWcLinking({ name: name2, href });
               ConnectionController.setRecentWallet(this.wallet);
               CoreHelperUtil.openHref(redirect, "_blank");
-            } catch {
+            } catch (e10) {
               this.error = true;
             }
           }
@@ -45577,8 +45878,9 @@ ${originalFrames}`;
       };
       W3mConnectingWcView = class W3mConnectingWcView2 extends i7 {
         constructor() {
+          var _a7;
           super();
-          this.wallet = RouterController.state.data?.wallet;
+          this.wallet = (_a7 = RouterController.state.data) == null ? void 0 : _a7.wallet;
           this.unsubscribe = [];
           this.platform = void 0;
           this.platforms = [];
@@ -45599,12 +45901,14 @@ ${originalFrames}`;
     `;
         }
         reownBrandingTemplate() {
-          if (!this.remoteFeatures?.reownBranding) {
+          var _a7;
+          if (!((_a7 = this.remoteFeatures) == null ? void 0 : _a7.reownBranding)) {
             return null;
           }
           return b6`<wui-ux-by-reown></wui-ux-by-reown>`;
         }
         async initializeConnection(retry = false) {
+          var _a7, _b2, _c2, _d;
           if (this.platform === "browser" || OptionsController.state.manualWCControl && !retry) {
             return;
           }
@@ -45612,7 +45916,7 @@ ${originalFrames}`;
             const { wcPairingExpiry, status } = ConnectionController.state;
             if (retry || OptionsController.state.enableEmbedded || CoreHelperUtil.isPairingExpired(wcPairingExpiry) || status === "connecting") {
               const connectionsByNamespace = ConnectionController.getConnections(ChainController.state.activeChain);
-              const isMultiWalletEnabled = this.remoteFeatures?.multiWallet;
+              const isMultiWalletEnabled = (_a7 = this.remoteFeatures) == null ? void 0 : _a7.multiWallet;
               const hasConnections = connectionsByNamespace.length > 0;
               await ConnectionController.connectWalletConnect();
               if (!this.isSiwxEnabled) {
@@ -45627,7 +45931,7 @@ ${originalFrames}`;
           } catch (error2) {
             if (error2 instanceof Error && error2.message.includes("An error occurred when attempting to switch chain") && !OptionsController.state.enableNetworkSwitch) {
               if (ChainController.state.activeChain) {
-                ChainController.setActiveCaipNetwork(CaipNetworksUtil.getUnsupportedNetwork(`${ChainController.state.activeChain}:${ChainController.state.activeCaipNetwork?.id}`));
+                ChainController.setActiveCaipNetwork(CaipNetworksUtil.getUnsupportedNetwork(`${ChainController.state.activeChain}:${(_b2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _b2.id}`));
                 ChainController.showUnsupportedChainUI();
                 return;
               }
@@ -45635,10 +45939,10 @@ ${originalFrames}`;
             EventsController.sendEvent({
               type: "track",
               event: "CONNECT_ERROR",
-              properties: { message: error2?.message ?? "Unknown" }
+              properties: { message: (_c2 = error2 == null ? void 0 : error2.message) != null ? _c2 : "Unknown" }
             });
             ConnectionController.setWcError(true);
-            SnackController.showError(error2.message ?? "Connection error");
+            SnackController.showError((_d = error2.message) != null ? _d : "Connection error");
             ConnectionController.resetWcConnection();
             RouterController.goBack();
           }
@@ -45653,8 +45957,8 @@ ${originalFrames}`;
             return;
           }
           const { mobile_link, desktop_link, webapp_link, injected, rdns } = this.wallet;
-          const injectedIds = injected?.map(({ injected_id }) => injected_id).filter(Boolean);
-          const browserIds = [...rdns ? [rdns] : injectedIds ?? []];
+          const injectedIds = injected == null ? void 0 : injected.map(({ injected_id }) => injected_id).filter(Boolean);
+          const browserIds = [...rdns ? [rdns] : injectedIds != null ? injectedIds : []];
           const isBrowser = OptionsController.state.isUniversalProvider ? false : browserIds.length;
           const hasMobileWCLink = mobile_link;
           const isWebWc = webapp_link;
@@ -45714,7 +46018,8 @@ ${originalFrames}`;
     `;
         }
         async onSelectPlatform(platform) {
-          const container = this.shadowRoot?.querySelector("div");
+          var _a7;
+          const container = (_a7 = this.shadowRoot) == null ? void 0 : _a7.querySelector("div");
           if (container) {
             await container.animate([{ opacity: 1 }, { opacity: 0 }], {
               duration: 200,
@@ -45776,7 +46081,7 @@ ${originalFrames}`;
             const { featured, recommended } = ApiController.state;
             const { customWallets } = OptionsController.state;
             const recent = StorageUtil.getRecentWallets();
-            const showConnectors = featured.length || recommended.length || customWallets?.length || recent.length;
+            const showConnectors = featured.length || recommended.length || (customWallets == null ? void 0 : customWallets.length) || recent.length;
             return b6`<wui-flex
         flexDirection="column"
         gap="xs"
@@ -45818,18 +46123,21 @@ ${originalFrames}`;
           return A5;
         }
         update(i10, [s8]) {
+          var _a7;
           const e10 = s8 !== this.G;
-          return e10 && void 0 !== this.G && this.rt(void 0), (e10 || this.lt !== this.ct) && (this.G = s8, this.ht = i10.options?.host, this.rt(this.ct = i10.element)), A5;
+          return e10 && void 0 !== this.G && this.rt(void 0), (e10 || this.lt !== this.ct) && (this.G = s8, this.ht = (_a7 = i10.options) == null ? void 0 : _a7.host, this.rt(this.ct = i10.element)), A5;
         }
         rt(t5) {
+          var _a7;
           if (this.isConnected || (t5 = void 0), "function" == typeof this.G) {
-            const i10 = this.ht ?? globalThis;
+            const i10 = (_a7 = this.ht) != null ? _a7 : globalThis;
             let s8 = o12.get(i10);
             void 0 === s8 && (s8 = /* @__PURE__ */ new WeakMap(), o12.set(i10, s8)), void 0 !== s8.get(this.G) && this.G.call(this.ht, void 0), s8.set(this.G, t5), void 0 !== t5 && this.G.call(this.ht, t5);
           } else this.G.value = t5;
         }
         get lt() {
-          return "function" == typeof this.G ? o12.get(this.ht ?? globalThis)?.get(this.G) : this.G?.value;
+          var _a7, _b2, _c2;
+          return "function" == typeof this.G ? (_b2 = o12.get((_a7 = this.ht) != null ? _a7 : globalThis)) == null ? void 0 : _b2.get(this.G) : (_c2 = this.G) == null ? void 0 : _c2.value;
         }
         disconnected() {
           this.lt === this.ct && this.rt(void 0);
@@ -45957,8 +46265,9 @@ ${originalFrames}`;
     `;
         }
         dispatchChangeEvent() {
+          var _a7;
           this.dispatchEvent(new CustomEvent("switchChange", {
-            detail: this.inputElementRef.value?.checked,
+            detail: (_a7 = this.inputElementRef.value) == null ? void 0 : _a7.checked,
             bubbles: true,
             composed: true
           }));
@@ -46387,8 +46696,9 @@ ${originalFrames}`;
           return null;
         }
         dispatchInputChangeEvent() {
+          var _a7;
           this.dispatchEvent(new CustomEvent("inputChange", {
-            detail: this.inputElementRef.value?.value,
+            detail: (_a7 = this.inputElementRef.value) == null ? void 0 : _a7.value,
             bubbles: true,
             composed: true
           }));
@@ -46481,7 +46791,7 @@ ${originalFrames}`;
         }
         clearValue() {
           const inputComponent = this.inputComponentRef.value;
-          const inputElement = inputComponent?.inputElementRef.value;
+          const inputElement = inputComponent == null ? void 0 : inputComponent.inputElementRef.value;
           if (inputElement) {
             inputElement.value = "";
             inputElement.focus();
@@ -46838,7 +47148,8 @@ ${originalFrames}`;
           this.observer.disconnect();
         }
         render() {
-          const certified = this.wallet?.badge_type === "certified";
+          var _a7, _b2;
+          const certified = ((_a7 = this.wallet) == null ? void 0 : _a7.badge_type) === "certified";
           return b6`
       <button>
         ${this.imageTemplate()}
@@ -46847,7 +47158,7 @@ ${originalFrames}`;
             variant="tiny-500"
             color="inherit"
             class=${o10(certified ? "certified" : void 0)}
-            >${this.wallet?.name}</wui-text
+            >${(_b2 = this.wallet) == null ? void 0 : _b2.name}</wui-text
           >
           ${certified ? b6`<wui-icon size="sm" name="walletConnectBrown"></wui-icon>` : null}
         </wui-flex>
@@ -46855,6 +47166,7 @@ ${originalFrames}`;
     `;
         }
         imageTemplate() {
+          var _a7, _b2;
           if (!this.visible && !this.imageSrc || this.imageLoading) {
             return this.shimmerTemplate();
           }
@@ -46862,8 +47174,8 @@ ${originalFrames}`;
       <wui-wallet-image
         size="md"
         imageSrc=${o10(this.imageSrc)}
-        name=${this.wallet?.name}
-        .installed=${this.wallet?.installed}
+        name=${(_a7 = this.wallet) == null ? void 0 : _a7.name}
+        .installed=${(_b2 = this.wallet) == null ? void 0 : _b2.installed}
         badgeSize="sm"
       >
       </wui-wallet-image>
@@ -46985,8 +47297,9 @@ ${originalFrames}`;
           this.createPaginationObserver();
         }
         disconnectedCallback() {
+          var _a7;
           this.unsubscribe.forEach((unsubscribe) => unsubscribe());
-          this.paginationObserver?.disconnect();
+          (_a7 = this.paginationObserver) == null ? void 0 : _a7.disconnect();
         }
         render() {
           return b6`
@@ -47003,8 +47316,9 @@ ${originalFrames}`;
     `;
         }
         async initialFetch() {
+          var _a7;
           this.loading = true;
-          const gridEl = this.shadowRoot?.querySelector("wui-grid");
+          const gridEl = (_a7 = this.shadowRoot) == null ? void 0 : _a7.querySelector("wui-grid");
           if (gridEl) {
             await ApiController.fetchWalletsByPage({ page: 1 });
             await gridEl.animate([{ opacity: 1 }, { opacity: 0 }], {
@@ -47026,8 +47340,9 @@ ${originalFrames}`;
       `);
         }
         getWallets() {
+          var _a7;
           const wallets = [...this.featured, ...this.recommended];
-          if (this.filteredWallets?.length > 0) {
+          if (((_a7 = this.filteredWallets) == null ? void 0 : _a7.length) > 0) {
             wallets.push(...this.filteredWallets);
           } else {
             wallets.push(...this.wallets);
@@ -47061,10 +47376,11 @@ ${originalFrames}`;
           return null;
         }
         createPaginationObserver() {
-          const loaderEl = this.shadowRoot?.querySelector(`#${PAGINATOR_ID}`);
+          var _a7;
+          const loaderEl = (_a7 = this.shadowRoot) == null ? void 0 : _a7.querySelector(`#${PAGINATOR_ID}`);
           if (loaderEl) {
             this.paginationObserver = new IntersectionObserver(([element]) => {
-              if (element?.isIntersecting && !this.loading) {
+              if ((element == null ? void 0 : element.isIntersecting) && !this.loading) {
                 const { page, count, wallets } = ApiController.state;
                 if (wallets.length < count) {
                   ApiController.fetchWalletsByPage({ page: page + 1 });
@@ -47492,8 +47808,9 @@ ${originalFrames}`;
     `;
         }
         visualTemplate() {
+          var _a7;
           if (this.variant === "image" && this.imageSrc) {
-            return b6`<wui-image src=${this.imageSrc} alt=${this.alt ?? "list item"}></wui-image>`;
+            return b6`<wui-image src=${this.imageSrc} alt=${(_a7 = this.alt) != null ? _a7 : "list item"}></wui-image>`;
           }
           if (this.iconVariant === "square" && this.icon && this.variant === "icon") {
             return b6`<wui-icon name=${this.icon}></wui-icon>`;
@@ -47594,8 +47911,9 @@ ${originalFrames}`;
       };
       W3mDownloadsView = class W3mDownloadsView2 extends i7 {
         constructor() {
+          var _a7;
           super(...arguments);
-          this.wallet = RouterController.state.data?.wallet;
+          this.wallet = (_a7 = RouterController.state.data) == null ? void 0 : _a7.wallet;
         }
         render() {
           if (!this.wallet) {
@@ -47609,7 +47927,8 @@ ${originalFrames}`;
     `;
         }
         chromeTemplate() {
-          if (!this.wallet?.chrome_store) {
+          var _a7;
+          if (!((_a7 = this.wallet) == null ? void 0 : _a7.chrome_store)) {
             return null;
           }
           return b6`<wui-list-item
@@ -47623,7 +47942,8 @@ ${originalFrames}`;
     </wui-list-item>`;
         }
         iosTemplate() {
-          if (!this.wallet?.app_store) {
+          var _a7;
+          if (!((_a7 = this.wallet) == null ? void 0 : _a7.app_store)) {
             return null;
           }
           return b6`<wui-list-item
@@ -47637,7 +47957,8 @@ ${originalFrames}`;
     </wui-list-item>`;
         }
         androidTemplate() {
-          if (!this.wallet?.play_store) {
+          var _a7;
+          if (!((_a7 = this.wallet) == null ? void 0 : _a7.play_store)) {
             return null;
           }
           return b6`<wui-list-item
@@ -47651,7 +47972,8 @@ ${originalFrames}`;
     </wui-list-item>`;
         }
         homepageTemplate() {
-          if (!this.wallet?.homepage) {
+          var _a7;
+          if (!((_a7 = this.wallet) == null ? void 0 : _a7.homepage)) {
             return null;
           }
           return b6`
@@ -47667,22 +47989,26 @@ ${originalFrames}`;
     `;
         }
         onChromeStore() {
-          if (this.wallet?.chrome_store) {
+          var _a7;
+          if ((_a7 = this.wallet) == null ? void 0 : _a7.chrome_store) {
             CoreHelperUtil.openHref(this.wallet.chrome_store, "_blank");
           }
         }
         onAppStore() {
-          if (this.wallet?.app_store) {
+          var _a7;
+          if ((_a7 = this.wallet) == null ? void 0 : _a7.app_store) {
             CoreHelperUtil.openHref(this.wallet.app_store, "_blank");
           }
         }
         onPlayStore() {
-          if (this.wallet?.play_store) {
+          var _a7;
+          if ((_a7 = this.wallet) == null ? void 0 : _a7.play_store) {
             CoreHelperUtil.openHref(this.wallet.play_store, "_blank");
           }
         }
         onHomePage() {
-          if (this.wallet?.homepage) {
+          var _a7;
+          if ((_a7 = this.wallet) == null ? void 0 : _a7.homepage) {
             CoreHelperUtil.openHref(this.wallet.homepage, "_blank");
           }
         }
@@ -47968,9 +48294,9 @@ ${originalFrames}`;
           return b6`
       <wui-alertbar
         message=${message}
-        backgroundColor=${preset?.backgroundColor}
-        iconColor=${preset?.iconColor}
-        icon=${preset?.icon}
+        backgroundColor=${preset == null ? void 0 : preset.backgroundColor}
+        iconColor=${preset == null ? void 0 : preset.iconColor}
+        icon=${preset == null ? void 0 : preset.icon}
       ></wui-alertbar>
     `;
         }
@@ -48311,12 +48637,13 @@ ${originalFrames}`;
 
   // node_modules/@reown/appkit-scaffold-ui/dist/esm/src/partials/w3m-header/index.js
   function headings() {
-    const connectorName = RouterController.state.data?.connector?.name;
-    const walletName = RouterController.state.data?.wallet?.name;
-    const networkName = RouterController.state.data?.network?.name;
-    const name2 = walletName ?? connectorName;
+    var _a7, _b2, _c2, _d, _e7, _f2, _g;
+    const connectorName = (_b2 = (_a7 = RouterController.state.data) == null ? void 0 : _a7.connector) == null ? void 0 : _b2.name;
+    const walletName = (_d = (_c2 = RouterController.state.data) == null ? void 0 : _c2.wallet) == null ? void 0 : _d.name;
+    const networkName = (_f2 = (_e7 = RouterController.state.data) == null ? void 0 : _e7.network) == null ? void 0 : _f2.name;
+    const name2 = walletName != null ? walletName : connectorName;
     const connectors = ConnectorController.getConnectors();
-    const isEmail = connectors.length === 1 && connectors[0]?.id === "w3m-email";
+    const isEmail = connectors.length === 1 && ((_g = connectors[0]) == null ? void 0 : _g.id) === "w3m-email";
     return {
       Connect: `Connect ${isEmail ? "Email" : ""} Wallet`,
       Create: "Create Wallet",
@@ -48326,8 +48653,8 @@ ${originalFrames}`;
       AllWallets: "All Wallets",
       ApproveTransaction: "Approve Transaction",
       BuyInProgress: "Buy",
-      ConnectingExternal: name2 ?? "Connect Wallet",
-      ConnectingWalletConnect: name2 ?? "WalletConnect",
+      ConnectingExternal: name2 != null ? name2 : "Connect Wallet",
+      ConnectingWalletConnect: name2 != null ? name2 : "WalletConnect",
       ConnectingWalletConnectBasic: "WalletConnect",
       ConnectingSiwe: "Sign In",
       Convert: "Convert",
@@ -48345,7 +48672,7 @@ ${originalFrames}`;
       OnRampFiatSelect: "Select Currency",
       Pay: "How you pay",
       ProfileWallets: "Wallets",
-      SwitchNetwork: networkName ?? "Switch Network",
+      SwitchNetwork: networkName != null ? networkName : "Switch Network",
       Transactions: "Activity",
       UnsupportedChain: "Switch Network",
       UpgradeEmailWallet: "Upgrade your Wallet",
@@ -48445,7 +48772,8 @@ ${originalFrames}`;
           await ModalUtil.safeClose();
         }
         rightHeaderTemplate() {
-          const isSmartSessionsEnabled = OptionsController?.state?.features?.smartSessions;
+          var _a7, _b2, _c2;
+          const isSmartSessionsEnabled = (_c2 = (_b2 = (_a7 = OptionsController) == null ? void 0 : _a7.state) == null ? void 0 : _b2.features) == null ? void 0 : _c2.smartSessions;
           if (RouterController.state.view !== "Account" || !isSmartSessionsEnabled) {
             return this.closeButtonTemplate();
           }
@@ -48484,6 +48812,7 @@ ${originalFrames}`;
     `;
         }
         leftHeaderTemplate() {
+          var _a7;
           const { view } = RouterController.state;
           const isConnectHelp = view === "Connect";
           const isEmbeddedEnable = OptionsController.state.enableEmbedded;
@@ -48496,7 +48825,7 @@ ${originalFrames}`;
             return b6`<wui-select
         id="dynamic"
         data-testid="w3m-account-select-network"
-        active-network=${o10(this.network?.name)}
+        active-network=${o10((_a7 = this.network) == null ? void 0 : _a7.name)}
         @click=${this.onNetworks.bind(this)}
         imageSrc=${o10(this.networkImage)}
       ></wui-select>`;
@@ -48525,7 +48854,10 @@ ${originalFrames}`;
         isAllowedNetworkSwitch() {
           const requestedCaipNetworks = ChainController.getAllRequestedCaipNetworks();
           const isMultiNetwork = requestedCaipNetworks ? requestedCaipNetworks.length > 1 : false;
-          const isValidNetwork = requestedCaipNetworks?.find(({ id }) => id === this.network?.id);
+          const isValidNetwork = requestedCaipNetworks == null ? void 0 : requestedCaipNetworks.find(({ id }) => {
+            var _a7;
+            return id === ((_a7 = this.network) == null ? void 0 : _a7.id);
+          });
           return isMultiNetwork || !isValidNetwork;
         }
         getPadding() {
@@ -48544,8 +48876,9 @@ ${originalFrames}`;
           this.viewDirection = direction;
         }
         async onHistoryChange() {
+          var _a7;
           const { history } = RouterController.state;
-          const buttonEl = this.shadowRoot?.querySelector("#dynamic");
+          const buttonEl = (_a7 = this.shadowRoot) == null ? void 0 : _a7.querySelector("#dynamic");
           if (history.length > 1 && !this.showBack && buttonEl) {
             await buttonEl.animate([{ opacity: 1 }, { opacity: 0 }], {
               duration: 200,
@@ -48786,13 +49119,14 @@ ${originalFrames}`;
           this.unsubscribe.forEach((unsubscribe) => unsubscribe());
         }
         render() {
+          var _a7;
           const { message, variant, svg } = SnackController.state;
           const preset = presets2[variant];
-          const { icon, iconColor } = svg ?? preset ?? {};
+          const { icon, iconColor } = (_a7 = svg != null ? svg : preset) != null ? _a7 : {};
           return b6`
       <wui-snackbar
         message=${message}
-        backgroundColor=${preset?.backgroundColor}
+        backgroundColor=${preset == null ? void 0 : preset.backgroundColor}
         iconColor=${iconColor}
         icon=${icon}
         .loading=${variant === "loading"}
@@ -49092,8 +49426,9 @@ ${originalFrames}`;
           this.unsubscribe.push(RouterController.subscribeKey("view", (val) => this.onViewChange(val)));
         }
         firstUpdated() {
+          var _a7;
           this.resizeObserver = new ResizeObserver(([content]) => {
-            const height = `${content?.contentRect.height}px`;
+            const height = `${content == null ? void 0 : content.contentRect.height}px`;
             if (this.prevHeight !== "0px") {
               this.style.setProperty("--prev-height", this.prevHeight);
               this.style.setProperty("--new-height", height);
@@ -49105,10 +49440,11 @@ ${originalFrames}`;
               this.style.animation = "unset";
             }, ConstantsUtil4.ANIMATION_DURATIONS.ModalHeight);
           });
-          this.resizeObserver?.observe(this.getWrapper());
+          (_a7 = this.resizeObserver) == null ? void 0 : _a7.observe(this.getWrapper());
         }
         disconnectedCallback() {
-          this.resizeObserver?.unobserve(this.getWrapper());
+          var _a7;
+          (_a7 = this.resizeObserver) == null ? void 0 : _a7.unobserve(this.getWrapper());
           this.unsubscribe.forEach((unsubscribe) => unsubscribe());
         }
         render() {
@@ -49246,7 +49582,8 @@ ${originalFrames}`;
           }, ConstantsUtil4.ANIMATION_DURATIONS.ViewTransition);
         }
         getWrapper() {
-          return this.shadowRoot?.querySelector("div");
+          var _a7;
+          return (_a7 = this.shadowRoot) == null ? void 0 : _a7.querySelector("div");
         }
       };
       W3mRouter.styles = styles_default44;
@@ -49457,7 +49794,8 @@ ${originalFrames}`;
             ChainController.subscribeKey("activeCaipAddress", (val) => this.onNewAddress(val)),
             OptionsController.subscribeKey("enableEmbedded", (val) => this.enableEmbedded = val),
             ConnectorController.subscribeKey("filterByNamespace", (val) => {
-              if (this.filterByNamespace !== val && !ChainController.getAccountData(val)?.caipAddress) {
+              var _a7;
+              if (this.filterByNamespace !== val && !((_a7 = ChainController.getAccountData(val)) == null ? void 0 : _a7.caipAddress)) {
                 ApiController.fetchRecommendedWallets();
                 this.filterByNamespace = val;
               }
@@ -49562,22 +49900,24 @@ ${originalFrames}`;
           }
         }
         onAddKeyboardListener() {
+          var _a7;
           this.abortController = new AbortController();
-          const card = this.shadowRoot?.querySelector("wui-card");
-          card?.focus();
+          const card = (_a7 = this.shadowRoot) == null ? void 0 : _a7.querySelector("wui-card");
+          card == null ? void 0 : card.focus();
           window.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
               this.handleClose();
             } else if (event.key === "Tab") {
               const { tagName } = event.target;
               if (tagName && !tagName.includes("W3M-") && !tagName.includes("WUI-")) {
-                card?.focus();
+                card == null ? void 0 : card.focus();
               }
             }
           }, this.abortController);
         }
         onRemoveKeyboardListener() {
-          this.abortController?.abort();
+          var _a7;
+          (_a7 = this.abortController) == null ? void 0 : _a7.abort();
           this.abortController = void 0;
         }
         async onNewAddress(caipAddress) {
@@ -49614,18 +49954,19 @@ ${originalFrames}`;
           }
         }
         onNewNetwork(nextCaipNetwork) {
+          var _a7, _b2, _c2;
           const prevCaipNetwork = this.caipNetwork;
-          const prevCaipNetworkId = prevCaipNetwork?.caipNetworkId?.toString();
-          const prevChainNamespace = prevCaipNetwork?.chainNamespace;
-          const nextNetworkId = nextCaipNetwork?.caipNetworkId?.toString();
-          const nextChainNamespace = nextCaipNetwork?.chainNamespace;
+          const prevCaipNetworkId = (_a7 = prevCaipNetwork == null ? void 0 : prevCaipNetwork.caipNetworkId) == null ? void 0 : _a7.toString();
+          const prevChainNamespace = prevCaipNetwork == null ? void 0 : prevCaipNetwork.chainNamespace;
+          const nextNetworkId = (_b2 = nextCaipNetwork == null ? void 0 : nextCaipNetwork.caipNetworkId) == null ? void 0 : _b2.toString();
+          const nextChainNamespace = nextCaipNetwork == null ? void 0 : nextCaipNetwork.chainNamespace;
           const networkIdChanged = prevCaipNetworkId !== nextNetworkId;
           const namespaceChanged = prevChainNamespace !== nextChainNamespace;
           const isNetworkChangedInSameNamespace = networkIdChanged && !namespaceChanged;
-          const wasUnsupportedNetwork = prevCaipNetwork?.name === ConstantsUtil.UNSUPPORTED_NETWORK_NAME;
+          const wasUnsupportedNetwork = (prevCaipNetwork == null ? void 0 : prevCaipNetwork.name) === ConstantsUtil.UNSUPPORTED_NETWORK_NAME;
           const isConnectingExternal = RouterController.state.view === "ConnectingExternal";
           const isInProfileWalletsView = RouterController.state.view === "ProfileWallets";
-          const isNotConnected = !ChainController.getAccountData(nextCaipNetwork?.chainNamespace)?.caipAddress;
+          const isNotConnected = !((_c2 = ChainController.getAccountData(nextCaipNetwork == null ? void 0 : nextCaipNetwork.chainNamespace)) == null ? void 0 : _c2.caipAddress);
           const isUnsupportedNetworkScreen = RouterController.state.view === "UnsupportedChain";
           const isModalOpen = ModalController.state.open;
           let shouldGoBack = false;
@@ -49699,6 +50040,77 @@ ${originalFrames}`;
     "node_modules/@reown/appkit-scaffold-ui/dist/esm/exports/w3m-modal.js"() {
       init_w3m_modal();
     }
+  });
+
+  // node_modules/@stacks/connect/dist/index.mjs
+  var dist_exports = {};
+  __export(dist_exports, {
+    AppConfig: () => v7,
+    ContractCallArgumentType: () => As2,
+    DEFAULT_PROVIDERS: () => Pe5,
+    InstanceDataStore: () => le5,
+    JsonRpcError: () => x7,
+    JsonRpcErrorCode: () => De5,
+    LOCALSTORAGE_SESSION_KEY: () => gs3,
+    LocalStorageStore: () => ge5,
+    SessionDataStore: () => z5,
+    SignatureHash: () => Ae4,
+    TransactionTypes: () => Ss,
+    UserSession: () => T6,
+    WALLET_CONNECT_PROVIDER: () => B5,
+    WalletConnect: () => ce4,
+    authenticate: () => ze4,
+    clearLocalStorage: () => Be5,
+    clearSelectedProviderId: () => clearSelectedProviderId,
+    connect: () => is2,
+    defaultAuthURL: () => en4,
+    disconnect: () => qt4,
+    getDefaultProfileUpdateRequestOptions: () => ut5,
+    getDefaultPsbtRequestOptions: () => Is,
+    getDefaultSignatureRequestOptions: () => gt5,
+    getKeys: () => Tt5,
+    getLocalStorage: () => ae4,
+    getOrCreateUserSession: () => Ke6,
+    getSelectedProvider: () => getProvider,
+    getSelectedProviderId: () => getSelectedProviderId,
+    getStacksProvider: () => S7,
+    getStxAddress: () => Lt5,
+    getUserData: () => sn4,
+    getUserSession: () => Re4,
+    hasAppPrivateKey: () => Dt4,
+    isAddressTaproot: () => Ve5,
+    isConnected: () => Zt5,
+    isMobile: () => tn3,
+    isProviderSelected: () => isProviderSelected,
+    isStacksWalletInstalled: () => dt5,
+    makeContractCallToken: () => Pt5,
+    makeContractDeployToken: () => wt5,
+    makeProfileUpdateToken: () => pt4,
+    makePsbtToken: () => ys3,
+    makeSTXTransferToken: () => ht5,
+    makeSignTransaction: () => jt4,
+    openContractCall: () => Et6,
+    openContractDeploy: () => bt4,
+    openProfileUpdateRequestPopup: () => lt5,
+    openPsbtRequestPopup: () => Ds2,
+    openSTXTransfer: () => vt5,
+    openSignTransaction: () => Ut4,
+    openSignatureRequestPopup: () => ft4,
+    openStructuredDataSignatureRequestPopup: () => xt5,
+    request: () => w6,
+    requestRaw: () => U4,
+    setSelectedProviderId: () => setSelectedProviderId,
+    showBlockstackConnect: () => Co4,
+    showConnect: () => zt5,
+    showContractCall: () => fo4,
+    showContractDeploy: () => mo4,
+    showProfileUpdate: () => yo4,
+    showSTXTransfer: () => Ao4,
+    showSignMessage: () => xo4,
+    showSignStructuredMessage: () => No4,
+    showSignTransaction: () => Io4,
+    signMessage: () => St6,
+    signStructuredMessage: () => It5
   });
 
   // node_modules/@stacks/common/dist/esm/errors.js
@@ -49782,6 +50194,9 @@ ${bugDetails}`;
     if (isInstance(value, Uint8Array))
       return BigInt(`0x${bytesToHex(value)}`);
     throw new TypeError(`intToBigInt: Invalid value type. Must be a number, bigint, BigInt-compatible string, or Uint8Array.`);
+  }
+  function with0x(value) {
+    return /^0x/i.test(value) ? value : `0x${value}`;
   }
   function without0x(value) {
     return /^0x/i.test(value) ? value.slice(2) : value;
@@ -49898,7 +50313,14 @@ ${bugDetails}`;
     }));
   }
   function isInstance(object, clazz) {
-    return object instanceof clazz || object?.constructor?.name?.toLowerCase() === clazz.name;
+    var _a7, _b2;
+    return object instanceof clazz || ((_b2 = (_a7 = object == null ? void 0 : object.constructor) == null ? void 0 : _a7.name) == null ? void 0 : _b2.toLowerCase()) === clazz.name;
+  }
+  function validateHash256(hex) {
+    hex = without0x(hex);
+    if (hex.length !== 64)
+      return false;
+    return /^[0-9a-fA-F]+$/.test(hex);
   }
 
   // node_modules/@stacks/common/dist/esm/constants.js
@@ -49921,6 +50343,12 @@ ${bugDetails}`;
       r: r10,
       s: s8
     };
+  }
+  function signatureVrsToRsv(signature) {
+    return signature.slice(2) + signature.slice(0, 2);
+  }
+  function signatureRsvToVrs(signature) {
+    return signature.slice(-2) + signature.slice(0, -2);
   }
 
   // node_modules/@stacks/common/dist/esm/keys.js
@@ -49965,6 +50393,61 @@ ${bugDetails}`;
     return destination;
   }
 
+  // node_modules/@stacks/common/dist/esm/fetch.js
+  var defaultFetchOpts = {
+    referrerPolicy: "origin",
+    headers: {
+      "x-hiro-product": "stacksjs"
+    }
+  };
+  async function fetchWrapper(input, init) {
+    const fetchOpts = {};
+    Object.assign(fetchOpts, defaultFetchOpts, init);
+    const fetchResult = await fetch(input, fetchOpts);
+    return fetchResult;
+  }
+  function argsForCreateFetchFn(args) {
+    let fetchLib = fetchWrapper;
+    let middlewares = [];
+    if (args.length > 0 && typeof args[0] === "function") {
+      fetchLib = args.shift();
+    }
+    if (args.length > 0) {
+      middlewares = args;
+    }
+    return { fetchLib, middlewares };
+  }
+  function createFetchFn(...args) {
+    const { fetchLib, middlewares } = argsForCreateFetchFn(args);
+    const fetchFn = async (url, init) => {
+      var _a7;
+      let fetchParams = { url, init: init != null ? init : {} };
+      for (const middleware of middlewares) {
+        if (typeof middleware.pre === "function") {
+          const result = await Promise.resolve(middleware.pre({
+            fetch: fetchLib,
+            ...fetchParams
+          }));
+          fetchParams = result != null ? result : fetchParams;
+        }
+      }
+      let response = await fetchLib(fetchParams.url, fetchParams.init);
+      for (const middleware of middlewares) {
+        if (typeof middleware.post === "function") {
+          const result = await Promise.resolve(middleware.post({
+            fetch: fetchLib,
+            url: fetchParams.url,
+            init: fetchParams.init,
+            response: (_a7 = response == null ? void 0 : response.clone()) != null ? _a7 : response
+          }));
+          response = result != null ? result : response;
+        }
+      }
+      return response;
+    };
+    return fetchFn;
+  }
+
   // node_modules/@stacks/connect/dist/index.mjs
   init_esm();
 
@@ -49978,6 +50461,11 @@ ${bugDetails}`;
   var setSelectedProviderId = (provider) => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem(LOCAL_STORAGE_KEY, provider);
+    }
+  };
+  var clearSelectedProviderId = () => {
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem(LOCAL_STORAGE_KEY);
     }
   };
   var getRegisteredProviders = () => {
@@ -49998,6 +50486,9 @@ ${bugDetails}`;
       return !!provider;
     });
     return registeredProviders.concat(additionalInstalledProviders);
+  };
+  var isProviderSelected = () => {
+    return !!getSelectedProviderId();
   };
   var getProvider = () => {
     const providerId = getSelectedProviderId();
@@ -50034,6 +50525,281 @@ ${bugDetails}`;
       Object.setPrototypeOf(HTMLElement, a5);
     }
   })();
+
+  // node_modules/@stacks/transactions/dist/esm/index.js
+  var esm_exports = {};
+  __export(esm_exports, {
+    ACCOUNT_PATH: () => ACCOUNT_PATH,
+    Address: () => address_exports,
+    AddressHashMode: () => AddressHashMode,
+    AddressVersion: () => AddressVersion,
+    AnchorMode: () => AnchorMode,
+    AnchorModeNames: () => AnchorModeNames,
+    AssetType: () => AssetType,
+    AuthFieldType: () => AuthFieldType,
+    AuthType: () => AuthType,
+    BLOCKSTACK_DEFAULT_GAIA_HUB_URL: () => BLOCKSTACK_DEFAULT_GAIA_HUB_URL,
+    BROADCAST_PATH: () => BROADCAST_PATH,
+    BytesReader: () => BytesReader,
+    CLARITY_INT_BYTE_SIZE: () => CLARITY_INT_BYTE_SIZE,
+    CLARITY_INT_SIZE: () => CLARITY_INT_SIZE,
+    COINBASE_BYTES_LENGTH: () => COINBASE_BYTES_LENGTH,
+    COMPRESSED_PUBKEY_LENGTH_BYTES: () => COMPRESSED_PUBKEY_LENGTH_BYTES,
+    CONTRACT_ABI_PATH: () => CONTRACT_ABI_PATH,
+    Cl: () => cl_exports,
+    ClarityAbiTypeId: () => ClarityAbiTypeId,
+    ClarityType: () => ClarityType,
+    ClarityVersion: () => ClarityVersion,
+    ClarityWireType: () => ClarityWireType,
+    FungibleConditionCode: () => FungibleConditionCode,
+    MAP_ENTRY_PATH: () => MAP_ENTRY_PATH,
+    MAX_STRING_LENGTH_BYTES: () => MAX_STRING_LENGTH_BYTES,
+    MEMO_MAX_LENGTH_BYTES: () => MEMO_MAX_LENGTH_BYTES,
+    NonFungibleConditionCode: () => NonFungibleConditionCode,
+    PayloadType: () => PayloadType,
+    Pc: () => pc_exports,
+    PostConditionMode: () => PostConditionMode,
+    PostConditionPrincipalId: () => PostConditionPrincipalId,
+    PostConditionType: () => PostConditionType,
+    PubKeyEncoding: () => PubKeyEncoding,
+    READONLY_FUNCTION_CALL_PATH: () => READONLY_FUNCTION_CALL_PATH,
+    RECOVERABLE_ECDSA_SIG_LENGTH_BYTES: () => RECOVERABLE_ECDSA_SIG_LENGTH_BYTES,
+    STRING_MAX_LENGTH: () => STRING_MAX_LENGTH,
+    STRUCTURED_DATA_PREFIX: () => STRUCTURED_DATA_PREFIX,
+    StacksTransactionWire: () => StacksTransactionWire,
+    StacksWireType: () => StacksWireType,
+    TRANSACTION_FEE_ESTIMATE_PATH: () => TRANSACTION_FEE_ESTIMATE_PATH,
+    TRANSFER_FEE_ESTIMATE_PATH: () => TRANSFER_FEE_ESTIMATE_PATH,
+    TenureChangeCause: () => TenureChangeCause,
+    TransactionSigner: () => TransactionSigner,
+    TxRejectedReason: () => TxRejectedReason,
+    UNCOMPRESSED_PUBKEY_LENGTH_BYTES: () => UNCOMPRESSED_PUBKEY_LENGTH_BYTES,
+    VRF_PROOF_BYTES_LENGTH: () => VRF_PROOF_BYTES_LENGTH,
+    abiFunctionToString: () => abiFunctionToString,
+    addressFromPublicKeys: () => addressFromPublicKeys,
+    addressFromVersionHash: () => addressFromVersionHash,
+    addressHashModeToVersion: () => addressHashModeToVersion,
+    addressToString: () => addressToString,
+    anchorModeFrom: () => anchorModeFrom,
+    boolCV: () => boolCV,
+    broadcastTransaction: () => broadcastTransaction,
+    bufferCV: () => bufferCV,
+    bufferCVFromString: () => bufferCVFromString,
+    clarityByteToType: () => clarityByteToType,
+    clarityTypeToByte: () => clarityTypeToByte,
+    cloneDeep: () => cloneDeep,
+    codeBodyString: () => codeBodyString,
+    compressPrivateKey: () => compressPrivateKey,
+    compressPublicKey: () => compressPublicKey,
+    conditionByteToType: () => conditionByteToType,
+    conditionTypeToByte: () => conditionTypeToByte,
+    contractPrincipalCV: () => contractPrincipalCV,
+    contractPrincipalCVFromAddress: () => contractPrincipalCVFromAddress,
+    contractPrincipalCVFromStandard: () => contractPrincipalCVFromStandard,
+    createAddress: () => createAddress,
+    createAsset: () => createAsset,
+    createCoinbasePayload: () => createCoinbasePayload,
+    createContractCallPayload: () => createContractCallPayload,
+    createContractPrincipal: () => createContractPrincipal,
+    createEmptyAddress: () => createEmptyAddress,
+    createLPList: () => createLPList,
+    createLPString: () => createLPString,
+    createMemoString: () => createMemoString,
+    createMessageSignature: () => createMessageSignature,
+    createMultiSigSpendingCondition: () => createMultiSigSpendingCondition,
+    createNakamotoCoinbasePayload: () => createNakamotoCoinbasePayload,
+    createPoisonPayload: () => createPoisonPayload,
+    createSingleSigSpendingCondition: () => createSingleSigSpendingCondition,
+    createSmartContractPayload: () => createSmartContractPayload,
+    createSpendingCondition: () => createSpendingCondition,
+    createSponsoredAuth: () => createSponsoredAuth,
+    createStacksPublicKey: () => createStacksPublicKey,
+    createStandardAuth: () => createStandardAuth,
+    createStandardPrincipal: () => createStandardPrincipal,
+    createTenureChangePayload: () => createTenureChangePayload,
+    createTokenTransferPayload: () => createTokenTransferPayload,
+    createTransactionAuthField: () => createTransactionAuthField,
+    cvToHex: () => cvToHex,
+    cvToJSON: () => cvToJSON,
+    cvToString: () => cvToString,
+    cvToValue: () => cvToValue,
+    decodeStructuredDataSignature: () => decodeStructuredDataSignature,
+    decodeStructuredDataSignatureBytes: () => decodeStructuredDataSignatureBytes,
+    deriveNetworkFromTx: () => deriveNetworkFromTx,
+    deserializeAddress: () => deserializeAddress,
+    deserializeAsset: () => deserializeAsset,
+    deserializeAuthorization: () => deserializeAuthorization,
+    deserializeCV: () => deserializeCV,
+    deserializeLPList: () => deserializeLPList,
+    deserializeLPString: () => deserializeLPString,
+    deserializeMemoString: () => deserializeMemoString,
+    deserializeMessageSignature: () => deserializeMessageSignature,
+    deserializeMultiSigSpendingCondition: () => deserializeMultiSigSpendingCondition,
+    deserializePayload: () => deserializePayload,
+    deserializePostConditionWire: () => deserializePostConditionWire,
+    deserializePrincipal: () => deserializePrincipal,
+    deserializePublicKey: () => deserializePublicKey,
+    deserializeSingleSigSpendingCondition: () => deserializeSingleSigSpendingCondition,
+    deserializeSpendingCondition: () => deserializeSpendingCondition,
+    deserializeStacksWire: () => deserializeStacksWire,
+    deserializeTransaction: () => deserializeTransaction,
+    deserializeTransactionAuthField: () => deserializeTransactionAuthField,
+    emptyMessageSignature: () => emptyMessageSignature,
+    encodeAbiClarityValue: () => encodeAbiClarityValue,
+    encodeClarityValue: () => encodeClarityValue,
+    encodeStructuredData: () => encodeStructuredData,
+    encodeStructuredDataBytes: () => encodeStructuredDataBytes,
+    estimateTransactionByteLength: () => estimateTransactionByteLength,
+    exceedsMaxLengthBytes: () => exceedsMaxLengthBytes,
+    falseCV: () => falseCV,
+    fetchAbi: () => fetchAbi,
+    fetchCallReadOnlyFunction: () => fetchCallReadOnlyFunction,
+    fetchContractMapEntry: () => fetchContractMapEntry,
+    fetchFeeEstimate: () => fetchFeeEstimate,
+    fetchFeeEstimateTransaction: () => fetchFeeEstimateTransaction,
+    fetchFeeEstimateTransfer: () => fetchFeeEstimateTransfer,
+    fetchNonce: () => fetchNonce,
+    getAddressFromPrivateKey: () => getAddressFromPrivateKey,
+    getAddressFromPublicKey: () => getAddressFromPublicKey,
+    getCVTypeString: () => getCVTypeString,
+    getFee: () => getFee,
+    getTypeString: () => getTypeString,
+    getTypeUnion: () => getTypeUnion,
+    hash160: () => hash160,
+    hashP2PKH: () => hashP2PKH,
+    hashP2SH: () => hashP2SH,
+    hashP2WPKH: () => hashP2WPKH,
+    hashP2WSH: () => hashP2WSH,
+    hashStructuredData: () => hashStructuredData,
+    hashStructuredDataBytes: () => hashStructuredDataBytes,
+    hexToCV: () => hexToCV,
+    intCV: () => intCV,
+    internal_parseCommaSeparated: () => internal_parseCommaSeparated,
+    intoInitialSighashAuth: () => intoInitialSighashAuth,
+    isClarityAbiBuffer: () => isClarityAbiBuffer,
+    isClarityAbiList: () => isClarityAbiList,
+    isClarityAbiOptional: () => isClarityAbiOptional,
+    isClarityAbiPrimitive: () => isClarityAbiPrimitive,
+    isClarityAbiResponse: () => isClarityAbiResponse,
+    isClarityAbiStringAscii: () => isClarityAbiStringAscii,
+    isClarityAbiStringUtf8: () => isClarityAbiStringUtf8,
+    isClarityAbiTuple: () => isClarityAbiTuple,
+    isClarityName: () => isClarityName,
+    isClarityType: () => isClarityType,
+    isCoinbasePayload: () => isCoinbasePayload,
+    isContractCallPayload: () => isContractCallPayload,
+    isNonSequentialMultiSig: () => isNonSequentialMultiSig,
+    isPoisonPayload: () => isPoisonPayload,
+    isPrivateKeyCompressed: () => isPrivateKeyCompressed,
+    isPublicKeyCompressed: () => isPublicKeyCompressed,
+    isSequentialMultiSig: () => isSequentialMultiSig,
+    isSingleSig: () => isSingleSig,
+    isSmartContractPayload: () => isSmartContractPayload,
+    isTokenTransferPayload: () => isTokenTransferPayload,
+    leftPadHex: () => leftPadHex,
+    leftPadHexToLength: () => leftPadHexToLength,
+    listCV: () => listCV,
+    makeContractCall: () => makeContractCall,
+    makeContractDeploy: () => makeContractDeploy,
+    makeRandomPrivKey: () => makeRandomPrivKey,
+    makeSTXTokenTransfer: () => makeSTXTokenTransfer,
+    makeUnsignedContractCall: () => makeUnsignedContractCall,
+    makeUnsignedContractDeploy: () => makeUnsignedContractDeploy,
+    makeUnsignedSTXTokenTransfer: () => makeUnsignedSTXTokenTransfer,
+    nextSignature: () => nextSignature,
+    nextVerification: () => nextVerification,
+    noneCV: () => noneCV,
+    omit: () => omit,
+    optionalCVOf: () => optionalCVOf,
+    parseAssetString: () => parseAssetString,
+    parseContractId: () => parseContractId,
+    parsePrincipalString: () => parsePrincipalString,
+    parseReadOnlyResponse: () => parseReadOnlyResponse,
+    parseToCV: () => parseToCV,
+    postConditionModeFrom: () => postConditionModeFrom,
+    postConditionToHex: () => postConditionToHex,
+    postConditionToWire: () => postConditionToWire,
+    principalCV: () => principalCV,
+    privateKeyIsCompressed: () => privateKeyIsCompressed,
+    privateKeyToAddress: () => privateKeyToAddress,
+    privateKeyToHex: () => privateKeyToHex,
+    privateKeyToPublic: () => privateKeyToPublic,
+    publicKeyFromSignatureRsv: () => publicKeyFromSignatureRsv,
+    publicKeyFromSignatureVrs: () => publicKeyFromSignatureVrs,
+    publicKeyIsCompressed: () => publicKeyIsCompressed,
+    publicKeyToAddress: () => publicKeyToAddress,
+    publicKeyToAddressSingleSig: () => publicKeyToAddressSingleSig,
+    publicKeyToHex: () => publicKeyToHex,
+    randomBytes: () => randomBytes,
+    randomPrivateKey: () => randomPrivateKey,
+    responseErrorCV: () => responseErrorCV,
+    responseOkCV: () => responseOkCV,
+    rightPadHexToLength: () => rightPadHexToLength,
+    serializeAddress: () => serializeAddress,
+    serializeAddressBytes: () => serializeAddressBytes,
+    serializeAsset: () => serializeAsset,
+    serializeAssetBytes: () => serializeAssetBytes,
+    serializeAuthorization: () => serializeAuthorization,
+    serializeAuthorizationBytes: () => serializeAuthorizationBytes,
+    serializeCV: () => serializeCV,
+    serializeCVBytes: () => serializeCVBytes,
+    serializeLPList: () => serializeLPList,
+    serializeLPListBytes: () => serializeLPListBytes,
+    serializeLPString: () => serializeLPString,
+    serializeLPStringBytes: () => serializeLPStringBytes,
+    serializeMemoString: () => serializeMemoString,
+    serializeMemoStringBytes: () => serializeMemoStringBytes,
+    serializeMessageSignature: () => serializeMessageSignature,
+    serializeMessageSignatureBytes: () => serializeMessageSignatureBytes,
+    serializeMultiSigSpendingCondition: () => serializeMultiSigSpendingCondition,
+    serializeMultiSigSpendingConditionBytes: () => serializeMultiSigSpendingConditionBytes,
+    serializePayload: () => serializePayload,
+    serializePayloadBytes: () => serializePayloadBytes,
+    serializePostConditionWire: () => serializePostConditionWire,
+    serializePostConditionWireBytes: () => serializePostConditionWireBytes,
+    serializePrincipal: () => serializePrincipal,
+    serializePrincipalBytes: () => serializePrincipalBytes,
+    serializePublicKey: () => serializePublicKey,
+    serializePublicKeyBytes: () => serializePublicKeyBytes,
+    serializeSingleSigSpendingCondition: () => serializeSingleSigSpendingCondition,
+    serializeSingleSigSpendingConditionBytes: () => serializeSingleSigSpendingConditionBytes,
+    serializeSpendingCondition: () => serializeSpendingCondition,
+    serializeSpendingConditionBytes: () => serializeSpendingConditionBytes,
+    serializeStacksWire: () => serializeStacksWire,
+    serializeStacksWireBytes: () => serializeStacksWireBytes,
+    serializeTransaction: () => serializeTransaction,
+    serializeTransactionAuthField: () => serializeTransactionAuthField,
+    serializeTransactionAuthFieldBytes: () => serializeTransactionAuthFieldBytes,
+    serializeTransactionBytes: () => serializeTransactionBytes,
+    setFee: () => setFee,
+    setNonce: () => setNonce2,
+    setSponsor: () => setSponsor,
+    setSponsorNonce: () => setSponsorNonce,
+    sigHashPreSign: () => sigHashPreSign,
+    signMessageHashRsv: () => signMessageHashRsv,
+    signStructuredData: () => signStructuredData,
+    signWithKey: () => signWithKey,
+    someCV: () => someCV,
+    sponsorTransaction: () => sponsorTransaction,
+    standardPrincipalCV: () => standardPrincipalCV,
+    standardPrincipalCVFromAddress: () => standardPrincipalCVFromAddress,
+    stringAsciiCV: () => stringAsciiCV,
+    stringCV: () => stringCV,
+    stringUtf8CV: () => stringUtf8CV,
+    transactionToHex: () => transactionToHex,
+    trueCV: () => trueCV,
+    tupleCV: () => tupleCV,
+    txidFromBytes: () => txidFromBytes,
+    txidFromData: () => txidFromData,
+    uintCV: () => uintCV,
+    uncompressPublicKey: () => uncompressPublicKey,
+    validateContractCall: () => validateContractCall,
+    validateStacksAddress: () => validateStacksAddress,
+    verifyOrigin: () => verifyOrigin,
+    verifySignature: () => verify,
+    whenWireType: () => whenWireType,
+    wireToPostCondition: () => wireToPostCondition
+  });
 
   // node_modules/@stacks/transactions/dist/esm/BytesReader.js
   function createEnumChecker(enumVariable) {
@@ -50123,6 +50889,9 @@ ${bugDetails}`;
     AddressVersion3[AddressVersion3["TestnetMultiSig"] = 21] = "TestnetMultiSig";
   })(AddressVersion || (AddressVersion = {}));
   var DEFAULT_TRANSACTION_VERSION = TransactionVersion.Mainnet;
+  function whenTransactionVersion(transactionVersion) {
+    return (map2) => map2[transactionVersion];
+  }
 
   // node_modules/@stacks/network/dist/esm/network.js
   var STACKS_MAINNET = {
@@ -50179,8 +50948,17 @@ ${bugDetails}`;
       return networkFromName(network);
     return network;
   }
+  function clientFromNetwork(network) {
+    if (network.client.fetch)
+      return network.client;
+    return {
+      ...network.client,
+      fetch: createFetchFn()
+    };
+  }
 
   // node_modules/@stacks/transactions/dist/esm/constants.js
+  var BLOCKSTACK_DEFAULT_GAIA_HUB_URL = "https://hub.blockstack.org";
   var MAX_STRING_LENGTH_BYTES = 128;
   var CLARITY_INT_SIZE = 128;
   var CLARITY_INT_BYTE_SIZE = 16;
@@ -50232,6 +51010,11 @@ ${bugDetails}`;
     [AnchorMode.OffChainOnly]: AnchorMode.OffChainOnly,
     [AnchorMode.Any]: AnchorMode.Any
   };
+  function anchorModeFrom(mode) {
+    if (mode in AnchorModeMap)
+      return AnchorModeMap[mode];
+    throw new Error(`Invalid anchor mode "${mode}", must be one of: ${AnchorModeNames.join(", ")}`);
+  }
   var PostConditionMode;
   (function(PostConditionMode3) {
     PostConditionMode3[PostConditionMode3["Allow"] = 1] = "Allow";
@@ -50343,6 +51126,16 @@ ${bugDetails}`;
     }
   };
   var DeserializationError = class extends TransactionError {
+    constructor(message) {
+      super(message);
+    }
+  };
+  var NoEstimateAvailableError = class extends TransactionError {
+    constructor(message) {
+      super(message);
+    }
+  };
+  var NotImplementedError = class extends TransactionError {
     constructor(message) {
       super(message);
     }
@@ -51576,6 +52369,14 @@ ${bugDetails}`;
       throw new Error("Expected private key: 0 < key < n");
     return num2;
   }
+  function normalizePublicKey(publicKey) {
+    if (publicKey instanceof Point) {
+      publicKey.assertValidity();
+      return publicKey;
+    } else {
+      return Point.fromHex(publicKey);
+    }
+  }
   function normalizeSignature(signature) {
     if (signature instanceof Signature) {
       signature.assertValidity();
@@ -51635,6 +52436,35 @@ ${bugDetails}`;
       drbg.reseedSync();
     return finalizeSig(sig, opts);
   }
+  var vopts = { strict: true };
+  function verify(signature, msgHash, publicKey, opts = vopts) {
+    let sig;
+    try {
+      sig = normalizeSignature(signature);
+      msgHash = ensureBytes(msgHash);
+    } catch (error2) {
+      return false;
+    }
+    const { r: r10, s: s8 } = sig;
+    if (opts.strict && sig.hasHighS())
+      return false;
+    const h12 = truncateHash(msgHash);
+    let P7;
+    try {
+      P7 = normalizePublicKey(publicKey);
+    } catch (error2) {
+      return false;
+    }
+    const { n: n13 } = CURVE;
+    const sinv = invert(s8, n13);
+    const u1 = mod(h12 * sinv, n13);
+    const u22 = mod(r10 * sinv, n13);
+    const R5 = Point.BASE.multiplyAndAddUnsafe(P7, u1, u22);
+    if (!R5)
+      return false;
+    const v8 = mod(R5.x, n13);
+    return v8 === r10;
+  }
   Point.BASE._setWindowSize(8);
   var crypto3 = {
     node: nodeCrypto,
@@ -51670,8 +52500,8 @@ ${bugDetails}`;
       if (crypto3.web) {
         return crypto3.web.getRandomValues(new Uint8Array(bytesLength));
       } else if (crypto3.node) {
-        const { randomBytes: randomBytes2 } = crypto3.node;
-        return Uint8Array.from(randomBytes2(bytesLength));
+        const { randomBytes: randomBytes3 } = crypto3.node;
+        return Uint8Array.from(randomBytes3(bytesLength));
       } else {
         throw new Error("The environment doesn't have randomBytes function");
       }
@@ -51760,6 +52590,37 @@ ${bugDetails}`;
 
   // node_modules/@stacks/transactions/dist/esm/keys.js
   var import_c32check4 = __toESM(require_lib());
+
+  // node_modules/@stacks/transactions/dist/esm/address.js
+  function addressHashModeToVersion(hashMode, network) {
+    network = networkFrom(network != null ? network : STACKS_MAINNET);
+    switch (hashMode) {
+      case AddressHashMode.P2PKH:
+        switch (network.transactionVersion) {
+          case TransactionVersion.Mainnet:
+            return AddressVersion.MainnetSingleSig;
+          case TransactionVersion.Testnet:
+            return AddressVersion.TestnetSingleSig;
+          default:
+            throw new Error(`Unexpected transactionVersion ${network.transactionVersion} for hashMode ${hashMode}`);
+        }
+      case AddressHashMode.P2SH:
+      case AddressHashMode.P2SHNonSequential:
+      case AddressHashMode.P2WPKH:
+      case AddressHashMode.P2WSH:
+      case AddressHashMode.P2WSHNonSequential:
+        switch (network.transactionVersion) {
+          case TransactionVersion.Mainnet:
+            return AddressVersion.MainnetMultiSig;
+          case TransactionVersion.Testnet:
+            return AddressVersion.TestnetMultiSig;
+          default:
+            throw new Error(`Unexpected transactionVersion ${network.transactionVersion} for hashMode ${hashMode}`);
+        }
+      default:
+        throw new Error(`Unexpected hashMode ${hashMode}`);
+    }
+  }
 
   // node_modules/@noble/hashes/esm/ripemd160.js
   var Rho = new Uint8Array([7, 4, 13, 1, 10, 6, 15, 3, 12, 0, 9, 5, 2, 14, 11, 8]);
@@ -52224,6 +53085,134 @@ ${bugDetails}`;
   function clarityTypeToByte(type) {
     return ClarityWireType[type];
   }
+  function clarityByteToType(wireType) {
+    return ClarityWireType[wireType];
+  }
+
+  // node_modules/@stacks/transactions/dist/esm/clarity/clarityValue.js
+  function cvToString(val, encoding = "hex") {
+    switch (val.type) {
+      case ClarityType.BoolTrue:
+        return "true";
+      case ClarityType.BoolFalse:
+        return "false";
+      case ClarityType.Int:
+        return val.value.toString();
+      case ClarityType.UInt:
+        return `u${val.value.toString()}`;
+      case ClarityType.Buffer:
+        if (encoding === "tryAscii") {
+          const str = bytesToAscii(hexToBytes(val.value));
+          if (/[ -~]/.test(str)) {
+            return JSON.stringify(str);
+          }
+        }
+        return `0x${val.value}`;
+      case ClarityType.OptionalNone:
+        return "none";
+      case ClarityType.OptionalSome:
+        return `(some ${cvToString(val.value, encoding)})`;
+      case ClarityType.ResponseErr:
+        return `(err ${cvToString(val.value, encoding)})`;
+      case ClarityType.ResponseOk:
+        return `(ok ${cvToString(val.value, encoding)})`;
+      case ClarityType.PrincipalStandard:
+      case ClarityType.PrincipalContract:
+        return val.value;
+      case ClarityType.List:
+        return `(list ${val.value.map((v8) => cvToString(v8, encoding)).join(" ")})`;
+      case ClarityType.Tuple:
+        return `(tuple ${Object.keys(val.value).map((key) => `(${key} ${cvToString(val.value[key], encoding)})`).join(" ")})`;
+      case ClarityType.StringASCII:
+        return `"${val.value}"`;
+      case ClarityType.StringUTF8:
+        return `u"${val.value}"`;
+    }
+  }
+  function cvToValue(val, strictJsonCompat = false) {
+    switch (val.type) {
+      case ClarityType.BoolTrue:
+        return true;
+      case ClarityType.BoolFalse:
+        return false;
+      case ClarityType.Int:
+      case ClarityType.UInt:
+        if (strictJsonCompat) {
+          return val.value.toString();
+        }
+        return val.value;
+      case ClarityType.Buffer:
+        return `0x${val.value}`;
+      case ClarityType.OptionalNone:
+        return null;
+      case ClarityType.OptionalSome:
+        return cvToJSON(val.value);
+      case ClarityType.ResponseErr:
+        return cvToJSON(val.value);
+      case ClarityType.ResponseOk:
+        return cvToJSON(val.value);
+      case ClarityType.PrincipalStandard:
+      case ClarityType.PrincipalContract:
+        return val.value;
+      case ClarityType.List:
+        return val.value.map((v8) => cvToJSON(v8));
+      case ClarityType.Tuple:
+        const result = {};
+        Object.keys(val.value).forEach((key) => {
+          result[key] = cvToJSON(val.value[key]);
+        });
+        return result;
+      case ClarityType.StringASCII:
+        return val.value;
+      case ClarityType.StringUTF8:
+        return val.value;
+    }
+  }
+  function cvToJSON(val) {
+    switch (val.type) {
+      case ClarityType.ResponseErr:
+        return { type: getCVTypeString(val), value: cvToValue(val, true), success: false };
+      case ClarityType.ResponseOk:
+        return { type: getCVTypeString(val), value: cvToValue(val, true), success: true };
+      default:
+        return { type: getCVTypeString(val), value: cvToValue(val, true) };
+    }
+  }
+  function getCVTypeString(val) {
+    switch (val.type) {
+      case ClarityType.BoolTrue:
+      case ClarityType.BoolFalse:
+        return "bool";
+      case ClarityType.Int:
+        return "int";
+      case ClarityType.UInt:
+        return "uint";
+      case ClarityType.Buffer:
+        return `(buff ${Math.ceil(val.value.length / 2)})`;
+      case ClarityType.OptionalNone:
+        return "(optional none)";
+      case ClarityType.OptionalSome:
+        return `(optional ${getCVTypeString(val.value)})`;
+      case ClarityType.ResponseErr:
+        return `(response UnknownType ${getCVTypeString(val.value)})`;
+      case ClarityType.ResponseOk:
+        return `(response ${getCVTypeString(val.value)} UnknownType)`;
+      case ClarityType.PrincipalStandard:
+      case ClarityType.PrincipalContract:
+        return "principal";
+      case ClarityType.List:
+        return `(list ${val.value.length} ${val.value.length ? getCVTypeString(val.value[0]) : "UnknownType"})`;
+      case ClarityType.Tuple:
+        return `(tuple ${Object.keys(val.value).map((key) => `(${key} ${getCVTypeString(val.value[key])})`).join(" ")})`;
+      case ClarityType.StringASCII:
+        return `(string-ascii ${asciiToBytes(val.value).length})`;
+      case ClarityType.StringUTF8:
+        return `(string-utf8 ${utf8ToBytes(val.value).length})`;
+    }
+  }
+  function isClarityType(input, withType) {
+    return input.type === withType;
+  }
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/booleanCV.js
   var trueCV = () => ({ type: ClarityType.BoolTrue });
@@ -52237,6 +53226,7 @@ ${bugDetails}`;
     }
     return { type: ClarityType.Buffer, value: bytesToHex(buffer3) };
   };
+  var bufferCVFromString = (str) => bufferCV(utf8ToBytes(str));
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/intCV.js
   var MAX_U128 = BigInt("0xffffffffffffffffffffffffffffffff");
@@ -52279,6 +53269,9 @@ ${bugDetails}`;
   function someCV(value) {
     return { type: ClarityType.OptionalSome, value };
   }
+  function optionalCVOf(value) {
+    return value ? someCV(value) : noneCV();
+  }
 
   // node_modules/@stacks/transactions/dist/esm/wire/create.js
   var import_c32check = __toESM(require_lib());
@@ -52299,6 +53292,9 @@ ${bugDetails}`;
     StacksWireType2[StacksWireType2["StructuredDataSignature"] = 10] = "StructuredDataSignature";
     StacksWireType2[StacksWireType2["TransactionAuthField"] = 11] = "TransactionAuthField";
   })(StacksWireType || (StacksWireType = {}));
+  function whenWireType(wireType) {
+    return (wireTypeMap) => wireTypeMap[wireType];
+  }
 
   // node_modules/@stacks/transactions/dist/esm/wire/create.js
   function createEmptyAddress() {
@@ -52343,7 +53339,7 @@ ${bugDetails}`;
       payloadType: PayloadType.TokenTransfer,
       recipient,
       amount: intToBigInt(amount),
-      memo: memo ?? createMemoString("")
+      memo: memo != null ? memo : createMemoString("")
     };
   }
   function createContractCallPayload(contractAddress, contractName, functionName, functionArgs) {
@@ -52496,6 +53492,9 @@ ${bugDetails}`;
   var import_c32check2 = __toESM(require_lib());
 
   // node_modules/@stacks/transactions/dist/esm/wire/serialization.js
+  function serializeStacksWire(wire) {
+    return bytesToHex(serializeStacksWireBytes(wire));
+  }
   function serializeStacksWireBytes(wire) {
     switch (wire.type) {
       case StacksWireType.Address:
@@ -52522,6 +53521,38 @@ ${bugDetails}`;
         return serializeMessageSignatureBytes(wire);
     }
   }
+  function deserializeStacksWire(bytesReader, type, listType) {
+    switch (type) {
+      case StacksWireType.Address:
+        return deserializeAddress(bytesReader);
+      case StacksWireType.Principal:
+        return deserializePrincipal(bytesReader);
+      case StacksWireType.LengthPrefixedString:
+        return deserializeLPString(bytesReader);
+      case StacksWireType.MemoString:
+        return deserializeMemoString(bytesReader);
+      case StacksWireType.Asset:
+        return deserializeAsset(bytesReader);
+      case StacksWireType.PostCondition:
+        return deserializePostConditionWire(bytesReader);
+      case StacksWireType.PublicKey:
+        return deserializePublicKey(bytesReader);
+      case StacksWireType.Payload:
+        return deserializePayload(bytesReader);
+      case StacksWireType.LengthPrefixedList:
+        if (!listType) {
+          throw new DeserializationError("No list type specified");
+        }
+        return deserializeLPList(bytesReader, listType);
+      case StacksWireType.MessageSignature:
+        return deserializeMessageSignature(bytesReader);
+      default:
+        throw new Error("Could not recognize StacksWireType");
+    }
+  }
+  function serializeAddress(address2) {
+    return bytesToHex(serializeAddressBytes(address2));
+  }
   function serializeAddressBytes(address2) {
     const bytesArray = [];
     bytesArray.push(hexToBytes(intToHex(address2.version, 1)));
@@ -52534,14 +53565,17 @@ ${bugDetails}`;
     const data = bytesToHex(bytesReader.readBytes(20));
     return { type: StacksWireType.Address, version: version4, hash160: data };
   }
-  function serializePrincipalBytes(principal2) {
+  function serializePrincipal(principal3) {
+    return bytesToHex(serializePrincipalBytes(principal3));
+  }
+  function serializePrincipalBytes(principal3) {
     const bytesArray = [];
-    bytesArray.push(principal2.prefix);
-    if (principal2.prefix === PostConditionPrincipalId.Standard || principal2.prefix === PostConditionPrincipalId.Contract) {
-      bytesArray.push(serializeAddressBytes(principal2.address));
+    bytesArray.push(principal3.prefix);
+    if (principal3.prefix === PostConditionPrincipalId.Standard || principal3.prefix === PostConditionPrincipalId.Contract) {
+      bytesArray.push(serializeAddressBytes(principal3.address));
     }
-    if (principal2.prefix === PostConditionPrincipalId.Contract) {
-      bytesArray.push(serializeLPStringBytes(principal2.contractName));
+    if (principal3.prefix === PostConditionPrincipalId.Contract) {
+      bytesArray.push(serializeLPStringBytes(principal3.contractName));
     }
     return concatArray(bytesArray);
   }
@@ -52565,6 +53599,9 @@ ${bugDetails}`;
       contractName
     };
   }
+  function serializeLPString(lps) {
+    return bytesToHex(serializeLPStringBytes(lps));
+  }
   function serializeLPStringBytes(lps) {
     const bytesArray = [];
     const contentBytes = utf8ToBytes(lps.content);
@@ -52578,7 +53615,10 @@ ${bugDetails}`;
     const bytesReader = isInstance(serialized, BytesReader) ? serialized : new BytesReader(serialized);
     const length2 = hexToInt(bytesToHex(bytesReader.readBytes(prefixBytes)));
     const content = bytesToUtf8(bytesReader.readBytes(length2));
-    return createLPString(content, prefixBytes, maxLength ?? 128);
+    return createLPString(content, prefixBytes, maxLength != null ? maxLength : 128);
+  }
+  function serializeMemoString(memoString) {
+    return bytesToHex(serializeMemoStringBytes(memoString));
   }
   function serializeMemoStringBytes(memoString) {
     const bytesArray = [];
@@ -52592,6 +53632,9 @@ ${bugDetails}`;
     let content = bytesToUtf8(bytesReader.readBytes(MEMO_MAX_LENGTH_BYTES));
     content = content.replace(/\u0000*$/, "");
     return { type: StacksWireType.MemoString, content };
+  }
+  function serializeAsset(info) {
+    return bytesToHex(serializeAssetBytes(info));
   }
   function serializeAssetBytes(info) {
     const bytesArray = [];
@@ -52608,6 +53651,9 @@ ${bugDetails}`;
       contractName: deserializeLPString(bytesReader),
       assetName: deserializeLPString(bytesReader)
     };
+  }
+  function serializeLPList(lpList) {
+    return bytesToHex(serializeLPListBytes(lpList));
   }
   function serializeLPListBytes(lpList) {
     const list2 = lpList.values;
@@ -52675,7 +53721,7 @@ ${bugDetails}`;
     const postConditionType = bytesReader.readUInt8Enum(PostConditionType, (n13) => {
       throw new DeserializationError(`Could not read ${n13} as PostConditionType`);
     });
-    const principal2 = deserializePrincipal(bytesReader);
+    const principal3 = deserializePrincipal(bytesReader);
     let conditionCode;
     let asset;
     let amount;
@@ -52688,7 +53734,7 @@ ${bugDetails}`;
         return {
           type: StacksWireType.PostCondition,
           conditionType: PostConditionType.STX,
-          principal: principal2,
+          principal: principal3,
           conditionCode,
           amount
         };
@@ -52701,7 +53747,7 @@ ${bugDetails}`;
         return {
           type: StacksWireType.PostCondition,
           conditionType: PostConditionType.Fungible,
-          principal: principal2,
+          principal: principal3,
           conditionCode,
           amount,
           asset
@@ -52715,12 +53761,15 @@ ${bugDetails}`;
         return {
           type: StacksWireType.PostCondition,
           conditionType: PostConditionType.NonFungible,
-          principal: principal2,
+          principal: principal3,
           conditionCode,
           asset,
           assetName
         };
     }
+  }
+  function serializePayload(payload) {
+    return bytesToHex(serializePayloadBytes(payload));
   }
   function serializePayloadBytes(payload) {
     const bytesArray = [];
@@ -52863,8 +53912,14 @@ ${bugDetails}`;
         throw new Error(`Unknown auth field type: ${JSON.stringify(authFieldType)}`);
     }
   }
+  function serializeMessageSignature(messageSignature) {
+    return bytesToHex(serializeMessageSignatureBytes(messageSignature));
+  }
   function serializeMessageSignatureBytes(messageSignature) {
     return hexToBytes(messageSignature.data);
+  }
+  function serializeTransactionAuthField(field) {
+    return bytesToHex(serializeTransactionAuthFieldBytes(field));
   }
   function serializeTransactionAuthFieldBytes(field) {
     const bytesArray = [];
@@ -52879,6 +53934,9 @@ ${bugDetails}`;
         break;
     }
     return concatArray(bytesArray);
+  }
+  function serializePublicKey(key) {
+    return bytesToHex(serializePublicKeyBytes(key));
   }
   function serializePublicKeyBytes(key) {
     return key.data.slice();
@@ -52924,6 +53982,21 @@ ${bugDetails}`;
   function addressToString(address2) {
     return (0, import_c32check2.c32address)(address2.version, address2.hash160);
   }
+  function isTokenTransferPayload(p8) {
+    return p8.payloadType === PayloadType.TokenTransfer;
+  }
+  function isContractCallPayload(p8) {
+    return p8.payloadType === PayloadType.ContractCall;
+  }
+  function isSmartContractPayload(p8) {
+    return p8.payloadType === PayloadType.SmartContract;
+  }
+  function isPoisonPayload(p8) {
+    return p8.payloadType === PayloadType.PoisonMicroblock;
+  }
+  function isCoinbasePayload(p8) {
+    return p8.payloadType === PayloadType.Coinbase;
+  }
   function parseAssetString(id) {
     const [assetAddress, assetContractName, assetTokenName] = id.split(/\.|::/);
     const asset = createAsset(assetAddress, assetContractName, assetTokenName);
@@ -52939,12 +54012,12 @@ ${bugDetails}`;
   }
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/principalCV.js
-  function principalCV(principal2) {
-    if (principal2.includes(".")) {
-      const [address2, contractName] = principal2.split(".");
+  function principalCV(principal3) {
+    if (principal3.includes(".")) {
+      const [address2, contractName] = principal3.split(".");
       return contractPrincipalCV(address2, contractName);
     } else {
-      return standardPrincipalCV(principal2);
+      return standardPrincipalCV(principal3);
     }
   }
   function standardPrincipalCV(addressString) {
@@ -52968,6 +54041,12 @@ ${bugDetails}`;
       value: `${addressToString(address2)}.${contractName.content}`
     };
   }
+  function contractPrincipalCVFromStandard(sp, contractName) {
+    return {
+      type: ClarityType.PrincipalContract,
+      value: `${sp.value}.${contractName}`
+    };
+  }
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/responseCV.js
   function responseErrorCV(value) {
@@ -52983,6 +54062,14 @@ ${bugDetails}`;
   };
   var stringUtf8CV = (data) => {
     return { type: ClarityType.StringUTF8, value: data };
+  };
+  var stringCV = (data, encoding) => {
+    switch (encoding) {
+      case "ascii":
+        return stringAsciiCV(data);
+      case "utf8":
+        return stringUtf8CV(data);
+    }
   };
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/tupleCV.js
@@ -53412,13 +54499,27 @@ ${bugDetails}`;
       throw "Parse error";
     return result.capture;
   }
+  function internal_parseCommaSeparated(clarityValueString) {
+    const combinator = entire(greedy(1, clValue(), (c12) => cl_exports.list(c12), regex(/\s*,\s*/)));
+    const result = combinator(clarityValueString);
+    if (!result.success || !result.capture)
+      throw `Error trying to parse string: ${clarityValueString}`;
+    return result.capture.value;
+  }
 
   // node_modules/@stacks/transactions/dist/esm/utils.js
+  var randomBytes = (bytesLength) => utils.randomBytes(bytesLength);
   var leftPadHex = (hexString) => hexString.length % 2 ? `0${hexString}` : hexString;
+  var leftPadHexToLength = (hexString, length2) => hexString.padStart(length2, "0");
   var rightPadHexToLength = (hexString, length2) => hexString.padEnd(length2, "0");
   var exceedsMaxLengthBytes = (string2, maxLengthBytes) => string2 ? utf8ToBytes(string2).length > maxLengthBytes : false;
   function cloneDeep(obj) {
     return (0, import_lodash.default)(obj);
+  }
+  function omit(obj, prop) {
+    const clone = cloneDeep(obj);
+    delete clone[prop];
+    return clone;
   }
   var hash160 = (input) => {
     return ripemd160(sha256(input));
@@ -53426,6 +54527,7 @@ ${bugDetails}`;
   var txidFromData = (data) => {
     return bytesToHex(sha512_256(data));
   };
+  var txidFromBytes = txidFromData;
   var hashP2PKH = (input) => {
     return bytesToHex(hash160(input));
   };
@@ -53477,6 +54579,26 @@ ${bugDetails}`;
     const regex2 = /^[a-zA-Z]([a-zA-Z0-9]|[-_!?+<>=/*])*$|^[-+=/*]$|^[<>]=?$/;
     return regex2.test(name2) && name2.length < 128;
   }
+  function cvToHex(cv) {
+    const serialized = serializeCV(cv);
+    return `0x${serialized}`;
+  }
+  function hexToCV(hex) {
+    return deserializeCV(hex);
+  }
+  var parseReadOnlyResponse = (response) => {
+    if (response.okay)
+      return hexToCV(response.result);
+    throw new Error(response.cause);
+  };
+  var validateStacksAddress = (address2) => {
+    try {
+      (0, import_c32check3.c32addressDecode)(address2);
+      return true;
+    } catch (e10) {
+      return false;
+    }
+  };
   function parseContractId(contractId) {
     const [address2, name2] = contractId.split(".");
     if (!address2 || !name2)
@@ -53490,6 +54612,19 @@ ${bugDetails}`;
     msgs.forEach((msg) => h12.update(msg));
     return h12.digest();
   };
+  function getAddressFromPrivateKey(privateKey, network = "mainnet") {
+    network = networkFrom(network);
+    const publicKey = privateKeyToPublic(privateKey);
+    return getAddressFromPublicKey(publicKey, network);
+  }
+  function getAddressFromPublicKey(publicKey, network = "mainnet") {
+    network = networkFrom(network);
+    publicKey = typeof publicKey === "string" ? hexToBytes(publicKey) : publicKey;
+    const addrVer = addressHashModeToVersion(AddressHashMode.P2PKH, network);
+    const addr = addressFromVersionHash(addrVer, hashP2PKH(publicKey));
+    const addrString = addressToString(addr);
+    return addrString;
+  }
   function createStacksPublicKey(publicKey) {
     publicKey = typeof publicKey === "string" ? hexToBytes(publicKey) : publicKey;
     return {
@@ -53504,14 +54639,19 @@ ${bugDetails}`;
     const compressed = pubKeyEncoding === PubKeyEncoding.Compressed;
     return point.toHex(compressed);
   }
+  function publicKeyFromSignatureRsv(messageHash, messageSignature, pubKeyEncoding = PubKeyEncoding.Compressed) {
+    return publicKeyFromSignatureVrs(messageHash, signatureRsvToVrs(messageSignature), pubKeyEncoding);
+  }
   function privateKeyToHex(publicKey) {
     return typeof publicKey === "string" ? publicKey : bytesToHex(publicKey);
   }
   var publicKeyToHex = privateKeyToHex;
+  var isPrivateKeyCompressed = privateKeyIsCompressed;
   function privateKeyIsCompressed(privateKey) {
     const length2 = typeof privateKey === "string" ? privateKey.length / 2 : privateKey.byteLength;
     return length2 === PRIVATE_KEY_BYTES_COMPRESSED;
   }
+  var isPublicKeyCompressed = publicKeyIsCompressed;
   function publicKeyIsCompressed(publicKey) {
     return !publicKeyToHex(publicKey).startsWith("04");
   }
@@ -53526,6 +54666,10 @@ ${bugDetails}`;
   function uncompressPublicKey(publicKey) {
     return Point.fromHex(publicKeyToHex(publicKey)).toHex(false);
   }
+  var makeRandomPrivKey = randomPrivateKey;
+  function randomPrivateKey() {
+    return compressPrivateKey(utils.randomPrivateKey());
+  }
   function signWithKey(privateKey, messageHash) {
     privateKey = privateKeyToBytes(privateKey);
     const [rawSignature, recoveryId] = signSync(messageHash, privateKey.slice(0, 32), {
@@ -53538,9 +54682,25 @@ ${bugDetails}`;
     const recoveryIdHex = intToHex(recoveryId, 1);
     return recoveryIdHex + Signature.fromHex(rawSignature).toCompactHex();
   }
+  function signMessageHashRsv({ messageHash, privateKey }) {
+    return signatureVrsToRsv(signWithKey(privateKey, messageHash));
+  }
+  function compressPrivateKey(privateKey) {
+    privateKey = privateKeyToHex(privateKey);
+    return privateKey.length == PRIVATE_KEY_BYTES_COMPRESSED * 2 ? privateKey : `${privateKey}01`;
+  }
   function privateKeyToAddress(privateKey, network) {
     const publicKey = privateKeyToPublic(privateKey);
     return publicKeyToAddressSingleSig(publicKey, network);
+  }
+  function publicKeyToAddress(...args) {
+    if (typeof args[0] === "number")
+      return _publicKeyToAddress(...args);
+    return publicKeyToAddressSingleSig(...args);
+  }
+  function _publicKeyToAddress(version4, publicKey) {
+    publicKey = typeof publicKey === "string" ? hexToBytes(publicKey) : publicKey;
+    return (0, import_c32check4.c32address)(version4, bytesToHex(hash160(publicKey)));
   }
   function publicKeyToAddressSingleSig(publicKey, network) {
     network = network ? networkFrom(network) : STACKS_MAINNET;
@@ -53555,6 +54715,12 @@ ${bugDetails}`;
       data: bytesToHex(new Uint8Array(RECOVERABLE_ECDSA_SIG_LENGTH_BYTES))
     };
   }
+  function createSpendingCondition(options) {
+    if ("publicKey" in options) {
+      return createSingleSigSpendingCondition(AddressHashMode.P2PKH, options.publicKey, options.nonce, options.fee);
+    }
+    return createMultiSigSpendingCondition(AddressHashMode.P2SH, options.numSignatures, options.publicKeys, options.nonce, options.fee);
+  }
   function createSingleSigSpendingCondition(hashMode, pubKey, nonce, fee) {
     const signer = addressFromPublicKeys(0, hashMode, 1, [createStacksPublicKey(pubKey)]).hash160;
     const keyEncoding = publicKeyIsCompressed(pubKey) ? PubKeyEncoding.Compressed : PubKeyEncoding.Uncompressed;
@@ -53565,6 +54731,18 @@ ${bugDetails}`;
       fee: intToBigInt(fee),
       keyEncoding,
       signature: emptyMessageSignature()
+    };
+  }
+  function createMultiSigSpendingCondition(hashMode, numSigs, pubKeys, nonce, fee) {
+    const stacksPublicKeys = pubKeys.map(createStacksPublicKey);
+    const signer = addressFromPublicKeys(0, hashMode, numSigs, stacksPublicKeys).hash160;
+    return {
+      hashMode,
+      signer,
+      nonce: intToBigInt(nonce),
+      fee: intToBigInt(fee),
+      fields: [],
+      signaturesRequired: numSigs
     };
   }
   function isSingleSig(condition) {
@@ -53591,6 +54769,9 @@ ${bugDetails}`;
       fee: BigInt(0)
     };
   }
+  function serializeSingleSigSpendingCondition(condition) {
+    return bytesToHex(serializeSingleSigSpendingConditionBytes(condition));
+  }
   function serializeSingleSigSpendingConditionBytes(condition) {
     const bytesArray = [
       condition.hashMode,
@@ -53601,6 +54782,9 @@ ${bugDetails}`;
       serializeMessageSignatureBytes(condition.signature)
     ];
     return concatArray(bytesArray);
+  }
+  function serializeMultiSigSpendingCondition(condition) {
+    return bytesToHex(serializeMultiSigSpendingConditionBytes(condition));
   }
   function serializeMultiSigSpendingConditionBytes(condition) {
     const bytesArray = [
@@ -53670,6 +54854,9 @@ ${bugDetails}`;
       fields,
       signaturesRequired
     };
+  }
+  function serializeSpendingCondition(condition) {
+    return bytesToHex(serializeSpendingConditionBytes(condition));
   }
   function serializeSpendingConditionBytes(condition) {
     if (isSingleSig(condition))
@@ -53831,6 +55018,14 @@ ${bugDetails}`;
         return { ...auth, sponsorSpendingCondition };
     }
   }
+  function getFee(auth) {
+    switch (auth.authType) {
+      case AuthType.Standard:
+        return auth.spendingCondition.fee;
+      case AuthType.Sponsored:
+        return auth.sponsorSpendingCondition.fee;
+    }
+  }
   function setNonce2(auth, nonce) {
     const spendingCondition = {
       ...auth.spendingCondition,
@@ -53862,6 +55057,9 @@ ${bugDetails}`;
       sponsorSpendingCondition: sc2
     };
   }
+  function serializeAuthorization(auth) {
+    return bytesToHex(serializeAuthorizationBytes(auth));
+  }
   function serializeAuthorizationBytes(auth) {
     const bytesArray = [];
     bytesArray.push(auth.authType);
@@ -53892,12 +55090,275 @@ ${bugDetails}`;
     }
   }
 
+  // node_modules/@stacks/transactions/dist/esm/builders.js
+  var import_c32check5 = __toESM(require_lib());
+
+  // node_modules/@stacks/transactions/dist/esm/contract-abi.js
+  var ClarityAbiTypeId;
+  (function(ClarityAbiTypeId2) {
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeUInt128"] = 1] = "ClarityAbiTypeUInt128";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeInt128"] = 2] = "ClarityAbiTypeInt128";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeBool"] = 3] = "ClarityAbiTypeBool";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypePrincipal"] = 4] = "ClarityAbiTypePrincipal";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeNone"] = 5] = "ClarityAbiTypeNone";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeBuffer"] = 6] = "ClarityAbiTypeBuffer";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeResponse"] = 7] = "ClarityAbiTypeResponse";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeOptional"] = 8] = "ClarityAbiTypeOptional";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeTuple"] = 9] = "ClarityAbiTypeTuple";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeList"] = 10] = "ClarityAbiTypeList";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeStringAscii"] = 11] = "ClarityAbiTypeStringAscii";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeStringUtf8"] = 12] = "ClarityAbiTypeStringUtf8";
+    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeTraitReference"] = 13] = "ClarityAbiTypeTraitReference";
+  })(ClarityAbiTypeId || (ClarityAbiTypeId = {}));
+  var isClarityAbiPrimitive = (val) => typeof val === "string";
+  var isClarityAbiBuffer = (val) => val.buffer !== void 0;
+  var isClarityAbiStringAscii = (val) => val["string-ascii"] !== void 0;
+  var isClarityAbiStringUtf8 = (val) => val["string-utf8"] !== void 0;
+  var isClarityAbiResponse = (val) => val.response !== void 0;
+  var isClarityAbiOptional = (val) => val.optional !== void 0;
+  var isClarityAbiTuple = (val) => val.tuple !== void 0;
+  var isClarityAbiList = (val) => val.list !== void 0;
+  function getTypeUnion(val) {
+    if (isClarityAbiPrimitive(val)) {
+      if (val === "uint128") {
+        return { id: ClarityAbiTypeId.ClarityAbiTypeUInt128, type: val };
+      } else if (val === "int128") {
+        return { id: ClarityAbiTypeId.ClarityAbiTypeInt128, type: val };
+      } else if (val === "bool") {
+        return { id: ClarityAbiTypeId.ClarityAbiTypeBool, type: val };
+      } else if (val === "principal") {
+        return { id: ClarityAbiTypeId.ClarityAbiTypePrincipal, type: val };
+      } else if (val === "trait_reference") {
+        return { id: ClarityAbiTypeId.ClarityAbiTypeTraitReference, type: val };
+      } else if (val === "none") {
+        return { id: ClarityAbiTypeId.ClarityAbiTypeNone, type: val };
+      } else {
+        throw new Error(`Unexpected Clarity ABI type primitive: ${JSON.stringify(val)}`);
+      }
+    } else if (isClarityAbiBuffer(val)) {
+      return { id: ClarityAbiTypeId.ClarityAbiTypeBuffer, type: val };
+    } else if (isClarityAbiResponse(val)) {
+      return { id: ClarityAbiTypeId.ClarityAbiTypeResponse, type: val };
+    } else if (isClarityAbiOptional(val)) {
+      return { id: ClarityAbiTypeId.ClarityAbiTypeOptional, type: val };
+    } else if (isClarityAbiTuple(val)) {
+      return { id: ClarityAbiTypeId.ClarityAbiTypeTuple, type: val };
+    } else if (isClarityAbiList(val)) {
+      return { id: ClarityAbiTypeId.ClarityAbiTypeList, type: val };
+    } else if (isClarityAbiStringAscii(val)) {
+      return { id: ClarityAbiTypeId.ClarityAbiTypeStringAscii, type: val };
+    } else if (isClarityAbiStringUtf8(val)) {
+      return { id: ClarityAbiTypeId.ClarityAbiTypeStringUtf8, type: val };
+    } else {
+      throw new Error(`Unexpected Clarity ABI type: ${JSON.stringify(val)}`);
+    }
+  }
+  function encodeAbiClarityValue(value, type) {
+    const union = type.id ? type : getTypeUnion(type);
+    switch (union.id) {
+      case ClarityAbiTypeId.ClarityAbiTypeUInt128:
+        return uintCV(value);
+      case ClarityAbiTypeId.ClarityAbiTypeInt128:
+        return intCV(value);
+      case ClarityAbiTypeId.ClarityAbiTypeBool:
+        if (value === "false" || value === "0")
+          return falseCV();
+        else if (value === "true" || value === "1")
+          return trueCV();
+        else
+          throw new Error(`Unexpected Clarity bool value: ${JSON.stringify(value)}`);
+      case ClarityAbiTypeId.ClarityAbiTypePrincipal:
+        if (value.includes(".")) {
+          const [addr2, name3] = value.split(".");
+          return contractPrincipalCV(addr2, name3);
+        } else {
+          return standardPrincipalCV(value);
+        }
+      case ClarityAbiTypeId.ClarityAbiTypeTraitReference:
+        const [addr, name2] = value.split(".");
+        return contractPrincipalCV(addr, name2);
+      case ClarityAbiTypeId.ClarityAbiTypeNone:
+        return noneCV();
+      case ClarityAbiTypeId.ClarityAbiTypeBuffer:
+        return bufferCV(hexToBytes(value));
+      case ClarityAbiTypeId.ClarityAbiTypeStringAscii:
+        return stringAsciiCV(value);
+      case ClarityAbiTypeId.ClarityAbiTypeStringUtf8:
+        return stringUtf8CV(value);
+      case ClarityAbiTypeId.ClarityAbiTypeOptional:
+        return someCV(encodeAbiClarityValue(value, union.type.optional));
+      case ClarityAbiTypeId.ClarityAbiTypeResponse:
+      case ClarityAbiTypeId.ClarityAbiTypeTuple:
+      case ClarityAbiTypeId.ClarityAbiTypeList:
+        throw new NotImplementedError(`Unsupported encoding for Clarity type: ${union.id}`);
+      default:
+        throw new Error(`Unexpected Clarity type ID: ${JSON.stringify(union)}`);
+    }
+  }
+  function encodeClarityValue(type, value) {
+    const union = type.id ? type : getTypeUnion(type);
+    if (union.id === ClarityAbiTypeId.ClarityAbiTypeBuffer) {
+      return bufferCV(utf8ToBytes(value));
+    }
+    return encodeAbiClarityValue(value, union);
+  }
+  function getTypeString(val) {
+    if (isClarityAbiPrimitive(val)) {
+      if (val === "int128") {
+        return "int";
+      } else if (val === "uint128") {
+        return "uint";
+      }
+      return val;
+    } else if (isClarityAbiBuffer(val)) {
+      return `(buff ${val.buffer.length})`;
+    } else if (isClarityAbiStringAscii(val)) {
+      return `(string-ascii ${val["string-ascii"].length})`;
+    } else if (isClarityAbiStringUtf8(val)) {
+      return `(string-utf8 ${val["string-utf8"].length})`;
+    } else if (isClarityAbiResponse(val)) {
+      return `(response ${getTypeString(val.response.ok)} ${getTypeString(val.response.error)})`;
+    } else if (isClarityAbiOptional(val)) {
+      return `(optional ${getTypeString(val.optional)})`;
+    } else if (isClarityAbiTuple(val)) {
+      return `(tuple ${val.tuple.map((t5) => `(${t5.name} ${getTypeString(t5.type)})`).join(" ")})`;
+    } else if (isClarityAbiList(val)) {
+      return `(list ${val.list.length} ${getTypeString(val.list.type)})`;
+    } else {
+      throw new Error(`Type string unsupported for Clarity type: ${JSON.stringify(val)}`);
+    }
+  }
+  function abiFunctionToString(func) {
+    const access = func.access === "read_only" ? "read-only" : func.access;
+    return `(define-${access} (${func.name} ${func.args.map((arg) => `(${arg.name} ${getTypeString(arg.type)})`).join(" ")}))`;
+  }
+  function matchType(cv, abiType) {
+    const union = getTypeUnion(abiType);
+    switch (cv.type) {
+      case ClarityType.BoolTrue:
+      case ClarityType.BoolFalse:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeBool;
+      case ClarityType.Int:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeInt128;
+      case ClarityType.UInt:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeUInt128;
+      case ClarityType.Buffer:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeBuffer && union.type.buffer.length >= Math.ceil(cv.value.length / 2);
+      case ClarityType.StringASCII:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeStringAscii && union.type["string-ascii"].length >= cv.value.length;
+      case ClarityType.StringUTF8:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeStringUtf8 && union.type["string-utf8"].length >= cv.value.length;
+      case ClarityType.OptionalNone:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeNone || union.id === ClarityAbiTypeId.ClarityAbiTypeOptional;
+      case ClarityType.OptionalSome:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeOptional && matchType(cv.value, union.type.optional);
+      case ClarityType.ResponseErr:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeResponse && matchType(cv.value, union.type.response.error);
+      case ClarityType.ResponseOk:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypeResponse && matchType(cv.value, union.type.response.ok);
+      case ClarityType.PrincipalContract:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypePrincipal || union.id === ClarityAbiTypeId.ClarityAbiTypeTraitReference;
+      case ClarityType.PrincipalStandard:
+        return union.id === ClarityAbiTypeId.ClarityAbiTypePrincipal;
+      case ClarityType.List:
+        return union.id == ClarityAbiTypeId.ClarityAbiTypeList && union.type.list.length >= cv.value.length && cv.value.every((val) => matchType(val, union.type.list.type));
+      case ClarityType.Tuple:
+        if (union.id == ClarityAbiTypeId.ClarityAbiTypeTuple) {
+          const tuple2 = cloneDeep(cv.value);
+          for (let i10 = 0; i10 < union.type.tuple.length; i10++) {
+            const abiTupleEntry = union.type.tuple[i10];
+            const key = abiTupleEntry.name;
+            const val = tuple2[key];
+            if (val) {
+              if (!matchType(val, abiTupleEntry.type)) {
+                return false;
+              }
+              delete tuple2[key];
+            } else {
+              return false;
+            }
+          }
+          return true;
+        } else {
+          return false;
+        }
+      default:
+        return false;
+    }
+  }
+  function validateContractCall(payload, abi) {
+    const filtered = abi.functions.filter((fn3) => fn3.name === payload.functionName.content);
+    if (filtered.length === 1) {
+      const abiFunc = filtered[0];
+      const abiArgs = abiFunc.args;
+      if (payload.functionArgs.length !== abiArgs.length) {
+        throw new Error(`Clarity function expects ${abiArgs.length} argument(s) but received ${payload.functionArgs.length}`);
+      }
+      for (let i10 = 0; i10 < payload.functionArgs.length; i10++) {
+        const payloadArg = payload.functionArgs[i10];
+        const abiArg = abiArgs[i10];
+        if (!matchType(payloadArg, abiArg.type)) {
+          const argNum = i10 + 1;
+          throw new Error(`Clarity function \`${payload.functionName.content}\` expects argument ${argNum} to be of type ${getTypeString(abiArg.type)}, not ${getCVTypeString(payloadArg)}`);
+        }
+      }
+      return true;
+    } else if (filtered.length === 0) {
+      throw new Error(`ABI doesn't contain a function with the name ${payload.functionName.content}`);
+    } else {
+      throw new Error(`Malformed ABI. Contains multiple functions with the name ${payload.functionName.content}`);
+    }
+  }
+  function parseToCV(input, type) {
+    const typeString = getTypeString(type);
+    if (isClarityAbiPrimitive(type)) {
+      if (type === "uint128") {
+        return uintCV(input);
+      } else if (type === "int128") {
+        return intCV(input);
+      } else if (type === "bool") {
+        if (input.toLowerCase() === "true") {
+          return trueCV();
+        } else if (input.toLowerCase() === "false") {
+          return falseCV();
+        } else {
+          throw new Error(`Invalid bool value: ${input}`);
+        }
+      } else if (type === "principal") {
+        if (input.includes(".")) {
+          const [address2, contractName] = input.split(".");
+          return contractPrincipalCV(address2, contractName);
+        } else {
+          return standardPrincipalCV(input);
+        }
+      } else {
+        throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
+      }
+    } else if (isClarityAbiBuffer(type)) {
+      const inputLength = utf8ToBytes(input).byteLength;
+      if (inputLength > type.buffer.length) {
+        throw new Error(`Input exceeds specified buffer length limit of ${type.buffer.length}`);
+      }
+      return bufferCVFromString(input);
+    } else if (isClarityAbiResponse(type)) {
+      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
+    } else if (isClarityAbiOptional(type)) {
+      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
+    } else if (isClarityAbiTuple(type)) {
+      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
+    } else if (isClarityAbiList(type)) {
+      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
+    } else {
+      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
+    }
+  }
+
   // node_modules/@stacks/transactions/dist/esm/transaction.js
   var StacksTransactionWire = class {
     constructor({ auth, payload, postConditions = createLPList([]), postConditionMode = PostConditionMode.Deny, transactionVersion, chainId, network = "mainnet" }) {
       network = networkFrom(network);
-      this.transactionVersion = transactionVersion ?? network.transactionVersion;
-      this.chainId = chainId ?? network.chainId;
+      this.transactionVersion = transactionVersion != null ? transactionVersion : network.transactionVersion;
+      this.chainId = chainId != null ? chainId : network.chainId;
       this.auth = auth;
       if ("amount" in payload) {
         this.payload = {
@@ -54037,6 +55498,213 @@ ${bugDetails}`;
     transaction.anchorMode = anchorMode;
     return transaction;
   }
+  function deriveNetworkFromTx(transaction) {
+    return whenTransactionVersion(transaction.transactionVersion)({
+      [TransactionVersion.Mainnet]: STACKS_MAINNET,
+      [TransactionVersion.Testnet]: STACKS_TESTNET
+    });
+  }
+  function estimateTransactionByteLength(transaction) {
+    const hashMode = transaction.auth.spendingCondition.hashMode;
+    const multiSigHashModes = [AddressHashMode.P2SH, AddressHashMode.P2WSH];
+    if (multiSigHashModes.includes(hashMode)) {
+      const multiSigSpendingCondition = transaction.auth.spendingCondition;
+      const existingSignatures = multiSigSpendingCondition.fields.filter((field) => field.contents.type === StacksWireType.MessageSignature).length;
+      const totalSignatureLength = (multiSigSpendingCondition.signaturesRequired - existingSignatures) * (RECOVERABLE_ECDSA_SIG_LENGTH_BYTES + 1);
+      return transaction.serializeBytes().byteLength + totalSignatureLength;
+    } else {
+      return transaction.serializeBytes().byteLength;
+    }
+  }
+  function serializeTransaction(transaction) {
+    return transaction.serialize();
+  }
+  function serializeTransactionBytes(transaction) {
+    return transaction.serializeBytes();
+  }
+  function transactionToHex(transaction) {
+    return transaction.serialize();
+  }
+
+  // node_modules/@stacks/transactions/dist/esm/fetch.js
+  var BROADCAST_PATH = "/v2/transactions";
+  var TRANSFER_FEE_ESTIMATE_PATH = "/v2/fees/transfer";
+  var TRANSACTION_FEE_ESTIMATE_PATH = "/v2/fees/transaction";
+  var ACCOUNT_PATH = "/v2/accounts";
+  var CONTRACT_ABI_PATH = "/v2/contracts/interface";
+  var READONLY_FUNCTION_CALL_PATH = "/v2/contracts/call-read";
+  var MAP_ENTRY_PATH = "/v2/map_entry";
+  async function broadcastTransaction({ transaction: txOpt, attachment: attachOpt, network: _network, client: _client }) {
+    const tx = txOpt.serialize();
+    const attachment = attachOpt ? typeof attachOpt === "string" ? attachOpt : bytesToHex(attachOpt) : void 0;
+    const json = attachOpt ? { tx, attachment } : { tx };
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(json)
+    };
+    const network = _network != null ? _network : deriveNetworkFromTx(txOpt);
+    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
+    const url = `${client.baseUrl}${BROADCAST_PATH}`;
+    const response = await client.fetch(url, options);
+    if (!response.ok) {
+      try {
+        return await response.json();
+      } catch (e10) {
+        throw Error("Failed to broadcast transaction (unable to parse node response).", { cause: e10 });
+      }
+    }
+    const text = await response.text();
+    const txid = text.replace(/["]+/g, "");
+    if (!validateHash256(txid))
+      throw new Error(text);
+    return { txid };
+  }
+  async function _getNonceApi({ address: address2, network = "mainnet", client: _client }) {
+    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
+    const url = `${client.baseUrl}/extended/v1/address/${address2}/nonces`;
+    const response = await client.fetch(url);
+    const result = await response.json();
+    return BigInt(result.possible_next_nonce);
+  }
+  async function fetchNonce(opts) {
+    var _a7;
+    try {
+      return await _getNonceApi(opts);
+    } catch (e10) {
+    }
+    const network = networkFrom((_a7 = opts.network) != null ? _a7 : "mainnet");
+    const client = Object.assign({}, clientFromNetwork(network), opts.client);
+    const url = `${client.baseUrl}${ACCOUNT_PATH}/${opts.address}?proof=0`;
+    const response = await client.fetch(url);
+    if (!response.ok) {
+      const msg = await response.text().catch(() => "");
+      throw new Error(`Error fetching nonce. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
+    }
+    const json = await response.json();
+    return BigInt(json.nonce);
+  }
+  async function fetchFeeEstimateTransfer({ transaction: txOpt, network: _network, client: _client }) {
+    const network = typeof txOpt === "number" ? "mainnet" : _network != null ? _network : deriveNetworkFromTx(txOpt);
+    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
+    const url = `${client.baseUrl}${TRANSFER_FEE_ESTIMATE_PATH}`;
+    const response = await client.fetch(url, {
+      headers: { Accept: "application/text" }
+    });
+    if (!response.ok) {
+      const msg = await response.text().catch(() => "");
+      throw new Error(`Error estimating transfer fee. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
+    }
+    const feeRateResult = await response.text();
+    const txBytes = typeof txOpt === "number" ? BigInt(txOpt) : BigInt(Math.ceil(txOpt.serializeBytes().byteLength));
+    const feeRate = BigInt(feeRateResult);
+    return feeRate * txBytes;
+  }
+  async function fetchFeeEstimateTransaction({ payload, estimatedLength, network = "mainnet", client: _client }) {
+    var _a7, _b2;
+    const json = {
+      transaction_payload: payload,
+      estimated_len: estimatedLength
+    };
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(json)
+    };
+    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
+    const url = `${client.baseUrl}${TRANSACTION_FEE_ESTIMATE_PATH}`;
+    const response = await client.fetch(url, options);
+    if (!response.ok) {
+      const body = await response.text().catch(() => "");
+      if (body.includes("NoEstimateAvailable")) {
+        let json2 = {};
+        try {
+          json2 = JSON.parse(body);
+        } catch (err2) {
+        }
+        throw new NoEstimateAvailableError((_b2 = (_a7 = json2 == null ? void 0 : json2.reason_data) == null ? void 0 : _a7.message) != null ? _b2 : "");
+      }
+      throw new Error(`Error estimating transaction fee. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${body}"`);
+    }
+    const data = await response.json();
+    return data.estimations;
+  }
+  async function fetchFeeEstimate({ transaction: txOpt, network: _network, client: _client }) {
+    const network = _network != null ? _network : deriveNetworkFromTx(txOpt);
+    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
+    try {
+      const estimatedLength = estimateTransactionByteLength(txOpt);
+      return (await fetchFeeEstimateTransaction({
+        payload: bytesToHex(serializePayloadBytes(txOpt.payload)),
+        estimatedLength,
+        network,
+        client
+      }))[1].fee;
+    } catch (error2) {
+      if (!(error2 instanceof NoEstimateAvailableError))
+        throw error2;
+      return await fetchFeeEstimateTransfer({ transaction: txOpt, network });
+    }
+  }
+  async function fetchAbi({ contractAddress: address2, contractName: name2, network = "mainnet", client: _client }) {
+    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
+    const url = `${client.baseUrl}${CONTRACT_ABI_PATH}/${address2}/${name2}`;
+    const response = await client.fetch(url);
+    if (!response.ok) {
+      const msg = await response.text().catch(() => "");
+      throw new Error(`Error fetching contract ABI for contract "${name2}" at address ${address2}. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
+    }
+    return JSON.parse(await response.text());
+  }
+  async function fetchCallReadOnlyFunction({ contractName, contractAddress, functionName, functionArgs, senderAddress, network = "mainnet", client: _client }) {
+    const json = {
+      sender: senderAddress,
+      arguments: functionArgs.map((arg) => cvToHex(arg))
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(json)
+    };
+    const name2 = encodeURIComponent(functionName);
+    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
+    const url = `${client.baseUrl}${READONLY_FUNCTION_CALL_PATH}/${contractAddress}/${contractName}/${name2}`;
+    const response = await client.fetch(url, options);
+    if (!response.ok) {
+      const msg = await response.text().catch(() => "");
+      throw new Error(`Error calling read-only function. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
+    }
+    return await response.json().then(parseReadOnlyResponse);
+  }
+  async function fetchContractMapEntry({ contractAddress, contractName, mapName, mapKey, network = "mainnet", client: _client }) {
+    const keyHex = with0x(serializeCV(mapKey));
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(keyHex)
+    };
+    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
+    const url = `${client.baseUrl}${MAP_ENTRY_PATH}/${contractAddress}/${contractName}/${mapName}?proof=0`;
+    const response = await client.fetch(url, options);
+    if (!response.ok) {
+      const msg = await response.text().catch(() => "");
+      throw new Error(`Error fetching map entry for map "${mapName}" in contract "${contractName}" at address ${contractAddress}, using map key "${keyHex}". Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
+    }
+    const json = await response.json();
+    if (!json.data) {
+      throw new Error(`Error fetching map entry for map "${mapName}" in contract "${contractName}" at address ${contractAddress}, using map key "${keyHex}". Response ${response.status}: ${response.statusText}. Attempted to fetch ${client.baseUrl} and failed with the response: "${JSON.stringify(json)}"`);
+    }
+    try {
+      return deserializeCV(json.data);
+    } catch (error2) {
+      throw new Error(`Error deserializing Clarity value "${json.data}": ${error2}`);
+    }
+  }
 
   // node_modules/@stacks/transactions/dist/esm/postcondition.js
   var PostConditionCodeWireType;
@@ -54081,12 +55749,491 @@ ${bugDetails}`;
         throw new Error("Invalid post condition type");
     }
   }
+  function wireToPostCondition(wire) {
+    switch (wire.conditionType) {
+      case PostConditionType.STX:
+        return {
+          type: "stx-postcondition",
+          address: principalWireToString(wire.principal),
+          condition: conditionByteToType(wire.conditionCode),
+          amount: wire.amount.toString()
+        };
+      case PostConditionType.Fungible:
+        return {
+          type: "ft-postcondition",
+          address: principalWireToString(wire.principal),
+          condition: conditionByteToType(wire.conditionCode),
+          amount: wire.amount.toString(),
+          asset: assetWireToString(wire.asset)
+        };
+      case PostConditionType.NonFungible:
+        return {
+          type: "nft-postcondition",
+          address: principalWireToString(wire.principal),
+          condition: conditionByteToType(wire.conditionCode),
+          asset: assetWireToString(wire.asset),
+          assetId: wire.assetName
+        };
+      default: {
+        const _exhaustiveCheck = wire;
+        throw new Error(`Invalid post condition type: ${_exhaustiveCheck}`);
+      }
+    }
+  }
   function conditionTypeToByte(condition) {
     return PostConditionCodeWireType[condition];
+  }
+  function conditionByteToType(wireType) {
+    return PostConditionCodeWireType[wireType];
   }
   function postConditionToHex(postcondition) {
     const wire = postConditionToWire(postcondition);
     return serializePostConditionWire(wire);
+  }
+  function postConditionModeFrom(mode) {
+    if (typeof mode === "number")
+      return mode;
+    if (mode === "allow")
+      return PostConditionMode.Allow;
+    if (mode === "deny")
+      return PostConditionMode.Deny;
+    throw new Error(`Invalid post condition mode: ${mode}`);
+  }
+  function assetWireToString(asset) {
+    const address2 = addressToString(asset.address);
+    const contractId = `${address2}.${asset.contractName.content}`;
+    return `${contractId}::${asset.assetName.content}`;
+  }
+  function principalWireToString(principal3) {
+    switch (principal3.prefix) {
+      case PostConditionPrincipalId.Origin:
+        return "origin";
+      case PostConditionPrincipalId.Standard:
+        return addressToString(principal3.address);
+      case PostConditionPrincipalId.Contract:
+        const address2 = addressToString(principal3.address);
+        return `${address2}.${principal3.contractName.content}`;
+      default:
+        const _exhaustiveCheck = principal3;
+        throw new Error(`Invalid principal type: ${_exhaustiveCheck}`);
+    }
+  }
+
+  // node_modules/@stacks/transactions/dist/esm/signer.js
+  var TransactionSigner = class {
+    constructor(transaction) {
+      this.transaction = transaction;
+      this.sigHash = transaction.signBegin();
+      this.originDone = false;
+      this.checkOversign = true;
+      this.checkOverlap = true;
+      const spendingCondition = transaction.auth.spendingCondition;
+      if (spendingCondition && !isSingleSig(spendingCondition)) {
+        if (spendingCondition.fields.filter((field) => field.contents.type === StacksWireType.MessageSignature).length >= spendingCondition.signaturesRequired) {
+          throw new Error("SpendingCondition has more signatures than are expected");
+        }
+        spendingCondition.fields.forEach((field) => {
+          if (field.contents.type !== StacksWireType.MessageSignature)
+            return;
+          const signature = field.contents;
+          const nextVerify = nextVerification(this.sigHash, transaction.auth.authType, spendingCondition.fee, spendingCondition.nonce, PubKeyEncoding.Compressed, signature.data);
+          if (!isNonSequentialMultiSig(spendingCondition.hashMode)) {
+            this.sigHash = nextVerify.nextSigHash;
+          }
+        });
+      }
+    }
+    static createSponsorSigner(transaction, spendingCondition) {
+      if (transaction.auth.authType != AuthType.Sponsored) {
+        throw new SigningError("Cannot add sponsor to non-sponsored transaction");
+      }
+      const tx = cloneDeep(transaction);
+      tx.setSponsor(spendingCondition);
+      const originSigHash = tx.verifyOrigin();
+      const signer = new this(tx);
+      signer.originDone = true;
+      signer.sigHash = originSigHash;
+      signer.checkOversign = true;
+      signer.checkOverlap = true;
+      return signer;
+    }
+    signOrigin(privateKey) {
+      if (this.checkOverlap && this.originDone) {
+        throw new SigningError("Cannot sign origin after sponsor key");
+      }
+      if (this.transaction.auth === void 0) {
+        throw new SigningError('"transaction.auth" is undefined');
+      }
+      if (this.transaction.auth.spendingCondition === void 0) {
+        throw new SigningError('"transaction.auth.spendingCondition" is undefined');
+      }
+      const spendingCondition = this.transaction.auth.spendingCondition;
+      if (spendingCondition.hashMode === AddressHashMode.P2SH || spendingCondition.hashMode === AddressHashMode.P2WSH) {
+        if (this.checkOversign && spendingCondition.fields.filter((field) => field.contents.type === StacksWireType.MessageSignature).length >= spendingCondition.signaturesRequired) {
+          throw new Error("Origin would have too many signatures");
+        }
+      }
+      const nextSighash = this.transaction.signNextOrigin(this.sigHash, privateKey);
+      if (isSingleSig(this.transaction.auth.spendingCondition) || isSequentialMultiSig(this.transaction.auth.spendingCondition.hashMode)) {
+        this.sigHash = nextSighash;
+      }
+    }
+    appendOrigin(publicKey) {
+      const wire = typeof publicKey === "object" && "type" in publicKey ? publicKey : createStacksPublicKey(publicKey);
+      if (this.checkOverlap && this.originDone) {
+        throw Error("Cannot append public key to origin after sponsor key");
+      }
+      if (this.transaction.auth === void 0) {
+        throw new Error('"transaction.auth" is undefined');
+      }
+      if (this.transaction.auth.spendingCondition === void 0) {
+        throw new Error('"transaction.auth.spendingCondition" is undefined');
+      }
+      this.transaction.appendPubkey(wire);
+    }
+    signSponsor(privateKey) {
+      if (this.transaction.auth === void 0) {
+        throw new SigningError('"transaction.auth" is undefined');
+      }
+      if (this.transaction.auth.authType !== AuthType.Sponsored) {
+        throw new SigningError('"transaction.auth.authType" is not AuthType.Sponsored');
+      }
+      const nextSighash = this.transaction.signNextSponsor(this.sigHash, privateKey);
+      this.sigHash = nextSighash;
+      this.originDone = true;
+    }
+    getTxInComplete() {
+      return cloneDeep(this.transaction);
+    }
+    resume(transaction) {
+      this.transaction = cloneDeep(transaction);
+      this.sigHash = transaction.signBegin();
+    }
+  };
+
+  // node_modules/@stacks/transactions/dist/esm/builders.js
+  async function makeUnsignedSTXTokenTransfer(txOptions) {
+    const defaultOptions = {
+      fee: BigInt(0),
+      nonce: BigInt(0),
+      network: STACKS_MAINNET,
+      memo: "",
+      sponsored: false
+    };
+    const options = Object.assign(defaultOptions, txOptions);
+    options.network = networkFrom(options.network);
+    options.client = Object.assign({}, clientFromNetwork(options.network), txOptions.client);
+    const payload = createTokenTransferPayload(options.recipient, options.amount, options.memo);
+    let spendingCondition = null;
+    if ("publicKey" in options) {
+      spendingCondition = createSingleSigSpendingCondition(AddressHashMode.P2PKH, options.publicKey, options.nonce, options.fee);
+    } else {
+      const hashMode = options.useNonSequentialMultiSig ? AddressHashMode.P2SHNonSequential : AddressHashMode.P2SH;
+      const publicKeys = options.address ? sortPublicKeysForAddress(options.publicKeys.map(publicKeyToHex), options.numSignatures, hashMode, createAddress(options.address).hash160) : options.publicKeys.map(publicKeyToHex);
+      spendingCondition = createMultiSigSpendingCondition(hashMode, options.numSignatures, publicKeys, options.nonce, options.fee);
+    }
+    const authorization = options.sponsored ? createSponsoredAuth(spendingCondition) : createStandardAuth(spendingCondition);
+    const transaction = new StacksTransactionWire({
+      transactionVersion: options.network.transactionVersion,
+      chainId: options.network.chainId,
+      auth: authorization,
+      payload
+    });
+    if (txOptions.fee == null) {
+      const fee = await fetchFeeEstimate({ transaction, ...options });
+      transaction.setFee(fee);
+    }
+    if (txOptions.nonce == null) {
+      const addressVersion = options.network.addressVersion.singleSig;
+      const address2 = (0, import_c32check5.c32address)(addressVersion, transaction.auth.spendingCondition.signer);
+      const txNonce = await fetchNonce({ address: address2, ...options });
+      transaction.setNonce(txNonce);
+    }
+    return transaction;
+  }
+  async function makeSTXTokenTransfer(txOptions) {
+    if ("senderKey" in txOptions) {
+      const publicKey = privateKeyToPublic(txOptions.senderKey);
+      const options = omit(txOptions, "senderKey");
+      const transaction = await makeUnsignedSTXTokenTransfer({ publicKey, ...options });
+      const privKey = txOptions.senderKey;
+      const signer = new TransactionSigner(transaction);
+      signer.signOrigin(privKey);
+      return transaction;
+    } else {
+      const options = omit(txOptions, "signerKeys");
+      const transaction = await makeUnsignedSTXTokenTransfer(options);
+      mutatingSignAppendMultiSig(transaction, txOptions.publicKeys.map(publicKeyToHex).slice(), txOptions.signerKeys.map(privateKeyToHex), txOptions.address);
+      return transaction;
+    }
+  }
+  async function makeContractDeploy(txOptions) {
+    if ("senderKey" in txOptions) {
+      const publicKey = privateKeyToPublic(txOptions.senderKey);
+      const options = omit(txOptions, "senderKey");
+      const transaction = await makeUnsignedContractDeploy({ publicKey, ...options });
+      const privKey = txOptions.senderKey;
+      const signer = new TransactionSigner(transaction);
+      signer.signOrigin(privKey);
+      return transaction;
+    } else {
+      const options = omit(txOptions, "signerKeys");
+      const transaction = await makeUnsignedContractDeploy(options);
+      mutatingSignAppendMultiSig(transaction, txOptions.publicKeys.map(publicKeyToHex).slice(), txOptions.signerKeys.map(privateKeyToHex), txOptions.address);
+      return transaction;
+    }
+  }
+  async function makeUnsignedContractDeploy(txOptions) {
+    var _a7;
+    const defaultOptions = {
+      fee: BigInt(0),
+      nonce: BigInt(0),
+      network: STACKS_MAINNET,
+      postConditionMode: PostConditionMode.Deny,
+      sponsored: false,
+      clarityVersion: ClarityVersion.Clarity4
+    };
+    const options = Object.assign(defaultOptions, txOptions);
+    options.network = networkFrom(options.network);
+    options.client = Object.assign({}, clientFromNetwork(options.network), txOptions.client);
+    options.postConditionMode = postConditionModeFrom(options.postConditionMode);
+    const payload = createSmartContractPayload(options.contractName, options.codeBody, options.clarityVersion);
+    let spendingCondition = null;
+    if ("publicKey" in options) {
+      spendingCondition = createSingleSigSpendingCondition(AddressHashMode.P2PKH, options.publicKey, options.nonce, options.fee);
+    } else {
+      const hashMode = options.useNonSequentialMultiSig ? AddressHashMode.P2SHNonSequential : AddressHashMode.P2SH;
+      const publicKeys = options.address ? sortPublicKeysForAddress(options.publicKeys.map(publicKeyToHex), options.numSignatures, hashMode, createAddress(options.address).hash160) : options.publicKeys.map(publicKeyToHex);
+      spendingCondition = createMultiSigSpendingCondition(hashMode, options.numSignatures, publicKeys, options.nonce, options.fee);
+    }
+    const authorization = options.sponsored ? createSponsoredAuth(spendingCondition) : createStandardAuth(spendingCondition);
+    const postConditions = ((_a7 = options.postConditions) != null ? _a7 : []).map((pc2) => {
+      if (typeof pc2 === "string")
+        return deserializePostConditionWire(pc2);
+      if (typeof pc2.type === "string")
+        return postConditionToWire(pc2);
+      return pc2;
+    });
+    const lpPostConditions = createLPList(postConditions);
+    const transaction = new StacksTransactionWire({
+      transactionVersion: options.network.transactionVersion,
+      chainId: options.network.chainId,
+      auth: authorization,
+      payload,
+      postConditions: lpPostConditions,
+      postConditionMode: options.postConditionMode
+    });
+    if (txOptions.fee === void 0 || txOptions.fee === null) {
+      const fee = await fetchFeeEstimate({ transaction, ...options });
+      transaction.setFee(fee);
+    }
+    if (txOptions.nonce === void 0 || txOptions.nonce === null) {
+      const addressVersion = options.network.addressVersion.singleSig;
+      const address2 = (0, import_c32check5.c32address)(addressVersion, transaction.auth.spendingCondition.signer);
+      const txNonce = await fetchNonce({ address: address2, ...options });
+      transaction.setNonce(txNonce);
+    }
+    return transaction;
+  }
+  async function makeUnsignedContractCall(txOptions) {
+    var _a7;
+    const defaultOptions = {
+      fee: BigInt(0),
+      nonce: BigInt(0),
+      network: STACKS_MAINNET,
+      postConditionMode: PostConditionMode.Deny,
+      sponsored: false
+    };
+    const options = Object.assign(defaultOptions, txOptions);
+    options.network = networkFrom(options.network);
+    options.client = Object.assign({}, clientFromNetwork(options.network), options.client);
+    options.postConditionMode = postConditionModeFrom(options.postConditionMode);
+    const payload = createContractCallPayload(options.contractAddress, options.contractName, options.functionName, options.functionArgs);
+    if (options == null ? void 0 : options.validateWithAbi) {
+      let abi;
+      if (typeof options.validateWithAbi === "boolean") {
+        if (options == null ? void 0 : options.network) {
+          abi = await fetchAbi({ ...options });
+        } else {
+          throw new Error("Network option must be provided in order to validate with ABI");
+        }
+      } else {
+        abi = options.validateWithAbi;
+      }
+      validateContractCall(payload, abi);
+    }
+    let spendingCondition = null;
+    if ("publicKey" in options) {
+      spendingCondition = createSingleSigSpendingCondition(AddressHashMode.P2PKH, options.publicKey, options.nonce, options.fee);
+    } else {
+      const hashMode = options.useNonSequentialMultiSig ? AddressHashMode.P2SHNonSequential : AddressHashMode.P2SH;
+      const publicKeys = options.address ? sortPublicKeysForAddress(options.publicKeys.map(publicKeyToHex), options.numSignatures, hashMode, createAddress(options.address).hash160) : options.publicKeys.map(publicKeyToHex);
+      spendingCondition = createMultiSigSpendingCondition(hashMode, options.numSignatures, publicKeys, options.nonce, options.fee);
+    }
+    const authorization = options.sponsored ? createSponsoredAuth(spendingCondition) : createStandardAuth(spendingCondition);
+    const postConditions = ((_a7 = options.postConditions) != null ? _a7 : []).map((pc2) => {
+      if (typeof pc2 === "string")
+        return deserializePostConditionWire(pc2);
+      if (typeof pc2.type === "string")
+        return postConditionToWire(pc2);
+      return pc2;
+    });
+    const lpPostConditions = createLPList(postConditions);
+    const transaction = new StacksTransactionWire({
+      transactionVersion: options.network.transactionVersion,
+      chainId: options.network.chainId,
+      auth: authorization,
+      payload,
+      postConditions: lpPostConditions,
+      postConditionMode: options.postConditionMode
+    });
+    if (txOptions.fee === void 0 || txOptions.fee === null) {
+      const fee = await fetchFeeEstimate({ transaction, ...options });
+      transaction.setFee(fee);
+    }
+    if (txOptions.nonce === void 0 || txOptions.nonce === null) {
+      const addressVersion = options.network.addressVersion.singleSig;
+      const address2 = (0, import_c32check5.c32address)(addressVersion, transaction.auth.spendingCondition.signer);
+      const txNonce = await fetchNonce({ address: address2, ...options });
+      transaction.setNonce(txNonce);
+    }
+    return transaction;
+  }
+  async function makeContractCall(txOptions) {
+    if ("senderKey" in txOptions) {
+      const publicKey = privateKeyToPublic(txOptions.senderKey);
+      const options = omit(txOptions, "senderKey");
+      const transaction = await makeUnsignedContractCall({ publicKey, ...options });
+      const privKey = txOptions.senderKey;
+      const signer = new TransactionSigner(transaction);
+      signer.signOrigin(privKey);
+      return transaction;
+    } else {
+      const options = omit(txOptions, "signerKeys");
+      const transaction = await makeUnsignedContractCall(options);
+      mutatingSignAppendMultiSig(transaction, txOptions.publicKeys.map(publicKeyToHex).slice(), txOptions.signerKeys.map(privateKeyToHex), txOptions.address);
+      return transaction;
+    }
+  }
+  async function sponsorTransaction(sponsorOptions) {
+    const defaultOptions = {
+      fee: 0,
+      sponsorNonce: 0,
+      sponsorAddressHashmode: AddressHashMode.P2PKH,
+      network: deriveNetworkFromTx(sponsorOptions.transaction)
+    };
+    const options = Object.assign(defaultOptions, sponsorOptions);
+    options.network = networkFrom(options.network);
+    options.client = Object.assign({}, clientFromNetwork(options.network), options.client);
+    const sponsorPubKey = privateKeyToPublic(options.sponsorPrivateKey);
+    if (sponsorOptions.fee == null) {
+      let txFee = 0;
+      switch (options.transaction.payload.payloadType) {
+        case PayloadType.TokenTransfer:
+        case PayloadType.SmartContract:
+        case PayloadType.VersionedSmartContract:
+        case PayloadType.ContractCall:
+          txFee = BigInt(await fetchFeeEstimate({ ...options }));
+          break;
+        default:
+          throw new Error(`Sponsored transactions not supported for transaction type ${PayloadType[options.transaction.payload.payloadType]}`);
+      }
+      options.transaction.setFee(txFee);
+      options.fee = txFee;
+    }
+    if (sponsorOptions.sponsorNonce == null) {
+      const addressVersion = options.network.addressVersion.singleSig;
+      const address2 = publicKeyToAddress(addressVersion, sponsorPubKey);
+      const sponsorNonce = await fetchNonce({ address: address2, ...options });
+      options.sponsorNonce = sponsorNonce;
+    }
+    const sponsorSpendingCondition = createSingleSigSpendingCondition(options.sponsorAddressHashmode, sponsorPubKey, options.sponsorNonce, options.fee);
+    options.transaction.setSponsor(sponsorSpendingCondition);
+    const privKey = options.sponsorPrivateKey;
+    const signer = TransactionSigner.createSponsorSigner(options.transaction, sponsorSpendingCondition);
+    signer.signSponsor(privKey);
+    return signer.transaction;
+  }
+  function mutatingSignAppendMultiSig(transaction, publicKeys, signerKeys, address2) {
+    if (isSingleSig(transaction.auth.spendingCondition)) {
+      throw new Error("Transaction is not a multi-sig transaction");
+    }
+    const signer = new TransactionSigner(transaction);
+    const pubs = address2 ? sortPublicKeysForAddress(publicKeys, transaction.auth.spendingCondition.signaturesRequired, transaction.auth.spendingCondition.hashMode, createAddress(address2).hash160) : publicKeys;
+    for (const publicKey of pubs) {
+      const signerKey = signerKeys.find((key) => privateKeyToPublic(key) === publicKey);
+      if (signerKey) {
+        signer.signOrigin(signerKey);
+      } else {
+        signer.appendOrigin(publicKey);
+      }
+    }
+  }
+  function sortPublicKeysForAddress(publicKeys, numSigs, hashMode, hash2) {
+    const hashUnsorted = addressFromPublicKeys(0, hashMode, numSigs, publicKeys.map(createStacksPublicKey)).hash160;
+    if (hashUnsorted === hash2)
+      return publicKeys;
+    const publicKeysSorted = publicKeys.slice().sort();
+    const hashSorted = addressFromPublicKeys(0, hashMode, numSigs, publicKeysSorted.map(createStacksPublicKey)).hash160;
+    if (hashSorted === hash2)
+      return publicKeysSorted;
+    throw new Error("Failed to find matching multi-sig address given public-keys.");
+  }
+
+  // node_modules/@stacks/transactions/dist/esm/structuredDataSignature.js
+  var STRUCTURED_DATA_PREFIX = new Uint8Array([83, 73, 80, 48, 49, 56]);
+  function hashStructuredData(structuredData) {
+    return bytesToHex(sha256(serializeCVBytes(structuredData)));
+  }
+  function hashStructuredDataBytes(structuredData) {
+    return sha256(serializeCVBytes(structuredData));
+  }
+  var hash256BytesLength = 32;
+  function isDomain(value) {
+    if (value.type !== ClarityType.Tuple)
+      return false;
+    if (!["name", "version", "chain-id"].every((key) => key in value.value))
+      return false;
+    if (!["name", "version"].every((key) => value.value[key].type === ClarityType.StringASCII))
+      return false;
+    if (value.value["chain-id"].type !== ClarityType.UInt)
+      return false;
+    return true;
+  }
+  function encodeStructuredData(opts) {
+    const bytes2 = encodeStructuredDataBytes(opts);
+    return bytesToHex(bytes2);
+  }
+  function encodeStructuredDataBytes({ message, domain }) {
+    const structuredDataHash = hashStructuredDataBytes(message);
+    if (!isDomain(domain)) {
+      throw new Error("domain parameter must be a valid domain of type TupleCV with keys 'name', 'version', 'chain-id' with respective types StringASCII, StringASCII, UInt");
+    }
+    const domainHash = hashStructuredDataBytes(domain);
+    return concatBytes(STRUCTURED_DATA_PREFIX, domainHash, structuredDataHash);
+  }
+  function decodeStructuredDataSignature(signature) {
+    const bytes2 = decodeStructuredDataSignatureBytes(signature);
+    return {
+      domainHash: bytesToHex(bytes2.domainHash),
+      messageHash: bytesToHex(bytes2.messageHash)
+    };
+  }
+  function decodeStructuredDataSignatureBytes(signature) {
+    const encodedMessageBytes = typeof signature === "string" ? hexToBytes(signature) : signature;
+    const domainHash = encodedMessageBytes.slice(STRUCTURED_DATA_PREFIX.length, STRUCTURED_DATA_PREFIX.length + hash256BytesLength);
+    const messageHash = encodedMessageBytes.slice(STRUCTURED_DATA_PREFIX.length + hash256BytesLength);
+    return {
+      domainHash,
+      messageHash
+    };
+  }
+  function signStructuredData({ message, domain, privateKey }) {
+    const structuredDataHash = bytesToHex(sha256(encodeStructuredDataBytes({ message, domain })));
+    return signMessageHashRsv({
+      messageHash: structuredDataHash,
+      privateKey
+    });
   }
 
   // node_modules/@stacks/transactions/dist/esm/namespaces/address.js
@@ -54097,11 +56244,11 @@ ${bugDetails}`;
     parse: () => parse2,
     stringify: () => stringify
   });
-  var import_c32check5 = __toESM(require_lib());
+  var import_c32check6 = __toESM(require_lib());
   var C32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
   function parse2(address2) {
     const [addr, contractName] = address2.split(".");
-    const parsed = (0, import_c32check5.c32addressDecode)(addr);
+    const parsed = (0, import_c32check6.c32addressDecode)(addr);
     return {
       version: parsed[0],
       versionChar: C32[parsed[0]],
@@ -54111,7 +56258,7 @@ ${bugDetails}`;
   }
   function stringify(address2) {
     const version4 = "version" in address2 ? address2.version : C32.indexOf(address2.versionChar.toUpperCase());
-    const addr = (0, import_c32check5.c32address)(version4, address2.hash160);
+    const addr = (0, import_c32check6.c32address)(version4, address2.hash160);
     if (address2.contractName)
       return `${addr}.${address2.contractName}`;
     return addr;
@@ -54246,22 +56393,133 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var serialize = serializeCV;
   var deserialize = deserializeCV;
 
+  // node_modules/@stacks/transactions/dist/esm/pc.js
+  var pc_exports = {};
+  __export(pc_exports, {
+    fromHex: () => fromHex,
+    origin: () => origin,
+    principal: () => principal2
+  });
+  function principal2(principal3) {
+    const [address2, name2] = principal3.split(".");
+    if (!address2 || !validateStacksAddress(address2) || typeof name2 === "string" && !name2) {
+      throw new Error(`Invalid contract id: ${principal3}`);
+    }
+    return new PartialPcWithPrincipal(principal3);
+  }
+  function origin() {
+    return new PartialPcWithPrincipal("origin");
+  }
+  var PartialPcWithPrincipal = class {
+    constructor(address2) {
+      this.address = address2;
+    }
+    willSendEq(amount) {
+      return new PartialPcFtWithCode(this.address, amount, "eq");
+    }
+    willSendLte(amount) {
+      return new PartialPcFtWithCode(this.address, amount, "lte");
+    }
+    willSendLt(amount) {
+      return new PartialPcFtWithCode(this.address, amount, "lt");
+    }
+    willSendGte(amount) {
+      return new PartialPcFtWithCode(this.address, amount, "gte");
+    }
+    willSendGt(amount) {
+      return new PartialPcFtWithCode(this.address, amount, "gt");
+    }
+    willSendAsset() {
+      return new PartialPcNftWithCode(this.address, "sent");
+    }
+    willNotSendAsset() {
+      return new PartialPcNftWithCode(this.address, "not-sent");
+    }
+  };
+  var PartialPcFtWithCode = class {
+    constructor(address2, amount, code2) {
+      this.address = address2;
+      this.amount = amount;
+      this.code = code2;
+    }
+    ustx() {
+      return {
+        type: "stx-postcondition",
+        address: this.address,
+        condition: this.code,
+        amount: intToBigInt(this.amount).toString()
+      };
+    }
+    ft(contractId, tokenName) {
+      const [address2, name2] = contractId.split(".");
+      if (!address2 || !validateStacksAddress(address2) || typeof name2 === "string" && !name2) {
+        throw new Error(`Invalid contract id: ${contractId}`);
+      }
+      return {
+        type: "ft-postcondition",
+        address: this.address,
+        condition: this.code,
+        amount: intToBigInt(this.amount).toString(),
+        asset: `${contractId}::${tokenName}`
+      };
+    }
+  };
+  var PartialPcNftWithCode = class {
+    constructor(address2, code2) {
+      this.address = address2;
+      this.code = code2;
+    }
+    nft(...args) {
+      const { contractAddress, contractName, tokenName, assetId } = getNftArgs(...args);
+      if (!validateStacksAddress(contractAddress)) {
+        throw new Error(`Invalid contract id: ${contractAddress}`);
+      }
+      return {
+        type: "nft-postcondition",
+        address: this.address,
+        condition: this.code,
+        asset: `${contractAddress}.${contractName}::${tokenName}`,
+        assetId
+      };
+    }
+  };
+  function parseNft(nftAssetName) {
+    const [principal3, tokenName] = nftAssetName.split("::");
+    if (!principal3 || !tokenName)
+      throw new Error(`Invalid fully-qualified nft asset name: ${nftAssetName}`);
+    const [address2, name2] = parseContractId(principal3);
+    return { contractAddress: address2, contractName: name2, tokenName };
+  }
+  function fromHex(hex) {
+    const wire = deserializePostConditionWire(hex);
+    return wireToPostCondition(wire);
+  }
+  function getNftArgs(...args) {
+    if (args.length === 2) {
+      const [assetName, assetId2] = args;
+      return { ...parseNft(assetName), assetId: assetId2 };
+    }
+    const [contractId, tokenName, assetId] = args;
+    const [address2, name2] = parseContractId(contractId);
+    return { contractAddress: address2, contractName: name2, tokenName, assetId };
+  }
+
   // node_modules/@stacks/network-v6/dist/esm/fetch.js
   var import_polyfill = __toESM(require_browser_polyfill());
-  var defaultFetchOpts = {
+  var defaultFetchOpts2 = {
     referrerPolicy: "origin",
     headers: {
       "x-hiro-product": "stacksjs"
     }
   };
-  async function fetchWrapper(input, init) {
+  async function fetchWrapper2(input, init) {
     const fetchOpts = {};
-    Object.assign(fetchOpts, defaultFetchOpts, init);
+    Object.assign(fetchOpts, defaultFetchOpts2, init);
     const fetchResult = await fetch(input, fetchOpts);
     return fetchResult;
   }
-  function argsForCreateFetchFn(args) {
-    let fetchLib = fetchWrapper;
+  function argsForCreateFetchFn2(args) {
+    let fetchLib = fetchWrapper2;
     let middlewares = [];
     if (args.length > 0 && typeof args[0] === "function") {
       fetchLib = args.shift();
@@ -54272,16 +56530,17 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     return { fetchLib, middlewares };
   }
   function createFetchFn2(...args) {
-    const { fetchLib, middlewares } = argsForCreateFetchFn(args);
+    const { fetchLib, middlewares } = argsForCreateFetchFn2(args);
     const fetchFn = async (url, init) => {
-      let fetchParams = { url, init: init ?? {} };
+      var _a7;
+      let fetchParams = { url, init: init != null ? init : {} };
       for (const middleware of middlewares) {
         if (typeof middleware.pre === "function") {
           const result = await Promise.resolve(middleware.pre({
             fetch: fetchLib,
             ...fetchParams
           }));
-          fetchParams = result ?? fetchParams;
+          fetchParams = result != null ? result : fetchParams;
         }
       }
       let response = await fetchLib(fetchParams.url, fetchParams.init);
@@ -54291,9 +56550,9 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
             fetch: fetchLib,
             url: fetchParams.url,
             init: fetchParams.init,
-            response: response?.clone() ?? response
+            response: (_a7 = response == null ? void 0 : response.clone()) != null ? _a7 : response
           }));
-          response = result ?? response;
+          response = result != null ? result : response;
         }
       }
       return response;
@@ -54325,6 +56584,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var StacksNetworks = ["mainnet", "testnet", "devnet", "mocknet"];
   var StacksNetwork = class {
     constructor(networkConfig) {
+      var _a7;
       this.version = TransactionVersion2.Mainnet;
       this.chainId = ChainID.Mainnet;
       this.bnsLookupUrl = "https://api.mainnet.hiro.so";
@@ -54365,7 +56625,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       this.getDataVarUrl = (contractAddress, contractName, dataVarName) => `${this.coreApiUrl}/v2/data_var/${contractAddress}/${contractName}/${dataVarName}?proof=0`;
       this.getMapEntryUrl = (contractAddress, contractName, mapName) => `${this.coreApiUrl}/v2/map_entry/${contractAddress}/${contractName}/${mapName}?proof=0`;
       this.coreApiUrl = networkConfig.url;
-      this.fetchFn = networkConfig.fetchFn ?? createFetchFn2();
+      this.fetchFn = (_a7 = networkConfig.fetchFn) != null ? _a7 : createFetchFn2();
     }
     getNameInfo(fullyQualifiedName) {
       const nameLookupURL = `${this.bnsLookupUrl}/v1/names/${fullyQualifiedName}`;
@@ -54408,9 +56668,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   };
   var StacksMainnet = class extends StacksNetwork {
     constructor(opts) {
+      var _a7;
       super({
-        url: opts?.url ?? HIRO_MAINNET_DEFAULT,
-        fetchFn: opts?.fetchFn
+        url: (_a7 = opts == null ? void 0 : opts.url) != null ? _a7 : HIRO_MAINNET_DEFAULT,
+        fetchFn: opts == null ? void 0 : opts.fetchFn
       });
       this.version = TransactionVersion2.Mainnet;
       this.chainId = ChainID.Mainnet;
@@ -54418,9 +56679,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   };
   var StacksTestnet = class extends StacksNetwork {
     constructor(opts) {
+      var _a7;
       super({
-        url: opts?.url ?? HIRO_TESTNET_DEFAULT,
-        fetchFn: opts?.fetchFn
+        url: (_a7 = opts == null ? void 0 : opts.url) != null ? _a7 : HIRO_TESTNET_DEFAULT,
+        fetchFn: opts == null ? void 0 : opts.fetchFn
       });
       this.version = TransactionVersion2.Testnet;
       this.chainId = ChainID.Testnet;
@@ -54428,9 +56690,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   };
   var StacksMocknet = class extends StacksNetwork {
     constructor(opts) {
+      var _a7;
       super({
-        url: opts?.url ?? HIRO_MOCKNET_DEFAULT,
-        fetchFn: opts?.fetchFn
+        url: (_a7 = opts == null ? void 0 : opts.url) != null ? _a7 : HIRO_MOCKNET_DEFAULT,
+        fetchFn: opts == null ? void 0 : opts.fetchFn
       });
       this.version = TransactionVersion2.Testnet;
       this.chainId = ChainID.Testnet;
@@ -54747,11 +57010,11 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   })(TxRejectedReason2 || (TxRejectedReason2 = {}));
 
   // node_modules/@stacks/transactions-v6/dist/esm/utils.js
-  var import_c32check7 = __toESM(require_lib());
+  var import_c32check8 = __toESM(require_lib());
   var import_lodash2 = __toESM(require_lodash());
 
   // node_modules/@stacks/transactions-v6/dist/esm/postcondition-types.js
-  var import_c32check6 = __toESM(require_lib());
+  var import_c32check7 = __toESM(require_lib());
   function createLPString2(content, lengthPrefixBytes, maxLengthBytes) {
     const prefixLength = lengthPrefixBytes || 1;
     const maxLength = maxLengthBytes || MAX_STRING_LENGTH_BYTES2;
@@ -54804,22 +57067,22 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   };
 
   // node_modules/@stacks/transactions-v6/dist/esm/types.js
-  function serializeAddress(address2) {
+  function serializeAddress2(address2) {
     const bytesArray = [];
     bytesArray.push(hexToBytes3(intToHex2(address2.version, 1)));
     bytesArray.push(hexToBytes3(address2.hash160));
     return concatArray2(bytesArray);
   }
-  function serializePrincipal(principal2) {
+  function serializePrincipal2(principal3) {
     const bytesArray = [];
-    bytesArray.push(principal2.prefix);
-    bytesArray.push(serializeAddress(principal2.address));
-    if (principal2.prefix === PostConditionPrincipalID.Contract) {
-      bytesArray.push(serializeLPString(principal2.contractName));
+    bytesArray.push(principal3.prefix);
+    bytesArray.push(serializeAddress2(principal3.address));
+    if (principal3.prefix === PostConditionPrincipalID.Contract) {
+      bytesArray.push(serializeLPString2(principal3.contractName));
     }
     return concatArray2(bytesArray);
   }
-  function serializeLPString(lps) {
+  function serializeLPString2(lps) {
     const bytesArray = [];
     const contentBytes = utf8ToBytes3(lps.content);
     const length2 = contentBytes.byteLength;
@@ -54829,15 +57092,15 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   }
   function serializeAssetInfo(info) {
     const bytesArray = [];
-    bytesArray.push(serializeAddress(info.address));
-    bytesArray.push(serializeLPString(info.contractName));
-    bytesArray.push(serializeLPString(info.assetName));
+    bytesArray.push(serializeAddress2(info.address));
+    bytesArray.push(serializeLPString2(info.contractName));
+    bytesArray.push(serializeLPString2(info.assetName));
     return concatArray2(bytesArray);
   }
   function serializePostCondition(postCondition) {
     const bytesArray = [];
     bytesArray.push(postCondition.conditionType);
-    bytesArray.push(serializePrincipal(postCondition.principal));
+    bytesArray.push(serializePrincipal2(postCondition.principal));
     if (postCondition.conditionType === PostConditionType2.Fungible || postCondition.conditionType === PostConditionType2.NonFungible) {
       bytesArray.push(serializeAssetInfo(postCondition.assetInfo));
     }
@@ -54881,10 +57144,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     return bytesWithTypeID2(cv.type, bytes2);
   }
   function serializeStandardPrincipalCV2(cv) {
-    return bytesWithTypeID2(cv.type, serializeAddress(cv.address));
+    return bytesWithTypeID2(cv.type, serializeAddress2(cv.address));
   }
   function serializeContractPrincipalCV2(cv) {
-    return bytesWithTypeID2(cv.type, concatBytes3(serializeAddress(cv.address), serializeLPString(cv.contractName)));
+    return bytesWithTypeID2(cv.type, concatBytes3(serializeAddress2(cv.address), serializeLPString2(cv.contractName)));
   }
   function serializeResponseCV2(cv) {
     return bytesWithTypeID2(cv.type, serializeCV2(cv.value));
@@ -54908,7 +57171,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     const lexicographicOrder = Object.keys(cv.data).sort((a5, b8) => a5.localeCompare(b8));
     for (const key of lexicographicOrder) {
       const nameWithLength = createLPString2(key);
-      bytesArray.push(serializeLPString(nameWithLength));
+      bytesArray.push(serializeLPString2(nameWithLength));
       const serializedValue = serializeCV2(cv.data[key]);
       bytesArray.push(serializedValue);
     }
@@ -55030,7 +57293,8 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return addresses;
     },
     async addEthereumChain(provider, caipNetwork) {
-      const rpcUrls = caipNetwork.rpcUrls["chainDefault"]?.http || [];
+      var _a7, _b2;
+      const rpcUrls = ((_a7 = caipNetwork.rpcUrls["chainDefault"]) == null ? void 0 : _a7.http) || [];
       await provider.request({
         method: "wallet_addEthereumChain",
         params: [
@@ -55043,7 +57307,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
               decimals: caipNetwork.nativeCurrency.decimals,
               symbol: caipNetwork.nativeCurrency.symbol
             },
-            blockExplorerUrls: [caipNetwork.blockExplorers?.default.url],
+            blockExplorerUrls: [(_b2 = caipNetwork.blockExplorers) == null ? void 0 : _b2.default.url],
             iconUrls: [PresetsUtil.NetworkImageIds[caipNetwork.id]]
           }
         ]
@@ -55296,7 +57560,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
             break;
           default:
         }
-        if (namespace?.rpcMap && rpcUrl) {
+        if ((namespace == null ? void 0 : namespace.rpcMap) && rpcUrl) {
           namespace.rpcMap[id] = rpcUrl;
         }
         return acc;
@@ -55304,9 +57568,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return this.applyNamespaceOverrides(defaultNamespaces, configOverride);
     },
     resolveReownName: async (name2) => {
+      var _a7;
       const wcNameAddress = await EnsController.resolveName(name2);
-      const networkNameAddresses = Object.values(wcNameAddress?.addresses) || [];
-      return networkNameAddresses[0]?.address || false;
+      const networkNameAddresses = Object.values(wcNameAddress == null ? void 0 : wcNameAddress.addresses) || [];
+      return ((_a7 = networkNameAddresses[0]) == null ? void 0 : _a7.address) || false;
     },
     getChainsFromNamespaces(namespaces = {}) {
       return Object.values(namespaces).flatMap((namespace) => {
@@ -55379,8 +57644,9 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
     },
     getWalletConnectAccounts(universalProvider, namespace) {
+      var _a7, _b2, _c2, _d;
       const accountsAdded = /* @__PURE__ */ new Set();
-      const accounts = universalProvider?.session?.namespaces?.[namespace]?.accounts?.map((account) => ParseUtil.parseCaipAddress(account)).filter(({ address: address2 }) => {
+      const accounts = (_d = (_c2 = (_b2 = (_a7 = universalProvider == null ? void 0 : universalProvider.session) == null ? void 0 : _a7.namespaces) == null ? void 0 : _b2[namespace]) == null ? void 0 : _c2.accounts) == null ? void 0 : _d.map((account) => ParseUtil.parseCaipAddress(account)).filter(({ address: address2 }) => {
         if (accountsAdded.has(address2.toLowerCase())) {
           return false;
         }
@@ -55421,7 +57687,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }).map(async (connector) => {
         if (connector.id === ConstantsUtil.CONNECTOR_ID.WALLET_CONNECT) {
           const accounts = WcHelpersUtil.getWalletConnectAccounts(universalProvider, this.namespace);
-          const caipNetwork = caipNetworks.find((n13) => n13.chainNamespace === this.namespace && n13.id.toString() === accounts[0]?.chainId?.toString());
+          const caipNetwork = caipNetworks.find((n13) => {
+            var _a7, _b2;
+            return n13.chainNamespace === this.namespace && n13.id.toString() === ((_b2 = (_a7 = accounts[0]) == null ? void 0 : _a7.chainId) == null ? void 0 : _b2.toString());
+          });
           if (accounts.length > 0) {
             onConnection({
               connectorId: connector.id,
@@ -55461,7 +57730,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           }
         } else {
           const address2 = await connector.connect({
-            chainId: caipNetwork?.id
+            chainId: caipNetwork == null ? void 0 : caipNetwork.id
           });
           if (address2) {
             onConnection({
@@ -55479,6 +57748,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         const { hasDisconnected, hasConnected } = getConnectionStatusInfo(c12.id);
         return !hasDisconnected && hasConnected;
       }).map(async (connector) => {
+        var _a7, _b2, _c2, _d, _e7, _f2, _g, _h, _i3, _j, _k, _l;
         if (connector.id === ConstantsUtil.CONNECTOR_ID.WALLET_CONNECT) {
           const accounts2 = WcHelpersUtil.getWalletConnectAccounts(universalProvider, this.namespace);
           if (accounts2.length > 0) {
@@ -55492,26 +57762,26 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         }
         const address2 = await connector.connect();
         const addresses = await connector.getAccountAddresses();
-        let accounts = addresses?.map((a5) => CoreHelperUtil.createAccount(ConstantsUtil.CHAIN.BITCOIN, a5.address, a5.purpose || "payment", a5.publicKey, a5.path));
+        let accounts = addresses == null ? void 0 : addresses.map((a5) => CoreHelperUtil.createAccount(ConstantsUtil.CHAIN.BITCOIN, a5.address, a5.purpose || "payment", a5.publicKey, a5.path));
         if (accounts && accounts.length > 1) {
           accounts = [
             {
               namespace: ConstantsUtil.CHAIN.BITCOIN,
-              publicKey: accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.PAYMENT]?.publicKey ?? "",
-              path: accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.PAYMENT]?.path ?? "",
-              address: accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.PAYMENT]?.address ?? "",
+              publicKey: (_b2 = (_a7 = accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.PAYMENT]) == null ? void 0 : _a7.publicKey) != null ? _b2 : "",
+              path: (_d = (_c2 = accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.PAYMENT]) == null ? void 0 : _c2.path) != null ? _d : "",
+              address: (_f2 = (_e7 = accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.PAYMENT]) == null ? void 0 : _e7.address) != null ? _f2 : "",
               type: "payment"
             },
             {
               namespace: ConstantsUtil.CHAIN.BITCOIN,
-              publicKey: accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.ORDINAL]?.publicKey ?? "",
-              path: accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.ORDINAL]?.path ?? "",
-              address: accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.ORDINAL]?.address ?? "",
+              publicKey: (_h = (_g = accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.ORDINAL]) == null ? void 0 : _g.publicKey) != null ? _h : "",
+              path: (_j = (_i3 = accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.ORDINAL]) == null ? void 0 : _i3.path) != null ? _j : "",
+              address: (_l = (_k = accounts[BitcoinConstantsUtil.ACCOUNT_INDEXES.ORDINAL]) == null ? void 0 : _k.address) != null ? _l : "",
               type: "ordinal"
             }
           ];
         }
-        const chain3 = connector.chains.find((c12) => c12.id === caipNetwork?.id) || connector.chains[0];
+        const chain3 = connector.chains.find((c12) => c12.id === (caipNetwork == null ? void 0 : caipNetwork.id)) || connector.chains[0];
         if (!chain3) {
           throw new Error("The connector does not support any of the requested chains");
         }
@@ -55674,7 +57944,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       if (params) {
         this.construct(params);
       }
-      if (params?.namespace) {
+      if (params == null ? void 0 : params.namespace) {
         this.connectionManager = new ConnectionManager({
           namespace: params.namespace
         });
@@ -55715,7 +57985,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
      * @param {W3mFrameTypes.Responses['FrameGetUserResponse']} user - The user response
      */
     onAuthConnected({ accounts, chainId }) {
-      const caipNetwork = this.getCaipNetworks().filter((n13) => n13.chainNamespace === this.namespace).find((n13) => n13.id.toString() === chainId?.toString());
+      const caipNetwork = this.getCaipNetworks().filter((n13) => n13.chainNamespace === this.namespace).find((n13) => n13.id.toString() === (chainId == null ? void 0 : chainId.toString()));
       if (accounts && caipNetwork) {
         this.addConnection({
           connectorId: ConstantsUtil.CONNECTOR_ID.AUTH,
@@ -55799,10 +58069,11 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
      * @param {EventCallback<T>} callback - The callback function to be called when the event is emitted
      */
     on(eventName, callback) {
+      var _a7;
       if (!this.eventListeners.has(eventName)) {
         this.eventListeners.set(eventName, /* @__PURE__ */ new Set());
       }
-      this.eventListeners.get(eventName)?.add(callback);
+      (_a7 = this.eventListeners.get(eventName)) == null ? void 0 : _a7.add(callback);
     }
     /**
      * Removes an event listener for a specific event.
@@ -55886,7 +58157,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     onConnect(accounts, connectorId) {
       if (accounts.length > 0) {
         const { address: address2, chainId } = CoreHelperUtil.getAccount(accounts[0]);
-        const caipNetwork = this.getCaipNetworks().filter((n13) => n13.chainNamespace === this.namespace).find((n13) => n13.id.toString() === chainId?.toString());
+        const caipNetwork = this.getCaipNetworks().filter((n13) => n13.chainNamespace === this.namespace).find((n13) => n13.id.toString() === (chainId == null ? void 0 : chainId.toString()));
         const connector = this.connectors.find((c12) => c12.id === connectorId);
         if (address2) {
           this.emit("accountChanged", {
@@ -55911,9 +58182,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
      * @param {string} connectorId - The ID of the connector
      */
     onAccountsChanged(accounts, connectorId, disconnectIfNoAccounts = true) {
+      var _a7, _b2;
       if (accounts.length > 0) {
         const { address: address2 } = CoreHelperUtil.getAccount(accounts[0]);
-        const connection = this.connectionManager?.getConnection({
+        const connection = (_a7 = this.connectionManager) == null ? void 0 : _a7.getConnection({
           connectorId,
           connections: this.connections,
           connectors: this.connectors
@@ -55921,8 +58193,8 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         if (address2 && HelpersUtil.isLowerCaseMatch(this.getConnectorId(ConstantsUtil.CHAIN.EVM), connectorId)) {
           this.emit("accountChanged", {
             address: address2,
-            chainId: connection?.caipNetwork?.id,
-            connector: connection?.connector
+            chainId: (_b2 = connection == null ? void 0 : connection.caipNetwork) == null ? void 0 : _b2.id,
+            connector: connection == null ? void 0 : connection.connector
           });
         }
         this.addConnection({
@@ -55931,7 +58203,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
             const { address: address3 } = CoreHelperUtil.getAccount(_account);
             return { address: address3 };
           }),
-          caipNetwork: connection?.caipNetwork
+          caipNetwork: connection == null ? void 0 : connection.caipNetwork
         });
       } else if (disconnectIfNoAccounts) {
         this.onDisconnect(connectorId);
@@ -55957,8 +58229,9 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
      * @param {string} connectorId - The ID of the connector
      */
     onChainChanged(chainId, connectorId) {
+      var _a7;
       const formattedChainId = typeof chainId === "string" && chainId.startsWith("0x") ? EthersHelpersUtil.hexStringToNumber(chainId).toString() : chainId.toString();
-      const connection = this.connectionManager?.getConnection({
+      const connection = (_a7 = this.connectionManager) == null ? void 0 : _a7.getConnection({
         connectorId,
         connections: this.connections,
         connectors: this.connectors
@@ -56016,15 +58289,16 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
      * Emits the first available connection.
      */
     emitFirstAvailableConnection() {
-      const connection = this.connectionManager?.getConnection({
+      var _a7, _b2;
+      const connection = (_a7 = this.connectionManager) == null ? void 0 : _a7.getConnection({
         connections: this.connections,
         connectors: this.connectors
       });
       if (connection) {
         const [account] = connection.accounts;
         this.emit("accountChanged", {
-          address: account?.address,
-          chainId: connection.caipNetwork?.id,
+          address: account == null ? void 0 : account.address,
+          chainId: (_b2 = connection.caipNetwork) == null ? void 0 : _b2.id,
           connector: connection.connector
         });
       }
@@ -56067,11 +58341,12 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return Promise.resolve();
     }
     async getAccounts({ namespace }) {
+      var _a7, _b2, _c2, _d;
       const provider = this.provider;
-      const addresses = provider?.session?.namespaces?.[namespace]?.accounts?.map((account) => {
+      const addresses = ((_d = (_c2 = (_b2 = (_a7 = provider == null ? void 0 : provider.session) == null ? void 0 : _a7.namespaces) == null ? void 0 : _b2[namespace]) == null ? void 0 : _c2.accounts) == null ? void 0 : _d.map((account) => {
         const [, , address2] = account.split(":");
         return address2;
-      }).filter((address2, index2, self2) => self2.indexOf(address2) === index2) || [];
+      }).filter((address2, index2, self2) => self2.indexOf(address2) === index2)) || [];
       return Promise.resolve({
         accounts: addresses.map((address2) => CoreHelperUtil.createAccount(namespace, address2, namespace === "bip122" ? "payment" : "eoa"))
       });
@@ -56080,46 +58355,51 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return Promise.resolve();
     }
     async getBalance(params) {
-      const isBalanceSupported = params.caipNetwork && ConstantsUtil2.BALANCE_SUPPORTED_CHAINS.includes(params.caipNetwork?.chainNamespace);
-      if (!isBalanceSupported || params.caipNetwork?.testnet) {
+      var _a7, _b2, _c2, _d, _e7;
+      const isBalanceSupported = params.caipNetwork && ConstantsUtil2.BALANCE_SUPPORTED_CHAINS.includes((_a7 = params.caipNetwork) == null ? void 0 : _a7.chainNamespace);
+      if (!isBalanceSupported || ((_b2 = params.caipNetwork) == null ? void 0 : _b2.testnet)) {
         return {
           balance: "0.00",
-          symbol: params.caipNetwork?.nativeCurrency.symbol || ""
+          symbol: ((_c2 = params.caipNetwork) == null ? void 0 : _c2.nativeCurrency.symbol) || ""
         };
       }
-      if (AccountController.state.balanceLoading && params.chainId === ChainController.state.activeCaipNetwork?.id) {
+      if (AccountController.state.balanceLoading && params.chainId === ((_d = ChainController.state.activeCaipNetwork) == null ? void 0 : _d.id)) {
         return {
           balance: AccountController.state.balance || "0.00",
           symbol: AccountController.state.balanceSymbol || ""
         };
       }
       const balances = await AccountController.fetchTokenBalance();
-      const balance = balances.find((b8) => b8.chainId === `${params.caipNetwork?.chainNamespace}:${params.chainId}` && b8.symbol === params.caipNetwork?.nativeCurrency.symbol);
+      const balance = balances.find((b8) => {
+        var _a8, _b3;
+        return b8.chainId === `${(_a8 = params.caipNetwork) == null ? void 0 : _a8.chainNamespace}:${params.chainId}` && b8.symbol === ((_b3 = params.caipNetwork) == null ? void 0 : _b3.nativeCurrency.symbol);
+      });
       return {
-        balance: balance?.quantity.numeric || "0.00",
-        symbol: balance?.symbol || params.caipNetwork?.nativeCurrency.symbol || ""
+        balance: (balance == null ? void 0 : balance.quantity.numeric) || "0.00",
+        symbol: (balance == null ? void 0 : balance.symbol) || ((_e7 = params.caipNetwork) == null ? void 0 : _e7.nativeCurrency.symbol) || ""
       };
     }
     async signMessage(params) {
+      var _a7, _b2, _c2;
       const { provider, message, address: address2 } = params;
       if (!provider) {
         throw new Error("UniversalAdapter:signMessage - provider is undefined");
       }
       let signature = "";
-      if (ChainController.state.activeCaipNetwork?.chainNamespace === ConstantsUtil.CHAIN.SOLANA) {
+      if (((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.chainNamespace) === ConstantsUtil.CHAIN.SOLANA) {
         const response = await provider.request({
           method: "solana_signMessage",
           params: {
             message: esm_default2.encode(new TextEncoder().encode(message)),
             pubkey: address2
           }
-        }, ChainController.state.activeCaipNetwork?.caipNetworkId);
+        }, (_b2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _b2.caipNetworkId);
         signature = response.signature;
       } else {
         signature = await provider.request({
           method: "personal_sign",
           params: [message, address2]
-        }, ChainController.state.activeCaipNetwork?.caipNetworkId);
+        }, (_c2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _c2.caipNetworkId);
       }
       return { signature };
     }
@@ -56151,7 +58431,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return void 0;
     }
     parseUnits() {
-      return 0n;
+      return /* @__PURE__ */ BigInt("0");
     }
     formatUnits() {
       return "0";
@@ -56176,29 +58456,30 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     }
     // eslint-disable-next-line @typescript-eslint/require-await
     async switchNetwork(params) {
+      var _a7, _b2, _c2, _d, _e7, _f2;
       const { caipNetwork } = params;
       const connector = this.getWalletConnectConnector();
       if (caipNetwork.chainNamespace === ConstantsUtil.CHAIN.EVM) {
         try {
-          await connector.provider?.request({
+          await ((_a7 = connector.provider) == null ? void 0 : _a7.request({
             method: "wallet_switchEthereumChain",
             params: [{ chainId: toHex2(caipNetwork.id) }]
-          });
+          }));
         } catch (switchError) {
-          if (switchError.code === WcConstantsUtil.ERROR_CODE_UNRECOGNIZED_CHAIN_ID || switchError.code === WcConstantsUtil.ERROR_INVALID_CHAIN_ID || switchError.code === WcConstantsUtil.ERROR_CODE_DEFAULT || switchError?.data?.originalError?.code === WcConstantsUtil.ERROR_CODE_UNRECOGNIZED_CHAIN_ID) {
+          if (switchError.code === WcConstantsUtil.ERROR_CODE_UNRECOGNIZED_CHAIN_ID || switchError.code === WcConstantsUtil.ERROR_INVALID_CHAIN_ID || switchError.code === WcConstantsUtil.ERROR_CODE_DEFAULT || ((_c2 = (_b2 = switchError == null ? void 0 : switchError.data) == null ? void 0 : _b2.originalError) == null ? void 0 : _c2.code) === WcConstantsUtil.ERROR_CODE_UNRECOGNIZED_CHAIN_ID) {
             try {
-              await connector.provider?.request({
+              await ((_f2 = connector.provider) == null ? void 0 : _f2.request({
                 method: "wallet_addEthereumChain",
                 params: [
                   {
                     chainId: toHex2(caipNetwork.id),
-                    rpcUrls: [caipNetwork?.rpcUrls["chainDefault"]?.http],
+                    rpcUrls: [(_d = caipNetwork == null ? void 0 : caipNetwork.rpcUrls["chainDefault"]) == null ? void 0 : _d.http],
                     chainName: caipNetwork.name,
                     nativeCurrency: caipNetwork.nativeCurrency,
-                    blockExplorerUrls: [caipNetwork.blockExplorers?.default.url]
+                    blockExplorerUrls: [(_e7 = caipNetwork.blockExplorers) == null ? void 0 : _e7.default.url]
                   }
                 ]
-              });
+              }));
             } catch (error2) {
               throw new Error("Chain is not supported");
             }
@@ -56209,7 +58490,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     }
     getWalletConnectProvider() {
       const connector = this.connectors.find((c12) => c12.type === "WALLET_CONNECT");
-      const provider = connector?.provider;
+      const provider = connector == null ? void 0 : connector.provider;
       return provider;
     }
   };
@@ -56235,7 +58516,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       isLegacy: false,
       isAvailableOnBasic: false,
       processApi: (apiConfig) => {
-        if (!apiConfig?.config) {
+        if (!(apiConfig == null ? void 0 : apiConfig.config)) {
           return false;
         }
         const config = apiConfig.config;
@@ -56255,7 +58536,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       isLegacy: false,
       isAvailableOnBasic: false,
       processApi: (apiConfig) => {
-        if (!apiConfig?.config) {
+        if (!(apiConfig == null ? void 0 : apiConfig.config)) {
           return false;
         }
         const config = apiConfig.config;
@@ -56278,7 +58559,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       isLegacy: false,
       isAvailableOnBasic: false,
       processApi: (apiConfig) => {
-        if (!apiConfig?.config) {
+        if (!(apiConfig == null ? void 0 : apiConfig.config)) {
           return false;
         }
         const config = apiConfig.config;
@@ -56301,7 +58582,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       isLegacy: false,
       isAvailableOnBasic: false,
       processApi: (apiConfig) => {
-        if (!apiConfig?.config) {
+        if (!(apiConfig == null ? void 0 : apiConfig.config)) {
           return false;
         }
         const config = apiConfig.config;
@@ -56351,7 +58632,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       returnType: false,
       isLegacy: false,
       isAvailableOnBasic: false,
-      processApi: (apiConfig) => apiConfig.isEnabled && (apiConfig.config ?? []),
+      processApi: (apiConfig) => {
+        var _a7;
+        return apiConfig.isEnabled && ((_a7 = apiConfig.config) != null ? _a7 : []);
+      },
       processFallback: (_localValue) => false
     },
     multiWallet: {
@@ -56367,7 +58651,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var ConfigUtil = {
     localSettingsOverridden: /* @__PURE__ */ new Set(),
     getApiConfig(id, apiProjectConfig) {
-      return apiProjectConfig?.find((f13) => f13.id === id);
+      return apiProjectConfig == null ? void 0 : apiProjectConfig.find((f13) => f13.id === id);
     },
     addWarning(localFeatureValue, featureKey) {
       if (localFeatureValue !== void 0) {
@@ -56384,10 +58668,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
       if (useApi) {
         const apiConfig = this.getApiConfig(config.apiFeatureName, apiProjectConfig);
-        if (apiConfig?.config === null) {
+        if ((apiConfig == null ? void 0 : apiConfig.config) === null) {
           return this.processFallbackFeature(featureKey, localValue);
         }
-        if (!apiConfig?.config) {
+        if (!(apiConfig == null ? void 0 : apiConfig.config)) {
           return false;
         }
         if (localValue !== void 0) {
@@ -56404,7 +58688,8 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return featureConfig[featureKey].processFallback(localValue);
     },
     async fetchRemoteFeatures(config) {
-      const isBasic = config.basic ?? false;
+      var _a7;
+      const isBasic = (_a7 = config.basic) != null ? _a7 : false;
       const localFeatures = config.features || {};
       this.localSettingsOverridden.clear();
       let apiProjectConfig = null;
@@ -56442,17 +58727,18 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       this.remoteFeatures = {};
       this.reportedAlertErrors = {};
       this.getCaipNetwork = (chainNamespace, id) => {
+        var _a7, _b2, _c2;
         if (chainNamespace) {
-          const caipNetworkWithId = ChainController.getCaipNetworks(chainNamespace)?.find((c12) => c12.id === id);
+          const caipNetworkWithId = (_a7 = ChainController.getCaipNetworks(chainNamespace)) == null ? void 0 : _a7.find((c12) => c12.id === id);
           if (caipNetworkWithId) {
             return caipNetworkWithId;
           }
-          const namespaceCaipNetwork = ChainController.getNetworkData(chainNamespace)?.caipNetwork;
+          const namespaceCaipNetwork = (_b2 = ChainController.getNetworkData(chainNamespace)) == null ? void 0 : _b2.caipNetwork;
           if (namespaceCaipNetwork) {
             return namespaceCaipNetwork;
           }
           const requestedCaipNetworks = ChainController.getRequestedCaipNetworks(chainNamespace);
-          return requestedCaipNetworks.filter((c12) => c12.chainNamespace === chainNamespace)?.[0];
+          return (_c2 = requestedCaipNetworks.filter((c12) => c12.chainNamespace === chainNamespace)) == null ? void 0 : _c2[0];
         }
         return ChainController.state.activeCaipNetwork || this.defaultCaipNetwork;
       };
@@ -56470,10 +58756,11 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       };
       this.getApprovedCaipNetworkIds = () => ChainController.getAllApprovedCaipNetworkIds();
       this.getCaipAddress = (chainNamespace) => {
+        var _a7, _b2;
         if (ChainController.state.activeChain === chainNamespace || !chainNamespace) {
           return ChainController.state.activeCaipAddress;
         }
-        return ChainController.state.chains.get(chainNamespace)?.accountState?.caipAddress;
+        return (_b2 = (_a7 = ChainController.state.chains.get(chainNamespace)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.caipAddress;
       };
       this.setClientId = (clientId) => {
         BlockchainApiController.setClientId(clientId);
@@ -56513,7 +58800,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           StorageUtil.setConnectionStatus("disconnected");
         }
       };
-      this.getAddressByChainNamespace = (chainNamespace) => ChainController.state.chains.get(chainNamespace)?.accountState?.address;
+      this.getAddressByChainNamespace = (chainNamespace) => {
+        var _a7, _b2;
+        return (_b2 = (_a7 = ChainController.state.chains.get(chainNamespace)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.address;
+      };
       this.setConnectors = (connectors) => {
         const allConnectors = [...ConnectorController.state.allConnectors, ...connectors];
         ConnectorController.setConnectors(allConnectors);
@@ -56568,10 +58858,11 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         AccountController.removeAddressLabel(address2, chain3);
       };
       this.getAddress = (chainNamespace) => {
+        var _a7, _b2;
         if (ChainController.state.activeChain === chainNamespace || !chainNamespace) {
           return AccountController.state.address;
         }
-        return ChainController.state.chains.get(chainNamespace)?.accountState?.address;
+        return (_b2 = (_a7 = ChainController.state.chains.get(chainNamespace)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.address;
       };
       this.setApprovedCaipNetworksData = (namespace) => ChainController.setApprovedCaipNetworksData(namespace);
       this.resetNetwork = (namespace) => {
@@ -56614,14 +58905,15 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       this.readyPromise = this.initialize(options);
     }
     getChainNamespacesSet(adapters, caipNetworks) {
-      const adapterNamespaces = adapters?.map((adapter) => adapter.namespace).filter((namespace) => Boolean(namespace));
-      if (adapterNamespaces?.length) {
+      const adapterNamespaces = adapters == null ? void 0 : adapters.map((adapter) => adapter.namespace).filter((namespace) => Boolean(namespace));
+      if (adapterNamespaces == null ? void 0 : adapterNamespaces.length) {
         return [...new Set(adapterNamespaces)];
       }
-      const networkNamespaces = caipNetworks?.map((network) => network.chainNamespace);
+      const networkNamespaces = caipNetworks == null ? void 0 : caipNetworks.map((network) => network.chainNamespace);
       return [...new Set(networkNamespaces)];
     }
     async initialize(options) {
+      var _a7, _b2, _c2;
       this.initializeProjectSettings(options);
       this.initControllers(options);
       await this.initChainAdapters();
@@ -56637,7 +58929,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       if (this.remoteFeatures.onramp) {
         OnRampController.setOnrampProviders(this.remoteFeatures.onramp);
       }
-      if (OptionsController.state.remoteFeatures?.email || Array.isArray(OptionsController.state.remoteFeatures?.socials) && OptionsController.state.remoteFeatures?.socials.length > 0) {
+      if (((_a7 = OptionsController.state.remoteFeatures) == null ? void 0 : _a7.email) || Array.isArray((_b2 = OptionsController.state.remoteFeatures) == null ? void 0 : _b2.socials) && ((_c2 = OptionsController.state.remoteFeatures) == null ? void 0 : _c2.socials.length) > 0) {
         await this.checkAllowedOrigins();
       }
     }
@@ -56676,6 +58968,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
     }
     sendInitializeEvent(options) {
+      var _a7;
       const { ...optionsCopy } = options;
       delete optionsCopy.adapters;
       delete optionsCopy.universalProvider;
@@ -56686,7 +58979,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           ...optionsCopy,
           networks: options.networks.map((n13) => n13.id),
           siweConfig: {
-            options: options.siweConfig?.options || {}
+            options: ((_a7 = options.siweConfig) == null ? void 0 : _a7.options) || {}
           }
         }
       });
@@ -56708,10 +59001,11 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
     }
     initializeChainController(options) {
+      var _a7;
       if (!this.connectionControllerClient || !this.networkControllerClient) {
         throw new Error("ConnectionControllerClient and NetworkControllerClient must be set");
       }
-      ChainController.initialize(options.adapters ?? [], this.caipNetworks, {
+      ChainController.initialize((_a7 = options.adapters) != null ? _a7 : [], this.caipNetworks, {
         connectionControllerClient: this.connectionControllerClient,
         networkControllerClient: this.networkControllerClient
       });
@@ -56721,8 +59015,9 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
     }
     initializeConnectionController(options) {
-      ConnectionController.initialize(options.adapters ?? []);
-      ConnectionController.setWcBasic(options.basic ?? false);
+      var _a7, _b2;
+      ConnectionController.initialize((_a7 = options.adapters) != null ? _a7 : []);
+      ConnectionController.setWcBasic((_b2 = options.basic) != null ? _b2 : false);
     }
     initializeConnectorController() {
       ConnectorController.initialize(this.chainNamespaces);
@@ -56732,6 +59027,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       OptionsController.setSdkVersion(options.sdkVersion);
     }
     initializeOptionsController(options) {
+      var _a7;
       OptionsController.setDebug(options.debug !== false);
       OptionsController.setEnableWalletConnect(options.enableWalletConnect !== false);
       OptionsController.setEnableWalletGuide(options.enableWalletGuide !== false);
@@ -56767,7 +59063,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         AlertController.open(ErrorUtil.ALERT_ERRORS.PROJECT_ID_NOT_CONFIGURED, "error");
         return;
       }
-      const evmAdapter = options.adapters?.find((adapter) => adapter.namespace === ConstantsUtil.CHAIN.EVM);
+      const evmAdapter = (_a7 = options.adapters) == null ? void 0 : _a7.find((adapter) => adapter.namespace === ConstantsUtil.CHAIN.EVM);
       if (evmAdapter) {
         if (options.siweConfig) {
           if (options.siwx) {
@@ -56778,12 +59074,13 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
     }
     getDefaultMetaData() {
+      var _a7, _b2, _c2, _d;
       if (CoreHelperUtil.isClient()) {
         return {
-          name: document.getElementsByTagName("title")?.[0]?.textContent || "",
-          description: document.querySelector('meta[property="og:description"]')?.content || "",
+          name: ((_b2 = (_a7 = document.getElementsByTagName("title")) == null ? void 0 : _a7[0]) == null ? void 0 : _b2.textContent) || "",
+          description: ((_c2 = document.querySelector('meta[property="og:description"]')) == null ? void 0 : _c2.content) || "",
           url: window.location.origin,
-          icons: [document.querySelector('link[rel~="icon"]')?.href || ""]
+          icons: [((_d = document.querySelector('link[rel~="icon"]')) == null ? void 0 : _d.href) || ""]
         };
       }
       return null;
@@ -56815,7 +59112,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return extendedNetworks;
     }
     extendDefaultCaipNetwork(options) {
-      const defaultNetwork = options.networks.find((n13) => n13.id === options.defaultNetwork?.id);
+      const defaultNetwork = options.networks.find((n13) => {
+        var _a7;
+        return n13.id === ((_a7 = options.defaultNetwork) == null ? void 0 : _a7.id);
+      });
       const extendedNetwork = defaultNetwork ? CaipNetworksUtil.extendCaipNetwork(defaultNetwork, {
         customNetworkImageUrls: options.chainImages,
         customRpcUrls: options.customRpcUrls,
@@ -56824,14 +59124,15 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return extendedNetwork;
     }
     async disconnectNamespace(namespace, id) {
+      var _a7, _b2;
       try {
         this.setLoading(true, namespace);
         let disconnectResult = {
           connections: []
         };
         const adapter = this.getAdapter(namespace);
-        const caipAddress = ChainController.state.chains.get(namespace)?.accountState?.caipAddress;
-        if ((caipAddress || !OptionsController.state.enableReconnect) && adapter?.disconnect) {
+        const caipAddress = (_b2 = (_a7 = ChainController.state.chains.get(namespace)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.caipAddress;
+        if ((caipAddress || !OptionsController.state.enableReconnect) && (adapter == null ? void 0 : adapter.disconnect)) {
           disconnectResult = await adapter.disconnect({ id });
         }
         this.setLoading(false, namespace);
@@ -56845,9 +59146,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     createClients() {
       this.connectionControllerClient = {
         connectWalletConnect: async () => {
+          var _a7;
           const activeChain = ChainController.state.activeChain;
           const adapter = this.getAdapter(activeChain);
-          const chainId = this.getCaipNetwork(activeChain)?.id;
+          const chainId = (_a7 = this.getCaipNetwork(activeChain)) == null ? void 0 : _a7.id;
           const connections = ConnectionController.getConnections(activeChain);
           const isMultiWallet = this.remoteFeatures.multiWallet;
           const hasConnections = connections.length > 0;
@@ -56859,12 +59161,13 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           if (shouldClose) {
             this.close();
           }
-          this.setClientId(result?.clientId || null);
+          this.setClientId((result == null ? void 0 : result.clientId) || null);
           StorageUtil.setConnectedNamespaces([...ChainController.state.chains.keys()]);
           await this.syncWalletConnectAccount();
           await SIWXUtil.initializeIfEnabled();
         },
         connectExternal: async ({ id, address: address2, info, type, provider, chain: chain3, caipNetwork, socialUri }) => {
+          var _a7, _b2, _c2, _d, _e7, _f2;
           const activeChain = ChainController.state.activeChain;
           const namespace = chain3 || activeChain;
           const adapter = this.getAdapter(namespace);
@@ -56888,8 +59191,8 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
             type,
             provider,
             socialUri,
-            chainId: caipNetwork?.id || fallbackCaipNetwork?.id,
-            rpcUrl: caipNetwork?.rpcUrls?.default?.http?.[0] || fallbackCaipNetwork?.rpcUrls?.default?.http?.[0]
+            chainId: (caipNetwork == null ? void 0 : caipNetwork.id) || (fallbackCaipNetwork == null ? void 0 : fallbackCaipNetwork.id),
+            rpcUrl: ((_c2 = (_b2 = (_a7 = caipNetwork == null ? void 0 : caipNetwork.rpcUrls) == null ? void 0 : _a7.default) == null ? void 0 : _b2.http) == null ? void 0 : _c2[0]) || ((_f2 = (_e7 = (_d = fallbackCaipNetwork == null ? void 0 : fallbackCaipNetwork.rpcUrls) == null ? void 0 : _d.default) == null ? void 0 : _e7.http) == null ? void 0 : _f2[0])
           });
           if (!res) {
             return void 0;
@@ -56902,6 +59205,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           return { address: res.address };
         },
         reconnectExternal: async ({ id, info, type, provider }) => {
+          var _a7;
           const namespace = ChainController.state.activeChain;
           const adapter = this.getAdapter(namespace);
           if (!namespace) {
@@ -56910,13 +59214,14 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           if (!adapter) {
             throw new Error("reconnectExternal: adapter not found");
           }
-          if (adapter?.reconnect) {
-            await adapter?.reconnect({ id, info, type, provider, chainId: this.getCaipNetwork()?.id });
+          if (adapter == null ? void 0 : adapter.reconnect) {
+            await (adapter == null ? void 0 : adapter.reconnect({ id, info, type, provider, chainId: (_a7 = this.getCaipNetwork()) == null ? void 0 : _a7.id }));
             StorageUtil.addConnectedNamespace(namespace);
             this.syncConnectedWalletInfo(namespace);
           }
         },
         disconnect: async (params) => {
+          var _a7;
           const { id: connectorIdParam, chainNamespace, initialDisconnect } = params || {};
           const namespace = chainNamespace || ChainController.state.activeChain;
           const namespaceConnectorId = ConnectorController.getConnectorId(namespace);
@@ -56946,7 +59251,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
             const disconnectResults = await Promise.allSettled(disconnectPromises);
             SendController.resetSend();
             ConnectionController.resetWcConnection();
-            if (SIWXUtil.getSIWX()?.signOutOnDisconnect) {
+            if ((_a7 = SIWXUtil.getSIWX()) == null ? void 0 : _a7.signOutOnDisconnect) {
               await SIWXUtil.clearSessions();
             }
             ConnectorController.setFilterByNamespace(void 0);
@@ -56970,7 +59275,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           if (!ids) {
             return Boolean(window.ethereum);
           }
-          return ids.some((id) => Boolean(window.ethereum?.[String(id)]));
+          return ids.some((id) => {
+            var _a7;
+            return Boolean((_a7 = window.ethereum) == null ? void 0 : _a7[String(id)]);
+          });
         },
         signMessage: async (message) => {
           const namespace = ChainController.state.activeChain;
@@ -56981,12 +59289,12 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           if (!adapter) {
             throw new Error("signMessage: adapter not found");
           }
-          const result = await adapter?.signMessage({
+          const result = await (adapter == null ? void 0 : adapter.signMessage({
             message,
             address: AccountController.state.address,
             provider: ProviderUtil.getProvider(namespace)
-          });
-          return result?.signature || "";
+          }));
+          return (result == null ? void 0 : result.signature) || "";
         },
         sendTransaction: async (args) => {
           const namespace = args.chainNamespace;
@@ -56999,12 +59307,12 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
               throw new Error("sendTransaction: adapter not found");
             }
             const provider = ProviderUtil.getProvider(namespace);
-            const result = await adapter?.sendTransaction({
+            const result = await (adapter == null ? void 0 : adapter.sendTransaction({
               ...args,
               caipNetwork: this.getCaipNetwork(),
               provider
-            });
-            return result?.hash || "";
+            }));
+            return (result == null ? void 0 : result.hash) || "";
           }
           return "";
         },
@@ -57020,19 +59328,20 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
             if (!caipNetwork) {
               throw new Error("estimateGas: caipNetwork is required but got undefined");
             }
-            const result = await adapter?.estimateGas({ ...args, provider, caipNetwork });
-            return result?.gas || 0n;
+            const result = await (adapter == null ? void 0 : adapter.estimateGas({ ...args, provider, caipNetwork }));
+            return (result == null ? void 0 : result.gas) || /* @__PURE__ */ BigInt("0");
           }
-          return 0n;
+          return /* @__PURE__ */ BigInt("0");
         },
         getEnsAvatar: async () => {
+          var _a7;
           const namespace = ChainController.state.activeChain;
           if (!namespace) {
             throw new Error("getEnsAvatar: namespace is required but got undefined");
           }
           await this.syncIdentity({
             address: AccountController.state.address,
-            chainId: Number(this.getCaipNetwork()?.id),
+            chainId: Number((_a7 = this.getCaipNetwork()) == null ? void 0 : _a7.id),
             chainNamespace: namespace
           });
           return AccountController.state.profileImage || false;
@@ -57053,60 +59362,63 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           if (!caipNetwork || !caipAddress) {
             throw new Error("writeContract: caipNetwork or caipAddress is required but got undefined");
           }
-          const result = await adapter?.writeContract({ ...args, caipNetwork, provider, caipAddress });
-          return result?.hash;
+          const result = await (adapter == null ? void 0 : adapter.writeContract({ ...args, caipNetwork, provider, caipAddress }));
+          return result == null ? void 0 : result.hash;
         },
         parseUnits: (value, decimals) => {
+          var _a7;
           const adapter = this.getAdapter(ChainController.state.activeChain);
           if (!adapter) {
             throw new Error("parseUnits: adapter is required but got undefined");
           }
-          return adapter?.parseUnits({ value, decimals }) ?? 0n;
+          return (_a7 = adapter == null ? void 0 : adapter.parseUnits({ value, decimals })) != null ? _a7 : /* @__PURE__ */ BigInt("0");
         },
         formatUnits: (value, decimals) => {
+          var _a7;
           const adapter = this.getAdapter(ChainController.state.activeChain);
           if (!adapter) {
             throw new Error("formatUnits: adapter is required but got undefined");
           }
-          return adapter?.formatUnits({ value, decimals }) ?? "0";
+          return (_a7 = adapter == null ? void 0 : adapter.formatUnits({ value, decimals })) != null ? _a7 : "0";
         },
         getCapabilities: async (params) => {
           const adapter = this.getAdapter(ChainController.state.activeChain);
           if (!adapter) {
             throw new Error("getCapabilities: adapter is required but got undefined");
           }
-          return await adapter?.getCapabilities(params);
+          return await (adapter == null ? void 0 : adapter.getCapabilities(params));
         },
         grantPermissions: async (params) => {
           const adapter = this.getAdapter(ChainController.state.activeChain);
           if (!adapter) {
             throw new Error("grantPermissions: adapter is required but got undefined");
           }
-          return await adapter?.grantPermissions(params);
+          return await (adapter == null ? void 0 : adapter.grantPermissions(params));
         },
         revokePermissions: async (params) => {
           const adapter = this.getAdapter(ChainController.state.activeChain);
           if (!adapter) {
             throw new Error("revokePermissions: adapter is required but got undefined");
           }
-          if (adapter?.revokePermissions) {
+          if (adapter == null ? void 0 : adapter.revokePermissions) {
             return await adapter.revokePermissions(params);
           }
           return "0x";
         },
         walletGetAssets: async (params) => {
+          var _a7;
           const adapter = this.getAdapter(ChainController.state.activeChain);
           if (!adapter) {
             throw new Error("walletGetAssets: adapter is required but got undefined");
           }
-          return await adapter?.walletGetAssets(params) ?? {};
+          return (_a7 = await (adapter == null ? void 0 : adapter.walletGetAssets(params))) != null ? _a7 : {};
         },
         updateBalance: (namespace) => {
           const caipNetwork = this.getCaipNetwork(namespace);
           if (!caipNetwork || !AccountController.state.address) {
             return;
           }
-          this.updateNativeBalance(AccountController.state.address, caipNetwork?.id, namespace);
+          this.updateNativeBalance(AccountController.state.address, caipNetwork == null ? void 0 : caipNetwork.id, namespace);
         }
       };
       this.networkControllerClient = {
@@ -57117,16 +59429,17 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       ConnectionController.setClient(this.connectionControllerClient);
     }
     getApprovedCaipNetworksData() {
+      var _a7, _b2, _c2, _d, _e7;
       const providerType = ProviderUtil.getProviderId(ChainController.state.activeChain);
       if (providerType === ConstantsUtil3.CONNECTOR_TYPE_WALLET_CONNECT) {
-        const namespaces = this.universalProvider?.session?.namespaces;
+        const namespaces = (_b2 = (_a7 = this.universalProvider) == null ? void 0 : _a7.session) == null ? void 0 : _b2.namespaces;
         return {
           /*
            * MetaMask Wallet only returns 1 namespace in the session object. This makes it imposible
            * to switch to other networks. Setting supportsAllNetworks to true for MetaMask Wallet
            * will make it possible to switch to other networks.
            */
-          supportsAllNetworks: this.universalProvider?.session?.peer?.metadata.name === "MetaMask Wallet",
+          supportsAllNetworks: ((_e7 = (_d = (_c2 = this.universalProvider) == null ? void 0 : _c2.session) == null ? void 0 : _d.peer) == null ? void 0 : _e7.metadata.name) === "MetaMask Wallet",
           approvedCaipNetworkIds: this.getChainsFromNamespaces(namespaces)
         };
       }
@@ -57143,7 +59456,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         const providerType = ProviderUtil.getProviderId(networkNamespace);
         if (caipNetwork.chainNamespace === ChainController.state.activeChain) {
           const adapter = this.getAdapter(networkNamespace);
-          await adapter?.switchNetwork({ caipNetwork, provider, providerType });
+          await (adapter == null ? void 0 : adapter.switchNetwork({ caipNetwork, provider, providerType }));
         } else {
           this.setCaipNetwork(caipNetwork);
           if (providerType === ConstantsUtil3.CONNECTOR_TYPE_WALLET_CONNECT) {
@@ -57177,11 +59490,12 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     createAdapters(blueprints) {
       this.createClients();
       return this.chainNamespaces.reduce((adapters, namespace) => {
-        const blueprint = blueprints?.find((b8) => b8.namespace === namespace);
+        var _a7;
+        const blueprint = blueprints == null ? void 0 : blueprints.find((b8) => b8.namespace === namespace);
         if (blueprint) {
           blueprint.construct({
             namespace,
-            projectId: this.options?.projectId,
+            projectId: (_a7 = this.options) == null ? void 0 : _a7.projectId,
             networks: this.getCaipNetworks()
           });
           adapters[namespace] = blueprint;
@@ -57195,9 +59509,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }, {});
     }
     async initChainAdapter(namespace) {
+      var _a7;
       this.onConnectors(namespace);
       this.listenAdapter(namespace);
-      await this.chainAdapters?.[namespace].syncConnectors(this.options, this);
+      await ((_a7 = this.chainAdapters) == null ? void 0 : _a7[namespace].syncConnectors(this.options, this));
       await this.createUniversalProviderForAdapter(namespace);
     }
     async initChainAdapters() {
@@ -57207,7 +59522,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     }
     onConnectors(chainNamespace) {
       const adapter = this.getAdapter(chainNamespace);
-      adapter?.on("connectors", this.setConnectors.bind(this));
+      adapter == null ? void 0 : adapter.on("connectors", this.setConnectors.bind(this));
     }
     listenAdapter(chainNamespace) {
       const adapter = this.getAdapter(chainNamespace);
@@ -57226,9 +59541,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         this.setStatus(connectionStatus, chainNamespace);
       }
       adapter.on("switchNetwork", ({ address: address2, chainId }) => {
+        var _a7, _b2;
         const caipNetwork = this.getCaipNetworks().find((n13) => n13.id.toString() === chainId.toString() || n13.caipNetworkId.toString() === chainId.toString());
         const isSameNamespace = ChainController.state.activeChain === chainNamespace;
-        const accountAddress = ChainController.state.chains.get(chainNamespace)?.accountState?.address;
+        const accountAddress = (_b2 = (_a7 = ChainController.state.chains.get(chainNamespace)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.address;
         if (caipNetwork) {
           const account = isSameNamespace && address2 ? address2 : accountAddress;
           if (account) {
@@ -57252,14 +59568,15 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       adapter.on("pendingTransactions", () => {
         const address2 = AccountController.state.address;
         const activeCaipNetwork = ChainController.state.activeCaipNetwork;
-        if (!address2 || !activeCaipNetwork?.id) {
+        if (!address2 || !(activeCaipNetwork == null ? void 0 : activeCaipNetwork.id)) {
           return;
         }
         this.updateNativeBalance(address2, activeCaipNetwork.id, activeCaipNetwork.chainNamespace);
       });
       adapter.on("accountChanged", ({ address: address2, chainId, connector }) => {
+        var _a7, _b2;
         const isActiveChain = ChainController.state.activeChain === chainNamespace;
-        if (connector?.provider) {
+        if (connector == null ? void 0 : connector.provider) {
           this.syncProvider({
             id: connector.id,
             type: connector.type,
@@ -57274,10 +59591,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
             chainId,
             chainNamespace
           });
-        } else if (isActiveChain && ChainController.state.activeCaipNetwork?.id) {
+        } else if (isActiveChain && ((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.id)) {
           this.syncAccount({
             address: address2,
-            chainId: ChainController.state.activeCaipNetwork?.id,
+            chainId: (_b2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _b2.id,
             chainNamespace
           });
         } else {
@@ -57287,9 +59604,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       });
     }
     async createUniversalProviderForAdapter(chainNamespace) {
+      var _a7, _b2, _c2;
       await this.getUniversalProvider();
       if (this.universalProvider) {
-        await this.chainAdapters?.[chainNamespace]?.setUniversalProvider?.(this.universalProvider);
+        await ((_c2 = (_b2 = (_a7 = this.chainAdapters) == null ? void 0 : _a7[chainNamespace]) == null ? void 0 : _b2.setUniversalProvider) == null ? void 0 : _c2.call(_b2, this.universalProvider));
       }
     }
     // -- Connection Sync ---------------------------------------------------
@@ -57343,14 +59661,16 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     }
     async syncAdapterConnections() {
       await Promise.allSettled(this.chainNamespaces.map((namespace) => {
+        var _a7;
         const caipAddress = this.getCaipAddress(namespace);
         const caipNetwork = this.getCaipNetwork(namespace);
-        return this.chainAdapters?.[namespace].syncConnections({
+        return (_a7 = this.chainAdapters) == null ? void 0 : _a7[namespace].syncConnections({
           connectToFirstConnector: !caipAddress,
           caipNetwork,
           getConnectorStorageInfo(connectorId) {
+            var _a8;
             const storageConnectionsByNamespace = StorageUtil.getConnections();
-            const storageConnections = storageConnectionsByNamespace[namespace] ?? [];
+            const storageConnections = (_a8 = storageConnectionsByNamespace[namespace]) != null ? _a8 : [];
             return {
               hasDisconnected: StorageUtil.isConnectorDisconnected(connectorId, namespace),
               hasConnected: storageConnections.some((c12) => HelpersUtil.isLowerCaseMatch(c12.connectorId, connectorId))
@@ -57360,6 +59680,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }));
     }
     async syncAdapterConnection(namespace) {
+      var _a7, _b2, _c2;
       const adapter = this.getAdapter(namespace);
       const connectorId = ConnectorController.getConnectorId(namespace);
       const caipNetwork = this.getCaipNetwork(namespace);
@@ -57369,15 +59690,15 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         if (!adapter || !connector) {
           throw new Error(`Adapter or connector not found for namespace ${namespace}`);
         }
-        if (!caipNetwork?.id) {
+        if (!(caipNetwork == null ? void 0 : caipNetwork.id)) {
           throw new Error("CaipNetwork not found");
         }
-        const connection = await adapter?.syncConnection({
+        const connection = await (adapter == null ? void 0 : adapter.syncConnection({
           namespace,
           id: connector.id,
           chainId: caipNetwork.id,
-          rpcUrl: caipNetwork?.rpcUrls?.default?.http?.[0]
-        });
+          rpcUrl: (_c2 = (_b2 = (_a7 = caipNetwork == null ? void 0 : caipNetwork.rpcUrls) == null ? void 0 : _a7.default) == null ? void 0 : _b2.http) == null ? void 0 : _c2[0]
+        }));
         if (connection) {
           this.syncProvider({ ...connection, chainNamespace: namespace });
           await this.syncAccount({ ...connection, chainNamespace: namespace });
@@ -57390,17 +59711,19 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
     }
     async syncWalletConnectAccount() {
-      const sessionNamespaces = Object.keys(this.universalProvider?.session?.namespaces || {});
+      var _a7, _b2;
+      const sessionNamespaces = Object.keys(((_b2 = (_a7 = this.universalProvider) == null ? void 0 : _a7.session) == null ? void 0 : _b2.namespaces) || {});
       const syncTasks = this.chainNamespaces.map(async (chainNamespace) => {
+        var _a8, _b3, _c2, _d, _e7;
         const adapter = this.getAdapter(chainNamespace);
         if (!adapter) {
           return;
         }
-        const namespaceAccounts = this.universalProvider?.session?.namespaces?.[chainNamespace]?.accounts || [];
-        const activeChainId = ChainController.state.activeCaipNetwork?.id;
+        const namespaceAccounts = ((_d = (_c2 = (_b3 = (_a8 = this.universalProvider) == null ? void 0 : _a8.session) == null ? void 0 : _b3.namespaces) == null ? void 0 : _c2[chainNamespace]) == null ? void 0 : _d.accounts) || [];
+        const activeChainId = (_e7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _e7.id;
         const sessionAddress = namespaceAccounts.find((account) => {
           const { chainId } = ParseUtil.parseCaipAddress(account);
-          return chainId === activeChainId?.toString();
+          return chainId === (activeChainId == null ? void 0 : activeChainId.toString());
         }) || namespaceAccounts[0];
         if (sessionAddress) {
           const caipAddress = ParseUtil.validateCaipAddress(sessionAddress);
@@ -57437,12 +59760,13 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       ConnectorController.setConnectorId(id, chainNamespace);
     }
     async syncAccount(params) {
+      var _a7, _b2;
       const isActiveNamespace = params.chainNamespace === ChainController.state.activeChain;
       const networkOfChain = ChainController.getCaipNetworkByNamespace(params.chainNamespace, params.chainId);
       const { address: address2, chainId, chainNamespace } = params;
       const { chainId: activeChainId } = StorageUtil.getActiveNetworkProps();
       const chainIdToUse = chainId || activeChainId;
-      const isUnsupportedNetwork = ChainController.state.activeCaipNetwork?.name === ConstantsUtil.UNSUPPORTED_NETWORK_NAME;
+      const isUnsupportedNetwork = ((_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.name) === ConstantsUtil.UNSUPPORTED_NETWORK_NAME;
       const shouldSupportAllNetworks = ChainController.getNetworkProp("supportsAllNetworks", chainNamespace);
       this.setStatus("connected", chainNamespace);
       if (isUnsupportedNetwork && !shouldSupportAllNetworks) {
@@ -57453,15 +59777,21 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         let fallbackCaipNetwork = this.getCaipNetworks().find((n13) => n13.chainNamespace === chainNamespace);
         if (!shouldSupportAllNetworks && !caipNetwork && !fallbackCaipNetwork) {
           const caipNetworkIds = this.getApprovedCaipNetworkIds() || [];
-          const caipNetworkId = caipNetworkIds.find((id) => ParseUtil.parseCaipNetworkId(id)?.chainId === chainIdToUse.toString());
-          const fallBackCaipNetworkId = caipNetworkIds.find((id) => ParseUtil.parseCaipNetworkId(id)?.chainNamespace === chainNamespace);
+          const caipNetworkId = caipNetworkIds.find((id) => {
+            var _a8;
+            return ((_a8 = ParseUtil.parseCaipNetworkId(id)) == null ? void 0 : _a8.chainId) === chainIdToUse.toString();
+          });
+          const fallBackCaipNetworkId = caipNetworkIds.find((id) => {
+            var _a8;
+            return ((_a8 = ParseUtil.parseCaipNetworkId(id)) == null ? void 0 : _a8.chainNamespace) === chainNamespace;
+          });
           caipNetwork = this.getCaipNetworks().find((n13) => n13.caipNetworkId === caipNetworkId);
           fallbackCaipNetwork = this.getCaipNetworks().find((n13) => n13.caipNetworkId === fallBackCaipNetworkId || // This is a workaround used in Solana network to support deprecated caipNetworkId
           "deprecatedCaipNetworkId" in n13 && n13.deprecatedCaipNetworkId === fallBackCaipNetworkId);
         }
         const network = caipNetwork || fallbackCaipNetwork;
-        if (network?.chainNamespace === ChainController.state.activeChain) {
-          if (OptionsController.state.enableNetworkSwitch && !OptionsController.state.allowUnsupportedChain && ChainController.state.activeCaipNetwork?.name === ConstantsUtil.UNSUPPORTED_NETWORK_NAME) {
+        if ((network == null ? void 0 : network.chainNamespace) === ChainController.state.activeChain) {
+          if (OptionsController.state.enableNetworkSwitch && !OptionsController.state.allowUnsupportedChain && ((_b2 = ChainController.state.activeCaipNetwork) == null ? void 0 : _b2.name) === ConstantsUtil.UNSUPPORTED_NETWORK_NAME) {
             ChainController.showUnsupportedChainUI();
           } else {
             this.setCaipNetwork(network);
@@ -57473,18 +59803,18 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         }
         this.syncConnectedWalletInfo(chainNamespace);
         if (!HelpersUtil.isLowerCaseMatch(address2, AccountController.state.address)) {
-          this.syncAccountInfo(address2, network?.id, chainNamespace);
+          this.syncAccountInfo(address2, network == null ? void 0 : network.id, chainNamespace);
         }
         if (isActiveNamespace) {
-          await this.syncBalance({ address: address2, chainId: network?.id, chainNamespace });
+          await this.syncBalance({ address: address2, chainId: network == null ? void 0 : network.id, chainNamespace });
         } else {
-          await this.syncBalance({ address: address2, chainId: networkOfChain?.id, chainNamespace });
+          await this.syncBalance({ address: address2, chainId: networkOfChain == null ? void 0 : networkOfChain.id, chainNamespace });
         }
       }
     }
     async syncAccountInfo(address2, chainId, chainNamespace) {
       const caipAddress = this.getCaipAddress(chainNamespace);
-      const newChainId = chainId || caipAddress?.split(":")[1];
+      const newChainId = chainId || (caipAddress == null ? void 0 : caipAddress.split(":")[1]);
       if (!newChainId) {
         return;
       }
@@ -57505,20 +59835,25 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         } else {
           this.setProfileName(null, chainNamespace);
         }
-      } catch {
+      } catch (e10) {
         this.setProfileName(null, chainNamespace);
       }
     }
     syncConnectedWalletInfo(chainNamespace) {
+      var _a7;
       const connectorId = ConnectorController.getConnectorId(chainNamespace);
       const providerType = ProviderUtil.getProviderId(chainNamespace);
       if (providerType === ConstantsUtil3.CONNECTOR_TYPE_ANNOUNCED || providerType === ConstantsUtil3.CONNECTOR_TYPE_INJECTED) {
         if (connectorId) {
           const connectors = this.getConnectors();
           const connector = connectors.find((c12) => {
+            var _a8, _b2;
             const isConnectorId = c12.id === connectorId;
-            const isRdns = c12.info?.rdns === connectorId;
-            const hasMultiChainConnector = c12.connectors?.some((_c2) => _c2.id === connectorId || _c2.info?.rdns === connectorId);
+            const isRdns = ((_a8 = c12.info) == null ? void 0 : _a8.rdns) === connectorId;
+            const hasMultiChainConnector = (_b2 = c12.connectors) == null ? void 0 : _b2.some((_c2) => {
+              var _a9;
+              return _c2.id === connectorId || ((_a9 = _c2.info) == null ? void 0 : _a9.rdns) === connectorId;
+            });
             return isConnectorId || isRdns || Boolean(hasMultiChainConnector);
           });
           if (connector) {
@@ -57529,19 +59864,19 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         }
       } else if (providerType === ConstantsUtil3.CONNECTOR_TYPE_WALLET_CONNECT) {
         const provider = ProviderUtil.getProvider(chainNamespace);
-        if (provider?.session) {
+        if (provider == null ? void 0 : provider.session) {
           this.setConnectedWalletInfo({
             ...provider.session.peer.metadata,
             name: provider.session.peer.metadata.name,
-            icon: provider.session.peer.metadata.icons?.[0]
+            icon: (_a7 = provider.session.peer.metadata.icons) == null ? void 0 : _a7[0]
           }, chainNamespace);
         }
       } else if (connectorId) {
         if (connectorId === ConstantsUtil.CONNECTOR_ID.COINBASE_SDK || connectorId === ConstantsUtil.CONNECTOR_ID.COINBASE) {
           const connector = this.getConnectors().find((c12) => c12.id === connectorId);
-          const name2 = connector?.name || "Coinbase Wallet";
-          const icon = connector?.imageUrl || this.getConnectorImage(connector);
-          const info = connector?.info;
+          const name2 = (connector == null ? void 0 : connector.name) || "Coinbase Wallet";
+          const icon = (connector == null ? void 0 : connector.imageUrl) || this.getConnectorImage(connector);
+          const info = connector == null ? void 0 : connector.info;
           this.setConnectedWalletInfo({
             ...info,
             name: name2,
@@ -57551,7 +59886,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
     }
     async syncBalance(params) {
-      const caipNetwork = NetworkUtil.getNetworksByNamespace(this.getCaipNetworks(), params.chainNamespace).find((n13) => n13.id.toString() === params.chainId?.toString());
+      const caipNetwork = NetworkUtil.getNetworksByNamespace(this.getCaipNetworks(), params.chainNamespace).find((n13) => {
+        var _a7;
+        return n13.id.toString() === ((_a7 = params.chainId) == null ? void 0 : _a7.toString());
+      });
       if (!caipNetwork || !params.chainId) {
         return;
       }
@@ -57577,6 +59915,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     }
     // -- Universal Provider ---------------------------------------------------
     async initializeUniversalAdapter() {
+      var _a7, _b2, _c2, _d, _e7, _f2, _g, _h, _i3, _j, _k;
       const logger = LoggerUtil.createLogger((error2, ...args) => {
         if (error2) {
           this.handleAlertError(error2);
@@ -57584,17 +59923,17 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
         console.error(...args);
       });
       const universalProviderOptions = {
-        projectId: this.options?.projectId,
+        projectId: (_a7 = this.options) == null ? void 0 : _a7.projectId,
         metadata: {
-          name: this.options?.metadata ? this.options?.metadata.name : "",
-          description: this.options?.metadata ? this.options?.metadata.description : "",
-          url: this.options?.metadata ? this.options?.metadata.url : "",
-          icons: this.options?.metadata ? this.options?.metadata.icons : [""]
+          name: ((_b2 = this.options) == null ? void 0 : _b2.metadata) ? (_c2 = this.options) == null ? void 0 : _c2.metadata.name : "",
+          description: ((_d = this.options) == null ? void 0 : _d.metadata) ? (_e7 = this.options) == null ? void 0 : _e7.metadata.description : "",
+          url: ((_f2 = this.options) == null ? void 0 : _f2.metadata) ? (_g = this.options) == null ? void 0 : _g.metadata.url : "",
+          icons: ((_h = this.options) == null ? void 0 : _h.metadata) ? (_i3 = this.options) == null ? void 0 : _i3.metadata.icons : [""]
         },
         logger
       };
-      OptionsController.setManualWCControl(Boolean(this.options?.manualWCControl));
-      this.universalProvider = this.options.universalProvider ?? await G4.init(universalProviderOptions);
+      OptionsController.setManualWCControl(Boolean((_j = this.options) == null ? void 0 : _j.manualWCControl));
+      this.universalProvider = (_k = this.options.universalProvider) != null ? _k : await G4.init(universalProviderOptions);
       if (OptionsController.state.enableReconnect === false && this.universalProvider.session) {
         await this.universalProvider.disconnect();
       }
@@ -57628,7 +59967,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
                   this.setUnsupportedNetwork(chainId);
                   return;
                 }
-                if (currentCaipNetwork?.id.toString() !== caipNetwork?.id.toString() && currentCaipNetwork?.chainNamespace === caipNetwork?.chainNamespace) {
+                if ((currentCaipNetwork == null ? void 0 : currentCaipNetwork.id.toString()) !== (caipNetwork == null ? void 0 : caipNetwork.id.toString()) && (currentCaipNetwork == null ? void 0 : currentCaipNetwork.chainNamespace) === (caipNetwork == null ? void 0 : caipNetwork.chainNamespace)) {
                   this.setCaipNetwork(caipNetwork);
                 }
               }
@@ -57652,7 +59991,8 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
     }
     createUniversalProvider() {
-      if (!this.universalProviderInitPromise && CoreHelperUtil.isClient() && this.options?.projectId) {
+      var _a7;
+      if (!this.universalProviderInitPromise && CoreHelperUtil.isClient() && ((_a7 = this.options) == null ? void 0 : _a7.projectId)) {
         this.universalProviderInitPromise = this.initializeUniversalAdapter();
       }
       return this.universalProviderInitPromise;
@@ -57679,8 +60019,8 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     // - Utils -------------------------------------------------------------------
     handleAlertError(error2) {
       const matchedUniversalProviderError = Object.entries(ErrorUtil.UniversalProviderErrors).find(([, { message: message2 }]) => error2.message.includes(message2));
-      const [errorKey, errorValue] = matchedUniversalProviderError ?? [];
-      const { message, alertErrorKey } = errorValue ?? {};
+      const [errorKey, errorValue] = matchedUniversalProviderError != null ? matchedUniversalProviderError : [];
+      const { message, alertErrorKey } = errorValue != null ? errorValue : {};
       if (errorKey && message && !this.reportedAlertErrors[errorKey]) {
         const alertError = ErrorUtil.ALERT_ERRORS[alertErrorKey];
         if (alertError) {
@@ -57690,12 +60030,14 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       }
     }
     getAdapter(namespace) {
+      var _a7;
       if (!namespace) {
         return void 0;
       }
-      return this.chainAdapters?.[namespace];
+      return (_a7 = this.chainAdapters) == null ? void 0 : _a7[namespace];
     }
     createAdapter(blueprint) {
+      var _a7;
       if (!blueprint) {
         return;
       }
@@ -57708,7 +60050,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       adapterBlueprint.namespace = namespace;
       adapterBlueprint.construct({
         namespace,
-        projectId: this.options?.projectId,
+        projectId: (_a7 = this.options) == null ? void 0 : _a7.projectId,
         networks: this.getCaipNetworks()
       });
       if (!this.chainNamespaces.includes(namespace)) {
@@ -57721,11 +60063,11 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     // -- Public -------------------------------------------------------------------
     async open(options) {
       await this.injectModalUi();
-      if (options?.uri) {
+      if (options == null ? void 0 : options.uri) {
         ConnectionController.setUri(options.uri);
       }
-      if (options?.arguments) {
-        switch (options?.view) {
+      if (options == null ? void 0 : options.arguments) {
+        switch (options == null ? void 0 : options.view) {
           case "Swap":
             return ModalController.open({ ...options, data: { swap: options.arguments } });
           default:
@@ -57751,7 +60093,8 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return "";
     }
     getChainId() {
-      return ChainController.state.activeCaipNetwork?.id;
+      var _a7;
+      return (_a7 = ChainController.state.activeCaipNetwork) == null ? void 0 : _a7.id;
     }
     async switchNetwork(appKitNetwork) {
       const network = this.getCaipNetworks().find((n13) => n13.id === appKitNetwork.id);
@@ -57801,8 +60144,9 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return ConnectionController.subscribe(callback);
     }
     getWalletInfo(namespace) {
+      var _a7, _b2;
       if (namespace) {
-        return ChainController.state.chains.get(namespace)?.accountState?.connectedWalletInfo;
+        return (_b2 = (_a7 = ChainController.state.chains.get(namespace)) == null ? void 0 : _a7.accountState) == null ? void 0 : _b2.connectedWalletInfo;
       }
       return AccountController.state.connectedWalletInfo;
     }
@@ -57861,8 +60205,8 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return ChainController.subscribe(({ activeCaipNetwork }) => {
         callback({
           caipNetwork: activeCaipNetwork,
-          chainId: activeCaipNetwork?.id,
-          caipNetworkId: activeCaipNetwork?.caipNetworkId
+          chainId: activeCaipNetwork == null ? void 0 : activeCaipNetwork.id,
+          caipNetworkId: activeCaipNetwork == null ? void 0 : activeCaipNetwork.caipNetworkId
         });
       });
     }
@@ -58052,12 +60396,14 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return new _UniversalConnector({ appKit, provider, config });
     }
     async connect() {
-      const namespaces = this.config?.networks.reduce((acc, namespace) => {
+      var _a7;
+      const namespaces = (_a7 = this.config) == null ? void 0 : _a7.networks.reduce((acc, namespace) => {
+        var _a8;
         acc[namespace.namespace] = {
           ...namespace || {},
-          methods: namespace?.methods || [],
-          events: namespace?.events || [],
-          chains: namespace?.chains?.map((chain3) => chain3.caipNetworkId) || []
+          methods: (namespace == null ? void 0 : namespace.methods) || [],
+          events: (namespace == null ? void 0 : namespace.events) || [],
+          chains: ((_a8 = namespace == null ? void 0 : namespace.chains) == null ? void 0 : _a8.map((chain3) => chain3.caipNetworkId)) || []
         };
         return acc;
       }, {});
@@ -58144,6 +60490,12 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   function S7() {
     return getProviderFromId(getSelectedProviderId()) || window.StacksProvider || window.BlockstackProvider;
   }
+  function dt5() {
+    return !!S7();
+  }
+  function je5(e10) {
+    return e10 ? typeof e10 == "string" ? StacksNetwork.fromName(e10) : "version" in e10 ? e10 : "url" in e10 ? new StacksMainnet({ url: e10.url }) : e10.transactionVersion === TransactionVersion.Mainnet ? new StacksMainnet({ url: e10.client.baseUrl }) : new StacksTestnet({ url: e10.client.baseUrl }) : new StacksTestnet();
+  }
   function k7(e10, t5) {
     var s8, o13;
     return e10 instanceof t5 || ((o13 = (s8 = e10 == null ? void 0 : e10.constructor) == null ? void 0 : s8.name) == null ? void 0 : o13.toLowerCase()) === t5.name;
@@ -58192,12 +60544,68 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   function Oe4(e10) {
     return M6(p7({}, e10), { onFinish: void 0, onCancel: void 0 });
   }
+  function ut5(e10) {
+  }
+  var pt4 = async (e10) => {
+  };
+  var Mt5 = "stx_updateProfile";
   var F3 = (e10) => e10;
   var q2 = (e10) => e10.profile;
+  function lt5(e10, t5 = S7()) {
+    f12(Mt5, F3, q2)(e10, t5);
+  }
+  function gt5(e10) {
+  }
+  var St6 = async (e10) => {
+  };
+  var At4 = "stx_signMessage";
   var Z4 = (e10) => e10;
   var X4 = (e10) => e10;
+  function ft4(e10, t5 = S7()) {
+    f12(At4, Z4, X4)(e10, t5);
+  }
+  async function It5(e10) {
+  }
+  var yt4 = "stx_signStructuredMessage";
   var H4 = (e10) => ({ message: N14(e10.message), domain: N14(e10.domain) });
   var V5 = (e10) => e10;
+  function xt5(e10, t5 = S7()) {
+    if (e10.domain.type !== ClarityType2.Tuple) throw new Error("Domain must be a tuple");
+    f12(yt4, H4, V5)(e10, t5);
+  }
+  var Re4 = (e10) => {
+    let t5 = e10;
+    if (!t5) {
+      let s8 = new v7(["store_write"], document.location.href);
+      t5 = new T6({ appConfig: s8 });
+    }
+    return t5;
+  };
+  function Dt4(e10) {
+    try {
+      return Re4(e10).loadUserData().appPrivateKey;
+    } catch (t5) {
+      return false;
+    }
+  }
+  var Tt5 = (e10) => {
+  };
+  function Lt5(e10) {
+    var u5;
+    let { stxAddress: t5, userSession: s8, network: o13 } = e10;
+    if (t5) return t5;
+    if (!s8 || !o13) return;
+    let n13 = (u5 = s8 == null ? void 0 : s8.loadUserData().profile) == null ? void 0 : u5.stxAddress, r10 = { [ChainId.Mainnet]: "mainnet", [ChainId.Testnet]: "testnet" }, i10 = je5(o13);
+    return n13 == null ? void 0 : n13[r10[i10.chainId]];
+  }
+  var Pt5 = async (e10) => {
+  };
+  var wt5 = async (e10) => {
+  };
+  var ht5 = async (e10) => {
+  };
+  var jt4 = async (e10) => {
+  };
   var Ot5 = "stx_callContract";
   var K4 = (e10) => {
     var s8;
@@ -58208,16 +60616,24 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   function Et6(e10, t5 = S7()) {
     f12(Ot5, K4, J4)(e10, t5);
   }
+  var kt5 = "stx_deployContract";
   var $5 = (e10) => M6(p7({}, e10), { name: e10.contractName, clarityCode: e10.codeBody, network: b7(e10.network), postConditionMode: _e6(e10.postConditionMode), postConditions: ve4(e10.postConditions), address: e10.stxAddress });
   var ee4 = (e10) => ({ txId: e10.txid, txRaw: e10.transaction, stacksTransaction: deserializeTransaction(e10.transaction) });
+  function bt4(e10, t5 = S7()) {
+    f12(kt5, $5, ee4)(e10, t5);
+  }
   var Rt5 = "stx_transferStx";
   var te4 = (e10) => M6(p7({}, e10), { amount: e10.amount.toString(), network: b7(e10.network), address: e10.stxAddress });
   var se4 = (e10) => ({ txId: e10.txid, txRaw: e10.transaction, stacksTransaction: deserializeTransaction(e10.transaction) });
   function vt5(e10, t5 = S7()) {
     f12(Rt5, te4, se4)(e10, t5);
   }
+  var _t4 = "stx_signTransaction";
   var oe2 = (e10) => M6(p7({}, e10), { transaction: e10.txHex });
   var ne4 = (e10) => M6(p7({}, e10), { stacksTransaction: deserializeTransaction(e10.transaction) });
+  function Ut4(e10, t5 = S7()) {
+    f12(_t4, oe2, ne4)(e10, t5);
+  }
   function ve4(e10) {
     if (typeof e10 != "undefined") return e10.map((t5) => typeof t5 == "string" ? t5 : typeof t5.type == "string" ? M6(p7({}, t5), { amount: "amount" in t5 ? t5.amount.toString() : void 0 }) : bytesToHex(serializePostCondition(t5)));
   }
@@ -58256,6 +60672,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var yo4 = L6("stx_updateProfile", F3, q2);
   var xo4 = L6("stx_signMessage", Z4, X4);
   var No4 = L6("stx_signStructuredMessage", H4, V5);
+  var Co4 = zt5;
   var re3 = "@stacks/connect";
   var Ft3 = { addresses: { stx: [], btc: [] }, version: "0.0.1" };
   var Ye5 = (e10) => [...new Map(e10.map((s8) => [s8.address, s8])).values()].map((o13) => {
@@ -58270,6 +60687,13 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       console.warn("Failed to store data in localStorage:", t5);
     }
   }
+  function Be5() {
+    try {
+      localStorage.removeItem(re3);
+    } catch (e10) {
+      console.warn("Failed to clear localStorage:", e10);
+    }
+  }
   function ae4() {
     try {
       let e10 = localStorage.getItem(re3);
@@ -58277,6 +60701,14 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     } catch (e10) {
       return console.warn("Failed to get data from localStorage:", e10), null;
     }
+  }
+  function qt4() {
+    let e10 = getProvider();
+    e10 && "disconnect" in e10 && e10.disconnect(), clearSelectedProviderId(), Be5(), new T6().store.deleteSessionData();
+  }
+  function Zt5() {
+    let e10 = ae4();
+    return (e10 == null ? void 0 : e10.addresses.stx.length) > 0 || (e10 == null ? void 0 : e10.addresses.btc.length) > 0;
   }
   var ce4 = {};
   tt3(ce4, { Chains: () => y8, Default: () => ie4, Networks: () => j6 });
@@ -58431,6 +60863,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   function qe5(e10, t5) {
     return e10 ? t5.filter((s8) => e10.includes(s8.id)) : t5;
   }
+  function is2(e10) {
+    let t5 = e10 && "network" in e10 ? { network: e10.network } : void 0;
+    return w6(M6(p7({}, e10), { forceWalletSelect: true }), "getAddresses", t5);
+  }
   function f12(e10, t5, s8) {
     return (o13, n13) => {
       if (!n13) throw new Error("[Connect] No installed Stacks wallet found");
@@ -58529,7 +60965,12 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return o13 && !n13 ? -1 : !o13 && n13 ? 1 : 0;
     });
   }
+  var en4 = "https://app.blockstack.org";
   typeof window != "undefined" && (window.__CONNECT_VERSION__ = "__VERSION__");
+  var tn3 = () => {
+    let e10 = navigator.userAgent;
+    return /android/i.test(e10) || /iPad|iPhone|iPod/.test(e10) ? true : /windows phone/i.test(e10);
+  };
   var ze4 = async (e10, t5) => {
     var i10, d7, u5, c12, a5, A6;
     let { onFinish: s8, onCancel: o13, userSession: n13 } = e10, r10 = Ke6(n13);
@@ -58635,6 +61076,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     }
   };
   var Ke6 = (e10) => e10 || new T6();
+  var sn4 = async (e10) => (e10 = Ke6(e10), e10.isUserSignedIn() ? Promise.resolve(e10.loadUserData()) : Promise.resolve(null));
   function Ve5(e10) {
     let t5 = ["bc1p", "tb1p", "bcrt1p"], s8 = [62, 62, 64], o13 = t5.findIndex((n13) => e10.startsWith(n13));
     return o13 === -1 ? false : e10.length === s8[o13];
@@ -58642,13 +61084,28 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var Ss = ((o13) => (o13.ContractCall = "contract_call", o13.ContractDeploy = "smart_contract", o13.STXTransfer = "token_transfer", o13))(Ss || {});
   var As2 = ((r10) => (r10.BUFFER = "buffer", r10.UINT = "uint", r10.INT = "int", r10.PRINCIPAL = "principal", r10.BOOL = "bool", r10))(As2 || {});
   var Ae4 = ((r10) => (r10[r10.DEFAULT = 0] = "DEFAULT", r10[r10.ALL = 1] = "ALL", r10[r10.NONE = 2] = "NONE", r10[r10.SINGLE = 3] = "SINGLE", r10[r10.ANYONECANPAY = 128] = "ANYONECANPAY", r10))(Ae4 || {});
+  function Is(e10) {
+  }
+  var ys3 = async (e10) => {
+  };
+  var xs3 = "signPsbt";
+  var Ns2 = (e10) => {
+    var t5;
+    return { psbt: base64.encode(hexToBytes(e10.hex)), signInputs: typeof e10.signAtIndex == "number" ? [e10.signAtIndex] : e10.signAtIndex, allowedSighash: (t5 = e10.allowedSighash) == null ? void 0 : t5.map((s8) => Ae4[s8]) };
+  };
+  var Cs3 = (e10) => ({ hex: bytesToHex(base64.decode(e10.psbt)) });
+  function Ds2(e10, t5 = S7()) {
+    f12(xs3, Ns2, Cs3)(e10, t5);
+  }
 
   // client/src/app.js
+  var { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = dist_exports;
+  var { uintCV: uintCV2, stringAsciiCV: stringAsciiCV2, noneCV: noneCV2 } = esm_exports;
   var NETWORK = STACKS_MAINNET;
   var catalog = [];
   var userData;
-  var appConfig = new v7(["store_write", "publish_data"]);
-  var userSession = new T6({ appConfig });
+  var appConfig = new AppConfig(["store_write", "publish_data"]);
+  var userSession = new UserSession({ appConfig });
   document.addEventListener("DOMContentLoaded", () => {
     console.log("Conduit App Initialized (Nakamoto Ready)");
     initNavbar();
@@ -58680,15 +61137,17 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           userSession.signUserOut();
           window.location.reload();
         } else {
-          zt5({
+          showConnect({
             appDetails: {
               name: "Conduit",
               icon: window.location.origin + "/favicon.ico"
             },
             redirectTo: "/",
             onFinish: () => {
-              const data = userSession.loadUserData();
-              showConnected(data);
+              if (userSession.isUserSignedIn()) {
+                const data = userSession.loadUserData();
+                showConnected(data);
+              }
             },
             userSession
           });
@@ -58871,7 +61330,7 @@ ${highlightJSON(data)}</code></pre>`;
           const amount = parseInt(data.payment.amount);
           const recipient = data.payment.payTo;
           const memo = data.payment.description || "API Payment";
-          vt5({
+          openSTXTransfer({
             recipient,
             amount,
             memo,
@@ -58975,12 +61434,13 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
     if (!body || !txs || !txs.length) return;
     const head = `<div class="tx-row tx-row--head"><span>API</span><span>Time</span><span>Status</span><span>TX ID</span></div>`;
     const rows = txs.map((tx) => {
+      var _a7, _b2;
       const time = new Date(tx.timestamp).toLocaleTimeString();
-      const txId = tx.payment?.txId || "pending";
+      const txId = ((_a7 = tx.payment) == null ? void 0 : _a7.txId) || "pending";
       return `<div class="tx-row">
       <span><strong>${tx.apiId}</strong></span>
       <span>${time}</span>
-      <span class="tx-badge">${tx.payment?.status || "settled"}</span>
+      <span class="tx-badge">${((_b2 = tx.payment) == null ? void 0 : _b2.status) || "settled"}</span>
       <span class="tx-id">${txId.length > 16 ? txId.substring(0, 16) + "..." : txId}</span>
     </div>`;
     }).join("");
@@ -59011,12 +61471,12 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
         const [contractAddress, contractName] = contractAddr.includes(".") ? contractAddr.split(".") : [contractAddr, "api-registry"];
         try {
           const functionArgs = [
-            stringAsciiCV(name2),
-            stringAsciiCV(desc),
-            stringAsciiCV(endpoint),
-            uintCV(Math.floor(price * 1e6)),
+            stringAsciiCV2(name2),
+            stringAsciiCV2(desc),
+            stringAsciiCV2(endpoint),
+            uintCV2(Math.floor(price * 1e6)),
             // to microSTX
-            stringAsciiCV(category)
+            stringAsciiCV2(category)
           ];
           const options = {
             contractAddress,
@@ -59044,7 +61504,7 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
             function: options.functionName,
             args: functionArgs
           });
-          await Et6(options);
+          await openContractCall(options);
         } catch (e10) {
           console.error("Contract Call Error:", e10);
           status.className = "reg-status error";
@@ -59092,7 +61552,7 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
               status.textContent = "Transaction cancelled.";
             }
           };
-          await Et6(options);
+          await openContractCall(options);
         } catch (e10) {
           console.error("Check-in Error:", e10);
           btn.disabled = false;

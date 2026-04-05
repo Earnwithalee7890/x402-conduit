@@ -1,8 +1,11 @@
-import { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } from '@stacks/connect';
+import * as StacksConnect from '@stacks/connect';
 import { STACKS_MAINNET } from '@stacks/network';
+import * as StacksTransactions from '@stacks/transactions';
+
+const { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = StacksConnect;
+const { uintCV, stringAsciiCV, noneCV } = StacksTransactions;
 
 const NETWORK = STACKS_MAINNET;
-import { uintCV, stringAsciiCV, noneCV } from '@stacks/transactions';
 
 /**
  * Conduit — Frontend
@@ -61,8 +64,10 @@ function initWallet() {
                     },
                     redirectTo: '/',
                     onFinish: () => {
-                        const data = userSession.loadUserData();
-                        showConnected(data);
+                        if (userSession.isUserSignedIn()) {
+                            const data = userSession.loadUserData();
+                            showConnected(data);
+                        }
                     },
                     userSession,
                 });
