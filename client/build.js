@@ -5,10 +5,10 @@ console.log('Building client...');
 
 try {
     await esbuild.build({
-        entryPoints: ['client/src/app.js'],
+        entryPoints: ['client/src/app.js', 'client/src/wallet.js'],
         bundle: true,
-        outfile: 'public/js/app.js',
-        minify: false, // Keep it readable for now for debugging
+        outdir: 'public/js', // Use outdir for multiple entry points
+        minify: true,
         sourcemap: true,
         platform: 'browser',
         target: ['es2018'], // More conservative for Agoric/SES compatibility

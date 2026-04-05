@@ -1,277 +1,45 @@
-(() => {
-  // client/src/app.js
-  var StacksConnect = window.StacksConnect || window.Connect || {};
-  var StacksNetwork = window.StacksNetwork || {};
-  var StacksTransactions = window.StacksTransactions || {};
-  var { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = StacksConnect;
-  var { STACKS_MAINNET } = StacksNetwork;
-  var { uintCV, stringAsciiCV, noneCV } = StacksTransactions;
-  var NETWORK = STACKS_MAINNET || {};
-  var catalog = [];
-  var userData;
-  var appConfig = new AppConfig(["store_write", "publish_data"]);
-  var userSession = new UserSession({ appConfig });
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("Conduit App Initialized (Nakamoto Ready)");
-    initNavbar();
-    initWallet();
-    loadCatalog();
-    initFilters();
-    initPlayground();
-    initProvider();
-    initCodeTabs();
-    loadStats();
-    setInterval(loadStats, 12e3);
-    initAnimations();
-    initCheckIn();
-  });
-  function initWallet() {
-    const btn = document.getElementById("connectWalletBtn");
-    const btnText = document.getElementById("walletBtnText");
-    if (userSession.isUserSignedIn()) {
-      const data = userSession.loadUserData();
-      showConnected(data);
-    } else if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then((data) => {
-        showConnected(data);
-      });
-    }
-    if (btn) {
-      btn.addEventListener("click", () => {
-        if (userSession.isUserSignedIn()) {
-          userSession.signUserOut();
-          window.location.reload();
-        } else {
-          if (typeof showConnect !== "function") {
-            console.error("showConnect is not a function. StacksConnect library might be misconfigured.");
-            alert("Wallet integration error. Use the playground or review documentation.");
-            return;
-          }
-          showConnect({
-            appDetails: {
-              name: "Conduit Market",
-              icon: window.location.origin + "/favicon.ico"
-            },
-            redirectTo: "/",
-            onFinish: () => {
-              if (userSession.isUserSignedIn()) {
-                const data = userSession.loadUserData();
-                showConnected(data);
-              }
-            },
-            userSession
-          });
-        }
-      });
-    }
-    function showConnected(data) {
-      userData = data;
-      const address = userData.profile.stxAddress.mainnet;
-      if (address) {
-        btnText.textContent = `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
-        btn.classList.add("connected");
-        window.userAddress = address;
-        console.log("Wallet connected:", address);
-      }
-    }
-  }
-  function initNavbar() {
-    const nav = document.getElementById("navbar");
-    const toggle = document.getElementById("navToggle");
-    const links = document.getElementById("navLinks");
-    window.addEventListener("scroll", () => {
-      nav.classList.toggle("scrolled", window.scrollY > 40);
-    });
-    if (toggle && links) {
-      toggle.addEventListener("click", () => {
-        const open = links.style.display === "flex";
-        links.style.display = open ? "" : "flex";
-        if (!open) {
-          Object.assign(links.style, {
-            position: "absolute",
-            top: "100%",
-            left: "0",
-            right: "0",
-            flexDirection: "column",
-            background: "rgba(6,7,10,0.95)",
-            padding: "20px",
-            borderBottom: "1px solid rgba(148,163,184,0.08)",
-            gap: "14px"
-          });
-        }
-      });
-    }
-  }
-  var API_REGISTRY_FALLBACK = [
-    { id: "weather", name: "Weather Intelligence", category: "Data", icon: "\u{1F324}\uFE0F", pricing: { amount: "0.01" }, method: "GET", latency: "~120ms", uptime: "99.9%", description: "Real-time weather data and climate analytics." },
-    { id: "sentiment", name: "Sentiment Analysis", category: "AI/ML", icon: "\u{1F9E0}", pricing: { amount: "0.02" }, method: "POST", latency: "~250ms", uptime: "99.7%", description: "Emotion detection for text and reviews." },
-    { id: "translate", name: "Neural Translator", category: "AI/ML", icon: "\u{1F30D}", pricing: { amount: "0.015" }, method: "POST", latency: "~180ms", uptime: "99.8%", description: "Context-aware translation across 100+ languages." },
-    { id: "price-oracle", name: "Crypto Price Oracle", category: "DeFi", icon: "\u{1F4CA}", pricing: { amount: "0.005" }, method: "GET", latency: "~80ms", uptime: "99.95%", description: "Real-time prices for 5000+ tokens." },
-    { id: "image-gen", name: "Image Generation", category: "AI/ML", icon: "\u{1F3A8}", pricing: { amount: "0.05" }, method: "POST", latency: "~3.5s", uptime: "99.5%", description: "Diffusion models for high-quality images." },
-    { id: "code-review", name: "Code Review", category: "Developer", icon: "\u{1F50D}", pricing: { amount: "0.03" }, method: "POST", latency: "~1.2s", uptime: "99.6%", description: "Automated security auditing and scoring." },
-    { id: "news-feed", name: "News Aggregator", category: "Data", icon: "\u{1F4F0}", pricing: { amount: "0.008" }, method: "GET", latency: "~200ms", uptime: "99.8%", description: "AI-curated news with relevance scoring." },
-    { id: "chain-analytics", name: "Chain Analytics", category: "DeFi", icon: "\u26D3\uFE0F", pricing: { amount: "0.02" }, method: "GET", latency: "~350ms", uptime: "99.7%", description: "Stacks blockchain intelligence and metrics." }
-  ];
-  async function loadCatalog() {
-    var _a;
-    try {
-      const res = await fetch("/api/v1/discover");
-      if (res.ok && ((_a = res.headers.get("content-type")) == null ? void 0 : _a.includes("application/json"))) {
-        const data = await res.json();
-        catalog = data.apis || API_REGISTRY_FALLBACK;
-      } else {
-        catalog = API_REGISTRY_FALLBACK;
-      }
-      renderCatalog(catalog);
-    } catch (e) {
-      console.warn("Catalog API not found, using fallback registry:", e);
-      catalog = API_REGISTRY_FALLBACK;
-      renderCatalog(catalog);
-    }
-  }
-  function renderCatalog(apis) {
-    const grid = document.getElementById("apiGrid");
-    if (!grid) return;
-    grid.innerHTML = apis.map((api) => `
-    <div class="api-card" data-category="${api.category}" data-endpoint="${api.endpoint}">
+(()=>{var A=window.StacksConnect||window.Connect||{},x=window.StacksNetwork||{},b=window.StacksTransactions||{},{AppConfig:L,UserSession:N,showConnect:I,openContractCall:B,openSTXTransfer:P}=A,{STACKS_MAINNET:$}=x,{uintCV:M,stringAsciiCV:g,noneCV:_}=b,E=$||{},u=[],T,D=new L(["store_write","publish_data"]),c=new N({appConfig:D});document.addEventListener("DOMContentLoaded",()=>{console.log("Conduit App Initialized (Nakamoto Ready)"),H(),F(),G(),O(),R(),X(),U(),f(),setInterval(f,12e3),V(),K()});function F(){let n=document.getElementById("connectWalletBtn"),e=document.getElementById("walletBtnText");if(c.isUserSignedIn()){let t=c.loadUserData();s(t)}else c.isSignInPending()&&c.handlePendingSignIn().then(t=>{s(t)});n&&n.addEventListener("click",()=>{if(c.isUserSignedIn())c.signUserOut(),window.location.reload();else{if(typeof I!="function"){console.error("showConnect is not a function. StacksConnect library might be misconfigured."),alert("Wallet integration error. Use the playground or review documentation.");return}I({appDetails:{name:"Conduit Market",icon:window.location.origin+"/favicon.ico"},redirectTo:"/",onFinish:()=>{if(c.isUserSignedIn()){let t=c.loadUserData();s(t)}},userSession:c})}});function s(t){T=t;let a=T.profile.stxAddress.mainnet;a&&(e.textContent=`${a.substring(0,6)}...${a.substring(a.length-4)}`,n.classList.add("connected"),window.userAddress=a,console.log("Wallet connected:",a))}}function H(){let n=document.getElementById("navbar"),e=document.getElementById("navToggle"),s=document.getElementById("navLinks");window.addEventListener("scroll",()=>{n.classList.toggle("scrolled",window.scrollY>40)}),e&&s&&e.addEventListener("click",()=>{let t=s.style.display==="flex";s.style.display=t?"":"flex",t||Object.assign(s.style,{position:"absolute",top:"100%",left:"0",right:"0",flexDirection:"column",background:"rgba(6,7,10,0.95)",padding:"20px",borderBottom:"1px solid rgba(148,163,184,0.08)",gap:"14px"})})}var w=[{id:"weather",name:"Weather Intelligence",category:"Data",icon:"\u{1F324}\uFE0F",pricing:{amount:"0.01"},method:"GET",latency:"~120ms",uptime:"99.9%",description:"Real-time weather data and climate analytics."},{id:"sentiment",name:"Sentiment Analysis",category:"AI/ML",icon:"\u{1F9E0}",pricing:{amount:"0.02"},method:"POST",latency:"~250ms",uptime:"99.7%",description:"Emotion detection for text and reviews."},{id:"translate",name:"Neural Translator",category:"AI/ML",icon:"\u{1F30D}",pricing:{amount:"0.015"},method:"POST",latency:"~180ms",uptime:"99.8%",description:"Context-aware translation across 100+ languages."},{id:"price-oracle",name:"Crypto Price Oracle",category:"DeFi",icon:"\u{1F4CA}",pricing:{amount:"0.005"},method:"GET",latency:"~80ms",uptime:"99.95%",description:"Real-time prices for 5000+ tokens."},{id:"image-gen",name:"Image Generation",category:"AI/ML",icon:"\u{1F3A8}",pricing:{amount:"0.05"},method:"POST",latency:"~3.5s",uptime:"99.5%",description:"Diffusion models for high-quality images."},{id:"code-review",name:"Code Review",category:"Developer",icon:"\u{1F50D}",pricing:{amount:"0.03"},method:"POST",latency:"~1.2s",uptime:"99.6%",description:"Automated security auditing and scoring."},{id:"news-feed",name:"News Aggregator",category:"Data",icon:"\u{1F4F0}",pricing:{amount:"0.008"},method:"GET",latency:"~200ms",uptime:"99.8%",description:"AI-curated news with relevance scoring."},{id:"chain-analytics",name:"Chain Analytics",category:"DeFi",icon:"\u26D3\uFE0F",pricing:{amount:"0.02"},method:"GET",latency:"~350ms",uptime:"99.7%",description:"Stacks blockchain intelligence and metrics."}];async function G(){var n;try{let e=await fetch("/api/v1/discover");e.ok&&((n=e.headers.get("content-type"))!=null&&n.includes("application/json"))?u=(await e.json()).apis||w:u=w,k(u)}catch(e){console.warn("Catalog API not found, using fallback registry:",e),u=w,k(u)}}function k(n){let e=document.getElementById("apiGrid");e&&(e.innerHTML=n.map(s=>`
+    <div class="api-card" data-category="${s.category}" data-endpoint="${s.endpoint}">
       <div class="api-card-top">
-        <div class="api-card-icon">${api.icon}</div>
-        <span class="api-card-badge">${api.category}</span>
+        <div class="api-card-icon">${s.icon}</div>
+        <span class="api-card-badge">${s.category}</span>
       </div>
-      <h3 class="api-card-name">${api.name}</h3>
-      <p class="api-card-desc">${api.description}</p>
+      <h3 class="api-card-name">${s.name}</h3>
+      <p class="api-card-desc">${s.description}</p>
       <div class="api-card-footer">
         <div class="api-card-price">
-          <span class="api-price-val">${api.pricing.amount}</span>
+          <span class="api-price-val">${s.pricing.amount}</span>
           <span class="api-price-unit">STX / call</span>
         </div>
-        <span class="api-card-method ${api.method === "POST" ? "post" : ""}">${api.method}</span>
+        <span class="api-card-method ${s.method==="POST"?"post":""}">${s.method}</span>
       </div>
       <div class="api-card-stats">
-        <span class="api-card-stat">\u26A1 <strong>${api.latency}</strong></span>
-        <span class="api-card-stat">\u2705 <strong>${api.uptime}</strong></span>
+        <span class="api-card-stat">\u26A1 <strong>${s.latency}</strong></span>
+        <span class="api-card-stat">\u2705 <strong>${s.uptime}</strong></span>
       </div>
     </div>
-  `).join("");
-    grid.querySelectorAll(".api-card").forEach((card) => {
-      card.addEventListener("click", () => {
-        document.getElementById("playground").scrollIntoView({ behavior: "smooth" });
-      });
-    });
-  }
-  function initFilters() {
-    document.querySelectorAll(".filter-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        const f = btn.dataset.filter;
-        document.querySelectorAll(".api-card").forEach((card) => {
-          const show = f === "all" || card.dataset.category === f;
-          card.style.display = show ? "" : "none";
-          if (show) card.style.animation = "fadeUp 0.3s var(--ease) forwards";
-        });
-      });
-    });
-  }
-  function initPlayground() {
-    const sendBtn = document.getElementById("pgSend");
-    const select = document.getElementById("pgEndpoint");
-    if (sendBtn) sendBtn.addEventListener("click", runPlayground);
-    if (select) {
-      select.addEventListener("change", updateRequestCode);
-      updateRequestCode();
-    }
-  }
-  function updateRequestCode() {
-    const val = document.getElementById("pgEndpoint").value;
-    const panel = document.getElementById("pgRequestCode");
-    const snippets = {
-      discover: `<span class="syn-comment">// GET /api/v1/discover \u2014 Free</span>
+  `).join(""),e.querySelectorAll(".api-card").forEach(s=>{s.addEventListener("click",()=>{document.getElementById("playground").scrollIntoView({behavior:"smooth"})})}))}function O(){document.querySelectorAll(".filter-btn").forEach(n=>{n.addEventListener("click",()=>{document.querySelectorAll(".filter-btn").forEach(s=>s.classList.remove("active")),n.classList.add("active");let e=n.dataset.filter;document.querySelectorAll(".api-card").forEach(s=>{let t=e==="all"||s.dataset.category===e;s.style.display=t?"":"none",t&&(s.style.animation="fadeUp 0.3s var(--ease) forwards")})})})}function R(){let n=document.getElementById("pgSend"),e=document.getElementById("pgEndpoint");n&&n.addEventListener("click",q),e&&(e.addEventListener("change",C),C())}function C(){let n=document.getElementById("pgEndpoint").value,e=document.getElementById("pgRequestCode"),s={discover:`<span class="syn-comment">// GET /api/v1/discover \u2014 Free</span>
 <span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/discover'</span>);
 <span class="syn-keyword">const</span> catalog = <span class="syn-keyword">await</span> res.<span class="syn-fn">json</span>();
-console.<span class="syn-fn">log</span>(catalog.totalAPIs, <span class="syn-string">'APIs available'</span>);`,
-      stats: `<span class="syn-comment">// GET /api/v1/stats \u2014 Free</span>
+console.<span class="syn-fn">log</span>(catalog.totalAPIs, <span class="syn-string">'APIs available'</span>);`,stats:`<span class="syn-comment">// GET /api/v1/stats \u2014 Free</span>
 <span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/stats'</span>);
-<span class="syn-keyword">const</span> stats = <span class="syn-keyword">await</span> res.<span class="syn-fn">json</span>();`,
-      health: `<span class="syn-comment">// GET /api/v1/health \u2014 Free</span>
+<span class="syn-keyword">const</span> stats = <span class="syn-keyword">await</span> res.<span class="syn-fn">json</span>();`,health:`<span class="syn-comment">// GET /api/v1/health \u2014 Free</span>
 <span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/health'</span>);
-<span class="syn-keyword">const</span> health = <span class="syn-keyword">await</span> res.<span class="syn-fn">json</span>();`,
-      weather: `<span class="syn-comment">// GET /api/v1/weather \u2014 0.01 STX per call</span>
+<span class="syn-keyword">const</span> health = <span class="syn-keyword">await</span> res.<span class="syn-fn">json</span>();`,weather:`<span class="syn-comment">// GET /api/v1/weather \u2014 0.01 STX per call</span>
 <span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/weather?location=Tokyo'</span>);
 <span class="syn-comment">// Without payment: HTTP 402 Payment Required</span>
-<span class="syn-comment">// With x402-stacks interceptor: auto-pay \u2192 200 OK</span>`,
-      price: `<span class="syn-comment">// GET /api/v1/price \u2014 0.005 STX per call</span>
+<span class="syn-comment">// With x402-stacks interceptor: auto-pay \u2192 200 OK</span>`,price:`<span class="syn-comment">// GET /api/v1/price \u2014 0.005 STX per call</span>
 <span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/price?symbol=BTC'</span>);
-<span class="syn-comment">// Returns x402 payment challenge</span>`,
-      news: `<span class="syn-comment">// GET /api/v1/news \u2014 0.008 STX per call</span>
+<span class="syn-comment">// Returns x402 payment challenge</span>`,news:`<span class="syn-comment">// GET /api/v1/news \u2014 0.008 STX per call</span>
 <span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/news?topic=blockchain&limit=5'</span>);
-<span class="syn-comment">// x402 interceptor handles payment automatically</span>`,
-      chain: `<span class="syn-comment">// GET /api/v1/chain-analytics \u2014 0.02 STX per call</span>
+<span class="syn-comment">// x402 interceptor handles payment automatically</span>`,chain:`<span class="syn-comment">// GET /api/v1/chain-analytics \u2014 0.02 STX per call</span>
 <span class="syn-keyword">const</span> res = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/chain-analytics?address=ST1PQH...'</span>);
-<span class="syn-comment">// Deep on-chain analytics for any Stacks address</span>`
-    };
-    panel.innerHTML = `<pre><code>${snippets[val] || snippets.discover}</code></pre>`;
-  }
-  async function runPlayground() {
-    const val = document.getElementById("pgEndpoint").value;
-    const resPanel = document.getElementById("pgResponseCode");
-    const status = document.getElementById("pgStatus");
-    const btn = document.getElementById("pgSend");
-    if (!userSession || !userSession.isUserSignedIn()) {
-      const isPaid = ["weather", "price", "news", "chain"].includes(val);
-      if (isPaid) {
-        alert("Please connect your wallet first to use paid endpoints.");
-        document.getElementById("connectWalletBtn").click();
-        return;
-      }
-    }
-    btn.disabled = true;
-    btn.innerHTML = "<span>Sending...</span>";
-    status.className = "pg-status";
-    status.textContent = "...";
-    resPanel.innerHTML = '<pre><code class="shimmer" style="display:block;height:200px;border-radius:8px;"></code></pre>';
-    const endpoints = {
-      discover: "/api/v1/discover",
-      stats: "/api/v1/stats",
-      health: "/api/v1/health",
-      weather: "/api/v1/weather?location=Tokyo",
-      price: "/api/v1/price?symbol=BTC",
-      news: "/api/v1/news?topic=blockchain&limit=3",
-      chain: "/api/v1/chain-analytics?address=SP2FGY4PB8QZNYT8GNFBT77K9H0M8XGNFBT"
-    };
-    const url = endpoints[val] || endpoints.discover;
-    const t0 = performance.now();
-    try {
-      const res = await fetch(url);
-      const ms = Math.round(performance.now() - t0);
-      const data = await res.json();
-      if (res.status === 402) {
-        status.className = "pg-status s-402";
-        status.textContent = `402 \xB7 ${ms}ms`;
-        resPanel.innerHTML = `<pre><code><span class="syn-comment">// HTTP 402 \u2014 Payment Required</span>
+<span class="syn-comment">// Deep on-chain analytics for any Stacks address</span>`};e.innerHTML=`<pre><code>${s[n]||s.discover}</code></pre>`}async function q(){let n=document.getElementById("pgEndpoint").value,e=document.getElementById("pgResponseCode"),s=document.getElementById("pgStatus"),t=document.getElementById("pgSend");if((!c||!c.isUserSignedIn())&&["weather","price","news","chain"].includes(n)){alert("Please connect your wallet first to use paid endpoints."),document.getElementById("connectWalletBtn").click();return}t.disabled=!0,t.innerHTML="<span>Sending...</span>",s.className="pg-status",s.textContent="...",e.innerHTML='<pre><code class="shimmer" style="display:block;height:200px;border-radius:8px;"></code></pre>';let a={discover:"/api/v1/discover",stats:"/api/v1/stats",health:"/api/v1/health",weather:"/api/v1/weather?location=Tokyo",price:"/api/v1/price?symbol=BTC",news:"/api/v1/news?topic=blockchain&limit=3",chain:"/api/v1/chain-analytics?address=SP2FGY4PB8QZNYT8GNFBT77K9H0M8XGNFBT"},d=a[n]||a.discover,l=performance.now();try{let o=await fetch(d),i=Math.round(performance.now()-l),r=await o.json();if(o.status===402){if(s.className="pg-status s-402",s.textContent=`402 \xB7 ${i}ms`,e.innerHTML=`<pre><code><span class="syn-comment">// HTTP 402 \u2014 Payment Required</span>
 <span class="syn-comment">// The x402 protocol returns payment requirements:</span>
 <span class="syn-comment">// Initiating Stacks Transaction...</span>
 
-${highlightJSON(data)}</code></pre>`;
-        if (data.payment && data.payment.amount && data.payment.payTo) {
-          const amount = parseInt(data.payment.amount);
-          const recipient = data.payment.payTo;
-          const memo = data.payment.description || "API Payment";
-          openSTXTransfer({
-            recipient,
-            amount,
-            memo,
-            network: NETWORK,
-            appDetails: {
-              name: "Conduit Market",
-              icon: window.location.origin + "/favicon.ico"
-            },
-            onFinish: (data2) => {
-              console.log("Payment Sent:", data2);
-              status.className = "pg-status s-200";
-              status.textContent = `PAID \xB7 ${ms}ms`;
-              resPanel.innerHTML = `<pre><code><span class="syn-comment">// Payment Successful!</span>
-<span class="syn-comment">// Transaction ID: ${data2.txId}</span>
+${S(r)}</code></pre>`,r.payment&&r.payment.amount&&r.payment.payTo){let h=parseInt(r.payment.amount),p=r.payment.payTo,m=r.payment.description||"API Payment";P({recipient:p,amount:h,memo:m,network:E,appDetails:{name:"Conduit Market",icon:window.location.origin+"/favicon.ico"},onFinish:y=>{console.log("Payment Sent:",y),s.className="pg-status s-200",s.textContent=`PAID \xB7 ${i}ms`,e.innerHTML=`<pre><code><span class="syn-comment">// Payment Successful!</span>
+<span class="syn-comment">// Transaction ID: ${y.txId}</span>
 <span class="syn-comment">// Retrying request with payment proof...</span>
 
 <span class="syn-keyword">const</span> response = {
@@ -281,225 +49,13 @@ ${highlightJSON(data)}</code></pre>`;
     success: <span class="syn-keyword">true</span>,
     access: <span class="syn-string">"granted"</span>
   }
-}</code></pre>`;
-            },
-            onCancel: () => {
-              console.log("Payment Cancelled");
-              resPanel.innerHTML += `
-<span class="syn-comment">// Payment Cancelled by User</span>`;
-            }
-          });
-        }
-      } else {
-        status.className = "pg-status s-200";
-        status.textContent = `${res.status} OK \xB7 ${ms}ms`;
-        resPanel.innerHTML = `<pre><code><span class="syn-comment">// ${res.status} OK \u2014 ${ms}ms</span>
+}</code></pre>`},onCancel:()=>{console.log("Payment Cancelled"),e.innerHTML+=`
+<span class="syn-comment">// Payment Cancelled by User</span>`}})}}else s.className="pg-status s-200",s.textContent=`${o.status} OK \xB7 ${i}ms`,e.innerHTML=`<pre><code><span class="syn-comment">// ${o.status} OK \u2014 ${i}ms</span>
 
-${highlightJSON(trimObj(data, 3))}</code></pre>`;
-      }
-    } catch (e) {
-      status.className = "pg-status s-err";
-      status.textContent = "Error";
-      resPanel.innerHTML = `<pre><code><span class="syn-comment">// Error: ${e.message}</span></code></pre>`;
-    }
-    btn.disabled = false;
-    btn.innerHTML = '<span>Send</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
-    loadStats();
-  }
-  function highlightJSON(obj) {
-    return JSON.stringify(obj, null, 2).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?/g, (m) => {
-      if (/:$/.test(m)) return `<span class="syn-var">${m.slice(0, -1)}</span>:`;
-      return `<span class="syn-string">${m}</span>`;
-    }).replace(/\b(true|false)\b/g, '<span class="syn-keyword">$1</span>').replace(/\b(null)\b/g, '<span class="syn-comment">$1</span>').replace(/\b(\d+\.?\d*)\b/g, '<span class="syn-number">$1</span>');
-  }
-  function trimObj(obj, depth, d = 0) {
-    if (d >= depth) {
-      if (Array.isArray(obj)) return obj.length > 2 ? [obj[0], `...${obj.length - 1} more`] : obj;
-      if (typeof obj === "object" && obj !== null) return "...";
-      return obj;
-    }
-    if (Array.isArray(obj)) {
-      const items = obj.slice(0, 3).map((i) => trimObj(i, depth, d + 1));
-      if (obj.length > 3) items.push(`...${obj.length - 3} more`);
-      return items;
-    }
-    if (typeof obj === "object" && obj !== null) {
-      const r = {};
-      const keys = Object.keys(obj);
-      keys.slice(0, 10).forEach((k) => r[k] = trimObj(obj[k], depth, d + 1));
-      if (keys.length > 10) r["..."] = `${keys.length - 10} more`;
-      return r;
-    }
-    if (typeof obj === "string" && obj.length > 120) return obj.substring(0, 120) + "...";
-    return obj;
-  }
-  function initCodeTabs() {
-    document.querySelectorAll(".code-tab").forEach((tab) => {
-      tab.addEventListener("click", () => {
-        document.querySelectorAll(".code-tab").forEach((t) => t.classList.remove("active"));
-        tab.classList.add("active");
-        const target = tab.dataset.tab;
-        document.getElementById("codeClient").style.display = target === "client" ? "" : "none";
-        document.getElementById("codeServer").style.display = target === "server" ? "" : "none";
-      });
-    });
-  }
-  async function loadStats() {
-    try {
-      const res = await fetch("/api/v1/stats");
-      const data = await res.json();
-      document.getElementById("statAPIs").textContent = data.stats.totalAPIs;
-      document.getElementById("statTx").textContent = data.stats.totalTransactions;
-      const vol = data.stats.apiUsage.reduce((a, u) => a + u.totalCalls * 0.015, 0);
-      document.getElementById("statVolume").textContent = vol.toFixed(3) + " STX";
-      renderTx(data.stats.recentTransactions);
-    } catch (e) {
-    }
-  }
-  function renderTx(txs) {
-    const body = document.getElementById("txBody");
-    if (!body || !txs || !txs.length) return;
-    const head = `<div class="tx-row tx-row--head"><span>API</span><span>Time</span><span>Status</span><span>TX ID</span></div>`;
-    const rows = txs.map((tx) => {
-      var _a, _b;
-      const time = new Date(tx.timestamp).toLocaleTimeString();
-      const txId = ((_a = tx.payment) == null ? void 0 : _a.txId) || "pending";
-      return `<div class="tx-row">
-      <span><strong>${tx.apiId}</strong></span>
-      <span>${time}</span>
-      <span class="tx-badge">${((_b = tx.payment) == null ? void 0 : _b.status) || "settled"}</span>
-      <span class="tx-id">${txId.length > 16 ? txId.substring(0, 16) + "..." : txId}</span>
-    </div>`;
-    }).join("");
-    body.innerHTML = head + rows;
-  }
-  function initProvider() {
-    const btn = document.getElementById("btnRegisterApi");
-    const status = document.getElementById("regStatus");
-    if (btn) {
-      btn.addEventListener("click", async () => {
-        if (!userSession || !userSession.isUserSignedIn()) {
-          alert("Please connect your wallet first.");
-          document.getElementById("connectWalletBtn").click();
-          return;
-        }
-        const name = document.getElementById("regName").value;
-        const desc = document.getElementById("regDesc").value;
-        const endpoint = document.getElementById("regEndpoint").value;
-        const method = document.getElementById("regMethod").value;
-        const price = parseFloat(document.getElementById("regPrice").value);
-        const category = document.getElementById("regCategory").value;
-        const contractAddr = document.getElementById("regContractAddr").value;
-        if (!name || !desc || !endpoint || isNaN(price) || price <= 0) {
-          status.className = "reg-status error";
-          status.textContent = "Please fill in all fields with valid data.";
-          return;
-        }
-        const [contractAddress, contractName] = contractAddr.includes(".") ? contractAddr.split(".") : [contractAddr, "api-registry"];
-        try {
-          const functionArgs = [
-            stringAsciiCV(name),
-            stringAsciiCV(desc),
-            stringAsciiCV(endpoint),
-            uintCV(Math.floor(price * 1e6)),
-            // to microSTX
-            stringAsciiCV(category)
-          ];
-          const options = {
-            contractAddress,
-            contractName: contractName || "api-registry",
-            functionName: "register-api",
-            functionArgs,
-            network: NETWORK,
-            appDetails: {
-              name: "Conduit Market",
-              icon: window.location.origin + "/favicon.ico"
-            },
-            onFinish: (data) => {
-              console.log("Mainnet Transaction Success:", data);
-              status.className = "reg-status success";
-              status.textContent = `Success! Tx: ${data.txId.substring(0, 10)}...`;
-              document.getElementById("regName").value = "";
-            },
-            onCancel: () => {
-              status.className = "reg-status error";
-              status.textContent = "Transaction cancelled.";
-            }
-          };
-          console.log("Finalizing Mainnet Contract Call...", {
-            contract: `${options.contractAddress}.${options.contractName}`,
-            function: options.functionName,
-            args: functionArgs
-          });
-          await openContractCall(options);
-        } catch (e) {
-          console.error("Contract Call Error:", e);
-          status.className = "reg-status error";
-          status.textContent = "Error: " + e.message;
-        }
-      });
-    }
-  }
-  function initCheckIn() {
-    const btn = document.getElementById("btnCheckIn");
-    const status = document.getElementById("checkInStatus");
-    if (btn) {
-      btn.addEventListener("click", async () => {
-        if (!userSession || !userSession.isUserSignedIn()) {
-          alert("Please connect your wallet first.");
-          document.getElementById("connectWalletBtn").click();
-          return;
-        }
-        btn.disabled = true;
-        btn.innerHTML = "<span>Processing...</span>";
-        status.textContent = "Awaiting signature...";
-        const contractAddr = "SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT";
-        try {
-          const options = {
-            contractAddress: contractAddr,
-            contractName: "fee-free-txn-v2",
-            functionName: "signal-participation",
-            functionArgs: [],
-            network: NETWORK,
-            appDetails: {
-              name: "Conduit Market",
-              icon: window.location.origin + "/favicon.ico"
-            },
-            onFinish: (data) => {
-              console.log("Daily Signal Sent:", data);
-              status.className = "ci-status success";
-              status.textContent = `Success! Signal recorded: ${data.txId.substring(0, 8)}...`;
-              btn.innerHTML = "<span>Checked In \u2705</span>";
-              setTimeout(loadStats, 5e3);
-            },
-            onCancel: () => {
-              btn.disabled = false;
-              btn.innerHTML = "<span>Check-In Now</span>";
-              status.className = "ci-status error";
-              status.textContent = "Transaction cancelled.";
-            }
-          };
-          await openContractCall(options);
-        } catch (e) {
-          console.error("Check-in Error:", e);
-          btn.disabled = false;
-          btn.innerHTML = "<span>Check-In Now</span>";
-          status.className = "ci-status error";
-          status.textContent = "Error: " + e.message;
-        }
-      });
-    }
-  }
-  function initAnimations() {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: "0px 0px -30px 0px" });
-    document.querySelectorAll("[data-animate]").forEach((el) => obs.observe(el));
-  }
-})();
+${S(v(r,3))}</code></pre>`}catch(o){s.className="pg-status s-err",s.textContent="Error",e.innerHTML=`<pre><code><span class="syn-comment">// Error: ${o.message}</span></code></pre>`}t.disabled=!1,t.innerHTML='<span>Send</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>',f()}function S(n){return JSON.stringify(n,null,2).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?/g,e=>/:$/.test(e)?`<span class="syn-var">${e.slice(0,-1)}</span>:`:`<span class="syn-string">${e}</span>`).replace(/\b(true|false)\b/g,'<span class="syn-keyword">$1</span>').replace(/\b(null)\b/g,'<span class="syn-comment">$1</span>').replace(/\b(\d+\.?\d*)\b/g,'<span class="syn-number">$1</span>')}function v(n,e,s=0){if(s>=e)return Array.isArray(n)?n.length>2?[n[0],`...${n.length-1} more`]:n:typeof n=="object"&&n!==null?"...":n;if(Array.isArray(n)){let t=n.slice(0,3).map(a=>v(a,e,s+1));return n.length>3&&t.push(`...${n.length-3} more`),t}if(typeof n=="object"&&n!==null){let t={},a=Object.keys(n);return a.slice(0,10).forEach(d=>t[d]=v(n[d],e,s+1)),a.length>10&&(t["..."]=`${a.length-10} more`),t}return typeof n=="string"&&n.length>120?n.substring(0,120)+"...":n}function U(){document.querySelectorAll(".code-tab").forEach(n=>{n.addEventListener("click",()=>{document.querySelectorAll(".code-tab").forEach(s=>s.classList.remove("active")),n.classList.add("active");let e=n.dataset.tab;document.getElementById("codeClient").style.display=e==="client"?"":"none",document.getElementById("codeServer").style.display=e==="server"?"":"none"})})}async function f(){try{let e=await(await fetch("/api/v1/stats")).json();document.getElementById("statAPIs").textContent=e.stats.totalAPIs,document.getElementById("statTx").textContent=e.stats.totalTransactions;let s=e.stats.apiUsage.reduce((t,a)=>t+a.totalCalls*.015,0);document.getElementById("statVolume").textContent=s.toFixed(3)+" STX",W(e.stats.recentTransactions)}catch(n){}}function W(n){let e=document.getElementById("txBody");if(!e||!n||!n.length)return;let s='<div class="tx-row tx-row--head"><span>API</span><span>Time</span><span>Status</span><span>TX ID</span></div>',t=n.map(a=>{var o,i;let d=new Date(a.timestamp).toLocaleTimeString(),l=((o=a.payment)==null?void 0:o.txId)||"pending";return`<div class="tx-row">
+      <span><strong>${a.apiId}</strong></span>
+      <span>${d}</span>
+      <span class="tx-badge">${((i=a.payment)==null?void 0:i.status)||"settled"}</span>
+      <span class="tx-id">${l.length>16?l.substring(0,16)+"...":l}</span>
+    </div>`}).join("");e.innerHTML=s+t}function X(){let n=document.getElementById("btnRegisterApi"),e=document.getElementById("regStatus");n&&n.addEventListener("click",async()=>{if(!c||!c.isUserSignedIn()){alert("Please connect your wallet first."),document.getElementById("connectWalletBtn").click();return}let s=document.getElementById("regName").value,t=document.getElementById("regDesc").value,a=document.getElementById("regEndpoint").value,d=document.getElementById("regMethod").value,l=parseFloat(document.getElementById("regPrice").value),o=document.getElementById("regCategory").value,i=document.getElementById("regContractAddr").value;if(!s||!t||!a||isNaN(l)||l<=0){e.className="reg-status error",e.textContent="Please fill in all fields with valid data.";return}let[r,h]=i.includes(".")?i.split("."):[i,"api-registry"];try{let p=[g(s),g(t),g(a),M(Math.floor(l*1e6)),g(o)],m={contractAddress:r,contractName:h||"api-registry",functionName:"register-api",functionArgs:p,network:E,appDetails:{name:"Conduit Market",icon:window.location.origin+"/favicon.ico"},onFinish:y=>{console.log("Mainnet Transaction Success:",y),e.className="reg-status success",e.textContent=`Success! Tx: ${y.txId.substring(0,10)}...`,document.getElementById("regName").value=""},onCancel:()=>{e.className="reg-status error",e.textContent="Transaction cancelled."}};console.log("Finalizing Mainnet Contract Call...",{contract:`${m.contractAddress}.${m.contractName}`,function:m.functionName,args:p}),await B(m)}catch(p){console.error("Contract Call Error:",p),e.className="reg-status error",e.textContent="Error: "+p.message}})}function K(){let n=document.getElementById("btnCheckIn"),e=document.getElementById("checkInStatus");n&&n.addEventListener("click",async()=>{if(!c||!c.isUserSignedIn()){alert("Please connect your wallet first."),document.getElementById("connectWalletBtn").click();return}n.disabled=!0,n.innerHTML="<span>Processing...</span>",e.textContent="Awaiting signature...";let s="SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT";try{let t={contractAddress:s,contractName:"fee-free-txn-v2",functionName:"signal-participation",functionArgs:[],network:E,appDetails:{name:"Conduit Market",icon:window.location.origin+"/favicon.ico"},onFinish:a=>{console.log("Daily Signal Sent:",a),e.className="ci-status success",e.textContent=`Success! Signal recorded: ${a.txId.substring(0,8)}...`,n.innerHTML="<span>Checked In \u2705</span>",setTimeout(f,5e3)},onCancel:()=>{n.disabled=!1,n.innerHTML="<span>Check-In Now</span>",e.className="ci-status error",e.textContent="Transaction cancelled."}};await B(t)}catch(t){console.error("Check-in Error:",t),n.disabled=!1,n.innerHTML="<span>Check-In Now</span>",e.className="ci-status error",e.textContent="Error: "+t.message}})}function V(){let n=new IntersectionObserver(e=>{e.forEach(s=>{s.isIntersecting&&(s.target.classList.add("visible"),n.unobserve(s.target))})},{threshold:.08,rootMargin:"0px 0px -30px 0px"});document.querySelectorAll("[data-animate]").forEach(e=>n.observe(e))}})();
 //# sourceMappingURL=app.js.map
