@@ -1883,7 +1883,7 @@
         return hashC;
       }
       exports.wrapConstructorWithOpts = wrapConstructorWithOpts;
-      function randomBytes3(bytesLength = 32) {
+      function randomBytes2(bytesLength = 32) {
         if (crypto_1.crypto.web) {
           return crypto_1.crypto.web.getRandomValues(new Uint8Array(bytesLength));
         } else if (crypto_1.crypto.node) {
@@ -1892,7 +1892,7 @@
           throw new Error("The environment doesn't have randomBytes function");
         }
       }
-      exports.randomBytes = randomBytes3;
+      exports.randomBytes = randomBytes2;
     }
   });
 
@@ -2612,14 +2612,14 @@
       ADDR_STACKS_TO_BITCOIN[exports.versions.mainnet.p2sh] = 5;
       ADDR_STACKS_TO_BITCOIN[exports.versions.testnet.p2pkh] = 111;
       ADDR_STACKS_TO_BITCOIN[exports.versions.testnet.p2sh] = 196;
-      function c32address5(version4, hash160hex) {
+      function c32address4(version4, hash160hex) {
         if (!hash160hex.match(/^[0-9a-fA-F]{40}$/)) {
           throw new Error("Invalid argument: not a hash160 hex string");
         }
         const c32string = (0, checksum_1.c32checkEncode)(version4, hash160hex);
         return `S${c32string}`;
       }
-      exports.c32address = c32address5;
+      exports.c32address = c32address4;
       function c32addressDecode6(c32addr) {
         if (c32addr.length <= 5) {
           throw new Error("Invalid c32 address: invalid length");
@@ -2643,7 +2643,7 @@
         } else {
           stacksVersion = version4;
         }
-        return c32address5(stacksVersion, hash160String);
+        return c32address4(stacksVersion, hash160String);
       }
       exports.b58ToC32 = b58ToC32;
       function c32ToB58(c32string, version4 = -1) {
@@ -6856,8 +6856,8 @@
         return new d7(c12(-this.ex), this.ey, this.ez, c12(-this.et));
       }
       double() {
-        const { a: f13 } = e10, { ex: b8, ey: E8, ez: B6 } = this, C6 = c12(b8 * b8), A6 = c12(E8 * E8), U5 = c12(yt * c12(B6 * B6)), _5 = c12(f13 * C6), T7 = b8 + E8, $6 = c12(c12(T7 * T7) - C6 - A6), R5 = _5 + A6, V6 = R5 - U5, Y4 = _5 - A6, Z5 = c12($6 * V6), X5 = c12(R5 * Y4), et2 = c12($6 * Y4), pt5 = c12(V6 * R5);
-        return new d7(Z5, X5, pt5, et2);
+        const { a: f13 } = e10, { ex: b8, ey: E8, ez: B6 } = this, C6 = c12(b8 * b8), A6 = c12(E8 * E8), U5 = c12(yt * c12(B6 * B6)), _5 = c12(f13 * C6), T7 = b8 + E8, $6 = c12(c12(T7 * T7) - C6 - A6), R5 = _5 + A6, V6 = R5 - U5, Y4 = _5 - A6, Z5 = c12($6 * V6), X5 = c12(R5 * Y4), et2 = c12($6 * Y4), pt4 = c12(V6 * R5);
+        return new d7(Z5, X5, pt4, et2);
       }
       add(f13) {
         S8(f13);
@@ -6868,7 +6868,7 @@
           const se5 = c12(A6 * yt * R5), ie5 = c12(U5 * yt * $6), ue5 = ie5 + se5, ce5 = oe3 + re4, ae5 = ie5 - se5, Dn3 = c12(ue5 * mt4), dn3 = c12(ce5 * ae5), hn3 = c12(ue5 * ae5), ln3 = c12(mt4 * ce5);
           return new d7(Dn3, dn3, ln3, hn3);
         }
-        const V6 = c12(B6 * _5), Y4 = c12(C6 * T7), Z5 = c12(U5 * E8 * R5), X5 = c12(A6 * $6), et2 = c12((B6 + C6) * (_5 + T7) - V6 - Y4), pt5 = X5 - Z5, ee5 = X5 + Z5, ne5 = c12(Y4 - b8 * V6), un3 = c12(et2 * pt5), cn3 = c12(ee5 * ne5), an3 = c12(et2 * ne5), fn3 = c12(pt5 * ee5);
+        const V6 = c12(B6 * _5), Y4 = c12(C6 * T7), Z5 = c12(U5 * E8 * R5), X5 = c12(A6 * $6), et2 = c12((B6 + C6) * (_5 + T7) - V6 - Y4), pt4 = X5 - Z5, ee5 = X5 + Z5, ne5 = c12(Y4 - b8 * V6), un3 = c12(et2 * pt4), cn3 = c12(ee5 * ne5), an3 = c12(et2 * ne5), fn3 = c12(pt4 * ee5);
         return new d7(un3, cn3, fn3, an3);
       }
       subtract(f13) {
@@ -7223,8 +7223,8 @@
           for (let d7 = 0; d7 < 80; d7++) {
             const m6 = x3.rotrSH(l10, p8, 14) ^ x3.rotrSH(l10, p8, 18) ^ x3.rotrBH(l10, p8, 41), F4 = x3.rotrSL(l10, p8, 14) ^ x3.rotrSL(l10, p8, 18) ^ x3.rotrBL(l10, p8, 41), q3 = l10 & w7 ^ ~l10 & g5, z6 = p8 & h12 ^ ~p8 & S8, I6 = x3.add5L(L7, F4, z6, Yn[d7], Q[d7]), O7 = x3.add5H(I6, v8, m6, q3, Vn[d7], P2[d7]), ot4 = I6 | 0, tt4 = x3.rotrSH(r10, o13, 28) ^ x3.rotrBH(r10, o13, 34) ^ x3.rotrBH(r10, o13, 39), st2 = x3.rotrSL(r10, o13, 28) ^ x3.rotrBL(r10, o13, 34) ^ x3.rotrBL(r10, o13, 39), at3 = r10 & s8 ^ r10 & u5 ^ s8 & u5, Ct4 = o13 & a5 ^ o13 & i10 ^ a5 & i10;
             v8 = g5 | 0, L7 = S8 | 0, g5 = w7 | 0, S8 = h12 | 0, w7 = l10 | 0, h12 = p8 | 0, { h: l10, l: p8 } = x3.add(D5 | 0, c12 | 0, O7 | 0, ot4 | 0), D5 = u5 | 0, c12 = i10 | 0, u5 = s8 | 0, i10 = a5 | 0, s8 = r10 | 0, a5 = o13 | 0;
-            const At5 = x3.add3L(ot4, st2, Ct4);
-            r10 = x3.add3H(At5, O7, tt4, at3), o13 = At5 | 0;
+            const At4 = x3.add3L(ot4, st2, Ct4);
+            r10 = x3.add3H(At4, O7, tt4, at3), o13 = At4 | 0;
           }
           ({ h: r10, l: o13 } = x3.add(this.Ah | 0, this.Al | 0, r10 | 0, o13 | 0)), { h: s8, l: a5 } = x3.add(this.Bh | 0, this.Bl | 0, s8 | 0, a5 | 0), { h: u5, l: i10 } = x3.add(this.Ch | 0, this.Cl | 0, u5 | 0, i10 | 0), { h: D5, l: c12 } = x3.add(this.Dh | 0, this.Dl | 0, D5 | 0, c12 | 0), { h: l10, l: p8 } = x3.add(this.Eh | 0, this.El | 0, l10 | 0, p8 | 0), { h: w7, l: h12 } = x3.add(this.Fh | 0, this.Fl | 0, w7 | 0, h12 | 0), { h: g5, l: S8 } = x3.add(this.Gh | 0, this.Gl | 0, g5 | 0, S8 | 0), { h: v8, l: L7 } = x3.add(this.Hh | 0, this.Hl | 0, v8 | 0, L7 | 0), this.set(r10, o13, s8, a5, u5, i10, D5, c12, l10, p8, w7, h12, g5, S8, v8, L7);
         }
@@ -8363,7 +8363,7 @@
     hashC.create = () => hashCons();
     return hashC;
   }
-  function randomBytes2(bytesLength = 32) {
+  function randomBytes(bytesLength = 32) {
     if (crypto4 && typeof crypto4.getRandomValues === "function") {
       return crypto4.getRandomValues(new Uint8Array(bytesLength));
     }
@@ -8654,7 +8654,7 @@
   });
 
   // node_modules/@walletconnect/utils/node_modules/viem/_esm/accounts/utils/publicKeyToAddress.js
-  function publicKeyToAddress2(publicKey) {
+  function publicKeyToAddress(publicKey) {
     const address2 = keccak256(`0x${publicKey.substring(4)}`).substring(26);
     return checksumAddress(`0x${address2}`);
   }
@@ -10428,7 +10428,7 @@
     function prepSig(msgHash, privateKey, opts = defaultSigOpts) {
       if (["recovered", "canonical"].some((k8) => k8 in opts))
         throw new Error("sign() legacy options not supported");
-      const { hash: hash2, randomBytes: randomBytes3 } = CURVE2;
+      const { hash: hash2, randomBytes: randomBytes2 } = CURVE2;
       let { lowS, prehash, extraEntropy: ent } = opts;
       if (lowS == null)
         lowS = true;
@@ -10440,7 +10440,7 @@
       const d7 = normPrivateKeyToScalar(privateKey);
       const seedArgs = [int2octets2(d7), int2octets2(h1int)];
       if (ent != null && ent !== false) {
-        const e10 = ent === true ? randomBytes3(Fp.BYTES) : ent;
+        const e10 = ent === true ? randomBytes2(Fp.BYTES) : ent;
         seedArgs.push(ensureBytes2("extraEntropy", e10));
       }
       const seed = concatBytes5(...seedArgs);
@@ -10519,9 +10519,9 @@
         msgHash = CURVE2.hash(msgHash);
       const { r: r10, s: s8 } = _sig;
       const h12 = bits2int_modN(msgHash);
-      const is3 = invN(s8);
-      const u1 = modN2(h12 * is3);
-      const u22 = modN2(r10 * is3);
+      const is2 = invN(s8);
+      const u1 = modN2(h12 * is2);
+      const u22 = modN2(r10 * is2);
       const R5 = (_a7 = Point3.BASE.multiplyAndAddUnsafe(P7, u1, u22)) == null ? void 0 : _a7.toAffine();
       if (!R5)
         return false;
@@ -10763,7 +10763,7 @@
     return {
       hash: hash2,
       hmac: (key, ...msgs) => hmac2(hash2, key, concatBytes4(...msgs)),
-      randomBytes: randomBytes2
+      randomBytes
     };
   }
   function createCurve(curveDef, defHash) {
@@ -10996,7 +10996,7 @@
   function schnorrGetPublicKey(privateKey) {
     return schnorrGetExtPubKey(privateKey).bytes;
   }
-  function schnorrSign(message, privateKey, auxRand = randomBytes2(32)) {
+  function schnorrSign(message, privateKey, auxRand = randomBytes(32)) {
     const m6 = ensureBytes2("message", message);
     const { bytes: px, scalar: d7 } = schnorrGetExtPubKey(privateKey);
     const a5 = ensureBytes2("auxRand", auxRand, 32);
@@ -11205,7 +11205,7 @@
 
   // node_modules/@walletconnect/utils/node_modules/viem/_esm/utils/signature/recoverAddress.js
   async function recoverAddress({ hash: hash2, signature }) {
-    return publicKeyToAddress2(await recoverPublicKey({ hash: hash2, signature }));
+    return publicKeyToAddress(await recoverPublicKey({ hash: hash2, signature }));
   }
   var init_recoverAddress = __esm({
     "node_modules/@walletconnect/utils/node_modules/viem/_esm/utils/signature/recoverAddress.js"() {
@@ -16222,8 +16222,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       for (let A6 = BigInt(l10 - 1); A6 >= de2; A6--) {
         const T7 = p8 >> A6 & Jt2;
         S8 ^= T7, { x_2: v8, x_3: E8 } = j7(S8, v8, E8), { x_2: B6, x_3: I6 } = j7(S8, B6, I6), S8 = T7;
-        const U5 = v8 + B6, C6 = x8(U5 * U5), H5 = v8 - B6, q3 = x8(H5 * H5), P7 = C6 - q3, K5 = E8 + I6, et2 = E8 - I6, Z5 = x8(et2 * U5), z6 = x8(K5 * H5), Ft4 = Z5 + z6, yt5 = Z5 - z6;
-        E8 = x8(Ft4 * Ft4), I6 = x8(b8 * x8(yt5 * yt5)), v8 = x8(C6 * q3), B6 = x8(P7 * (C6 + x8(h12 * P7)));
+        const U5 = v8 + B6, C6 = x8(U5 * U5), H5 = v8 - B6, q3 = x8(H5 * H5), P7 = C6 - q3, K5 = E8 + I6, et2 = E8 - I6, Z5 = x8(et2 * U5), z6 = x8(K5 * H5), Ft4 = Z5 + z6, yt4 = Z5 - z6;
+        E8 = x8(Ft4 * Ft4), I6 = x8(b8 * x8(yt4 * yt4)), v8 = x8(C6 * q3), B6 = x8(P7 * (C6 + x8(h12 * P7)));
       }
       ({ x_2: v8, x_3: E8 } = j7(S8, v8, E8)), { x_2: B6, x_3: I6 } = j7(S8, B6, I6);
       const O7 = s8(B6);
@@ -16602,8 +16602,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         if (Z5 === he2) return;
         const z6 = i10.create(K5 * i10.create(C6 + Z5 * A6));
         if (z6 === he2) return;
-        let Ft4 = (et2.x === Z5 ? 0 : 2) | Number(et2.y & pe2), yt5 = z6;
-        return E8 && l10(z6) && (yt5 = c12(z6), Ft4 ^= 1), new h12(Z5, yt5, Ft4);
+        let Ft4 = (et2.x === Z5 ? 0 : 2) | Number(et2.y & pe2), yt4 = z6;
+        return E8 && l10(z6) && (yt4 = c12(z6), Ft4 ^= 1), new h12(Z5, yt4, Ft4);
       }
       return { seed: U5, k2sig: H5 };
     }
@@ -16628,8 +16628,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
         if (A6) {
           try {
             O7 !== "compact" && (U5 = h12.fromDER(E8));
-          } catch (yt5) {
-            if (!(yt5 instanceof vt2.Err)) throw yt5;
+          } catch (yt4) {
+            if (!(yt4 instanceof vt2.Err)) throw yt4;
           }
           !U5 && O7 !== "der" && (U5 = h12.fromCompact(E8));
         }
@@ -18277,8 +18277,8 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
   });
 
   // node_modules/@walletconnect/jsonrpc-utils/dist/esm/index.js
-  var esm_exports2 = {};
-  __export(esm_exports2, {
+  var esm_exports = {};
+  __export(esm_exports, {
     DEFAULT_ERROR: () => DEFAULT_ERROR,
     IBaseJsonRpcProvider: () => n4,
     IEvents: () => e,
@@ -18327,7 +18327,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
       init_constants();
       init_error();
       init_env();
-      __reExport(esm_exports2, env_exports);
+      __reExport(esm_exports, env_exports);
       init_format();
       init_routing();
       init_types();
@@ -18489,7 +18489,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
             });
           }
           return this.url = e10, this.registering = true, new Promise((t5, n13) => {
-            const s8 = (0, esm_exports2.isReactNative)() ? void 0 : { rejectUnauthorized: !isLocalhostUrl(e10) }, o13 = new b3(e10, [], s8);
+            const s8 = (0, esm_exports.isReactNative)() ? void 0 : { rejectUnauthorized: !isLocalhostUrl(e10) }, o13 = new b3(e10, [], s8);
             w2() ? o13.onerror = (i10) => {
               const a5 = i10;
               n13(this.emitError(a5.error));
@@ -20995,10 +20995,10 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               let k8 = Ef(O7, "request", m6);
               Oe2(E8) && (k8 = Bf(k8, E8.pop())), E8.push(k8);
             }
-            const T7 = y9 && y9 > N11.wc_sessionAuthenticate.req.ttl ? y9 : N11.wc_sessionAuthenticate.req.ttl, K5 = { authPayload: { type: u5 != null ? u5 : "caip122", chains: n13, statement: a5, aud: l10, domain: p8, version: "1", nonce: h12, iat: (/* @__PURE__ */ new Date()).toISOString(), exp: d7, nbf: w7, resources: E8 }, requester: { publicKey: C6, metadata: this.client.metadata }, expiryTimestamp: ii(T7) }, fe5 = { eip155: { chains: n13, methods: [.../* @__PURE__ */ new Set(["personal_sign", ...m6])], events: ["chainChanged", "accountsChanged"] } }, q3 = { requiredNamespaces: {}, optionalNamespaces: fe5, relays: [{ protocol: "irn" }], pairingTopic: _5, proposer: { publicKey: C6, metadata: this.client.metadata }, expiryTimestamp: ii(N11.wc_sessionPropose.req.ttl), id: payloadId() }, { done: It6, resolve: Ue5, reject: Se5 } = ei(T7, "Request expired"), te5 = payloadId(), le6 = ci("session_connect", q3.id), Re5 = ci("session_request", te5), pe6 = async ({ error: O7, session: k8 }) => {
-              this.events.off(Re5, ve5), O7 ? Se5(O7) : k8 && Ue5({ session: k8 });
+            const T7 = y9 && y9 > N11.wc_sessionAuthenticate.req.ttl ? y9 : N11.wc_sessionAuthenticate.req.ttl, K5 = { authPayload: { type: u5 != null ? u5 : "caip122", chains: n13, statement: a5, aud: l10, domain: p8, version: "1", nonce: h12, iat: (/* @__PURE__ */ new Date()).toISOString(), exp: d7, nbf: w7, resources: E8 }, requester: { publicKey: C6, metadata: this.client.metadata }, expiryTimestamp: ii(T7) }, fe5 = { eip155: { chains: n13, methods: [.../* @__PURE__ */ new Set(["personal_sign", ...m6])], events: ["chainChanged", "accountsChanged"] } }, q3 = { requiredNamespaces: {}, optionalNamespaces: fe5, relays: [{ protocol: "irn" }], pairingTopic: _5, proposer: { publicKey: C6, metadata: this.client.metadata }, expiryTimestamp: ii(N11.wc_sessionPropose.req.ttl), id: payloadId() }, { done: It5, resolve: Ue5, reject: Se5 } = ei(T7, "Request expired"), te5 = payloadId(), le6 = ci("session_connect", q3.id), Re4 = ci("session_request", te5), pe6 = async ({ error: O7, session: k8 }) => {
+              this.events.off(Re4, ve5), O7 ? Se5(O7) : k8 && Ue5({ session: k8 });
             }, ve5 = async (O7) => {
-              var k8, Ge5, je6;
+              var k8, Ge5, je5;
               if (await this.deletePendingAuthRequest(te5, { message: "fulfilled", code: 0 }), O7.error) {
                 const ie5 = Kt2("WC_METHOD_UNSUPPORTED", "wc_sessionAuthenticate");
                 return O7.error.code === ie5.code ? void 0 : (this.events.off(le6, pe6), Se5(O7.error.message));
@@ -21007,18 +21007,18 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               const { cacaos: Fe4, responder: Q5 } = O7.result, Te6 = [], Qe5 = [];
               for (const ie5 of Fe4) {
                 await yf({ cacao: ie5, projectId: this.client.core.projectId }) || (this.client.logger.error(ie5, "Signature verification failed"), Se5(Kt2("SESSION_SETTLEMENT_FAILED", "Signature verification failed")));
-                const { p: qe6 } = ie5, Pe6 = Oe2(qe6.resources), He5 = [Vr2(qe6.iss)], Tt6 = dn(qe6.iss);
+                const { p: qe6 } = ie5, Pe6 = Oe2(qe6.resources), He5 = [Vr2(qe6.iss)], Tt5 = dn(qe6.iss);
                 if (Pe6) {
-                  const Ne5 = If(Pe6), qt5 = Af(Pe6);
-                  Te6.push(...Ne5), He5.push(...qt5);
+                  const Ne5 = If(Pe6), qt4 = Af(Pe6);
+                  Te6.push(...Ne5), He5.push(...qt4);
                 }
-                for (const Ne5 of He5) Qe5.push(`${Ne5}:${Tt6}`);
+                for (const Ne5 of He5) Qe5.push(`${Ne5}:${Tt5}`);
               }
               const se5 = await this.client.core.crypto.generateSharedKey(C6, Q5.publicKey);
               let he5;
-              Te6.length > 0 && (he5 = { topic: se5, acknowledged: true, self: { publicKey: C6, metadata: this.client.metadata }, peer: Q5, controller: Q5.publicKey, expiry: ii(X2), requiredNamespaces: {}, optionalNamespaces: {}, relay: { protocol: "irn" }, pairingTopic: _5, namespaces: ga([...new Set(Te6)], [...new Set(Qe5)]), transportType: r10 }, await this.client.core.relayer.subscribe(se5, { transportType: r10 }), await this.client.session.set(se5, he5), _5 && await this.client.core.pairing.updateMetadata({ topic: _5, metadata: Q5.metadata }), he5 = this.client.session.get(se5)), (k8 = this.client.metadata.redirect) != null && k8.linkMode && (Ge5 = Q5.metadata.redirect) != null && Ge5.linkMode && (je6 = Q5.metadata.redirect) != null && je6.universal && e10 && (this.client.core.addLinkModeSupportedApp(Q5.metadata.redirect.universal), this.client.session.update(se5, { transportType: Q3.link_mode })), Ue5({ auths: Fe4, session: he5 });
+              Te6.length > 0 && (he5 = { topic: se5, acknowledged: true, self: { publicKey: C6, metadata: this.client.metadata }, peer: Q5, controller: Q5.publicKey, expiry: ii(X2), requiredNamespaces: {}, optionalNamespaces: {}, relay: { protocol: "irn" }, pairingTopic: _5, namespaces: ga([...new Set(Te6)], [...new Set(Qe5)]), transportType: r10 }, await this.client.core.relayer.subscribe(se5, { transportType: r10 }), await this.client.session.set(se5, he5), _5 && await this.client.core.pairing.updateMetadata({ topic: _5, metadata: Q5.metadata }), he5 = this.client.session.get(se5)), (k8 = this.client.metadata.redirect) != null && k8.linkMode && (Ge5 = Q5.metadata.redirect) != null && Ge5.linkMode && (je5 = Q5.metadata.redirect) != null && je5.universal && e10 && (this.client.core.addLinkModeSupportedApp(Q5.metadata.redirect.universal), this.client.session.update(se5, { transportType: Q3.link_mode })), Ue5({ auths: Fe4, session: he5 });
             };
-            this.events.once(le6, pe6), this.events.once(Re5, ve5);
+            this.events.once(le6, pe6), this.events.once(Re4, ve5);
             let Ie6;
             try {
               if (i10) {
@@ -21028,9 +21028,9 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
                 Ie6 = sa(e10, _5, k8);
               } else await Promise.all([this.sendRequest({ topic: _5, method: "wc_sessionAuthenticate", params: K5, expiry: t5.expiry, throwOnFailedPublish: true, clientRpcId: te5 }), this.sendRequest({ topic: _5, method: "wc_sessionPropose", params: q3, expiry: N11.wc_sessionPropose.req.ttl, throwOnFailedPublish: true, clientRpcId: q3.id })]);
             } catch (O7) {
-              throw this.events.off(le6, pe6), this.events.off(Re5, ve5), O7;
+              throw this.events.off(le6, pe6), this.events.off(Re4, ve5), O7;
             }
-            return await this.setProposal(q3.id, q3), await this.setAuthRequest(te5, { request: x4(I3({}, K5), { verifyContext: {} }), pairingTopic: _5, transportType: r10 }), { uri: Ie6 != null ? Ie6 : V6, response: It6 };
+            return await this.setProposal(q3.id, q3), await this.setAuthRequest(te5, { request: x4(I3({}, K5), { verifyContext: {} }), pairingTopic: _5, transportType: r10 }), { uri: Ie6 != null ? Ie6 : V6, response: It5 };
           }), c5(this, "approveSessionAuthenticate", async (t5) => {
             const { id: e10, auths: s8 } = t5, i10 = this.client.core.eventClient.createEvent({ properties: { topic: e10.toString(), trace: [sr3.authenticated_session_approve_started] } });
             try {
@@ -24304,7 +24304,7 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
           y9.c = [y9.e = 0];
           return y9;
         }
-        var bl, bt5, n13, cmp, ri4, bz = b8.slice(), ai4 = bl = b8.length, al = a5.length, r10 = a5.slice(0, bl), rl = r10.length, q3 = y9, qc2 = q3.c = [], qi3 = 0, p8 = dp + (q3.e = x8.e - y9.e) + 1;
+        var bl, bt4, n13, cmp, ri4, bz = b8.slice(), ai4 = bl = b8.length, al = a5.length, r10 = a5.slice(0, bl), rl = r10.length, q3 = y9, qc2 = q3.c = [], qi3 = 0, p8 = dp + (q3.e = x8.e - y9.e) + 1;
         q3.s = k8;
         k8 = p8 < 0 ? 0 : p8;
         bz.unshift(0);
@@ -24322,14 +24322,14 @@ ${t5.length}`, n13 = new TextEncoder().encode(e10 + t5);
               }
             }
             if (cmp < 0) {
-              for (bt5 = rl == bl ? b8 : bz; rl; ) {
-                if (r10[--rl] < bt5[rl]) {
+              for (bt4 = rl == bl ? b8 : bz; rl; ) {
+                if (r10[--rl] < bt4[rl]) {
                   ri4 = rl;
                   for (; ri4 && !r10[--ri4]; ) r10[ri4] = 9;
                   --r10[ri4];
                   r10[rl] += 10;
                 }
-                r10[rl] -= bt5[rl];
+                r10[rl] -= bt4[rl];
               }
               for (; !r10[0]; ) r10.shift();
             } else {
@@ -50042,77 +50042,6 @@ ${originalFrames}`;
     }
   });
 
-  // node_modules/@stacks/connect/dist/index.mjs
-  var dist_exports = {};
-  __export(dist_exports, {
-    AppConfig: () => v7,
-    ContractCallArgumentType: () => As2,
-    DEFAULT_PROVIDERS: () => Pe5,
-    InstanceDataStore: () => le5,
-    JsonRpcError: () => x7,
-    JsonRpcErrorCode: () => De5,
-    LOCALSTORAGE_SESSION_KEY: () => gs3,
-    LocalStorageStore: () => ge5,
-    SessionDataStore: () => z5,
-    SignatureHash: () => Ae4,
-    TransactionTypes: () => Ss,
-    UserSession: () => T6,
-    WALLET_CONNECT_PROVIDER: () => B5,
-    WalletConnect: () => ce4,
-    authenticate: () => ze4,
-    clearLocalStorage: () => Be5,
-    clearSelectedProviderId: () => clearSelectedProviderId,
-    connect: () => is2,
-    defaultAuthURL: () => en4,
-    disconnect: () => qt4,
-    getDefaultProfileUpdateRequestOptions: () => ut5,
-    getDefaultPsbtRequestOptions: () => Is,
-    getDefaultSignatureRequestOptions: () => gt5,
-    getKeys: () => Tt5,
-    getLocalStorage: () => ae4,
-    getOrCreateUserSession: () => Ke6,
-    getSelectedProvider: () => getProvider,
-    getSelectedProviderId: () => getSelectedProviderId,
-    getStacksProvider: () => S7,
-    getStxAddress: () => Lt5,
-    getUserData: () => sn4,
-    getUserSession: () => Re4,
-    hasAppPrivateKey: () => Dt4,
-    isAddressTaproot: () => Ve5,
-    isConnected: () => Zt5,
-    isMobile: () => tn3,
-    isProviderSelected: () => isProviderSelected,
-    isStacksWalletInstalled: () => dt5,
-    makeContractCallToken: () => Pt5,
-    makeContractDeployToken: () => wt5,
-    makeProfileUpdateToken: () => pt4,
-    makePsbtToken: () => ys3,
-    makeSTXTransferToken: () => ht5,
-    makeSignTransaction: () => jt4,
-    openContractCall: () => Et6,
-    openContractDeploy: () => bt4,
-    openProfileUpdateRequestPopup: () => lt5,
-    openPsbtRequestPopup: () => Ds2,
-    openSTXTransfer: () => vt5,
-    openSignTransaction: () => Ut4,
-    openSignatureRequestPopup: () => ft4,
-    openStructuredDataSignatureRequestPopup: () => xt5,
-    request: () => w6,
-    requestRaw: () => U4,
-    setSelectedProviderId: () => setSelectedProviderId,
-    showBlockstackConnect: () => Co4,
-    showConnect: () => zt5,
-    showContractCall: () => fo4,
-    showContractDeploy: () => mo4,
-    showProfileUpdate: () => yo4,
-    showSTXTransfer: () => Ao4,
-    showSignMessage: () => xo4,
-    showSignStructuredMessage: () => No4,
-    showSignTransaction: () => Io4,
-    signMessage: () => St6,
-    signStructuredMessage: () => It5
-  });
-
   // node_modules/@stacks/common/dist/esm/errors.js
   var ERROR_CODES = {
     MISSING_PARAMETER: "missing_parameter",
@@ -50194,9 +50123,6 @@ ${bugDetails}`;
     if (isInstance(value, Uint8Array))
       return BigInt(`0x${bytesToHex(value)}`);
     throw new TypeError(`intToBigInt: Invalid value type. Must be a number, bigint, BigInt-compatible string, or Uint8Array.`);
-  }
-  function with0x(value) {
-    return /^0x/i.test(value) ? value : `0x${value}`;
   }
   function without0x(value) {
     return /^0x/i.test(value) ? value.slice(2) : value;
@@ -50316,12 +50242,6 @@ ${bugDetails}`;
     var _a7, _b2;
     return object instanceof clazz || ((_b2 = (_a7 = object == null ? void 0 : object.constructor) == null ? void 0 : _a7.name) == null ? void 0 : _b2.toLowerCase()) === clazz.name;
   }
-  function validateHash256(hex) {
-    hex = without0x(hex);
-    if (hex.length !== 64)
-      return false;
-    return /^[0-9a-fA-F]+$/.test(hex);
-  }
 
   // node_modules/@stacks/common/dist/esm/constants.js
   var HIRO_MAINNET_URL = "https://api.mainnet.hiro.so";
@@ -50343,12 +50263,6 @@ ${bugDetails}`;
       r: r10,
       s: s8
     };
-  }
-  function signatureVrsToRsv(signature) {
-    return signature.slice(2) + signature.slice(0, 2);
-  }
-  function signatureRsvToVrs(signature) {
-    return signature.slice(-2) + signature.slice(0, -2);
   }
 
   // node_modules/@stacks/common/dist/esm/keys.js
@@ -50393,61 +50307,6 @@ ${bugDetails}`;
     return destination;
   }
 
-  // node_modules/@stacks/common/dist/esm/fetch.js
-  var defaultFetchOpts = {
-    referrerPolicy: "origin",
-    headers: {
-      "x-hiro-product": "stacksjs"
-    }
-  };
-  async function fetchWrapper(input, init) {
-    const fetchOpts = {};
-    Object.assign(fetchOpts, defaultFetchOpts, init);
-    const fetchResult = await fetch(input, fetchOpts);
-    return fetchResult;
-  }
-  function argsForCreateFetchFn(args) {
-    let fetchLib = fetchWrapper;
-    let middlewares = [];
-    if (args.length > 0 && typeof args[0] === "function") {
-      fetchLib = args.shift();
-    }
-    if (args.length > 0) {
-      middlewares = args;
-    }
-    return { fetchLib, middlewares };
-  }
-  function createFetchFn(...args) {
-    const { fetchLib, middlewares } = argsForCreateFetchFn(args);
-    const fetchFn = async (url, init) => {
-      var _a7;
-      let fetchParams = { url, init: init != null ? init : {} };
-      for (const middleware of middlewares) {
-        if (typeof middleware.pre === "function") {
-          const result = await Promise.resolve(middleware.pre({
-            fetch: fetchLib,
-            ...fetchParams
-          }));
-          fetchParams = result != null ? result : fetchParams;
-        }
-      }
-      let response = await fetchLib(fetchParams.url, fetchParams.init);
-      for (const middleware of middlewares) {
-        if (typeof middleware.post === "function") {
-          const result = await Promise.resolve(middleware.post({
-            fetch: fetchLib,
-            url: fetchParams.url,
-            init: fetchParams.init,
-            response: (_a7 = response == null ? void 0 : response.clone()) != null ? _a7 : response
-          }));
-          response = result != null ? result : response;
-        }
-      }
-      return response;
-    };
-    return fetchFn;
-  }
-
   // node_modules/@stacks/connect/dist/index.mjs
   init_esm();
 
@@ -50461,11 +50320,6 @@ ${bugDetails}`;
   var setSelectedProviderId = (provider) => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem(LOCAL_STORAGE_KEY, provider);
-    }
-  };
-  var clearSelectedProviderId = () => {
-    if (typeof window !== "undefined") {
-      window.localStorage.removeItem(LOCAL_STORAGE_KEY);
     }
   };
   var getRegisteredProviders = () => {
@@ -50486,9 +50340,6 @@ ${bugDetails}`;
       return !!provider;
     });
     return registeredProviders.concat(additionalInstalledProviders);
-  };
-  var isProviderSelected = () => {
-    return !!getSelectedProviderId();
   };
   var getProvider = () => {
     const providerId = getSelectedProviderId();
@@ -50525,281 +50376,6 @@ ${bugDetails}`;
       Object.setPrototypeOf(HTMLElement, a5);
     }
   })();
-
-  // node_modules/@stacks/transactions/dist/esm/index.js
-  var esm_exports = {};
-  __export(esm_exports, {
-    ACCOUNT_PATH: () => ACCOUNT_PATH,
-    Address: () => address_exports,
-    AddressHashMode: () => AddressHashMode,
-    AddressVersion: () => AddressVersion,
-    AnchorMode: () => AnchorMode,
-    AnchorModeNames: () => AnchorModeNames,
-    AssetType: () => AssetType,
-    AuthFieldType: () => AuthFieldType,
-    AuthType: () => AuthType,
-    BLOCKSTACK_DEFAULT_GAIA_HUB_URL: () => BLOCKSTACK_DEFAULT_GAIA_HUB_URL,
-    BROADCAST_PATH: () => BROADCAST_PATH,
-    BytesReader: () => BytesReader,
-    CLARITY_INT_BYTE_SIZE: () => CLARITY_INT_BYTE_SIZE,
-    CLARITY_INT_SIZE: () => CLARITY_INT_SIZE,
-    COINBASE_BYTES_LENGTH: () => COINBASE_BYTES_LENGTH,
-    COMPRESSED_PUBKEY_LENGTH_BYTES: () => COMPRESSED_PUBKEY_LENGTH_BYTES,
-    CONTRACT_ABI_PATH: () => CONTRACT_ABI_PATH,
-    Cl: () => cl_exports,
-    ClarityAbiTypeId: () => ClarityAbiTypeId,
-    ClarityType: () => ClarityType,
-    ClarityVersion: () => ClarityVersion,
-    ClarityWireType: () => ClarityWireType,
-    FungibleConditionCode: () => FungibleConditionCode,
-    MAP_ENTRY_PATH: () => MAP_ENTRY_PATH,
-    MAX_STRING_LENGTH_BYTES: () => MAX_STRING_LENGTH_BYTES,
-    MEMO_MAX_LENGTH_BYTES: () => MEMO_MAX_LENGTH_BYTES,
-    NonFungibleConditionCode: () => NonFungibleConditionCode,
-    PayloadType: () => PayloadType,
-    Pc: () => pc_exports,
-    PostConditionMode: () => PostConditionMode,
-    PostConditionPrincipalId: () => PostConditionPrincipalId,
-    PostConditionType: () => PostConditionType,
-    PubKeyEncoding: () => PubKeyEncoding,
-    READONLY_FUNCTION_CALL_PATH: () => READONLY_FUNCTION_CALL_PATH,
-    RECOVERABLE_ECDSA_SIG_LENGTH_BYTES: () => RECOVERABLE_ECDSA_SIG_LENGTH_BYTES,
-    STRING_MAX_LENGTH: () => STRING_MAX_LENGTH,
-    STRUCTURED_DATA_PREFIX: () => STRUCTURED_DATA_PREFIX,
-    StacksTransactionWire: () => StacksTransactionWire,
-    StacksWireType: () => StacksWireType,
-    TRANSACTION_FEE_ESTIMATE_PATH: () => TRANSACTION_FEE_ESTIMATE_PATH,
-    TRANSFER_FEE_ESTIMATE_PATH: () => TRANSFER_FEE_ESTIMATE_PATH,
-    TenureChangeCause: () => TenureChangeCause,
-    TransactionSigner: () => TransactionSigner,
-    TxRejectedReason: () => TxRejectedReason,
-    UNCOMPRESSED_PUBKEY_LENGTH_BYTES: () => UNCOMPRESSED_PUBKEY_LENGTH_BYTES,
-    VRF_PROOF_BYTES_LENGTH: () => VRF_PROOF_BYTES_LENGTH,
-    abiFunctionToString: () => abiFunctionToString,
-    addressFromPublicKeys: () => addressFromPublicKeys,
-    addressFromVersionHash: () => addressFromVersionHash,
-    addressHashModeToVersion: () => addressHashModeToVersion,
-    addressToString: () => addressToString,
-    anchorModeFrom: () => anchorModeFrom,
-    boolCV: () => boolCV,
-    broadcastTransaction: () => broadcastTransaction,
-    bufferCV: () => bufferCV,
-    bufferCVFromString: () => bufferCVFromString,
-    clarityByteToType: () => clarityByteToType,
-    clarityTypeToByte: () => clarityTypeToByte,
-    cloneDeep: () => cloneDeep,
-    codeBodyString: () => codeBodyString,
-    compressPrivateKey: () => compressPrivateKey,
-    compressPublicKey: () => compressPublicKey,
-    conditionByteToType: () => conditionByteToType,
-    conditionTypeToByte: () => conditionTypeToByte,
-    contractPrincipalCV: () => contractPrincipalCV,
-    contractPrincipalCVFromAddress: () => contractPrincipalCVFromAddress,
-    contractPrincipalCVFromStandard: () => contractPrincipalCVFromStandard,
-    createAddress: () => createAddress,
-    createAsset: () => createAsset,
-    createCoinbasePayload: () => createCoinbasePayload,
-    createContractCallPayload: () => createContractCallPayload,
-    createContractPrincipal: () => createContractPrincipal,
-    createEmptyAddress: () => createEmptyAddress,
-    createLPList: () => createLPList,
-    createLPString: () => createLPString,
-    createMemoString: () => createMemoString,
-    createMessageSignature: () => createMessageSignature,
-    createMultiSigSpendingCondition: () => createMultiSigSpendingCondition,
-    createNakamotoCoinbasePayload: () => createNakamotoCoinbasePayload,
-    createPoisonPayload: () => createPoisonPayload,
-    createSingleSigSpendingCondition: () => createSingleSigSpendingCondition,
-    createSmartContractPayload: () => createSmartContractPayload,
-    createSpendingCondition: () => createSpendingCondition,
-    createSponsoredAuth: () => createSponsoredAuth,
-    createStacksPublicKey: () => createStacksPublicKey,
-    createStandardAuth: () => createStandardAuth,
-    createStandardPrincipal: () => createStandardPrincipal,
-    createTenureChangePayload: () => createTenureChangePayload,
-    createTokenTransferPayload: () => createTokenTransferPayload,
-    createTransactionAuthField: () => createTransactionAuthField,
-    cvToHex: () => cvToHex,
-    cvToJSON: () => cvToJSON,
-    cvToString: () => cvToString,
-    cvToValue: () => cvToValue,
-    decodeStructuredDataSignature: () => decodeStructuredDataSignature,
-    decodeStructuredDataSignatureBytes: () => decodeStructuredDataSignatureBytes,
-    deriveNetworkFromTx: () => deriveNetworkFromTx,
-    deserializeAddress: () => deserializeAddress,
-    deserializeAsset: () => deserializeAsset,
-    deserializeAuthorization: () => deserializeAuthorization,
-    deserializeCV: () => deserializeCV,
-    deserializeLPList: () => deserializeLPList,
-    deserializeLPString: () => deserializeLPString,
-    deserializeMemoString: () => deserializeMemoString,
-    deserializeMessageSignature: () => deserializeMessageSignature,
-    deserializeMultiSigSpendingCondition: () => deserializeMultiSigSpendingCondition,
-    deserializePayload: () => deserializePayload,
-    deserializePostConditionWire: () => deserializePostConditionWire,
-    deserializePrincipal: () => deserializePrincipal,
-    deserializePublicKey: () => deserializePublicKey,
-    deserializeSingleSigSpendingCondition: () => deserializeSingleSigSpendingCondition,
-    deserializeSpendingCondition: () => deserializeSpendingCondition,
-    deserializeStacksWire: () => deserializeStacksWire,
-    deserializeTransaction: () => deserializeTransaction,
-    deserializeTransactionAuthField: () => deserializeTransactionAuthField,
-    emptyMessageSignature: () => emptyMessageSignature,
-    encodeAbiClarityValue: () => encodeAbiClarityValue,
-    encodeClarityValue: () => encodeClarityValue,
-    encodeStructuredData: () => encodeStructuredData,
-    encodeStructuredDataBytes: () => encodeStructuredDataBytes,
-    estimateTransactionByteLength: () => estimateTransactionByteLength,
-    exceedsMaxLengthBytes: () => exceedsMaxLengthBytes,
-    falseCV: () => falseCV,
-    fetchAbi: () => fetchAbi,
-    fetchCallReadOnlyFunction: () => fetchCallReadOnlyFunction,
-    fetchContractMapEntry: () => fetchContractMapEntry,
-    fetchFeeEstimate: () => fetchFeeEstimate,
-    fetchFeeEstimateTransaction: () => fetchFeeEstimateTransaction,
-    fetchFeeEstimateTransfer: () => fetchFeeEstimateTransfer,
-    fetchNonce: () => fetchNonce,
-    getAddressFromPrivateKey: () => getAddressFromPrivateKey,
-    getAddressFromPublicKey: () => getAddressFromPublicKey,
-    getCVTypeString: () => getCVTypeString,
-    getFee: () => getFee,
-    getTypeString: () => getTypeString,
-    getTypeUnion: () => getTypeUnion,
-    hash160: () => hash160,
-    hashP2PKH: () => hashP2PKH,
-    hashP2SH: () => hashP2SH,
-    hashP2WPKH: () => hashP2WPKH,
-    hashP2WSH: () => hashP2WSH,
-    hashStructuredData: () => hashStructuredData,
-    hashStructuredDataBytes: () => hashStructuredDataBytes,
-    hexToCV: () => hexToCV,
-    intCV: () => intCV,
-    internal_parseCommaSeparated: () => internal_parseCommaSeparated,
-    intoInitialSighashAuth: () => intoInitialSighashAuth,
-    isClarityAbiBuffer: () => isClarityAbiBuffer,
-    isClarityAbiList: () => isClarityAbiList,
-    isClarityAbiOptional: () => isClarityAbiOptional,
-    isClarityAbiPrimitive: () => isClarityAbiPrimitive,
-    isClarityAbiResponse: () => isClarityAbiResponse,
-    isClarityAbiStringAscii: () => isClarityAbiStringAscii,
-    isClarityAbiStringUtf8: () => isClarityAbiStringUtf8,
-    isClarityAbiTuple: () => isClarityAbiTuple,
-    isClarityName: () => isClarityName,
-    isClarityType: () => isClarityType,
-    isCoinbasePayload: () => isCoinbasePayload,
-    isContractCallPayload: () => isContractCallPayload,
-    isNonSequentialMultiSig: () => isNonSequentialMultiSig,
-    isPoisonPayload: () => isPoisonPayload,
-    isPrivateKeyCompressed: () => isPrivateKeyCompressed,
-    isPublicKeyCompressed: () => isPublicKeyCompressed,
-    isSequentialMultiSig: () => isSequentialMultiSig,
-    isSingleSig: () => isSingleSig,
-    isSmartContractPayload: () => isSmartContractPayload,
-    isTokenTransferPayload: () => isTokenTransferPayload,
-    leftPadHex: () => leftPadHex,
-    leftPadHexToLength: () => leftPadHexToLength,
-    listCV: () => listCV,
-    makeContractCall: () => makeContractCall,
-    makeContractDeploy: () => makeContractDeploy,
-    makeRandomPrivKey: () => makeRandomPrivKey,
-    makeSTXTokenTransfer: () => makeSTXTokenTransfer,
-    makeUnsignedContractCall: () => makeUnsignedContractCall,
-    makeUnsignedContractDeploy: () => makeUnsignedContractDeploy,
-    makeUnsignedSTXTokenTransfer: () => makeUnsignedSTXTokenTransfer,
-    nextSignature: () => nextSignature,
-    nextVerification: () => nextVerification,
-    noneCV: () => noneCV,
-    omit: () => omit,
-    optionalCVOf: () => optionalCVOf,
-    parseAssetString: () => parseAssetString,
-    parseContractId: () => parseContractId,
-    parsePrincipalString: () => parsePrincipalString,
-    parseReadOnlyResponse: () => parseReadOnlyResponse,
-    parseToCV: () => parseToCV,
-    postConditionModeFrom: () => postConditionModeFrom,
-    postConditionToHex: () => postConditionToHex,
-    postConditionToWire: () => postConditionToWire,
-    principalCV: () => principalCV,
-    privateKeyIsCompressed: () => privateKeyIsCompressed,
-    privateKeyToAddress: () => privateKeyToAddress,
-    privateKeyToHex: () => privateKeyToHex,
-    privateKeyToPublic: () => privateKeyToPublic,
-    publicKeyFromSignatureRsv: () => publicKeyFromSignatureRsv,
-    publicKeyFromSignatureVrs: () => publicKeyFromSignatureVrs,
-    publicKeyIsCompressed: () => publicKeyIsCompressed,
-    publicKeyToAddress: () => publicKeyToAddress,
-    publicKeyToAddressSingleSig: () => publicKeyToAddressSingleSig,
-    publicKeyToHex: () => publicKeyToHex,
-    randomBytes: () => randomBytes,
-    randomPrivateKey: () => randomPrivateKey,
-    responseErrorCV: () => responseErrorCV,
-    responseOkCV: () => responseOkCV,
-    rightPadHexToLength: () => rightPadHexToLength,
-    serializeAddress: () => serializeAddress,
-    serializeAddressBytes: () => serializeAddressBytes,
-    serializeAsset: () => serializeAsset,
-    serializeAssetBytes: () => serializeAssetBytes,
-    serializeAuthorization: () => serializeAuthorization,
-    serializeAuthorizationBytes: () => serializeAuthorizationBytes,
-    serializeCV: () => serializeCV,
-    serializeCVBytes: () => serializeCVBytes,
-    serializeLPList: () => serializeLPList,
-    serializeLPListBytes: () => serializeLPListBytes,
-    serializeLPString: () => serializeLPString,
-    serializeLPStringBytes: () => serializeLPStringBytes,
-    serializeMemoString: () => serializeMemoString,
-    serializeMemoStringBytes: () => serializeMemoStringBytes,
-    serializeMessageSignature: () => serializeMessageSignature,
-    serializeMessageSignatureBytes: () => serializeMessageSignatureBytes,
-    serializeMultiSigSpendingCondition: () => serializeMultiSigSpendingCondition,
-    serializeMultiSigSpendingConditionBytes: () => serializeMultiSigSpendingConditionBytes,
-    serializePayload: () => serializePayload,
-    serializePayloadBytes: () => serializePayloadBytes,
-    serializePostConditionWire: () => serializePostConditionWire,
-    serializePostConditionWireBytes: () => serializePostConditionWireBytes,
-    serializePrincipal: () => serializePrincipal,
-    serializePrincipalBytes: () => serializePrincipalBytes,
-    serializePublicKey: () => serializePublicKey,
-    serializePublicKeyBytes: () => serializePublicKeyBytes,
-    serializeSingleSigSpendingCondition: () => serializeSingleSigSpendingCondition,
-    serializeSingleSigSpendingConditionBytes: () => serializeSingleSigSpendingConditionBytes,
-    serializeSpendingCondition: () => serializeSpendingCondition,
-    serializeSpendingConditionBytes: () => serializeSpendingConditionBytes,
-    serializeStacksWire: () => serializeStacksWire,
-    serializeStacksWireBytes: () => serializeStacksWireBytes,
-    serializeTransaction: () => serializeTransaction,
-    serializeTransactionAuthField: () => serializeTransactionAuthField,
-    serializeTransactionAuthFieldBytes: () => serializeTransactionAuthFieldBytes,
-    serializeTransactionBytes: () => serializeTransactionBytes,
-    setFee: () => setFee,
-    setNonce: () => setNonce2,
-    setSponsor: () => setSponsor,
-    setSponsorNonce: () => setSponsorNonce,
-    sigHashPreSign: () => sigHashPreSign,
-    signMessageHashRsv: () => signMessageHashRsv,
-    signStructuredData: () => signStructuredData,
-    signWithKey: () => signWithKey,
-    someCV: () => someCV,
-    sponsorTransaction: () => sponsorTransaction,
-    standardPrincipalCV: () => standardPrincipalCV,
-    standardPrincipalCVFromAddress: () => standardPrincipalCVFromAddress,
-    stringAsciiCV: () => stringAsciiCV,
-    stringCV: () => stringCV,
-    stringUtf8CV: () => stringUtf8CV,
-    transactionToHex: () => transactionToHex,
-    trueCV: () => trueCV,
-    tupleCV: () => tupleCV,
-    txidFromBytes: () => txidFromBytes,
-    txidFromData: () => txidFromData,
-    uintCV: () => uintCV,
-    uncompressPublicKey: () => uncompressPublicKey,
-    validateContractCall: () => validateContractCall,
-    validateStacksAddress: () => validateStacksAddress,
-    verifyOrigin: () => verifyOrigin,
-    verifySignature: () => verify,
-    whenWireType: () => whenWireType,
-    wireToPostCondition: () => wireToPostCondition
-  });
 
   // node_modules/@stacks/transactions/dist/esm/BytesReader.js
   function createEnumChecker(enumVariable) {
@@ -50889,9 +50465,6 @@ ${bugDetails}`;
     AddressVersion3[AddressVersion3["TestnetMultiSig"] = 21] = "TestnetMultiSig";
   })(AddressVersion || (AddressVersion = {}));
   var DEFAULT_TRANSACTION_VERSION = TransactionVersion.Mainnet;
-  function whenTransactionVersion(transactionVersion) {
-    return (map2) => map2[transactionVersion];
-  }
 
   // node_modules/@stacks/network/dist/esm/network.js
   var STACKS_MAINNET = {
@@ -50948,17 +50521,8 @@ ${bugDetails}`;
       return networkFromName(network);
     return network;
   }
-  function clientFromNetwork(network) {
-    if (network.client.fetch)
-      return network.client;
-    return {
-      ...network.client,
-      fetch: createFetchFn()
-    };
-  }
 
   // node_modules/@stacks/transactions/dist/esm/constants.js
-  var BLOCKSTACK_DEFAULT_GAIA_HUB_URL = "https://hub.blockstack.org";
   var MAX_STRING_LENGTH_BYTES = 128;
   var CLARITY_INT_SIZE = 128;
   var CLARITY_INT_BYTE_SIZE = 16;
@@ -51010,11 +50574,6 @@ ${bugDetails}`;
     [AnchorMode.OffChainOnly]: AnchorMode.OffChainOnly,
     [AnchorMode.Any]: AnchorMode.Any
   };
-  function anchorModeFrom(mode) {
-    if (mode in AnchorModeMap)
-      return AnchorModeMap[mode];
-    throw new Error(`Invalid anchor mode "${mode}", must be one of: ${AnchorModeNames.join(", ")}`);
-  }
   var PostConditionMode;
   (function(PostConditionMode3) {
     PostConditionMode3[PostConditionMode3["Allow"] = 1] = "Allow";
@@ -51126,16 +50685,6 @@ ${bugDetails}`;
     }
   };
   var DeserializationError = class extends TransactionError {
-    constructor(message) {
-      super(message);
-    }
-  };
-  var NoEstimateAvailableError = class extends TransactionError {
-    constructor(message) {
-      super(message);
-    }
-  };
-  var NotImplementedError = class extends TransactionError {
     constructor(message) {
       super(message);
     }
@@ -52369,14 +51918,6 @@ ${bugDetails}`;
       throw new Error("Expected private key: 0 < key < n");
     return num2;
   }
-  function normalizePublicKey(publicKey) {
-    if (publicKey instanceof Point) {
-      publicKey.assertValidity();
-      return publicKey;
-    } else {
-      return Point.fromHex(publicKey);
-    }
-  }
   function normalizeSignature(signature) {
     if (signature instanceof Signature) {
       signature.assertValidity();
@@ -52436,35 +51977,6 @@ ${bugDetails}`;
       drbg.reseedSync();
     return finalizeSig(sig, opts);
   }
-  var vopts = { strict: true };
-  function verify(signature, msgHash, publicKey, opts = vopts) {
-    let sig;
-    try {
-      sig = normalizeSignature(signature);
-      msgHash = ensureBytes(msgHash);
-    } catch (error2) {
-      return false;
-    }
-    const { r: r10, s: s8 } = sig;
-    if (opts.strict && sig.hasHighS())
-      return false;
-    const h12 = truncateHash(msgHash);
-    let P7;
-    try {
-      P7 = normalizePublicKey(publicKey);
-    } catch (error2) {
-      return false;
-    }
-    const { n: n13 } = CURVE;
-    const sinv = invert(s8, n13);
-    const u1 = mod(h12 * sinv, n13);
-    const u22 = mod(r10 * sinv, n13);
-    const R5 = Point.BASE.multiplyAndAddUnsafe(P7, u1, u22);
-    if (!R5)
-      return false;
-    const v8 = mod(R5.x, n13);
-    return v8 === r10;
-  }
   Point.BASE._setWindowSize(8);
   var crypto3 = {
     node: nodeCrypto,
@@ -52500,8 +52012,8 @@ ${bugDetails}`;
       if (crypto3.web) {
         return crypto3.web.getRandomValues(new Uint8Array(bytesLength));
       } else if (crypto3.node) {
-        const { randomBytes: randomBytes3 } = crypto3.node;
-        return Uint8Array.from(randomBytes3(bytesLength));
+        const { randomBytes: randomBytes2 } = crypto3.node;
+        return Uint8Array.from(randomBytes2(bytesLength));
       } else {
         throw new Error("The environment doesn't have randomBytes function");
       }
@@ -52590,37 +52102,6 @@ ${bugDetails}`;
 
   // node_modules/@stacks/transactions/dist/esm/keys.js
   var import_c32check4 = __toESM(require_lib());
-
-  // node_modules/@stacks/transactions/dist/esm/address.js
-  function addressHashModeToVersion(hashMode, network) {
-    network = networkFrom(network != null ? network : STACKS_MAINNET);
-    switch (hashMode) {
-      case AddressHashMode.P2PKH:
-        switch (network.transactionVersion) {
-          case TransactionVersion.Mainnet:
-            return AddressVersion.MainnetSingleSig;
-          case TransactionVersion.Testnet:
-            return AddressVersion.TestnetSingleSig;
-          default:
-            throw new Error(`Unexpected transactionVersion ${network.transactionVersion} for hashMode ${hashMode}`);
-        }
-      case AddressHashMode.P2SH:
-      case AddressHashMode.P2SHNonSequential:
-      case AddressHashMode.P2WPKH:
-      case AddressHashMode.P2WSH:
-      case AddressHashMode.P2WSHNonSequential:
-        switch (network.transactionVersion) {
-          case TransactionVersion.Mainnet:
-            return AddressVersion.MainnetMultiSig;
-          case TransactionVersion.Testnet:
-            return AddressVersion.TestnetMultiSig;
-          default:
-            throw new Error(`Unexpected transactionVersion ${network.transactionVersion} for hashMode ${hashMode}`);
-        }
-      default:
-        throw new Error(`Unexpected hashMode ${hashMode}`);
-    }
-  }
 
   // node_modules/@noble/hashes/esm/ripemd160.js
   var Rho = new Uint8Array([7, 4, 13, 1, 10, 6, 15, 3, 12, 0, 9, 5, 2, 14, 11, 8]);
@@ -53085,134 +52566,6 @@ ${bugDetails}`;
   function clarityTypeToByte(type) {
     return ClarityWireType[type];
   }
-  function clarityByteToType(wireType) {
-    return ClarityWireType[wireType];
-  }
-
-  // node_modules/@stacks/transactions/dist/esm/clarity/clarityValue.js
-  function cvToString(val, encoding = "hex") {
-    switch (val.type) {
-      case ClarityType.BoolTrue:
-        return "true";
-      case ClarityType.BoolFalse:
-        return "false";
-      case ClarityType.Int:
-        return val.value.toString();
-      case ClarityType.UInt:
-        return `u${val.value.toString()}`;
-      case ClarityType.Buffer:
-        if (encoding === "tryAscii") {
-          const str = bytesToAscii(hexToBytes(val.value));
-          if (/[ -~]/.test(str)) {
-            return JSON.stringify(str);
-          }
-        }
-        return `0x${val.value}`;
-      case ClarityType.OptionalNone:
-        return "none";
-      case ClarityType.OptionalSome:
-        return `(some ${cvToString(val.value, encoding)})`;
-      case ClarityType.ResponseErr:
-        return `(err ${cvToString(val.value, encoding)})`;
-      case ClarityType.ResponseOk:
-        return `(ok ${cvToString(val.value, encoding)})`;
-      case ClarityType.PrincipalStandard:
-      case ClarityType.PrincipalContract:
-        return val.value;
-      case ClarityType.List:
-        return `(list ${val.value.map((v8) => cvToString(v8, encoding)).join(" ")})`;
-      case ClarityType.Tuple:
-        return `(tuple ${Object.keys(val.value).map((key) => `(${key} ${cvToString(val.value[key], encoding)})`).join(" ")})`;
-      case ClarityType.StringASCII:
-        return `"${val.value}"`;
-      case ClarityType.StringUTF8:
-        return `u"${val.value}"`;
-    }
-  }
-  function cvToValue(val, strictJsonCompat = false) {
-    switch (val.type) {
-      case ClarityType.BoolTrue:
-        return true;
-      case ClarityType.BoolFalse:
-        return false;
-      case ClarityType.Int:
-      case ClarityType.UInt:
-        if (strictJsonCompat) {
-          return val.value.toString();
-        }
-        return val.value;
-      case ClarityType.Buffer:
-        return `0x${val.value}`;
-      case ClarityType.OptionalNone:
-        return null;
-      case ClarityType.OptionalSome:
-        return cvToJSON(val.value);
-      case ClarityType.ResponseErr:
-        return cvToJSON(val.value);
-      case ClarityType.ResponseOk:
-        return cvToJSON(val.value);
-      case ClarityType.PrincipalStandard:
-      case ClarityType.PrincipalContract:
-        return val.value;
-      case ClarityType.List:
-        return val.value.map((v8) => cvToJSON(v8));
-      case ClarityType.Tuple:
-        const result = {};
-        Object.keys(val.value).forEach((key) => {
-          result[key] = cvToJSON(val.value[key]);
-        });
-        return result;
-      case ClarityType.StringASCII:
-        return val.value;
-      case ClarityType.StringUTF8:
-        return val.value;
-    }
-  }
-  function cvToJSON(val) {
-    switch (val.type) {
-      case ClarityType.ResponseErr:
-        return { type: getCVTypeString(val), value: cvToValue(val, true), success: false };
-      case ClarityType.ResponseOk:
-        return { type: getCVTypeString(val), value: cvToValue(val, true), success: true };
-      default:
-        return { type: getCVTypeString(val), value: cvToValue(val, true) };
-    }
-  }
-  function getCVTypeString(val) {
-    switch (val.type) {
-      case ClarityType.BoolTrue:
-      case ClarityType.BoolFalse:
-        return "bool";
-      case ClarityType.Int:
-        return "int";
-      case ClarityType.UInt:
-        return "uint";
-      case ClarityType.Buffer:
-        return `(buff ${Math.ceil(val.value.length / 2)})`;
-      case ClarityType.OptionalNone:
-        return "(optional none)";
-      case ClarityType.OptionalSome:
-        return `(optional ${getCVTypeString(val.value)})`;
-      case ClarityType.ResponseErr:
-        return `(response UnknownType ${getCVTypeString(val.value)})`;
-      case ClarityType.ResponseOk:
-        return `(response ${getCVTypeString(val.value)} UnknownType)`;
-      case ClarityType.PrincipalStandard:
-      case ClarityType.PrincipalContract:
-        return "principal";
-      case ClarityType.List:
-        return `(list ${val.value.length} ${val.value.length ? getCVTypeString(val.value[0]) : "UnknownType"})`;
-      case ClarityType.Tuple:
-        return `(tuple ${Object.keys(val.value).map((key) => `(${key} ${getCVTypeString(val.value[key])})`).join(" ")})`;
-      case ClarityType.StringASCII:
-        return `(string-ascii ${asciiToBytes(val.value).length})`;
-      case ClarityType.StringUTF8:
-        return `(string-utf8 ${utf8ToBytes(val.value).length})`;
-    }
-  }
-  function isClarityType(input, withType) {
-    return input.type === withType;
-  }
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/booleanCV.js
   var trueCV = () => ({ type: ClarityType.BoolTrue });
@@ -53226,7 +52579,6 @@ ${bugDetails}`;
     }
     return { type: ClarityType.Buffer, value: bytesToHex(buffer3) };
   };
-  var bufferCVFromString = (str) => bufferCV(utf8ToBytes(str));
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/intCV.js
   var MAX_U128 = BigInt("0xffffffffffffffffffffffffffffffff");
@@ -53269,9 +52621,6 @@ ${bugDetails}`;
   function someCV(value) {
     return { type: ClarityType.OptionalSome, value };
   }
-  function optionalCVOf(value) {
-    return value ? someCV(value) : noneCV();
-  }
 
   // node_modules/@stacks/transactions/dist/esm/wire/create.js
   var import_c32check = __toESM(require_lib());
@@ -53292,9 +52641,6 @@ ${bugDetails}`;
     StacksWireType2[StacksWireType2["StructuredDataSignature"] = 10] = "StructuredDataSignature";
     StacksWireType2[StacksWireType2["TransactionAuthField"] = 11] = "TransactionAuthField";
   })(StacksWireType || (StacksWireType = {}));
-  function whenWireType(wireType) {
-    return (wireTypeMap) => wireTypeMap[wireType];
-  }
 
   // node_modules/@stacks/transactions/dist/esm/wire/create.js
   function createEmptyAddress() {
@@ -53492,9 +52838,6 @@ ${bugDetails}`;
   var import_c32check2 = __toESM(require_lib());
 
   // node_modules/@stacks/transactions/dist/esm/wire/serialization.js
-  function serializeStacksWire(wire) {
-    return bytesToHex(serializeStacksWireBytes(wire));
-  }
   function serializeStacksWireBytes(wire) {
     switch (wire.type) {
       case StacksWireType.Address:
@@ -53521,38 +52864,6 @@ ${bugDetails}`;
         return serializeMessageSignatureBytes(wire);
     }
   }
-  function deserializeStacksWire(bytesReader, type, listType) {
-    switch (type) {
-      case StacksWireType.Address:
-        return deserializeAddress(bytesReader);
-      case StacksWireType.Principal:
-        return deserializePrincipal(bytesReader);
-      case StacksWireType.LengthPrefixedString:
-        return deserializeLPString(bytesReader);
-      case StacksWireType.MemoString:
-        return deserializeMemoString(bytesReader);
-      case StacksWireType.Asset:
-        return deserializeAsset(bytesReader);
-      case StacksWireType.PostCondition:
-        return deserializePostConditionWire(bytesReader);
-      case StacksWireType.PublicKey:
-        return deserializePublicKey(bytesReader);
-      case StacksWireType.Payload:
-        return deserializePayload(bytesReader);
-      case StacksWireType.LengthPrefixedList:
-        if (!listType) {
-          throw new DeserializationError("No list type specified");
-        }
-        return deserializeLPList(bytesReader, listType);
-      case StacksWireType.MessageSignature:
-        return deserializeMessageSignature(bytesReader);
-      default:
-        throw new Error("Could not recognize StacksWireType");
-    }
-  }
-  function serializeAddress(address2) {
-    return bytesToHex(serializeAddressBytes(address2));
-  }
   function serializeAddressBytes(address2) {
     const bytesArray = [];
     bytesArray.push(hexToBytes(intToHex(address2.version, 1)));
@@ -53565,17 +52876,14 @@ ${bugDetails}`;
     const data = bytesToHex(bytesReader.readBytes(20));
     return { type: StacksWireType.Address, version: version4, hash160: data };
   }
-  function serializePrincipal(principal3) {
-    return bytesToHex(serializePrincipalBytes(principal3));
-  }
-  function serializePrincipalBytes(principal3) {
+  function serializePrincipalBytes(principal2) {
     const bytesArray = [];
-    bytesArray.push(principal3.prefix);
-    if (principal3.prefix === PostConditionPrincipalId.Standard || principal3.prefix === PostConditionPrincipalId.Contract) {
-      bytesArray.push(serializeAddressBytes(principal3.address));
+    bytesArray.push(principal2.prefix);
+    if (principal2.prefix === PostConditionPrincipalId.Standard || principal2.prefix === PostConditionPrincipalId.Contract) {
+      bytesArray.push(serializeAddressBytes(principal2.address));
     }
-    if (principal3.prefix === PostConditionPrincipalId.Contract) {
-      bytesArray.push(serializeLPStringBytes(principal3.contractName));
+    if (principal2.prefix === PostConditionPrincipalId.Contract) {
+      bytesArray.push(serializeLPStringBytes(principal2.contractName));
     }
     return concatArray(bytesArray);
   }
@@ -53599,9 +52907,6 @@ ${bugDetails}`;
       contractName
     };
   }
-  function serializeLPString(lps) {
-    return bytesToHex(serializeLPStringBytes(lps));
-  }
   function serializeLPStringBytes(lps) {
     const bytesArray = [];
     const contentBytes = utf8ToBytes(lps.content);
@@ -53617,9 +52922,6 @@ ${bugDetails}`;
     const content = bytesToUtf8(bytesReader.readBytes(length2));
     return createLPString(content, prefixBytes, maxLength != null ? maxLength : 128);
   }
-  function serializeMemoString(memoString) {
-    return bytesToHex(serializeMemoStringBytes(memoString));
-  }
   function serializeMemoStringBytes(memoString) {
     const bytesArray = [];
     const contentBytes = utf8ToBytes(memoString.content);
@@ -53632,9 +52934,6 @@ ${bugDetails}`;
     let content = bytesToUtf8(bytesReader.readBytes(MEMO_MAX_LENGTH_BYTES));
     content = content.replace(/\u0000*$/, "");
     return { type: StacksWireType.MemoString, content };
-  }
-  function serializeAsset(info) {
-    return bytesToHex(serializeAssetBytes(info));
   }
   function serializeAssetBytes(info) {
     const bytesArray = [];
@@ -53651,9 +52950,6 @@ ${bugDetails}`;
       contractName: deserializeLPString(bytesReader),
       assetName: deserializeLPString(bytesReader)
     };
-  }
-  function serializeLPList(lpList) {
-    return bytesToHex(serializeLPListBytes(lpList));
   }
   function serializeLPListBytes(lpList) {
     const list2 = lpList.values;
@@ -53721,7 +53017,7 @@ ${bugDetails}`;
     const postConditionType = bytesReader.readUInt8Enum(PostConditionType, (n13) => {
       throw new DeserializationError(`Could not read ${n13} as PostConditionType`);
     });
-    const principal3 = deserializePrincipal(bytesReader);
+    const principal2 = deserializePrincipal(bytesReader);
     let conditionCode;
     let asset;
     let amount;
@@ -53734,7 +53030,7 @@ ${bugDetails}`;
         return {
           type: StacksWireType.PostCondition,
           conditionType: PostConditionType.STX,
-          principal: principal3,
+          principal: principal2,
           conditionCode,
           amount
         };
@@ -53747,7 +53043,7 @@ ${bugDetails}`;
         return {
           type: StacksWireType.PostCondition,
           conditionType: PostConditionType.Fungible,
-          principal: principal3,
+          principal: principal2,
           conditionCode,
           amount,
           asset
@@ -53761,15 +53057,12 @@ ${bugDetails}`;
         return {
           type: StacksWireType.PostCondition,
           conditionType: PostConditionType.NonFungible,
-          principal: principal3,
+          principal: principal2,
           conditionCode,
           asset,
           assetName
         };
     }
-  }
-  function serializePayload(payload) {
-    return bytesToHex(serializePayloadBytes(payload));
   }
   function serializePayloadBytes(payload) {
     const bytesArray = [];
@@ -53912,14 +53205,8 @@ ${bugDetails}`;
         throw new Error(`Unknown auth field type: ${JSON.stringify(authFieldType)}`);
     }
   }
-  function serializeMessageSignature(messageSignature) {
-    return bytesToHex(serializeMessageSignatureBytes(messageSignature));
-  }
   function serializeMessageSignatureBytes(messageSignature) {
     return hexToBytes(messageSignature.data);
-  }
-  function serializeTransactionAuthField(field) {
-    return bytesToHex(serializeTransactionAuthFieldBytes(field));
   }
   function serializeTransactionAuthFieldBytes(field) {
     const bytesArray = [];
@@ -53934,9 +53221,6 @@ ${bugDetails}`;
         break;
     }
     return concatArray(bytesArray);
-  }
-  function serializePublicKey(key) {
-    return bytesToHex(serializePublicKeyBytes(key));
   }
   function serializePublicKeyBytes(key) {
     return key.data.slice();
@@ -53982,21 +53266,6 @@ ${bugDetails}`;
   function addressToString(address2) {
     return (0, import_c32check2.c32address)(address2.version, address2.hash160);
   }
-  function isTokenTransferPayload(p8) {
-    return p8.payloadType === PayloadType.TokenTransfer;
-  }
-  function isContractCallPayload(p8) {
-    return p8.payloadType === PayloadType.ContractCall;
-  }
-  function isSmartContractPayload(p8) {
-    return p8.payloadType === PayloadType.SmartContract;
-  }
-  function isPoisonPayload(p8) {
-    return p8.payloadType === PayloadType.PoisonMicroblock;
-  }
-  function isCoinbasePayload(p8) {
-    return p8.payloadType === PayloadType.Coinbase;
-  }
   function parseAssetString(id) {
     const [assetAddress, assetContractName, assetTokenName] = id.split(/\.|::/);
     const asset = createAsset(assetAddress, assetContractName, assetTokenName);
@@ -54012,12 +53281,12 @@ ${bugDetails}`;
   }
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/principalCV.js
-  function principalCV(principal3) {
-    if (principal3.includes(".")) {
-      const [address2, contractName] = principal3.split(".");
+  function principalCV(principal2) {
+    if (principal2.includes(".")) {
+      const [address2, contractName] = principal2.split(".");
       return contractPrincipalCV(address2, contractName);
     } else {
-      return standardPrincipalCV(principal3);
+      return standardPrincipalCV(principal2);
     }
   }
   function standardPrincipalCV(addressString) {
@@ -54041,12 +53310,6 @@ ${bugDetails}`;
       value: `${addressToString(address2)}.${contractName.content}`
     };
   }
-  function contractPrincipalCVFromStandard(sp, contractName) {
-    return {
-      type: ClarityType.PrincipalContract,
-      value: `${sp.value}.${contractName}`
-    };
-  }
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/responseCV.js
   function responseErrorCV(value) {
@@ -54062,14 +53325,6 @@ ${bugDetails}`;
   };
   var stringUtf8CV = (data) => {
     return { type: ClarityType.StringUTF8, value: data };
-  };
-  var stringCV = (data, encoding) => {
-    switch (encoding) {
-      case "ascii":
-        return stringAsciiCV(data);
-      case "utf8":
-        return stringUtf8CV(data);
-    }
   };
 
   // node_modules/@stacks/transactions/dist/esm/clarity/values/tupleCV.js
@@ -54499,27 +53754,13 @@ ${bugDetails}`;
       throw "Parse error";
     return result.capture;
   }
-  function internal_parseCommaSeparated(clarityValueString) {
-    const combinator = entire(greedy(1, clValue(), (c12) => cl_exports.list(c12), regex(/\s*,\s*/)));
-    const result = combinator(clarityValueString);
-    if (!result.success || !result.capture)
-      throw `Error trying to parse string: ${clarityValueString}`;
-    return result.capture.value;
-  }
 
   // node_modules/@stacks/transactions/dist/esm/utils.js
-  var randomBytes = (bytesLength) => utils.randomBytes(bytesLength);
   var leftPadHex = (hexString) => hexString.length % 2 ? `0${hexString}` : hexString;
-  var leftPadHexToLength = (hexString, length2) => hexString.padStart(length2, "0");
   var rightPadHexToLength = (hexString, length2) => hexString.padEnd(length2, "0");
   var exceedsMaxLengthBytes = (string2, maxLengthBytes) => string2 ? utf8ToBytes(string2).length > maxLengthBytes : false;
   function cloneDeep(obj) {
     return (0, import_lodash.default)(obj);
-  }
-  function omit(obj, prop) {
-    const clone = cloneDeep(obj);
-    delete clone[prop];
-    return clone;
   }
   var hash160 = (input) => {
     return ripemd160(sha256(input));
@@ -54527,7 +53768,6 @@ ${bugDetails}`;
   var txidFromData = (data) => {
     return bytesToHex(sha512_256(data));
   };
-  var txidFromBytes = txidFromData;
   var hashP2PKH = (input) => {
     return bytesToHex(hash160(input));
   };
@@ -54579,26 +53819,6 @@ ${bugDetails}`;
     const regex2 = /^[a-zA-Z]([a-zA-Z0-9]|[-_!?+<>=/*])*$|^[-+=/*]$|^[<>]=?$/;
     return regex2.test(name2) && name2.length < 128;
   }
-  function cvToHex(cv) {
-    const serialized = serializeCV(cv);
-    return `0x${serialized}`;
-  }
-  function hexToCV(hex) {
-    return deserializeCV(hex);
-  }
-  var parseReadOnlyResponse = (response) => {
-    if (response.okay)
-      return hexToCV(response.result);
-    throw new Error(response.cause);
-  };
-  var validateStacksAddress = (address2) => {
-    try {
-      (0, import_c32check3.c32addressDecode)(address2);
-      return true;
-    } catch (e10) {
-      return false;
-    }
-  };
   function parseContractId(contractId) {
     const [address2, name2] = contractId.split(".");
     if (!address2 || !name2)
@@ -54612,19 +53832,6 @@ ${bugDetails}`;
     msgs.forEach((msg) => h12.update(msg));
     return h12.digest();
   };
-  function getAddressFromPrivateKey(privateKey, network = "mainnet") {
-    network = networkFrom(network);
-    const publicKey = privateKeyToPublic(privateKey);
-    return getAddressFromPublicKey(publicKey, network);
-  }
-  function getAddressFromPublicKey(publicKey, network = "mainnet") {
-    network = networkFrom(network);
-    publicKey = typeof publicKey === "string" ? hexToBytes(publicKey) : publicKey;
-    const addrVer = addressHashModeToVersion(AddressHashMode.P2PKH, network);
-    const addr = addressFromVersionHash(addrVer, hashP2PKH(publicKey));
-    const addrString = addressToString(addr);
-    return addrString;
-  }
   function createStacksPublicKey(publicKey) {
     publicKey = typeof publicKey === "string" ? hexToBytes(publicKey) : publicKey;
     return {
@@ -54639,19 +53846,14 @@ ${bugDetails}`;
     const compressed = pubKeyEncoding === PubKeyEncoding.Compressed;
     return point.toHex(compressed);
   }
-  function publicKeyFromSignatureRsv(messageHash, messageSignature, pubKeyEncoding = PubKeyEncoding.Compressed) {
-    return publicKeyFromSignatureVrs(messageHash, signatureRsvToVrs(messageSignature), pubKeyEncoding);
-  }
   function privateKeyToHex(publicKey) {
     return typeof publicKey === "string" ? publicKey : bytesToHex(publicKey);
   }
   var publicKeyToHex = privateKeyToHex;
-  var isPrivateKeyCompressed = privateKeyIsCompressed;
   function privateKeyIsCompressed(privateKey) {
     const length2 = typeof privateKey === "string" ? privateKey.length / 2 : privateKey.byteLength;
     return length2 === PRIVATE_KEY_BYTES_COMPRESSED;
   }
-  var isPublicKeyCompressed = publicKeyIsCompressed;
   function publicKeyIsCompressed(publicKey) {
     return !publicKeyToHex(publicKey).startsWith("04");
   }
@@ -54666,10 +53868,6 @@ ${bugDetails}`;
   function uncompressPublicKey(publicKey) {
     return Point.fromHex(publicKeyToHex(publicKey)).toHex(false);
   }
-  var makeRandomPrivKey = randomPrivateKey;
-  function randomPrivateKey() {
-    return compressPrivateKey(utils.randomPrivateKey());
-  }
   function signWithKey(privateKey, messageHash) {
     privateKey = privateKeyToBytes(privateKey);
     const [rawSignature, recoveryId] = signSync(messageHash, privateKey.slice(0, 32), {
@@ -54682,25 +53880,9 @@ ${bugDetails}`;
     const recoveryIdHex = intToHex(recoveryId, 1);
     return recoveryIdHex + Signature.fromHex(rawSignature).toCompactHex();
   }
-  function signMessageHashRsv({ messageHash, privateKey }) {
-    return signatureVrsToRsv(signWithKey(privateKey, messageHash));
-  }
-  function compressPrivateKey(privateKey) {
-    privateKey = privateKeyToHex(privateKey);
-    return privateKey.length == PRIVATE_KEY_BYTES_COMPRESSED * 2 ? privateKey : `${privateKey}01`;
-  }
   function privateKeyToAddress(privateKey, network) {
     const publicKey = privateKeyToPublic(privateKey);
     return publicKeyToAddressSingleSig(publicKey, network);
-  }
-  function publicKeyToAddress(...args) {
-    if (typeof args[0] === "number")
-      return _publicKeyToAddress(...args);
-    return publicKeyToAddressSingleSig(...args);
-  }
-  function _publicKeyToAddress(version4, publicKey) {
-    publicKey = typeof publicKey === "string" ? hexToBytes(publicKey) : publicKey;
-    return (0, import_c32check4.c32address)(version4, bytesToHex(hash160(publicKey)));
   }
   function publicKeyToAddressSingleSig(publicKey, network) {
     network = network ? networkFrom(network) : STACKS_MAINNET;
@@ -54715,12 +53897,6 @@ ${bugDetails}`;
       data: bytesToHex(new Uint8Array(RECOVERABLE_ECDSA_SIG_LENGTH_BYTES))
     };
   }
-  function createSpendingCondition(options) {
-    if ("publicKey" in options) {
-      return createSingleSigSpendingCondition(AddressHashMode.P2PKH, options.publicKey, options.nonce, options.fee);
-    }
-    return createMultiSigSpendingCondition(AddressHashMode.P2SH, options.numSignatures, options.publicKeys, options.nonce, options.fee);
-  }
   function createSingleSigSpendingCondition(hashMode, pubKey, nonce, fee) {
     const signer = addressFromPublicKeys(0, hashMode, 1, [createStacksPublicKey(pubKey)]).hash160;
     const keyEncoding = publicKeyIsCompressed(pubKey) ? PubKeyEncoding.Compressed : PubKeyEncoding.Uncompressed;
@@ -54731,18 +53907,6 @@ ${bugDetails}`;
       fee: intToBigInt(fee),
       keyEncoding,
       signature: emptyMessageSignature()
-    };
-  }
-  function createMultiSigSpendingCondition(hashMode, numSigs, pubKeys, nonce, fee) {
-    const stacksPublicKeys = pubKeys.map(createStacksPublicKey);
-    const signer = addressFromPublicKeys(0, hashMode, numSigs, stacksPublicKeys).hash160;
-    return {
-      hashMode,
-      signer,
-      nonce: intToBigInt(nonce),
-      fee: intToBigInt(fee),
-      fields: [],
-      signaturesRequired: numSigs
     };
   }
   function isSingleSig(condition) {
@@ -54769,9 +53933,6 @@ ${bugDetails}`;
       fee: BigInt(0)
     };
   }
-  function serializeSingleSigSpendingCondition(condition) {
-    return bytesToHex(serializeSingleSigSpendingConditionBytes(condition));
-  }
   function serializeSingleSigSpendingConditionBytes(condition) {
     const bytesArray = [
       condition.hashMode,
@@ -54782,9 +53943,6 @@ ${bugDetails}`;
       serializeMessageSignatureBytes(condition.signature)
     ];
     return concatArray(bytesArray);
-  }
-  function serializeMultiSigSpendingCondition(condition) {
-    return bytesToHex(serializeMultiSigSpendingConditionBytes(condition));
   }
   function serializeMultiSigSpendingConditionBytes(condition) {
     const bytesArray = [
@@ -54854,9 +54012,6 @@ ${bugDetails}`;
       fields,
       signaturesRequired
     };
-  }
-  function serializeSpendingCondition(condition) {
-    return bytesToHex(serializeSpendingConditionBytes(condition));
   }
   function serializeSpendingConditionBytes(condition) {
     if (isSingleSig(condition))
@@ -55018,14 +54173,6 @@ ${bugDetails}`;
         return { ...auth, sponsorSpendingCondition };
     }
   }
-  function getFee(auth) {
-    switch (auth.authType) {
-      case AuthType.Standard:
-        return auth.spendingCondition.fee;
-      case AuthType.Sponsored:
-        return auth.sponsorSpendingCondition.fee;
-    }
-  }
   function setNonce2(auth, nonce) {
     const spendingCondition = {
       ...auth.spendingCondition,
@@ -55057,9 +54204,6 @@ ${bugDetails}`;
       sponsorSpendingCondition: sc2
     };
   }
-  function serializeAuthorization(auth) {
-    return bytesToHex(serializeAuthorizationBytes(auth));
-  }
   function serializeAuthorizationBytes(auth) {
     const bytesArray = [];
     bytesArray.push(auth.authType);
@@ -55087,269 +54231,6 @@ ${bugDetails}`;
         spendingCondition = deserializeSpendingCondition(bytesReader);
         const sponsorSpendingCondition = deserializeSpendingCondition(bytesReader);
         return createSponsoredAuth(spendingCondition, sponsorSpendingCondition);
-    }
-  }
-
-  // node_modules/@stacks/transactions/dist/esm/builders.js
-  var import_c32check5 = __toESM(require_lib());
-
-  // node_modules/@stacks/transactions/dist/esm/contract-abi.js
-  var ClarityAbiTypeId;
-  (function(ClarityAbiTypeId2) {
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeUInt128"] = 1] = "ClarityAbiTypeUInt128";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeInt128"] = 2] = "ClarityAbiTypeInt128";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeBool"] = 3] = "ClarityAbiTypeBool";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypePrincipal"] = 4] = "ClarityAbiTypePrincipal";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeNone"] = 5] = "ClarityAbiTypeNone";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeBuffer"] = 6] = "ClarityAbiTypeBuffer";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeResponse"] = 7] = "ClarityAbiTypeResponse";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeOptional"] = 8] = "ClarityAbiTypeOptional";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeTuple"] = 9] = "ClarityAbiTypeTuple";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeList"] = 10] = "ClarityAbiTypeList";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeStringAscii"] = 11] = "ClarityAbiTypeStringAscii";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeStringUtf8"] = 12] = "ClarityAbiTypeStringUtf8";
-    ClarityAbiTypeId2[ClarityAbiTypeId2["ClarityAbiTypeTraitReference"] = 13] = "ClarityAbiTypeTraitReference";
-  })(ClarityAbiTypeId || (ClarityAbiTypeId = {}));
-  var isClarityAbiPrimitive = (val) => typeof val === "string";
-  var isClarityAbiBuffer = (val) => val.buffer !== void 0;
-  var isClarityAbiStringAscii = (val) => val["string-ascii"] !== void 0;
-  var isClarityAbiStringUtf8 = (val) => val["string-utf8"] !== void 0;
-  var isClarityAbiResponse = (val) => val.response !== void 0;
-  var isClarityAbiOptional = (val) => val.optional !== void 0;
-  var isClarityAbiTuple = (val) => val.tuple !== void 0;
-  var isClarityAbiList = (val) => val.list !== void 0;
-  function getTypeUnion(val) {
-    if (isClarityAbiPrimitive(val)) {
-      if (val === "uint128") {
-        return { id: ClarityAbiTypeId.ClarityAbiTypeUInt128, type: val };
-      } else if (val === "int128") {
-        return { id: ClarityAbiTypeId.ClarityAbiTypeInt128, type: val };
-      } else if (val === "bool") {
-        return { id: ClarityAbiTypeId.ClarityAbiTypeBool, type: val };
-      } else if (val === "principal") {
-        return { id: ClarityAbiTypeId.ClarityAbiTypePrincipal, type: val };
-      } else if (val === "trait_reference") {
-        return { id: ClarityAbiTypeId.ClarityAbiTypeTraitReference, type: val };
-      } else if (val === "none") {
-        return { id: ClarityAbiTypeId.ClarityAbiTypeNone, type: val };
-      } else {
-        throw new Error(`Unexpected Clarity ABI type primitive: ${JSON.stringify(val)}`);
-      }
-    } else if (isClarityAbiBuffer(val)) {
-      return { id: ClarityAbiTypeId.ClarityAbiTypeBuffer, type: val };
-    } else if (isClarityAbiResponse(val)) {
-      return { id: ClarityAbiTypeId.ClarityAbiTypeResponse, type: val };
-    } else if (isClarityAbiOptional(val)) {
-      return { id: ClarityAbiTypeId.ClarityAbiTypeOptional, type: val };
-    } else if (isClarityAbiTuple(val)) {
-      return { id: ClarityAbiTypeId.ClarityAbiTypeTuple, type: val };
-    } else if (isClarityAbiList(val)) {
-      return { id: ClarityAbiTypeId.ClarityAbiTypeList, type: val };
-    } else if (isClarityAbiStringAscii(val)) {
-      return { id: ClarityAbiTypeId.ClarityAbiTypeStringAscii, type: val };
-    } else if (isClarityAbiStringUtf8(val)) {
-      return { id: ClarityAbiTypeId.ClarityAbiTypeStringUtf8, type: val };
-    } else {
-      throw new Error(`Unexpected Clarity ABI type: ${JSON.stringify(val)}`);
-    }
-  }
-  function encodeAbiClarityValue(value, type) {
-    const union = type.id ? type : getTypeUnion(type);
-    switch (union.id) {
-      case ClarityAbiTypeId.ClarityAbiTypeUInt128:
-        return uintCV(value);
-      case ClarityAbiTypeId.ClarityAbiTypeInt128:
-        return intCV(value);
-      case ClarityAbiTypeId.ClarityAbiTypeBool:
-        if (value === "false" || value === "0")
-          return falseCV();
-        else if (value === "true" || value === "1")
-          return trueCV();
-        else
-          throw new Error(`Unexpected Clarity bool value: ${JSON.stringify(value)}`);
-      case ClarityAbiTypeId.ClarityAbiTypePrincipal:
-        if (value.includes(".")) {
-          const [addr2, name3] = value.split(".");
-          return contractPrincipalCV(addr2, name3);
-        } else {
-          return standardPrincipalCV(value);
-        }
-      case ClarityAbiTypeId.ClarityAbiTypeTraitReference:
-        const [addr, name2] = value.split(".");
-        return contractPrincipalCV(addr, name2);
-      case ClarityAbiTypeId.ClarityAbiTypeNone:
-        return noneCV();
-      case ClarityAbiTypeId.ClarityAbiTypeBuffer:
-        return bufferCV(hexToBytes(value));
-      case ClarityAbiTypeId.ClarityAbiTypeStringAscii:
-        return stringAsciiCV(value);
-      case ClarityAbiTypeId.ClarityAbiTypeStringUtf8:
-        return stringUtf8CV(value);
-      case ClarityAbiTypeId.ClarityAbiTypeOptional:
-        return someCV(encodeAbiClarityValue(value, union.type.optional));
-      case ClarityAbiTypeId.ClarityAbiTypeResponse:
-      case ClarityAbiTypeId.ClarityAbiTypeTuple:
-      case ClarityAbiTypeId.ClarityAbiTypeList:
-        throw new NotImplementedError(`Unsupported encoding for Clarity type: ${union.id}`);
-      default:
-        throw new Error(`Unexpected Clarity type ID: ${JSON.stringify(union)}`);
-    }
-  }
-  function encodeClarityValue(type, value) {
-    const union = type.id ? type : getTypeUnion(type);
-    if (union.id === ClarityAbiTypeId.ClarityAbiTypeBuffer) {
-      return bufferCV(utf8ToBytes(value));
-    }
-    return encodeAbiClarityValue(value, union);
-  }
-  function getTypeString(val) {
-    if (isClarityAbiPrimitive(val)) {
-      if (val === "int128") {
-        return "int";
-      } else if (val === "uint128") {
-        return "uint";
-      }
-      return val;
-    } else if (isClarityAbiBuffer(val)) {
-      return `(buff ${val.buffer.length})`;
-    } else if (isClarityAbiStringAscii(val)) {
-      return `(string-ascii ${val["string-ascii"].length})`;
-    } else if (isClarityAbiStringUtf8(val)) {
-      return `(string-utf8 ${val["string-utf8"].length})`;
-    } else if (isClarityAbiResponse(val)) {
-      return `(response ${getTypeString(val.response.ok)} ${getTypeString(val.response.error)})`;
-    } else if (isClarityAbiOptional(val)) {
-      return `(optional ${getTypeString(val.optional)})`;
-    } else if (isClarityAbiTuple(val)) {
-      return `(tuple ${val.tuple.map((t5) => `(${t5.name} ${getTypeString(t5.type)})`).join(" ")})`;
-    } else if (isClarityAbiList(val)) {
-      return `(list ${val.list.length} ${getTypeString(val.list.type)})`;
-    } else {
-      throw new Error(`Type string unsupported for Clarity type: ${JSON.stringify(val)}`);
-    }
-  }
-  function abiFunctionToString(func) {
-    const access = func.access === "read_only" ? "read-only" : func.access;
-    return `(define-${access} (${func.name} ${func.args.map((arg) => `(${arg.name} ${getTypeString(arg.type)})`).join(" ")}))`;
-  }
-  function matchType(cv, abiType) {
-    const union = getTypeUnion(abiType);
-    switch (cv.type) {
-      case ClarityType.BoolTrue:
-      case ClarityType.BoolFalse:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeBool;
-      case ClarityType.Int:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeInt128;
-      case ClarityType.UInt:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeUInt128;
-      case ClarityType.Buffer:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeBuffer && union.type.buffer.length >= Math.ceil(cv.value.length / 2);
-      case ClarityType.StringASCII:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeStringAscii && union.type["string-ascii"].length >= cv.value.length;
-      case ClarityType.StringUTF8:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeStringUtf8 && union.type["string-utf8"].length >= cv.value.length;
-      case ClarityType.OptionalNone:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeNone || union.id === ClarityAbiTypeId.ClarityAbiTypeOptional;
-      case ClarityType.OptionalSome:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeOptional && matchType(cv.value, union.type.optional);
-      case ClarityType.ResponseErr:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeResponse && matchType(cv.value, union.type.response.error);
-      case ClarityType.ResponseOk:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypeResponse && matchType(cv.value, union.type.response.ok);
-      case ClarityType.PrincipalContract:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypePrincipal || union.id === ClarityAbiTypeId.ClarityAbiTypeTraitReference;
-      case ClarityType.PrincipalStandard:
-        return union.id === ClarityAbiTypeId.ClarityAbiTypePrincipal;
-      case ClarityType.List:
-        return union.id == ClarityAbiTypeId.ClarityAbiTypeList && union.type.list.length >= cv.value.length && cv.value.every((val) => matchType(val, union.type.list.type));
-      case ClarityType.Tuple:
-        if (union.id == ClarityAbiTypeId.ClarityAbiTypeTuple) {
-          const tuple2 = cloneDeep(cv.value);
-          for (let i10 = 0; i10 < union.type.tuple.length; i10++) {
-            const abiTupleEntry = union.type.tuple[i10];
-            const key = abiTupleEntry.name;
-            const val = tuple2[key];
-            if (val) {
-              if (!matchType(val, abiTupleEntry.type)) {
-                return false;
-              }
-              delete tuple2[key];
-            } else {
-              return false;
-            }
-          }
-          return true;
-        } else {
-          return false;
-        }
-      default:
-        return false;
-    }
-  }
-  function validateContractCall(payload, abi) {
-    const filtered = abi.functions.filter((fn3) => fn3.name === payload.functionName.content);
-    if (filtered.length === 1) {
-      const abiFunc = filtered[0];
-      const abiArgs = abiFunc.args;
-      if (payload.functionArgs.length !== abiArgs.length) {
-        throw new Error(`Clarity function expects ${abiArgs.length} argument(s) but received ${payload.functionArgs.length}`);
-      }
-      for (let i10 = 0; i10 < payload.functionArgs.length; i10++) {
-        const payloadArg = payload.functionArgs[i10];
-        const abiArg = abiArgs[i10];
-        if (!matchType(payloadArg, abiArg.type)) {
-          const argNum = i10 + 1;
-          throw new Error(`Clarity function \`${payload.functionName.content}\` expects argument ${argNum} to be of type ${getTypeString(abiArg.type)}, not ${getCVTypeString(payloadArg)}`);
-        }
-      }
-      return true;
-    } else if (filtered.length === 0) {
-      throw new Error(`ABI doesn't contain a function with the name ${payload.functionName.content}`);
-    } else {
-      throw new Error(`Malformed ABI. Contains multiple functions with the name ${payload.functionName.content}`);
-    }
-  }
-  function parseToCV(input, type) {
-    const typeString = getTypeString(type);
-    if (isClarityAbiPrimitive(type)) {
-      if (type === "uint128") {
-        return uintCV(input);
-      } else if (type === "int128") {
-        return intCV(input);
-      } else if (type === "bool") {
-        if (input.toLowerCase() === "true") {
-          return trueCV();
-        } else if (input.toLowerCase() === "false") {
-          return falseCV();
-        } else {
-          throw new Error(`Invalid bool value: ${input}`);
-        }
-      } else if (type === "principal") {
-        if (input.includes(".")) {
-          const [address2, contractName] = input.split(".");
-          return contractPrincipalCV(address2, contractName);
-        } else {
-          return standardPrincipalCV(input);
-        }
-      } else {
-        throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
-      }
-    } else if (isClarityAbiBuffer(type)) {
-      const inputLength = utf8ToBytes(input).byteLength;
-      if (inputLength > type.buffer.length) {
-        throw new Error(`Input exceeds specified buffer length limit of ${type.buffer.length}`);
-      }
-      return bufferCVFromString(input);
-    } else if (isClarityAbiResponse(type)) {
-      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
-    } else if (isClarityAbiOptional(type)) {
-      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
-    } else if (isClarityAbiTuple(type)) {
-      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
-    } else if (isClarityAbiList(type)) {
-      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
-    } else {
-      throw new Error(`Contract function contains unsupported Clarity ABI type: ${typeString}`);
     }
   }
 
@@ -55498,213 +54379,6 @@ ${bugDetails}`;
     transaction.anchorMode = anchorMode;
     return transaction;
   }
-  function deriveNetworkFromTx(transaction) {
-    return whenTransactionVersion(transaction.transactionVersion)({
-      [TransactionVersion.Mainnet]: STACKS_MAINNET,
-      [TransactionVersion.Testnet]: STACKS_TESTNET
-    });
-  }
-  function estimateTransactionByteLength(transaction) {
-    const hashMode = transaction.auth.spendingCondition.hashMode;
-    const multiSigHashModes = [AddressHashMode.P2SH, AddressHashMode.P2WSH];
-    if (multiSigHashModes.includes(hashMode)) {
-      const multiSigSpendingCondition = transaction.auth.spendingCondition;
-      const existingSignatures = multiSigSpendingCondition.fields.filter((field) => field.contents.type === StacksWireType.MessageSignature).length;
-      const totalSignatureLength = (multiSigSpendingCondition.signaturesRequired - existingSignatures) * (RECOVERABLE_ECDSA_SIG_LENGTH_BYTES + 1);
-      return transaction.serializeBytes().byteLength + totalSignatureLength;
-    } else {
-      return transaction.serializeBytes().byteLength;
-    }
-  }
-  function serializeTransaction(transaction) {
-    return transaction.serialize();
-  }
-  function serializeTransactionBytes(transaction) {
-    return transaction.serializeBytes();
-  }
-  function transactionToHex(transaction) {
-    return transaction.serialize();
-  }
-
-  // node_modules/@stacks/transactions/dist/esm/fetch.js
-  var BROADCAST_PATH = "/v2/transactions";
-  var TRANSFER_FEE_ESTIMATE_PATH = "/v2/fees/transfer";
-  var TRANSACTION_FEE_ESTIMATE_PATH = "/v2/fees/transaction";
-  var ACCOUNT_PATH = "/v2/accounts";
-  var CONTRACT_ABI_PATH = "/v2/contracts/interface";
-  var READONLY_FUNCTION_CALL_PATH = "/v2/contracts/call-read";
-  var MAP_ENTRY_PATH = "/v2/map_entry";
-  async function broadcastTransaction({ transaction: txOpt, attachment: attachOpt, network: _network, client: _client }) {
-    const tx = txOpt.serialize();
-    const attachment = attachOpt ? typeof attachOpt === "string" ? attachOpt : bytesToHex(attachOpt) : void 0;
-    const json = attachOpt ? { tx, attachment } : { tx };
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(json)
-    };
-    const network = _network != null ? _network : deriveNetworkFromTx(txOpt);
-    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
-    const url = `${client.baseUrl}${BROADCAST_PATH}`;
-    const response = await client.fetch(url, options);
-    if (!response.ok) {
-      try {
-        return await response.json();
-      } catch (e10) {
-        throw Error("Failed to broadcast transaction (unable to parse node response).", { cause: e10 });
-      }
-    }
-    const text = await response.text();
-    const txid = text.replace(/["]+/g, "");
-    if (!validateHash256(txid))
-      throw new Error(text);
-    return { txid };
-  }
-  async function _getNonceApi({ address: address2, network = "mainnet", client: _client }) {
-    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
-    const url = `${client.baseUrl}/extended/v1/address/${address2}/nonces`;
-    const response = await client.fetch(url);
-    const result = await response.json();
-    return BigInt(result.possible_next_nonce);
-  }
-  async function fetchNonce(opts) {
-    var _a7;
-    try {
-      return await _getNonceApi(opts);
-    } catch (e10) {
-    }
-    const network = networkFrom((_a7 = opts.network) != null ? _a7 : "mainnet");
-    const client = Object.assign({}, clientFromNetwork(network), opts.client);
-    const url = `${client.baseUrl}${ACCOUNT_PATH}/${opts.address}?proof=0`;
-    const response = await client.fetch(url);
-    if (!response.ok) {
-      const msg = await response.text().catch(() => "");
-      throw new Error(`Error fetching nonce. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
-    }
-    const json = await response.json();
-    return BigInt(json.nonce);
-  }
-  async function fetchFeeEstimateTransfer({ transaction: txOpt, network: _network, client: _client }) {
-    const network = typeof txOpt === "number" ? "mainnet" : _network != null ? _network : deriveNetworkFromTx(txOpt);
-    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
-    const url = `${client.baseUrl}${TRANSFER_FEE_ESTIMATE_PATH}`;
-    const response = await client.fetch(url, {
-      headers: { Accept: "application/text" }
-    });
-    if (!response.ok) {
-      const msg = await response.text().catch(() => "");
-      throw new Error(`Error estimating transfer fee. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
-    }
-    const feeRateResult = await response.text();
-    const txBytes = typeof txOpt === "number" ? BigInt(txOpt) : BigInt(Math.ceil(txOpt.serializeBytes().byteLength));
-    const feeRate = BigInt(feeRateResult);
-    return feeRate * txBytes;
-  }
-  async function fetchFeeEstimateTransaction({ payload, estimatedLength, network = "mainnet", client: _client }) {
-    var _a7, _b2;
-    const json = {
-      transaction_payload: payload,
-      estimated_len: estimatedLength
-    };
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(json)
-    };
-    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
-    const url = `${client.baseUrl}${TRANSACTION_FEE_ESTIMATE_PATH}`;
-    const response = await client.fetch(url, options);
-    if (!response.ok) {
-      const body = await response.text().catch(() => "");
-      if (body.includes("NoEstimateAvailable")) {
-        let json2 = {};
-        try {
-          json2 = JSON.parse(body);
-        } catch (err2) {
-        }
-        throw new NoEstimateAvailableError((_b2 = (_a7 = json2 == null ? void 0 : json2.reason_data) == null ? void 0 : _a7.message) != null ? _b2 : "");
-      }
-      throw new Error(`Error estimating transaction fee. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${body}"`);
-    }
-    const data = await response.json();
-    return data.estimations;
-  }
-  async function fetchFeeEstimate({ transaction: txOpt, network: _network, client: _client }) {
-    const network = _network != null ? _network : deriveNetworkFromTx(txOpt);
-    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
-    try {
-      const estimatedLength = estimateTransactionByteLength(txOpt);
-      return (await fetchFeeEstimateTransaction({
-        payload: bytesToHex(serializePayloadBytes(txOpt.payload)),
-        estimatedLength,
-        network,
-        client
-      }))[1].fee;
-    } catch (error2) {
-      if (!(error2 instanceof NoEstimateAvailableError))
-        throw error2;
-      return await fetchFeeEstimateTransfer({ transaction: txOpt, network });
-    }
-  }
-  async function fetchAbi({ contractAddress: address2, contractName: name2, network = "mainnet", client: _client }) {
-    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
-    const url = `${client.baseUrl}${CONTRACT_ABI_PATH}/${address2}/${name2}`;
-    const response = await client.fetch(url);
-    if (!response.ok) {
-      const msg = await response.text().catch(() => "");
-      throw new Error(`Error fetching contract ABI for contract "${name2}" at address ${address2}. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
-    }
-    return JSON.parse(await response.text());
-  }
-  async function fetchCallReadOnlyFunction({ contractName, contractAddress, functionName, functionArgs, senderAddress, network = "mainnet", client: _client }) {
-    const json = {
-      sender: senderAddress,
-      arguments: functionArgs.map((arg) => cvToHex(arg))
-    };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(json)
-    };
-    const name2 = encodeURIComponent(functionName);
-    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
-    const url = `${client.baseUrl}${READONLY_FUNCTION_CALL_PATH}/${contractAddress}/${contractName}/${name2}`;
-    const response = await client.fetch(url, options);
-    if (!response.ok) {
-      const msg = await response.text().catch(() => "");
-      throw new Error(`Error calling read-only function. Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
-    }
-    return await response.json().then(parseReadOnlyResponse);
-  }
-  async function fetchContractMapEntry({ contractAddress, contractName, mapName, mapKey, network = "mainnet", client: _client }) {
-    const keyHex = with0x(serializeCV(mapKey));
-    const options = {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(keyHex)
-    };
-    const client = Object.assign({}, clientFromNetwork(networkFrom(network)), _client);
-    const url = `${client.baseUrl}${MAP_ENTRY_PATH}/${contractAddress}/${contractName}/${mapName}?proof=0`;
-    const response = await client.fetch(url, options);
-    if (!response.ok) {
-      const msg = await response.text().catch(() => "");
-      throw new Error(`Error fetching map entry for map "${mapName}" in contract "${contractName}" at address ${contractAddress}, using map key "${keyHex}". Response ${response.status}: ${response.statusText}. Attempted to fetch ${url} and failed with the message: "${msg}"`);
-    }
-    const json = await response.json();
-    if (!json.data) {
-      throw new Error(`Error fetching map entry for map "${mapName}" in contract "${contractName}" at address ${contractAddress}, using map key "${keyHex}". Response ${response.status}: ${response.statusText}. Attempted to fetch ${client.baseUrl} and failed with the response: "${JSON.stringify(json)}"`);
-    }
-    try {
-      return deserializeCV(json.data);
-    } catch (error2) {
-      throw new Error(`Error deserializing Clarity value "${json.data}": ${error2}`);
-    }
-  }
 
   // node_modules/@stacks/transactions/dist/esm/postcondition.js
   var PostConditionCodeWireType;
@@ -55749,491 +54423,12 @@ ${bugDetails}`;
         throw new Error("Invalid post condition type");
     }
   }
-  function wireToPostCondition(wire) {
-    switch (wire.conditionType) {
-      case PostConditionType.STX:
-        return {
-          type: "stx-postcondition",
-          address: principalWireToString(wire.principal),
-          condition: conditionByteToType(wire.conditionCode),
-          amount: wire.amount.toString()
-        };
-      case PostConditionType.Fungible:
-        return {
-          type: "ft-postcondition",
-          address: principalWireToString(wire.principal),
-          condition: conditionByteToType(wire.conditionCode),
-          amount: wire.amount.toString(),
-          asset: assetWireToString(wire.asset)
-        };
-      case PostConditionType.NonFungible:
-        return {
-          type: "nft-postcondition",
-          address: principalWireToString(wire.principal),
-          condition: conditionByteToType(wire.conditionCode),
-          asset: assetWireToString(wire.asset),
-          assetId: wire.assetName
-        };
-      default: {
-        const _exhaustiveCheck = wire;
-        throw new Error(`Invalid post condition type: ${_exhaustiveCheck}`);
-      }
-    }
-  }
   function conditionTypeToByte(condition) {
     return PostConditionCodeWireType[condition];
-  }
-  function conditionByteToType(wireType) {
-    return PostConditionCodeWireType[wireType];
   }
   function postConditionToHex(postcondition) {
     const wire = postConditionToWire(postcondition);
     return serializePostConditionWire(wire);
-  }
-  function postConditionModeFrom(mode) {
-    if (typeof mode === "number")
-      return mode;
-    if (mode === "allow")
-      return PostConditionMode.Allow;
-    if (mode === "deny")
-      return PostConditionMode.Deny;
-    throw new Error(`Invalid post condition mode: ${mode}`);
-  }
-  function assetWireToString(asset) {
-    const address2 = addressToString(asset.address);
-    const contractId = `${address2}.${asset.contractName.content}`;
-    return `${contractId}::${asset.assetName.content}`;
-  }
-  function principalWireToString(principal3) {
-    switch (principal3.prefix) {
-      case PostConditionPrincipalId.Origin:
-        return "origin";
-      case PostConditionPrincipalId.Standard:
-        return addressToString(principal3.address);
-      case PostConditionPrincipalId.Contract:
-        const address2 = addressToString(principal3.address);
-        return `${address2}.${principal3.contractName.content}`;
-      default:
-        const _exhaustiveCheck = principal3;
-        throw new Error(`Invalid principal type: ${_exhaustiveCheck}`);
-    }
-  }
-
-  // node_modules/@stacks/transactions/dist/esm/signer.js
-  var TransactionSigner = class {
-    constructor(transaction) {
-      this.transaction = transaction;
-      this.sigHash = transaction.signBegin();
-      this.originDone = false;
-      this.checkOversign = true;
-      this.checkOverlap = true;
-      const spendingCondition = transaction.auth.spendingCondition;
-      if (spendingCondition && !isSingleSig(spendingCondition)) {
-        if (spendingCondition.fields.filter((field) => field.contents.type === StacksWireType.MessageSignature).length >= spendingCondition.signaturesRequired) {
-          throw new Error("SpendingCondition has more signatures than are expected");
-        }
-        spendingCondition.fields.forEach((field) => {
-          if (field.contents.type !== StacksWireType.MessageSignature)
-            return;
-          const signature = field.contents;
-          const nextVerify = nextVerification(this.sigHash, transaction.auth.authType, spendingCondition.fee, spendingCondition.nonce, PubKeyEncoding.Compressed, signature.data);
-          if (!isNonSequentialMultiSig(spendingCondition.hashMode)) {
-            this.sigHash = nextVerify.nextSigHash;
-          }
-        });
-      }
-    }
-    static createSponsorSigner(transaction, spendingCondition) {
-      if (transaction.auth.authType != AuthType.Sponsored) {
-        throw new SigningError("Cannot add sponsor to non-sponsored transaction");
-      }
-      const tx = cloneDeep(transaction);
-      tx.setSponsor(spendingCondition);
-      const originSigHash = tx.verifyOrigin();
-      const signer = new this(tx);
-      signer.originDone = true;
-      signer.sigHash = originSigHash;
-      signer.checkOversign = true;
-      signer.checkOverlap = true;
-      return signer;
-    }
-    signOrigin(privateKey) {
-      if (this.checkOverlap && this.originDone) {
-        throw new SigningError("Cannot sign origin after sponsor key");
-      }
-      if (this.transaction.auth === void 0) {
-        throw new SigningError('"transaction.auth" is undefined');
-      }
-      if (this.transaction.auth.spendingCondition === void 0) {
-        throw new SigningError('"transaction.auth.spendingCondition" is undefined');
-      }
-      const spendingCondition = this.transaction.auth.spendingCondition;
-      if (spendingCondition.hashMode === AddressHashMode.P2SH || spendingCondition.hashMode === AddressHashMode.P2WSH) {
-        if (this.checkOversign && spendingCondition.fields.filter((field) => field.contents.type === StacksWireType.MessageSignature).length >= spendingCondition.signaturesRequired) {
-          throw new Error("Origin would have too many signatures");
-        }
-      }
-      const nextSighash = this.transaction.signNextOrigin(this.sigHash, privateKey);
-      if (isSingleSig(this.transaction.auth.spendingCondition) || isSequentialMultiSig(this.transaction.auth.spendingCondition.hashMode)) {
-        this.sigHash = nextSighash;
-      }
-    }
-    appendOrigin(publicKey) {
-      const wire = typeof publicKey === "object" && "type" in publicKey ? publicKey : createStacksPublicKey(publicKey);
-      if (this.checkOverlap && this.originDone) {
-        throw Error("Cannot append public key to origin after sponsor key");
-      }
-      if (this.transaction.auth === void 0) {
-        throw new Error('"transaction.auth" is undefined');
-      }
-      if (this.transaction.auth.spendingCondition === void 0) {
-        throw new Error('"transaction.auth.spendingCondition" is undefined');
-      }
-      this.transaction.appendPubkey(wire);
-    }
-    signSponsor(privateKey) {
-      if (this.transaction.auth === void 0) {
-        throw new SigningError('"transaction.auth" is undefined');
-      }
-      if (this.transaction.auth.authType !== AuthType.Sponsored) {
-        throw new SigningError('"transaction.auth.authType" is not AuthType.Sponsored');
-      }
-      const nextSighash = this.transaction.signNextSponsor(this.sigHash, privateKey);
-      this.sigHash = nextSighash;
-      this.originDone = true;
-    }
-    getTxInComplete() {
-      return cloneDeep(this.transaction);
-    }
-    resume(transaction) {
-      this.transaction = cloneDeep(transaction);
-      this.sigHash = transaction.signBegin();
-    }
-  };
-
-  // node_modules/@stacks/transactions/dist/esm/builders.js
-  async function makeUnsignedSTXTokenTransfer(txOptions) {
-    const defaultOptions = {
-      fee: BigInt(0),
-      nonce: BigInt(0),
-      network: STACKS_MAINNET,
-      memo: "",
-      sponsored: false
-    };
-    const options = Object.assign(defaultOptions, txOptions);
-    options.network = networkFrom(options.network);
-    options.client = Object.assign({}, clientFromNetwork(options.network), txOptions.client);
-    const payload = createTokenTransferPayload(options.recipient, options.amount, options.memo);
-    let spendingCondition = null;
-    if ("publicKey" in options) {
-      spendingCondition = createSingleSigSpendingCondition(AddressHashMode.P2PKH, options.publicKey, options.nonce, options.fee);
-    } else {
-      const hashMode = options.useNonSequentialMultiSig ? AddressHashMode.P2SHNonSequential : AddressHashMode.P2SH;
-      const publicKeys = options.address ? sortPublicKeysForAddress(options.publicKeys.map(publicKeyToHex), options.numSignatures, hashMode, createAddress(options.address).hash160) : options.publicKeys.map(publicKeyToHex);
-      spendingCondition = createMultiSigSpendingCondition(hashMode, options.numSignatures, publicKeys, options.nonce, options.fee);
-    }
-    const authorization = options.sponsored ? createSponsoredAuth(spendingCondition) : createStandardAuth(spendingCondition);
-    const transaction = new StacksTransactionWire({
-      transactionVersion: options.network.transactionVersion,
-      chainId: options.network.chainId,
-      auth: authorization,
-      payload
-    });
-    if (txOptions.fee == null) {
-      const fee = await fetchFeeEstimate({ transaction, ...options });
-      transaction.setFee(fee);
-    }
-    if (txOptions.nonce == null) {
-      const addressVersion = options.network.addressVersion.singleSig;
-      const address2 = (0, import_c32check5.c32address)(addressVersion, transaction.auth.spendingCondition.signer);
-      const txNonce = await fetchNonce({ address: address2, ...options });
-      transaction.setNonce(txNonce);
-    }
-    return transaction;
-  }
-  async function makeSTXTokenTransfer(txOptions) {
-    if ("senderKey" in txOptions) {
-      const publicKey = privateKeyToPublic(txOptions.senderKey);
-      const options = omit(txOptions, "senderKey");
-      const transaction = await makeUnsignedSTXTokenTransfer({ publicKey, ...options });
-      const privKey = txOptions.senderKey;
-      const signer = new TransactionSigner(transaction);
-      signer.signOrigin(privKey);
-      return transaction;
-    } else {
-      const options = omit(txOptions, "signerKeys");
-      const transaction = await makeUnsignedSTXTokenTransfer(options);
-      mutatingSignAppendMultiSig(transaction, txOptions.publicKeys.map(publicKeyToHex).slice(), txOptions.signerKeys.map(privateKeyToHex), txOptions.address);
-      return transaction;
-    }
-  }
-  async function makeContractDeploy(txOptions) {
-    if ("senderKey" in txOptions) {
-      const publicKey = privateKeyToPublic(txOptions.senderKey);
-      const options = omit(txOptions, "senderKey");
-      const transaction = await makeUnsignedContractDeploy({ publicKey, ...options });
-      const privKey = txOptions.senderKey;
-      const signer = new TransactionSigner(transaction);
-      signer.signOrigin(privKey);
-      return transaction;
-    } else {
-      const options = omit(txOptions, "signerKeys");
-      const transaction = await makeUnsignedContractDeploy(options);
-      mutatingSignAppendMultiSig(transaction, txOptions.publicKeys.map(publicKeyToHex).slice(), txOptions.signerKeys.map(privateKeyToHex), txOptions.address);
-      return transaction;
-    }
-  }
-  async function makeUnsignedContractDeploy(txOptions) {
-    var _a7;
-    const defaultOptions = {
-      fee: BigInt(0),
-      nonce: BigInt(0),
-      network: STACKS_MAINNET,
-      postConditionMode: PostConditionMode.Deny,
-      sponsored: false,
-      clarityVersion: ClarityVersion.Clarity4
-    };
-    const options = Object.assign(defaultOptions, txOptions);
-    options.network = networkFrom(options.network);
-    options.client = Object.assign({}, clientFromNetwork(options.network), txOptions.client);
-    options.postConditionMode = postConditionModeFrom(options.postConditionMode);
-    const payload = createSmartContractPayload(options.contractName, options.codeBody, options.clarityVersion);
-    let spendingCondition = null;
-    if ("publicKey" in options) {
-      spendingCondition = createSingleSigSpendingCondition(AddressHashMode.P2PKH, options.publicKey, options.nonce, options.fee);
-    } else {
-      const hashMode = options.useNonSequentialMultiSig ? AddressHashMode.P2SHNonSequential : AddressHashMode.P2SH;
-      const publicKeys = options.address ? sortPublicKeysForAddress(options.publicKeys.map(publicKeyToHex), options.numSignatures, hashMode, createAddress(options.address).hash160) : options.publicKeys.map(publicKeyToHex);
-      spendingCondition = createMultiSigSpendingCondition(hashMode, options.numSignatures, publicKeys, options.nonce, options.fee);
-    }
-    const authorization = options.sponsored ? createSponsoredAuth(spendingCondition) : createStandardAuth(spendingCondition);
-    const postConditions = ((_a7 = options.postConditions) != null ? _a7 : []).map((pc2) => {
-      if (typeof pc2 === "string")
-        return deserializePostConditionWire(pc2);
-      if (typeof pc2.type === "string")
-        return postConditionToWire(pc2);
-      return pc2;
-    });
-    const lpPostConditions = createLPList(postConditions);
-    const transaction = new StacksTransactionWire({
-      transactionVersion: options.network.transactionVersion,
-      chainId: options.network.chainId,
-      auth: authorization,
-      payload,
-      postConditions: lpPostConditions,
-      postConditionMode: options.postConditionMode
-    });
-    if (txOptions.fee === void 0 || txOptions.fee === null) {
-      const fee = await fetchFeeEstimate({ transaction, ...options });
-      transaction.setFee(fee);
-    }
-    if (txOptions.nonce === void 0 || txOptions.nonce === null) {
-      const addressVersion = options.network.addressVersion.singleSig;
-      const address2 = (0, import_c32check5.c32address)(addressVersion, transaction.auth.spendingCondition.signer);
-      const txNonce = await fetchNonce({ address: address2, ...options });
-      transaction.setNonce(txNonce);
-    }
-    return transaction;
-  }
-  async function makeUnsignedContractCall(txOptions) {
-    var _a7;
-    const defaultOptions = {
-      fee: BigInt(0),
-      nonce: BigInt(0),
-      network: STACKS_MAINNET,
-      postConditionMode: PostConditionMode.Deny,
-      sponsored: false
-    };
-    const options = Object.assign(defaultOptions, txOptions);
-    options.network = networkFrom(options.network);
-    options.client = Object.assign({}, clientFromNetwork(options.network), options.client);
-    options.postConditionMode = postConditionModeFrom(options.postConditionMode);
-    const payload = createContractCallPayload(options.contractAddress, options.contractName, options.functionName, options.functionArgs);
-    if (options == null ? void 0 : options.validateWithAbi) {
-      let abi;
-      if (typeof options.validateWithAbi === "boolean") {
-        if (options == null ? void 0 : options.network) {
-          abi = await fetchAbi({ ...options });
-        } else {
-          throw new Error("Network option must be provided in order to validate with ABI");
-        }
-      } else {
-        abi = options.validateWithAbi;
-      }
-      validateContractCall(payload, abi);
-    }
-    let spendingCondition = null;
-    if ("publicKey" in options) {
-      spendingCondition = createSingleSigSpendingCondition(AddressHashMode.P2PKH, options.publicKey, options.nonce, options.fee);
-    } else {
-      const hashMode = options.useNonSequentialMultiSig ? AddressHashMode.P2SHNonSequential : AddressHashMode.P2SH;
-      const publicKeys = options.address ? sortPublicKeysForAddress(options.publicKeys.map(publicKeyToHex), options.numSignatures, hashMode, createAddress(options.address).hash160) : options.publicKeys.map(publicKeyToHex);
-      spendingCondition = createMultiSigSpendingCondition(hashMode, options.numSignatures, publicKeys, options.nonce, options.fee);
-    }
-    const authorization = options.sponsored ? createSponsoredAuth(spendingCondition) : createStandardAuth(spendingCondition);
-    const postConditions = ((_a7 = options.postConditions) != null ? _a7 : []).map((pc2) => {
-      if (typeof pc2 === "string")
-        return deserializePostConditionWire(pc2);
-      if (typeof pc2.type === "string")
-        return postConditionToWire(pc2);
-      return pc2;
-    });
-    const lpPostConditions = createLPList(postConditions);
-    const transaction = new StacksTransactionWire({
-      transactionVersion: options.network.transactionVersion,
-      chainId: options.network.chainId,
-      auth: authorization,
-      payload,
-      postConditions: lpPostConditions,
-      postConditionMode: options.postConditionMode
-    });
-    if (txOptions.fee === void 0 || txOptions.fee === null) {
-      const fee = await fetchFeeEstimate({ transaction, ...options });
-      transaction.setFee(fee);
-    }
-    if (txOptions.nonce === void 0 || txOptions.nonce === null) {
-      const addressVersion = options.network.addressVersion.singleSig;
-      const address2 = (0, import_c32check5.c32address)(addressVersion, transaction.auth.spendingCondition.signer);
-      const txNonce = await fetchNonce({ address: address2, ...options });
-      transaction.setNonce(txNonce);
-    }
-    return transaction;
-  }
-  async function makeContractCall(txOptions) {
-    if ("senderKey" in txOptions) {
-      const publicKey = privateKeyToPublic(txOptions.senderKey);
-      const options = omit(txOptions, "senderKey");
-      const transaction = await makeUnsignedContractCall({ publicKey, ...options });
-      const privKey = txOptions.senderKey;
-      const signer = new TransactionSigner(transaction);
-      signer.signOrigin(privKey);
-      return transaction;
-    } else {
-      const options = omit(txOptions, "signerKeys");
-      const transaction = await makeUnsignedContractCall(options);
-      mutatingSignAppendMultiSig(transaction, txOptions.publicKeys.map(publicKeyToHex).slice(), txOptions.signerKeys.map(privateKeyToHex), txOptions.address);
-      return transaction;
-    }
-  }
-  async function sponsorTransaction(sponsorOptions) {
-    const defaultOptions = {
-      fee: 0,
-      sponsorNonce: 0,
-      sponsorAddressHashmode: AddressHashMode.P2PKH,
-      network: deriveNetworkFromTx(sponsorOptions.transaction)
-    };
-    const options = Object.assign(defaultOptions, sponsorOptions);
-    options.network = networkFrom(options.network);
-    options.client = Object.assign({}, clientFromNetwork(options.network), options.client);
-    const sponsorPubKey = privateKeyToPublic(options.sponsorPrivateKey);
-    if (sponsorOptions.fee == null) {
-      let txFee = 0;
-      switch (options.transaction.payload.payloadType) {
-        case PayloadType.TokenTransfer:
-        case PayloadType.SmartContract:
-        case PayloadType.VersionedSmartContract:
-        case PayloadType.ContractCall:
-          txFee = BigInt(await fetchFeeEstimate({ ...options }));
-          break;
-        default:
-          throw new Error(`Sponsored transactions not supported for transaction type ${PayloadType[options.transaction.payload.payloadType]}`);
-      }
-      options.transaction.setFee(txFee);
-      options.fee = txFee;
-    }
-    if (sponsorOptions.sponsorNonce == null) {
-      const addressVersion = options.network.addressVersion.singleSig;
-      const address2 = publicKeyToAddress(addressVersion, sponsorPubKey);
-      const sponsorNonce = await fetchNonce({ address: address2, ...options });
-      options.sponsorNonce = sponsorNonce;
-    }
-    const sponsorSpendingCondition = createSingleSigSpendingCondition(options.sponsorAddressHashmode, sponsorPubKey, options.sponsorNonce, options.fee);
-    options.transaction.setSponsor(sponsorSpendingCondition);
-    const privKey = options.sponsorPrivateKey;
-    const signer = TransactionSigner.createSponsorSigner(options.transaction, sponsorSpendingCondition);
-    signer.signSponsor(privKey);
-    return signer.transaction;
-  }
-  function mutatingSignAppendMultiSig(transaction, publicKeys, signerKeys, address2) {
-    if (isSingleSig(transaction.auth.spendingCondition)) {
-      throw new Error("Transaction is not a multi-sig transaction");
-    }
-    const signer = new TransactionSigner(transaction);
-    const pubs = address2 ? sortPublicKeysForAddress(publicKeys, transaction.auth.spendingCondition.signaturesRequired, transaction.auth.spendingCondition.hashMode, createAddress(address2).hash160) : publicKeys;
-    for (const publicKey of pubs) {
-      const signerKey = signerKeys.find((key) => privateKeyToPublic(key) === publicKey);
-      if (signerKey) {
-        signer.signOrigin(signerKey);
-      } else {
-        signer.appendOrigin(publicKey);
-      }
-    }
-  }
-  function sortPublicKeysForAddress(publicKeys, numSigs, hashMode, hash2) {
-    const hashUnsorted = addressFromPublicKeys(0, hashMode, numSigs, publicKeys.map(createStacksPublicKey)).hash160;
-    if (hashUnsorted === hash2)
-      return publicKeys;
-    const publicKeysSorted = publicKeys.slice().sort();
-    const hashSorted = addressFromPublicKeys(0, hashMode, numSigs, publicKeysSorted.map(createStacksPublicKey)).hash160;
-    if (hashSorted === hash2)
-      return publicKeysSorted;
-    throw new Error("Failed to find matching multi-sig address given public-keys.");
-  }
-
-  // node_modules/@stacks/transactions/dist/esm/structuredDataSignature.js
-  var STRUCTURED_DATA_PREFIX = new Uint8Array([83, 73, 80, 48, 49, 56]);
-  function hashStructuredData(structuredData) {
-    return bytesToHex(sha256(serializeCVBytes(structuredData)));
-  }
-  function hashStructuredDataBytes(structuredData) {
-    return sha256(serializeCVBytes(structuredData));
-  }
-  var hash256BytesLength = 32;
-  function isDomain(value) {
-    if (value.type !== ClarityType.Tuple)
-      return false;
-    if (!["name", "version", "chain-id"].every((key) => key in value.value))
-      return false;
-    if (!["name", "version"].every((key) => value.value[key].type === ClarityType.StringASCII))
-      return false;
-    if (value.value["chain-id"].type !== ClarityType.UInt)
-      return false;
-    return true;
-  }
-  function encodeStructuredData(opts) {
-    const bytes2 = encodeStructuredDataBytes(opts);
-    return bytesToHex(bytes2);
-  }
-  function encodeStructuredDataBytes({ message, domain }) {
-    const structuredDataHash = hashStructuredDataBytes(message);
-    if (!isDomain(domain)) {
-      throw new Error("domain parameter must be a valid domain of type TupleCV with keys 'name', 'version', 'chain-id' with respective types StringASCII, StringASCII, UInt");
-    }
-    const domainHash = hashStructuredDataBytes(domain);
-    return concatBytes(STRUCTURED_DATA_PREFIX, domainHash, structuredDataHash);
-  }
-  function decodeStructuredDataSignature(signature) {
-    const bytes2 = decodeStructuredDataSignatureBytes(signature);
-    return {
-      domainHash: bytesToHex(bytes2.domainHash),
-      messageHash: bytesToHex(bytes2.messageHash)
-    };
-  }
-  function decodeStructuredDataSignatureBytes(signature) {
-    const encodedMessageBytes = typeof signature === "string" ? hexToBytes(signature) : signature;
-    const domainHash = encodedMessageBytes.slice(STRUCTURED_DATA_PREFIX.length, STRUCTURED_DATA_PREFIX.length + hash256BytesLength);
-    const messageHash = encodedMessageBytes.slice(STRUCTURED_DATA_PREFIX.length + hash256BytesLength);
-    return {
-      domainHash,
-      messageHash
-    };
-  }
-  function signStructuredData({ message, domain, privateKey }) {
-    const structuredDataHash = bytesToHex(sha256(encodeStructuredDataBytes({ message, domain })));
-    return signMessageHashRsv({
-      messageHash: structuredDataHash,
-      privateKey
-    });
   }
 
   // node_modules/@stacks/transactions/dist/esm/namespaces/address.js
@@ -56244,11 +54439,11 @@ ${bugDetails}`;
     parse: () => parse2,
     stringify: () => stringify
   });
-  var import_c32check6 = __toESM(require_lib());
+  var import_c32check5 = __toESM(require_lib());
   var C32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
   function parse2(address2) {
     const [addr, contractName] = address2.split(".");
-    const parsed = (0, import_c32check6.c32addressDecode)(addr);
+    const parsed = (0, import_c32check5.c32addressDecode)(addr);
     return {
       version: parsed[0],
       versionChar: C32[parsed[0]],
@@ -56258,7 +54453,7 @@ ${bugDetails}`;
   }
   function stringify(address2) {
     const version4 = "version" in address2 ? address2.version : C32.indexOf(address2.versionChar.toUpperCase());
-    const addr = (0, import_c32check6.c32address)(version4, address2.hash160);
+    const addr = (0, import_c32check5.c32address)(version4, address2.hash160);
     if (address2.contractName)
       return `${addr}.${address2.contractName}`;
     return addr;
@@ -56393,133 +54588,22 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var serialize = serializeCV;
   var deserialize = deserializeCV;
 
-  // node_modules/@stacks/transactions/dist/esm/pc.js
-  var pc_exports = {};
-  __export(pc_exports, {
-    fromHex: () => fromHex,
-    origin: () => origin,
-    principal: () => principal2
-  });
-  function principal2(principal3) {
-    const [address2, name2] = principal3.split(".");
-    if (!address2 || !validateStacksAddress(address2) || typeof name2 === "string" && !name2) {
-      throw new Error(`Invalid contract id: ${principal3}`);
-    }
-    return new PartialPcWithPrincipal(principal3);
-  }
-  function origin() {
-    return new PartialPcWithPrincipal("origin");
-  }
-  var PartialPcWithPrincipal = class {
-    constructor(address2) {
-      this.address = address2;
-    }
-    willSendEq(amount) {
-      return new PartialPcFtWithCode(this.address, amount, "eq");
-    }
-    willSendLte(amount) {
-      return new PartialPcFtWithCode(this.address, amount, "lte");
-    }
-    willSendLt(amount) {
-      return new PartialPcFtWithCode(this.address, amount, "lt");
-    }
-    willSendGte(amount) {
-      return new PartialPcFtWithCode(this.address, amount, "gte");
-    }
-    willSendGt(amount) {
-      return new PartialPcFtWithCode(this.address, amount, "gt");
-    }
-    willSendAsset() {
-      return new PartialPcNftWithCode(this.address, "sent");
-    }
-    willNotSendAsset() {
-      return new PartialPcNftWithCode(this.address, "not-sent");
-    }
-  };
-  var PartialPcFtWithCode = class {
-    constructor(address2, amount, code2) {
-      this.address = address2;
-      this.amount = amount;
-      this.code = code2;
-    }
-    ustx() {
-      return {
-        type: "stx-postcondition",
-        address: this.address,
-        condition: this.code,
-        amount: intToBigInt(this.amount).toString()
-      };
-    }
-    ft(contractId, tokenName) {
-      const [address2, name2] = contractId.split(".");
-      if (!address2 || !validateStacksAddress(address2) || typeof name2 === "string" && !name2) {
-        throw new Error(`Invalid contract id: ${contractId}`);
-      }
-      return {
-        type: "ft-postcondition",
-        address: this.address,
-        condition: this.code,
-        amount: intToBigInt(this.amount).toString(),
-        asset: `${contractId}::${tokenName}`
-      };
-    }
-  };
-  var PartialPcNftWithCode = class {
-    constructor(address2, code2) {
-      this.address = address2;
-      this.code = code2;
-    }
-    nft(...args) {
-      const { contractAddress, contractName, tokenName, assetId } = getNftArgs(...args);
-      if (!validateStacksAddress(contractAddress)) {
-        throw new Error(`Invalid contract id: ${contractAddress}`);
-      }
-      return {
-        type: "nft-postcondition",
-        address: this.address,
-        condition: this.code,
-        asset: `${contractAddress}.${contractName}::${tokenName}`,
-        assetId
-      };
-    }
-  };
-  function parseNft(nftAssetName) {
-    const [principal3, tokenName] = nftAssetName.split("::");
-    if (!principal3 || !tokenName)
-      throw new Error(`Invalid fully-qualified nft asset name: ${nftAssetName}`);
-    const [address2, name2] = parseContractId(principal3);
-    return { contractAddress: address2, contractName: name2, tokenName };
-  }
-  function fromHex(hex) {
-    const wire = deserializePostConditionWire(hex);
-    return wireToPostCondition(wire);
-  }
-  function getNftArgs(...args) {
-    if (args.length === 2) {
-      const [assetName, assetId2] = args;
-      return { ...parseNft(assetName), assetId: assetId2 };
-    }
-    const [contractId, tokenName, assetId] = args;
-    const [address2, name2] = parseContractId(contractId);
-    return { contractAddress: address2, contractName: name2, tokenName, assetId };
-  }
-
   // node_modules/@stacks/network-v6/dist/esm/fetch.js
   var import_polyfill = __toESM(require_browser_polyfill());
-  var defaultFetchOpts2 = {
+  var defaultFetchOpts = {
     referrerPolicy: "origin",
     headers: {
       "x-hiro-product": "stacksjs"
     }
   };
-  async function fetchWrapper2(input, init) {
+  async function fetchWrapper(input, init) {
     const fetchOpts = {};
-    Object.assign(fetchOpts, defaultFetchOpts2, init);
+    Object.assign(fetchOpts, defaultFetchOpts, init);
     const fetchResult = await fetch(input, fetchOpts);
     return fetchResult;
   }
-  function argsForCreateFetchFn2(args) {
-    let fetchLib = fetchWrapper2;
+  function argsForCreateFetchFn(args) {
+    let fetchLib = fetchWrapper;
     let middlewares = [];
     if (args.length > 0 && typeof args[0] === "function") {
       fetchLib = args.shift();
@@ -56530,7 +54614,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     return { fetchLib, middlewares };
   }
   function createFetchFn2(...args) {
-    const { fetchLib, middlewares } = argsForCreateFetchFn2(args);
+    const { fetchLib, middlewares } = argsForCreateFetchFn(args);
     const fetchFn = async (url, init) => {
       var _a7;
       let fetchParams = { url, init: init != null ? init : {} };
@@ -57010,11 +55094,11 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   })(TxRejectedReason2 || (TxRejectedReason2 = {}));
 
   // node_modules/@stacks/transactions-v6/dist/esm/utils.js
-  var import_c32check8 = __toESM(require_lib());
+  var import_c32check7 = __toESM(require_lib());
   var import_lodash2 = __toESM(require_lodash());
 
   // node_modules/@stacks/transactions-v6/dist/esm/postcondition-types.js
-  var import_c32check7 = __toESM(require_lib());
+  var import_c32check6 = __toESM(require_lib());
   function createLPString2(content, lengthPrefixBytes, maxLengthBytes) {
     const prefixLength = lengthPrefixBytes || 1;
     const maxLength = maxLengthBytes || MAX_STRING_LENGTH_BYTES2;
@@ -57067,22 +55151,22 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   };
 
   // node_modules/@stacks/transactions-v6/dist/esm/types.js
-  function serializeAddress2(address2) {
+  function serializeAddress(address2) {
     const bytesArray = [];
     bytesArray.push(hexToBytes3(intToHex2(address2.version, 1)));
     bytesArray.push(hexToBytes3(address2.hash160));
     return concatArray2(bytesArray);
   }
-  function serializePrincipal2(principal3) {
+  function serializePrincipal(principal2) {
     const bytesArray = [];
-    bytesArray.push(principal3.prefix);
-    bytesArray.push(serializeAddress2(principal3.address));
-    if (principal3.prefix === PostConditionPrincipalID.Contract) {
-      bytesArray.push(serializeLPString2(principal3.contractName));
+    bytesArray.push(principal2.prefix);
+    bytesArray.push(serializeAddress(principal2.address));
+    if (principal2.prefix === PostConditionPrincipalID.Contract) {
+      bytesArray.push(serializeLPString(principal2.contractName));
     }
     return concatArray2(bytesArray);
   }
-  function serializeLPString2(lps) {
+  function serializeLPString(lps) {
     const bytesArray = [];
     const contentBytes = utf8ToBytes3(lps.content);
     const length2 = contentBytes.byteLength;
@@ -57092,15 +55176,15 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   }
   function serializeAssetInfo(info) {
     const bytesArray = [];
-    bytesArray.push(serializeAddress2(info.address));
-    bytesArray.push(serializeLPString2(info.contractName));
-    bytesArray.push(serializeLPString2(info.assetName));
+    bytesArray.push(serializeAddress(info.address));
+    bytesArray.push(serializeLPString(info.contractName));
+    bytesArray.push(serializeLPString(info.assetName));
     return concatArray2(bytesArray);
   }
   function serializePostCondition(postCondition) {
     const bytesArray = [];
     bytesArray.push(postCondition.conditionType);
-    bytesArray.push(serializePrincipal2(postCondition.principal));
+    bytesArray.push(serializePrincipal(postCondition.principal));
     if (postCondition.conditionType === PostConditionType2.Fungible || postCondition.conditionType === PostConditionType2.NonFungible) {
       bytesArray.push(serializeAssetInfo(postCondition.assetInfo));
     }
@@ -57144,10 +55228,10 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     return bytesWithTypeID2(cv.type, bytes2);
   }
   function serializeStandardPrincipalCV2(cv) {
-    return bytesWithTypeID2(cv.type, serializeAddress2(cv.address));
+    return bytesWithTypeID2(cv.type, serializeAddress(cv.address));
   }
   function serializeContractPrincipalCV2(cv) {
-    return bytesWithTypeID2(cv.type, concatBytes3(serializeAddress2(cv.address), serializeLPString2(cv.contractName)));
+    return bytesWithTypeID2(cv.type, concatBytes3(serializeAddress(cv.address), serializeLPString(cv.contractName)));
   }
   function serializeResponseCV2(cv) {
     return bytesWithTypeID2(cv.type, serializeCV2(cv.value));
@@ -57171,7 +55255,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     const lexicographicOrder = Object.keys(cv.data).sort((a5, b8) => a5.localeCompare(b8));
     for (const key of lexicographicOrder) {
       const nameWithLength = createLPString2(key);
-      bytesArray.push(serializeLPString2(nameWithLength));
+      bytesArray.push(serializeLPString(nameWithLength));
       const serializedValue = serializeCV2(cv.data[key]);
       bytesArray.push(serializedValue);
     }
@@ -60490,12 +58574,6 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   function S7() {
     return getProviderFromId(getSelectedProviderId()) || window.StacksProvider || window.BlockstackProvider;
   }
-  function dt5() {
-    return !!S7();
-  }
-  function je5(e10) {
-    return e10 ? typeof e10 == "string" ? StacksNetwork.fromName(e10) : "version" in e10 ? e10 : "url" in e10 ? new StacksMainnet({ url: e10.url }) : e10.transactionVersion === TransactionVersion.Mainnet ? new StacksMainnet({ url: e10.client.baseUrl }) : new StacksTestnet({ url: e10.client.baseUrl }) : new StacksTestnet();
-  }
   function k7(e10, t5) {
     var s8, o13;
     return e10 instanceof t5 || ((o13 = (s8 = e10 == null ? void 0 : e10.constructor) == null ? void 0 : s8.name) == null ? void 0 : o13.toLowerCase()) === t5.name;
@@ -60544,68 +58622,12 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   function Oe4(e10) {
     return M6(p7({}, e10), { onFinish: void 0, onCancel: void 0 });
   }
-  function ut5(e10) {
-  }
-  var pt4 = async (e10) => {
-  };
-  var Mt5 = "stx_updateProfile";
   var F3 = (e10) => e10;
   var q2 = (e10) => e10.profile;
-  function lt5(e10, t5 = S7()) {
-    f12(Mt5, F3, q2)(e10, t5);
-  }
-  function gt5(e10) {
-  }
-  var St6 = async (e10) => {
-  };
-  var At4 = "stx_signMessage";
   var Z4 = (e10) => e10;
   var X4 = (e10) => e10;
-  function ft4(e10, t5 = S7()) {
-    f12(At4, Z4, X4)(e10, t5);
-  }
-  async function It5(e10) {
-  }
-  var yt4 = "stx_signStructuredMessage";
   var H4 = (e10) => ({ message: N14(e10.message), domain: N14(e10.domain) });
   var V5 = (e10) => e10;
-  function xt5(e10, t5 = S7()) {
-    if (e10.domain.type !== ClarityType2.Tuple) throw new Error("Domain must be a tuple");
-    f12(yt4, H4, V5)(e10, t5);
-  }
-  var Re4 = (e10) => {
-    let t5 = e10;
-    if (!t5) {
-      let s8 = new v7(["store_write"], document.location.href);
-      t5 = new T6({ appConfig: s8 });
-    }
-    return t5;
-  };
-  function Dt4(e10) {
-    try {
-      return Re4(e10).loadUserData().appPrivateKey;
-    } catch (t5) {
-      return false;
-    }
-  }
-  var Tt5 = (e10) => {
-  };
-  function Lt5(e10) {
-    var u5;
-    let { stxAddress: t5, userSession: s8, network: o13 } = e10;
-    if (t5) return t5;
-    if (!s8 || !o13) return;
-    let n13 = (u5 = s8 == null ? void 0 : s8.loadUserData().profile) == null ? void 0 : u5.stxAddress, r10 = { [ChainId.Mainnet]: "mainnet", [ChainId.Testnet]: "testnet" }, i10 = je5(o13);
-    return n13 == null ? void 0 : n13[r10[i10.chainId]];
-  }
-  var Pt5 = async (e10) => {
-  };
-  var wt5 = async (e10) => {
-  };
-  var ht5 = async (e10) => {
-  };
-  var jt4 = async (e10) => {
-  };
   var Ot5 = "stx_callContract";
   var K4 = (e10) => {
     var s8;
@@ -60616,24 +58638,16 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   function Et6(e10, t5 = S7()) {
     f12(Ot5, K4, J4)(e10, t5);
   }
-  var kt5 = "stx_deployContract";
   var $5 = (e10) => M6(p7({}, e10), { name: e10.contractName, clarityCode: e10.codeBody, network: b7(e10.network), postConditionMode: _e6(e10.postConditionMode), postConditions: ve4(e10.postConditions), address: e10.stxAddress });
   var ee4 = (e10) => ({ txId: e10.txid, txRaw: e10.transaction, stacksTransaction: deserializeTransaction(e10.transaction) });
-  function bt4(e10, t5 = S7()) {
-    f12(kt5, $5, ee4)(e10, t5);
-  }
   var Rt5 = "stx_transferStx";
   var te4 = (e10) => M6(p7({}, e10), { amount: e10.amount.toString(), network: b7(e10.network), address: e10.stxAddress });
   var se4 = (e10) => ({ txId: e10.txid, txRaw: e10.transaction, stacksTransaction: deserializeTransaction(e10.transaction) });
   function vt5(e10, t5 = S7()) {
     f12(Rt5, te4, se4)(e10, t5);
   }
-  var _t4 = "stx_signTransaction";
   var oe2 = (e10) => M6(p7({}, e10), { transaction: e10.txHex });
   var ne4 = (e10) => M6(p7({}, e10), { stacksTransaction: deserializeTransaction(e10.transaction) });
-  function Ut4(e10, t5 = S7()) {
-    f12(_t4, oe2, ne4)(e10, t5);
-  }
   function ve4(e10) {
     if (typeof e10 != "undefined") return e10.map((t5) => typeof t5 == "string" ? t5 : typeof t5.type == "string" ? M6(p7({}, t5), { amount: "amount" in t5 ? t5.amount.toString() : void 0 }) : bytesToHex(serializePostCondition(t5)));
   }
@@ -60672,7 +58686,6 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var yo4 = L6("stx_updateProfile", F3, q2);
   var xo4 = L6("stx_signMessage", Z4, X4);
   var No4 = L6("stx_signStructuredMessage", H4, V5);
-  var Co4 = zt5;
   var re3 = "@stacks/connect";
   var Ft3 = { addresses: { stx: [], btc: [] }, version: "0.0.1" };
   var Ye5 = (e10) => [...new Map(e10.map((s8) => [s8.address, s8])).values()].map((o13) => {
@@ -60687,13 +58700,6 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       console.warn("Failed to store data in localStorage:", t5);
     }
   }
-  function Be5() {
-    try {
-      localStorage.removeItem(re3);
-    } catch (e10) {
-      console.warn("Failed to clear localStorage:", e10);
-    }
-  }
   function ae4() {
     try {
       let e10 = localStorage.getItem(re3);
@@ -60701,14 +58707,6 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     } catch (e10) {
       return console.warn("Failed to get data from localStorage:", e10), null;
     }
-  }
-  function qt4() {
-    let e10 = getProvider();
-    e10 && "disconnect" in e10 && e10.disconnect(), clearSelectedProviderId(), Be5(), new T6().store.deleteSessionData();
-  }
-  function Zt5() {
-    let e10 = ae4();
-    return (e10 == null ? void 0 : e10.addresses.stx.length) > 0 || (e10 == null ? void 0 : e10.addresses.btc.length) > 0;
   }
   var ce4 = {};
   tt3(ce4, { Chains: () => y8, Default: () => ie4, Networks: () => j6 });
@@ -60863,10 +58861,6 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   function qe5(e10, t5) {
     return e10 ? t5.filter((s8) => e10.includes(s8.id)) : t5;
   }
-  function is2(e10) {
-    let t5 = e10 && "network" in e10 ? { network: e10.network } : void 0;
-    return w6(M6(p7({}, e10), { forceWalletSelect: true }), "getAddresses", t5);
-  }
   function f12(e10, t5, s8) {
     return (o13, n13) => {
       if (!n13) throw new Error("[Connect] No installed Stacks wallet found");
@@ -60965,12 +58959,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
       return o13 && !n13 ? -1 : !o13 && n13 ? 1 : 0;
     });
   }
-  var en4 = "https://app.blockstack.org";
   typeof window != "undefined" && (window.__CONNECT_VERSION__ = "__VERSION__");
-  var tn3 = () => {
-    let e10 = navigator.userAgent;
-    return /android/i.test(e10) || /iPad|iPhone|iPod/.test(e10) ? true : /windows phone/i.test(e10);
-  };
   var ze4 = async (e10, t5) => {
     var i10, d7, u5, c12, a5, A6;
     let { onFinish: s8, onCancel: o13, userSession: n13 } = e10, r10 = Ke6(n13);
@@ -61076,7 +59065,6 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     }
   };
   var Ke6 = (e10) => e10 || new T6();
-  var sn4 = async (e10) => (e10 = Ke6(e10), e10.isUserSignedIn() ? Promise.resolve(e10.loadUserData()) : Promise.resolve(null));
   function Ve5(e10) {
     let t5 = ["bc1p", "tb1p", "bcrt1p"], s8 = [62, 62, 64], o13 = t5.findIndex((n13) => e10.startsWith(n13));
     return o13 === -1 ? false : e10.length === s8[o13];
@@ -61084,28 +59072,13 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var Ss = ((o13) => (o13.ContractCall = "contract_call", o13.ContractDeploy = "smart_contract", o13.STXTransfer = "token_transfer", o13))(Ss || {});
   var As2 = ((r10) => (r10.BUFFER = "buffer", r10.UINT = "uint", r10.INT = "int", r10.PRINCIPAL = "principal", r10.BOOL = "bool", r10))(As2 || {});
   var Ae4 = ((r10) => (r10[r10.DEFAULT = 0] = "DEFAULT", r10[r10.ALL = 1] = "ALL", r10[r10.NONE = 2] = "NONE", r10[r10.SINGLE = 3] = "SINGLE", r10[r10.ANYONECANPAY = 128] = "ANYONECANPAY", r10))(Ae4 || {});
-  function Is(e10) {
-  }
-  var ys3 = async (e10) => {
-  };
-  var xs3 = "signPsbt";
-  var Ns2 = (e10) => {
-    var t5;
-    return { psbt: base64.encode(hexToBytes(e10.hex)), signInputs: typeof e10.signAtIndex == "number" ? [e10.signAtIndex] : e10.signAtIndex, allowedSighash: (t5 = e10.allowedSighash) == null ? void 0 : t5.map((s8) => Ae4[s8]) };
-  };
-  var Cs3 = (e10) => ({ hex: bytesToHex(base64.decode(e10.psbt)) });
-  function Ds2(e10, t5 = S7()) {
-    f12(xs3, Ns2, Cs3)(e10, t5);
-  }
 
   // client/src/app.js
-  var { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = dist_exports;
-  var { uintCV: uintCV2, stringAsciiCV: stringAsciiCV2, noneCV: noneCV2 } = esm_exports;
   var NETWORK = STACKS_MAINNET;
   var catalog = [];
   var userData;
-  var appConfig = new AppConfig(["store_write", "publish_data"]);
-  var userSession = new UserSession({ appConfig });
+  var appConfig = new v7(["store_write", "publish_data"]);
+  var userSession = new T6({ appConfig });
   document.addEventListener("DOMContentLoaded", () => {
     console.log("Conduit App Initialized (Nakamoto Ready)");
     initNavbar();
@@ -61137,9 +59110,14 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
           userSession.signUserOut();
           window.location.reload();
         } else {
-          showConnect({
+          if (typeof zt5 !== "function") {
+            console.error("showConnect is not a function. StacksConnect library might be misconfigured.");
+            alert("Wallet integration error. Use the playground or review documentation.");
+            return;
+          }
+          zt5({
             appDetails: {
-              name: "Conduit",
+              name: "Conduit Market",
               icon: window.location.origin + "/favicon.ico"
             },
             redirectTo: "/",
@@ -61193,8 +59171,12 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
     }
   }
   async function loadCatalog() {
+    var _a7;
     try {
       const res = await fetch("/api/v1/discover");
+      if (!res.ok || ((_a7 = res.headers.get("content-type")) == null ? void 0 : _a7.includes("text/html"))) {
+        throw new Error(`API returned ${res.status} or HTML instead of JSON. Ensure the server is running.`);
+      }
       const data = await res.json();
       catalog = data.apis;
       renderCatalog(catalog);
@@ -61330,7 +59312,7 @@ ${highlightJSON(data)}</code></pre>`;
           const amount = parseInt(data.payment.amount);
           const recipient = data.payment.payTo;
           const memo = data.payment.description || "API Payment";
-          openSTXTransfer({
+          vt5({
             recipient,
             amount,
             memo,
@@ -61471,12 +59453,12 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
         const [contractAddress, contractName] = contractAddr.includes(".") ? contractAddr.split(".") : [contractAddr, "api-registry"];
         try {
           const functionArgs = [
-            stringAsciiCV2(name2),
-            stringAsciiCV2(desc),
-            stringAsciiCV2(endpoint),
-            uintCV2(Math.floor(price * 1e6)),
+            stringAsciiCV(name2),
+            stringAsciiCV(desc),
+            stringAsciiCV(endpoint),
+            uintCV(Math.floor(price * 1e6)),
             // to microSTX
-            stringAsciiCV2(category)
+            stringAsciiCV(category)
           ];
           const options = {
             contractAddress,
@@ -61504,7 +59486,7 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
             function: options.functionName,
             args: functionArgs
           });
-          await openContractCall(options);
+          await Et6(options);
         } catch (e10) {
           console.error("Contract Call Error:", e10);
           status.className = "reg-status error";
@@ -61552,7 +59534,7 @@ ${highlightJSON(trimObj(data, 3))}</code></pre>`;
               status.textContent = "Transaction cancelled.";
             }
           };
-          await openContractCall(options);
+          await Et6(options);
         } catch (e10) {
           console.error("Check-in Error:", e10);
           btn.disabled = false;

@@ -1,9 +1,6 @@
-import * as StacksConnect from '@stacks/connect';
+import { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } from '@stacks/connect';
 import { STACKS_MAINNET } from '@stacks/network';
-import * as StacksTransactions from '@stacks/transactions';
-
-const { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = StacksConnect;
-const { uintCV, stringAsciiCV, noneCV } = StacksTransactions;
+import { uintCV, stringAsciiCV, noneCV } from '@stacks/transactions';
 
 const NETWORK = STACKS_MAINNET;
 
@@ -57,9 +54,15 @@ function initWallet() {
                 window.location.reload();
             } else {
                 // Sign in logic
+                if (typeof showConnect !== 'function') {
+                    console.error('showConnect is not a function. StacksConnect library might be misconfigured.');
+                    alert("Wallet integration error. Use the playground or review documentation.");
+                    return;
+                }
+
                 showConnect({
                     appDetails: {
-                        name: 'Conduit',
+                        name: 'Conduit Market',
                         icon: window.location.origin + '/favicon.ico',
                     },
                     redirectTo: '/',
@@ -116,6 +119,9 @@ function initNavbar() {
 async function loadCatalog() {
     try {
         const res = await fetch('/api/v1/discover');
+        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+            throw new Error(`API returned ${res.status} or HTML instead of JSON. Ensure the server is running.`);
+        }
         const data = await res.json();
         catalog = data.apis;
         renderCatalog(catalog);
