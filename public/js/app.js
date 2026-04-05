@@ -1,9 +1,12 @@
 (() => {
   // client/src/app.js
-  var { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = window.StacksConnect || {};
-  var { STACKS_MAINNET } = window.StacksNetwork || {};
-  var { uintCV, stringAsciiCV, noneCV } = window.StacksTransactions || {};
-  var NETWORK = STACKS_MAINNET;
+  var StacksConnect = window.StacksConnect || window.Connect || {};
+  var StacksNetwork = window.StacksNetwork || {};
+  var StacksTransactions = window.StacksTransactions || {};
+  var { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = StacksConnect;
+  var { STACKS_MAINNET } = StacksNetwork;
+  var { uintCV, stringAsciiCV, noneCV } = StacksTransactions;
+  var NETWORK = STACKS_MAINNET || {};
   var catalog = [];
   var userData;
   var appConfig = new AppConfig(["store_write", "publish_data"]);

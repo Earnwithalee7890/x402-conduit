@@ -1,9 +1,14 @@
-// Fail-safe global access for Stacks Connect
-const { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = window.StacksConnect || {};
-const { STACKS_MAINNET } = window.StacksNetwork || {};
-const { uintCV, stringAsciiCV, noneCV } = window.StacksTransactions || {};
+// Conduit Marketplace — Core Logic
+// Fail-safe detection for Stacks Libraries (supports both Bundler and CDN)
+const StacksConnect = window.StacksConnect || window.Connect || {};
+const StacksNetwork = window.StacksNetwork || {};
+const StacksTransactions = window.StacksTransactions || {};
 
-const NETWORK = STACKS_MAINNET;
+const { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = StacksConnect;
+const { STACKS_MAINNET } = StacksNetwork;
+const { uintCV, stringAsciiCV, noneCV } = StacksTransactions;
+
+const NETWORK = STACKS_MAINNET || {};
 
 /**
  * Conduit — Frontend
