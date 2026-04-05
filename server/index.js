@@ -505,8 +505,8 @@ app.get('/api/v1/chain-analytics',
 );
 
 
-// ─── Fallback ────────────────────────────────────────────────────────────────
-app.get(/(.*)/, (req, res) => {
+// ─── Catch-all for SPA (Except API routes) ──────────────────────────────────
+app.get(/^(?!\/api).*/, (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
