@@ -1,6 +1,7 @@
-import { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } from '@stacks/connect';
-import { STACKS_MAINNET } from '@stacks/network';
-import { uintCV, stringAsciiCV, noneCV } from '@stacks/transactions';
+// Fail-safe global access for Stacks Connect
+const { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } = window.StacksConnect || {};
+const { STACKS_MAINNET } = window.StacksNetwork || {};
+const { uintCV, stringAsciiCV, noneCV } = window.StacksTransactions || {};
 
 const NETWORK = STACKS_MAINNET;
 
