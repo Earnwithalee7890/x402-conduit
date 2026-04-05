@@ -16,6 +16,7 @@ const appConfig = new AppConfig(['store_write', 'publish_data']);
 const userSession = new UserSession({ appConfig });
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Conduit App Initialized (Nakamoto Ready)');
     initNavbar();
     initWallet(); // Added wallet init
     loadCatalog();

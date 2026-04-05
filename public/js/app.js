@@ -58650,6 +58650,7 @@ ${" ".repeat(space * (depth - (end ? 1 : 0)))}`;
   var appConfig = new v7(["store_write", "publish_data"]);
   var userSession = new T6({ appConfig });
   document.addEventListener("DOMContentLoaded", () => {
+    console.log("Conduit App Initialized (Nakamoto Ready)");
     initNavbar();
     initWallet();
     loadCatalog();
