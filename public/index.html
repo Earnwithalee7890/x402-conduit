@@ -15,34 +15,6 @@
     rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/provider-form.css">
-  
-  <!-- Standard Stacks Library (Bundled Locally) -->
-  <script src="/js/wallet.js"></script>
-  <script>
-    // Universal Wallet Connector
-    window.connectWallet = function() {
-      const connect = window.StacksConnect || window.Connect || {};
-      if (!connect.showConnect) {
-        alert("Wallet library failed to load. Check your internet connection.");
-        return;
-      }
-      
-      const appConfig = new connect.AppConfig(['store_write', 'publish_data']);
-      const userSession = new connect.UserSession({ appConfig });
-
-      connect.showConnect({
-        appDetails: {
-          name: 'Conduit Market',
-          icon: window.location.origin + '/favicon.ico',
-        },
-        redirectTo: '/',
-        userSession: userSession,
-        onFinish: () => {
-          window.location.reload();
-        },
-      });
-    };
-  </script>
 </head>
 
 <body>

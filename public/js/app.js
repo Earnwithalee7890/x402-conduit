@@ -1,41 +1,55 @@
 (() => {
   // client/src/app.js
-  var NETWORK = {
-    version: 1,
-    // Mainnet
-    chainId: 1,
-    coreApiUrl: "https://api.mainnet.hiro.so"
-  };
-  var getStacksConnect = () => {
-    return window.StacksConnect || window.Connect || {};
-  };
-  function getUserSession() {
-    const connect = getStacksConnect();
-    const appConfig = new connect.AppConfig(["store_write", "publish_data"]);
-    return new connect.UserSession({ appConfig });
-  }
+  var userAddress = null;
   var catalog = [];
   document.addEventListener("DOMContentLoaded", () => {
     console.log("Conduit App Initialized (Nakamoto Ready)");
     initAuth();
     loadCatalog();
     loadStats();
-    initCheckIn();
     initFilters();
     initPlayground();
+    window.connectWallet = connectWallet;
   });
-  function initAuth() {
-    const userSession = getUserSession();
-    if (userSession.isUserSignedIn()) {
-      const userData = userSession.loadUserData();
-      showConnected(userData);
+  async function initAuth() {
+    const savedAddress = localStorage.getItem("conduit_user_address");
+    if (savedAddress) {
+      userAddress = savedAddress;
+      showConnected({ address: savedAddress });
     }
   }
-  function showConnected(userData) {
+  async function connectWallet() {
+    var _a;
+    const provider = window.LeatherProvider || window.StacksProvider;
+    if (typeof provider === "undefined") {
+      alert("Please install the Leather/Hiro wallet extension to use Conduit.");
+      window.open("https://leather.io/install-extension", "_blank");
+      return;
+    }
+    try {
+      const btn = document.getElementById("connectWalletBtn");
+      if (btn) btn.disabled = true;
+      const response = await provider.request("getAddresses");
+      const addresses = ((_a = response.result) == null ? void 0 : _a.addresses) || [];
+      const stxAddress = addresses.find((a) => a.symbol === "STX" || a.type === "stacks");
+      if (stxAddress) {
+        userAddress = stxAddress.address;
+        localStorage.setItem("conduit_user_address", userAddress);
+        showConnected({ address: userAddress });
+        console.log("Connected to Conduit:", userAddress);
+      }
+    } catch (e) {
+      console.error("Connection failed:", e);
+    } finally {
+      const btn = document.getElementById("connectWalletBtn");
+      if (btn) btn.disabled = false;
+    }
+  }
+  function showConnected(data) {
     var _a;
     const btnText = document.getElementById("walletBtnText");
-    const addr = userData.profile.stxAddress.mainnet;
-    if (btnText) {
+    const addr = data.address;
+    if (btnText && addr) {
       btnText.textContent = addr.substring(0, 5) + "..." + addr.substring(addr.length - 4);
     }
     (_a = document.getElementById("connectWalletBtn")) == null ? void 0 : _a.classList.add("connected");
@@ -51,10 +65,9 @@
     { id: "chain-analytics", name: "Chain Analytics", category: "DeFi", icon: "\u26D3\uFE0F", pricing: { amount: "0.02" }, method: "GET", latency: "~350ms", uptime: "99.7%", description: "Stacks blockchain intelligence and metrics." }
   ];
   async function loadCatalog() {
-    var _a;
     try {
       const res = await fetch("/api/v1/discover");
-      if (res.ok && ((_a = res.headers.get("content-type")) == null ? void 0 : _a.includes("application/json"))) {
+      if (res.ok) {
         const data = await res.json();
         catalog = data.apis || API_REGISTRY_FALLBACK;
       } else {
@@ -69,7 +82,7 @@
     const grid = document.getElementById("apiGrid");
     if (!grid) return;
     grid.innerHTML = apis.map((api) => `
-    <div class="api-card" data-category="${api.category}" data-endpoint="${api.endpoint || api.id}">
+    <div class="api-card" data-category="${api.category}">
       <div class="api-card-top">
         <div class="api-card-icon">${api.icon}</div>
         <span class="api-card-badge">${api.category}</span>
@@ -99,66 +112,40 @@
         if (apiCount && data.stats) apiCount.textContent = data.stats.totalAPIs;
       }
     } catch (e) {
-      console.warn("Stats fetch failed");
     }
   }
   window.signalTransition = async function() {
-    const connect = getStacksConnect();
-    const userSession = getUserSession();
-    if (!userSession.isUserSignedIn()) {
+    var _a, _b;
+    if (!userAddress) {
       alert("Please connect your wallet first.");
-      if (window.connectWallet) {
-        window.connectWallet();
-      }
-      return;
+      return connectWallet();
     }
+    const provider = window.LeatherProvider || window.StacksProvider;
     const btn = document.getElementById("btnCheckIn");
     const status = document.getElementById("checkInStatus");
-    if (!btn) return;
     btn.disabled = true;
     btn.innerHTML = "<span>Signalling...</span>";
-    status.textContent = "Awaiting signature...";
-    const contractAddr = "SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT";
+    status.textContent = "Awaiting signature from Leather...";
     try {
-      if (!connect.openContractCall) {
-        throw new Error("Stacks Connect library is missing openContractCall function.");
-      }
-      await connect.openContractCall({
-        contractAddress: contractAddr,
-        contractName: "fee-free-txn-v2",
+      const txResponse = await provider.request("stx_callContract", {
+        contract: "SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT.fee-free-txn-v2",
         functionName: "signal-participation",
         functionArgs: [],
-        network: NETWORK,
-        appDetails: {
-          name: "Conduit Market",
-          icon: window.location.origin + "/favicon.ico"
-        },
-        userSession,
-        onFinish: (data) => {
-          status.className = "ci-status success";
-          status.textContent = "Success! Transition Signal Sent.";
-          btn.innerHTML = "<span>Signal Sent \u2705</span>";
-          console.log("Signal TX:", data.txId);
-        },
-        onCancel: () => {
-          btn.disabled = false;
-          btn.innerHTML = "<span>Signal Transition Now</span>";
-          status.textContent = "Cancelled.";
-        }
+        // empty tuple for this call
+        network: "mainnet"
       });
+      console.log("Signal TX Response:", txResponse);
+      const txId = ((_a = txResponse.result) == null ? void 0 : _a.txId) || ((_b = txResponse.result) == null ? void 0 : _b.txid);
+      status.className = "ci-status success";
+      status.textContent = `Success! Signal broadcasted: ${txId.substring(0, 10)}...`;
+      btn.innerHTML = "<span>Signal Sent \u2705</span>";
     } catch (e) {
       console.error("Signal Error:", e);
-      status.textContent = "Error: " + e.message;
+      status.textContent = "Error: " + (e.message || "Transaction rejected");
       btn.disabled = false;
       btn.innerHTML = "<span>Try Again</span>";
     }
   };
-  function initCheckIn() {
-    const btn = document.getElementById("btnCheckIn");
-    if (btn) {
-      btn.onclick = window.signalTransition;
-    }
-  }
   function initFilters() {
     const buttons = document.querySelectorAll(".filter-btn");
     buttons.forEach((btn) => {
@@ -179,27 +166,22 @@
   }
   function initPlayground() {
     const btn = document.getElementById("pgSend");
-    if (btn) {
-      btn.addEventListener("click", async () => {
-        const endpoint = document.getElementById("pgEndpoint").value;
-        const status = document.getElementById("pgStatus");
-        const resPanel = document.getElementById("pgResponseCode");
-        status.textContent = "Calling...";
-        try {
-          const res = await fetch(`/api/v1/${endpoint}`, {
-            method: endpoint === "sentiment" || endpoint === "translate" || endpoint === "image-gen" || endpoint === "code-review" ? "POST" : "GET",
-            headers: { "Content-Type": "application/json" },
-            body: endpoint === "sentiment" ? JSON.stringify({ text: "x402 is amazing!" }) : void 0
-          });
-          const data = await res.json();
-          status.textContent = res.status + " " + res.statusText;
-          resPanel.innerHTML = `<pre><code>${JSON.stringify(data, null, 2)}</code></pre>`;
-        } catch (e) {
-          status.textContent = "Error";
-          if (resPanel) resPanel.innerHTML = `<pre><code>${e.message}</code></pre>`;
-        }
-      });
-    }
+    if (!btn) return;
+    btn.addEventListener("click", async () => {
+      const endpoint = document.getElementById("pgEndpoint").value;
+      const status = document.getElementById("pgStatus");
+      const resPanel = document.getElementById("pgResponseCode");
+      status.textContent = "Calling...";
+      try {
+        const res = await fetch(`/api/v1/${endpoint}`);
+        const data = await res.json();
+        status.textContent = res.status + " " + res.statusText;
+        resPanel.innerHTML = `<pre><code>${JSON.stringify(data, null, 2)}</code></pre>`;
+      } catch (e) {
+        status.textContent = "Error";
+        resPanel.innerHTML = `<pre><code>${e.message}</code></pre>`;
+      }
+    });
   }
 })();
 //# sourceMappingURL=app.js.map
