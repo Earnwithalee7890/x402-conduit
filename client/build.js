@@ -7,14 +7,15 @@ try {
     await esbuild.build({
         entryPoints: ['client/src/app.js', 'client/src/wallet.js'],
         bundle: true,
-        outdir: 'public/js', // Use outdir for multiple entry points
+        outdir: 'public/js',
         minify: true,
         sourcemap: true,
         platform: 'browser',
-        target: ['es2018'], // More conservative for Agoric/SES compatibility
+        target: ['es2018'],
+        external: ['@stacks/connect', '@stacks/network', '@stacks/transactions'],
         define: {
             'process.env.NODE_ENV': '"production"',
-            'global': 'window' // Polyfill global for some legacy packages
+            'global': 'window'
         },
     });
     console.log('Build successful!');

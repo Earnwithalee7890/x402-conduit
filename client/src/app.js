@@ -1,16 +1,24 @@
-import { AppConfig, UserSession, showConnect, openContractCall, openSTXTransfer } from '@stacks/connect';
-import { STACKS_MAINNET } from '@stacks/network';
-import { uintCV, stringAsciiCV, noneCV } from '@stacks/transactions';
-
-const NETWORK = STACKS_MAINNET;
-
 /**
  * Conduit — Frontend
  * Full-stack logic for the x402 API marketplace and Nakamoto Signaling.
+ * This version uses the global StacksConnect/Connect object from CDN for better SES compatibility.
  */
 
-const appConfig = new AppConfig(['store_write', 'publish_data']);
-const userSession = new UserSession({ appConfig });
+const NETWORK = {
+    version: 1, // Mainnet
+    chainId: 1,
+    coreApiUrl: 'https://api.mainnet.hiro.so'
+};
+
+const getStacksConnect = () => {
+    return window.StacksConnect || window.Connect || {};
+};
+
+function getUserSession() {
+    const connect = getStacksConnect();
+    const appConfig = new connect.AppConfig(['store_write', 'publish_data']);
+    return new connect.UserSession({ appConfig });
+}
 
 let catalog = [];
 
@@ -21,17 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCatalog();
     loadStats();
     initCheckIn();
-    initDiscover();
     initFilters();
     initPlayground();
-    initAnimations();
-    setupMobileNav();
 });
 
 function initAuth() {
-    const btn = document.getElementById('connectWalletBtn');
-    const btnText = document.getElementById('walletBtnText');
-
+    const userSession = getUserSession();
     if (userSession.isUserSignedIn()) {
         const userData = userSession.loadUserData();
         showConnected(userData);
@@ -41,8 +44,10 @@ function initAuth() {
 function showConnected(userData) {
     const btnText = document.getElementById('walletBtnText');
     const addr = userData.profile.stxAddress.mainnet;
-    btnText.textContent = addr.substring(0, 5) + '...' + addr.substring(addr.length - 4);
-    document.getElementById('connectWalletBtn').classList.add('connected');
+    if (btnText) {
+        btnText.textContent = addr.substring(0, 5) + '...' + addr.substring(addr.length - 4);
+    }
+    document.getElementById('connectWalletBtn')?.classList.add('connected');
 }
 
 // ── Catalog ───────────────────────────────────────────────────────────────
@@ -76,7 +81,7 @@ function renderCatalog(apis) {
     const grid = document.getElementById('apiGrid');
     if (!grid) return;
     grid.innerHTML = apis.map(api => `
-    <div class="api-card" data-category="${api.category}" data-endpoint="${api.endpoint}">
+    <div class="api-card" data-category="${api.category}" data-endpoint="${api.endpoint || api.id}">
       <div class="api-card-top">
         <div class="api-card-icon">${api.icon}</div>
         <span class="api-card-badge">${api.category}</span>
@@ -102,9 +107,11 @@ function renderCatalog(apis) {
 async function loadStats() {
     try {
         const res = await fetch('/api/v1/stats');
-        const data = await res.json();
-        const apiCount = document.getElementById('heroApiCount');
-        if (apiCount) apiCount.textContent = data.stats.totalAPIs;
+        if (res.ok) {
+            const data = await res.json();
+            const apiCount = document.getElementById('heroApiCount');
+            if (apiCount && data.stats) apiCount.textContent = data.stats.totalAPIs;
+        }
     } catch (e) {
         console.warn('Stats fetch failed');
     }
@@ -112,7 +119,8 @@ async function loadStats() {
 
 // ── Daily Check-In (Pulse Signaling) ──────────────────────────────────────
 window.signalTransition = async function() {
-    const connect = window.StacksConnect || window.Connect || {};
+    const connect = getStacksConnect();
+    const userSession = getUserSession();
     
     if (!userSession.isUserSignedIn()) {
         alert("Please connect your wallet first.");
@@ -134,7 +142,11 @@ window.signalTransition = async function() {
     const contractAddr = 'SP2F500B8DTRK1EANJQ054BRAB8DDKN6QCMXGNFBT';
 
     try {
-        await openContractCall({
+        if (!connect.openContractCall) {
+            throw new Error("Stacks Connect library is missing openContractCall function.");
+        }
+
+        await connect.openContractCall({
             contractAddress: contractAddr,
             contractName: 'fee-free-txn-v2',
             functionName: 'signal-participation',
@@ -172,7 +184,7 @@ function initCheckIn() {
     }
 }
 
-// ── Other UI Logic (Simplified for reliability) ───────────────────────────
+// ── Other UI Logic ────────────────────────────────────────────────────────
 function initFilters() {
     const buttons = document.querySelectorAll('.filter-btn');
     buttons.forEach(btn => {
@@ -214,12 +226,8 @@ function initPlayground() {
                 resPanel.innerHTML = `<pre><code>${JSON.stringify(data, null, 2)}</code></pre>`;
             } catch (e) {
                 status.textContent = 'Error';
-                resPanel.innerHTML = `<pre><code>${e.message}</code></pre>`;
+                if (resPanel) resPanel.innerHTML = `<pre><code>${e.message}</code></pre>`;
             }
         });
     }
 }
-
-function initDiscover() {}
-function initAnimations() {}
-function setupMobileNav() {}
