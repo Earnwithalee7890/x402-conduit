@@ -14,14 +14,35 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-  <!-- Stacks Standard Libraries (Bundled Locally) -->
-  <script src="/js/wallet.js"></script>
-  <script src="/js/wallet-init.js"></script>
-
   <link rel="stylesheet" href="/css/provider-form.css">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235546FF'/%3E%3Cstop offset='100%25' stop-color='%23FC6432'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 2L28 10V22L16 30L4 22V10L16 2Z' fill='url(%23g)'/%3E%3Cpath d='M10 14L16 10L22 14V20L16 24L10 20V14Z' fill='%23060710' opacity='0.7'/%3E%3C/svg%3E">
+  
+  <!-- Standard Stacks Library -->
+  <script src="https://unpkg.com/@stacks/connect@8.2.4/dist/connect.global.js"></script>
+  <script>
+    // Universal Wallet Connector
+    window.connectWallet = function() {
+      const connect = window.StacksConnect || window.Connect || {};
+      if (!connect.showConnect) {
+        alert("Wallet library failed to load. Check your internet connection.");
+        return;
+      }
+      
+      const appConfig = new connect.AppConfig(['store_write', 'publish_data']);
+      const userSession = new connect.UserSession({ appConfig });
+
+      connect.showConnect({
+        appDetails: {
+          name: 'Conduit Market',
+          icon: window.location.origin + '/favicon.ico',
+        },
+        redirectTo: '/',
+        userSession: userSession,
+        onFinish: () => {
+          window.location.reload();
+        },
+      });
+    };
+  </script>
 </head>
 
 <body>
@@ -56,23 +77,15 @@
         <a href="#apis" class="nav-link">APIs</a>
         <a href="#playground" class="nav-link">Playground</a>
         <a href="#integrate" class="nav-link">Integrate</a>
-        <a href="#dashboard" class="nav-cta">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="7" height="7" rx="1" />
-            <rect x="14" y="3" width="7" height="7" rx="1" />
-            <rect x="3" y="14" width="7" height="7" rx="1" />
-            <rect x="14" y="14" width="7" height="7" rx="1" />
-          </svg>
-          <span>Dashboard</span>
-        </a>
-        <button id="connectWalletBtn" class="nav-cta nav-connect">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4" />
-            <path d="M4 6v12c0 1.1.9 2 2 2h14v-4" />
-            <path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z" />
-          </svg>
-          <span id="walletBtnText">Connect Wallet</span>
-        </button>
+        <div class="nav-actions">
+          <button id="connectWalletBtn" class="nav-cta nav-connect" onclick="window.connectWallet()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span id="walletBtnText">Connect Wallet</span>
+          </button>
+        </div>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
@@ -90,7 +103,7 @@
 
       <div class="event-badge" data-animate>
         <span class="pulse-dot"></span>
-        Talent Protocol · Apr 2026
+        Nakamoto Pulse Signaling Active
       </div>
 
       <h1 class="hero-title" data-animate>
@@ -101,30 +114,15 @@
 
       <p class="hero-subtitle" data-animate>
         The first marketplace where AI agents autonomously discover, pay for, and consume APIs
-        using the <strong>x402 payment protocol</strong> on the Stacks blockchain. No API keys.
-        No subscriptions. Just HTTP and STX.
+        using the <strong>x402 payment protocol</strong> on Stacks. Secure, fee-free signaling for the April Event.
       </p>
 
       <div class="hero-actions" data-animate>
-        <a href="#playground" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="5 3 19 12 5 21 5 3" />
-          </svg>
-          <span>Try Live API</span>
+        <a href="#apis" class="btn btn-primary">
+          <span>Try Live APIs</span>
         </a>
-        <a href="#apis" class="btn btn-secondary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <line x1="3" y1="9" x2="21" y2="9" />
-            <line x1="9" y1="21" x2="9" y2="9" />
-          </svg>
-          <span>Browse APIs</span>
-        </a>
-        <a href="#integrate" class="btn btn-ghost">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-          </svg>
-          <span>Integration</span>
+        <a href="#dashboard" class="btn btn-secondary">
+          <span>Signaling Dashboard</span>
         </a>
       </div>
 
@@ -140,457 +138,106 @@
         </div>
         <div class="metric-sep"></div>
         <div class="metric">
-          <span class="metric-value">&lt;200ms</span>
-          <span class="metric-label">Avg latency</span>
-        </div>
-        <div class="metric-sep"></div>
-        <div class="metric">
           <span class="metric-value">x402</span>
           <span class="metric-label">Protocol</span>
         </div>
       </div>
     </div>
-
-    <!-- Protocol Flow Visualization -->
-    <div class="protocol-visual" data-animate>
-      <div class="pv-step">
-        <div class="pv-icon">🤖</div>
-        <div class="pv-label">Agent</div>
-        <div class="pv-detail">GET /api/v1/price</div>
-      </div>
-      <div class="pv-connector">
-        <div class="pv-line"></div>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </div>
-      <div class="pv-step pv-step--402">
-        <div class="pv-icon">🔒</div>
-        <div class="pv-label">HTTP 402</div>
-        <div class="pv-detail">Payment Required</div>
-      </div>
-      <div class="pv-connector">
-        <div class="pv-line"></div>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </div>
-      <div class="pv-step pv-step--pay">
-        <div class="pv-icon">💎</div>
-        <div class="pv-label">Auto-Pay</div>
-        <div class="pv-detail">0.005 STX</div>
-      </div>
-      <div class="pv-connector">
-        <div class="pv-line"></div>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </div>
-      <div class="pv-step pv-step--success">
-        <div class="pv-icon">✅</div>
-        <div class="pv-label">200 OK</div>
-        <div class="pv-detail">Data received</div>
-      </div>
-    </div>
   </section>
 
-  <!-- How x402 Works -->
-  <section class="section" id="protocol">
+  <!-- Dashboard Section -->
+  <section class="section section--dark" id="dashboard">
     <div class="container">
       <div class="section-header" data-animate>
-        <span class="section-tag">Protocol</span>
-        <h2 class="section-title">How <span class="gradient-text">x402</span> Works</h2>
-        <p class="section-subtitle">HTTP 402 was reserved for "future use" since 1997. x402 finally gives it purpose —
-          native payments at the protocol level.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-card" data-animate>
-          <div class="feature-num">01</div>
-          <div class="feature-icon">🔍</div>
-          <h3>Discover</h3>
-          <p>Agents call <code>GET /api/v1/discover</code> to browse the full API catalog with pricing, docs, and
-            availability — completely free.</p>
-        </div>
-        <div class="feature-card" data-animate>
-          <div class="feature-num">02</div>
-          <div class="feature-icon">📡</div>
-          <h3>Request</h3>
-          <p>Send a standard HTTP request to any paid endpoint. The server responds with <code>HTTP 402</code> and
-            payment requirements in the header.</p>
-        </div>
-        <div class="feature-card" data-animate>
-          <div class="feature-num">03</div>
-          <div class="feature-icon">💎</div>
-          <h3>Pay</h3>
-          <p>The x402-stacks interceptor automatically signs a STX transfer, submits it to the facilitator, and retries
-            the request with proof of payment.</p>
-        </div>
-        <div class="feature-card" data-animate>
-          <div class="feature-num">04</div>
-          <div class="feature-icon">⚡</div>
-          <h3>Receive</h3>
-          <p>The server verifies payment and returns your data. The entire flow happens in a single HTTP round-trip —
-            completely transparent to the agent.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- API Catalog -->
-  <section class="section section--dark" id="apis">
-    <div class="container">
-      <div class="section-header" data-animate>
-        <span class="section-tag">Marketplace</span>
-        <h2 class="section-title">API <span class="gradient-text">Catalog</span></h2>
-        <p class="section-subtitle">Every endpoint is protected by real x402 payment middleware. Pay per call in STX —
-          no accounts, no keys.</p>
+        <span class="section-tag">Nakamoto Event</span>
+        <h2 class="section-title">Nakamoto Pulse <span class="gradient-text">Signaling</span></h2>
+        <p class="section-subtitle">Perform a fee-free check-in transaction to demonstrate your activity and support for the Stacks Nakamoto transition.</p>
       </div>
 
-      <div class="filter-bar" data-animate>
-        <button class="filter-btn active" data-filter="all" id="filterAll">All</button>
-        <button class="filter-btn" data-filter="AI/ML" id="filterAI">AI/ML</button>
-        <button class="filter-btn" data-filter="Data" id="filterData">Data</button>
-        <button class="filter-btn" data-filter="DeFi" id="filterDeFi">DeFi</button>
-        <button class="filter-btn" data-filter="Developer" id="filterDev">Developer</button>
-      </div>
-
-      <div class="api-grid" id="apiGrid">
-        <!-- populated by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Live Playground -->
-  <section class="section" id="playground">
-    <div class="container">
-      <div class="section-header" data-animate>
-        <span class="section-tag">Playground</span>
-        <h2 class="section-title">Try it <span class="gradient-text">Live</span></h2>
-        <p class="section-subtitle">Test the x402 payment flow in real-time. Free endpoints return data instantly — paid
-          endpoints return the x402 payment challenge.</p>
-      </div>
-
-      <div class="playground" data-animate>
-        <div class="pg-panel pg-request">
-          <div class="pg-header">
-            <div class="pg-dots"><span class="dot red"></span><span class="dot yellow"></span><span
-                class="dot green"></span></div>
-            <span class="pg-title">Request</span>
-          </div>
-          <div class="pg-controls">
-            <select id="pgEndpoint" class="pg-select">
-              <optgroup label="Free Endpoints">
-                <option value="discover">GET /api/v1/discover</option>
-                <option value="stats">GET /api/v1/stats</option>
-                <option value="health">GET /api/v1/health</option>
-              </optgroup>
-              <optgroup label="Paid Endpoints (x402)">
-                <option value="weather" selected>GET /api/v1/weather — 0.01 STX</option>
-                <option value="price">GET /api/v1/price — 0.005 STX</option>
-                <option value="news">GET /api/v1/news — 0.008 STX</option>
-                <option value="chain">GET /api/v1/chain-analytics — 0.02 STX</option>
-              </optgroup>
-            </select>
-            <button id="pgSend" class="btn btn-primary btn-sm">
-              <span>Send</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-              </svg>
-            </button>
-          </div>
-          <div class="pg-code" id="pgRequestCode">
-            <pre><code><span class="syn-comment">// Select an endpoint and click Send</span>
-<span class="syn-keyword">const</span> response = <span class="syn-keyword">await</span> <span class="syn-fn">fetch</span>(<span class="syn-string">'/api/v1/weather?location=Tokyo'</span>);
-<span class="syn-comment">// Status: HTTP 402 Payment Required</span>
-<span class="syn-comment">// x402 interceptor handles payment automatically</span></code></pre>
-          </div>
-        </div>
-
-        <div class="pg-panel pg-response">
-          <div class="pg-header">
-            <div class="pg-dots"><span class="dot red"></span><span class="dot yellow"></span><span
-                class="dot green"></span></div>
-            <span class="pg-title">Response</span>
-            <span class="pg-status" id="pgStatus">Ready</span>
-          </div>
-          <div class="pg-code" id="pgResponseCode">
-            <pre><code><span class="syn-comment">// Response will appear here</span>
-<span class="syn-comment">// Free endpoints → 200 OK with data</span>
-<span class="syn-comment">// Paid endpoints → 402 with x402 payment requirements</span>
-<span class="syn-comment">//</span>
-<span class="syn-comment">// The 402 response contains everything an agent</span>
-<span class="syn-comment">// needs to complete payment automatically:</span>
-<span class="syn-comment">//   • Payment amount in microSTX</span>
-<span class="syn-comment">//   • Recipient address</span>
-<span class="syn-comment">//   • Network (mainnet)</span>
-<span class="syn-comment">//   • Facilitator URL for settlement</span></code></pre>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Provider Dashboard -->
-  <section class="section section--dark" id="provider">
-    <div class="container">
-      <div class="section-header" data-animate>
-        <span class="section-tag">Provider</span>
-        <h2 class="section-title">Register <span class="gradient-text">On-Chain</span></h2>
-        <p class="section-subtitle">Publish your API to the Conduit smart contract registry. Agents will discover and
-          pay you directly.</p>
-      </div>
-
-      <div class="provider-form" data-animate>
-        <div class="form-grid">
-          <div class="form-group">
-            <label>API Name</label>
-            <input type="text" id="regName" placeholder="e.g. Weather AI" maxlength="64">
-          </div>
-          <div class="form-group">
-            <label>Category</label>
-            <select id="regCategory">
-              <option value="AI/ML">AI/ML</option>
-              <option value="Data">Data</option>
-              <option value="DeFi">DeFi</option>
-              <option value="Developer">Developer</option>
-            </select>
-          </div>
-          <div class="form-group full">
-            <label>Description</label>
-            <input type="text" id="regDesc" placeholder="Brief description of your API" maxlength="256">
-          </div>
-          <div class="form-group">
-            <label>Endpoint URL</label>
-            <input type="text" id="regEndpoint" placeholder="https://api.example.com/v1" maxlength="128">
-          </div>
-          <div class="form-group">
-            <label>Method</label>
-            <select id="regMethod">
-              <option value="GET">GET</option>
-              <option value="POST">POST</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Price (STX)</label>
-            <input type="number" id="regPrice" placeholder="0.01" step="0.001">
-          </div>
-          <div class="form-group">
-            <label>Contract Address</label>
-            <input type="text" id="regContractAddr" placeholder="SP2F... .fee-free-txn"
-              value="SP2FGY4PB8QZNYT8GNFBT.fee-free-txn">
-          </div>
-        </div>
-        <div class="form-actions">
-          <button id="btnRegisterApi" class="btn btn-primary">
-            <span>Register API</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 6L9 17l-5-5" />
-            </svg>
-          </button>
-          <div id="regStatus" class="reg-status"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Integration -->
-  <section class="section section--dark" id="integrate">
-    <div class="container">
-      <div class="section-header" data-animate>
-        <span class="section-tag">Integration</span>
-        <h2 class="section-title">Ship in <span class="gradient-text">5 Minutes</span></h2>
-        <p class="section-subtitle">Add x402 payments to any API with one middleware line, or consume paid APIs with the
-          axios interceptor.</p>
-      </div>
-
-      <div class="code-section" data-animate>
-        <div class="code-tabs">
-          <button class="code-tab active" data-tab="client" id="tabClient">Agent (Client)</button>
-          <button class="code-tab" data-tab="server" id="tabServer">Provider (Server)</button>
-        </div>
-
-        <div class="code-window" id="codeClient">
-          <div class="cw-header">
-            <div class="pg-dots"><span class="dot red"></span><span class="dot yellow"></span><span
-                class="dot green"></span></div>
-            <span class="cw-filename">agent.js</span>
-            <span class="cw-badge">x402-stacks</span>
-          </div>
-          <pre
-            class="cw-code"><code><span class="syn-comment">// npm install x402-stacks axios</span>
-<span class="syn-keyword">import</span> axios <span class="syn-keyword">from</span> <span class="syn-string">'axios'</span>;
-<span class="syn-keyword">import</span> { wrapAxiosWithPayment, privateKeyToAccount } <span class="syn-keyword">from</span> <span class="syn-string">'x402-stacks'</span>;
-
-<span class="syn-comment">// Create account from private key</span>
-<span class="syn-keyword">const</span> account = <span class="syn-fn">privateKeyToAccount</span>(process.env.<span class="syn-var">PRIVATE_KEY</span>, <span class="syn-string">'mainnet'</span>);
-
-<span class="syn-comment">// Wrap axios — all 402 payments are now automatic</span>
-<span class="syn-keyword">const</span> api = <span class="syn-fn">wrapAxiosWithPayment</span>(
-  axios.<span class="syn-fn">create</span>({ baseURL: <span class="syn-string">'https://x402.market'</span> }),
-  account
-);
-
-<span class="syn-comment">// 1. Discover available APIs (free)</span>
-<span class="syn-keyword">const</span> catalog = <span class="syn-keyword">await</span> api.<span class="syn-fn">get</span>(<span class="syn-string">'/api/v1/discover'</span>);
-
-<span class="syn-comment">// 2. Use paid APIs — payment handled automatically</span>
-<span class="syn-keyword">const</span> weather = <span class="syn-keyword">await</span> api.<span class="syn-fn">get</span>(<span class="syn-string">'/api/v1/weather?location=Tokyo'</span>);
-<span class="syn-comment">// → Interceptor sees 402, signs STX transfer, retries → 200 OK</span>
-
-<span class="syn-keyword">const</span> price = <span class="syn-keyword">await</span> api.<span class="syn-fn">get</span>(<span class="syn-string">'/api/v1/price?symbol=BTC'</span>);
-<span class="syn-comment">// → 0.005 STX paid automatically</span>
-
-console.<span class="syn-fn">log</span>(weather.data);  <span class="syn-comment">// ✅ Full weather data</span>
-console.<span class="syn-fn">log</span>(price.data);    <span class="syn-comment">// ✅ Real-time BTC price</span></code></pre>
-        </div>
-
-        <div class="code-window" id="codeServer" style="display: none;">
-          <div class="cw-header">
-            <div class="pg-dots"><span class="dot red"></span><span class="dot yellow"></span><span
-                class="dot green"></span></div>
-            <span class="cw-filename">server.js</span>
-            <span class="cw-badge">Express.js</span>
-          </div>
-          <pre class="cw-code"><code><span class="syn-comment">// npm install x402-stacks express</span>
-<span class="syn-keyword">import</span> express <span class="syn-keyword">from</span> <span class="syn-string">'express'</span>;
-<span class="syn-keyword">import</span> { paymentMiddleware, STXtoMicroSTX } <span class="syn-keyword">from</span> <span class="syn-string">'x402-stacks'</span>;
-
-<span class="syn-keyword">const</span> app = <span class="syn-fn">express</span>();
-
-<span class="syn-comment">// Monetize any endpoint with one middleware line</span>
-app.<span class="syn-fn">get</span>(<span class="syn-string">'/api/premium-data'</span>,
-  <span class="syn-fn">paymentMiddleware</span>({
-    amount: <span class="syn-fn">STXtoMicroSTX</span>(<span class="syn-number">0.01</span>),
-    payTo: <span class="syn-string">'YOUR_STACKS_ADDRESS'</span>,
-    network: <span class="syn-string">'mainnet'</span>,
-    facilitatorUrl: <span class="syn-string">'https://x402-facilitator.x402stacks.xyz'</span>,
-    description: <span class="syn-string">'Premium data access'</span>,
-  }),
-  (req, res) => {
-    <span class="syn-comment">// Only reached after payment is verified</span>
-    res.<span class="syn-fn">json</span>({ data: <span class="syn-string">'Your premium content'</span> });
-  }
-);
-app.<span class="syn-fn">listen</span>(<span class="syn-number">3402</span>);</code></pre>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Dashboard -->
-  <section class="section" id="dashboard">
-    <div class="container">
-      <div class="section-header" data-animate>
-        <span class="section-tag">Dashboard</span>
-        <h2 class="section-title">Marketplace <span class="gradient-text">Analytics</span></h2>
-      </div>
-
-      <div class="stats-grid" data-animate>
-        <div class="stat-card">
-          <div class="stat-accent accent-purple"></div>
-          <div class="stat-icon">📡</div>
-          <div class="stat-value" id="statAPIs">8</div>
-          <div class="stat-label">Live APIs</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-accent accent-blue"></div>
-          <div class="stat-icon">⚡</div>
-          <div class="stat-value" id="statTx">0</div>
-          <div class="stat-label">Transactions</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-accent accent-green"></div>
-          <div class="stat-icon">💎</div>
-          <div class="stat-value" id="statVolume">0 STX</div>
-          <div class="stat-label">Volume</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-accent accent-cyan"></div>
-          <div class="stat-icon">🌐</div>
-          <div class="stat-value">Mainnet</div>
-          <div class="stat-label">Network</div>
-        </div>
-      </div>
-
-      <!-- Daily Check-In Section -->
-      <div class="check-in-card" data-animate>
-        <div class="ci-header">
-          <div class="ci-icon">🌟</div>
+      <div class="checkpoint-card" data-animate>
+        <div class="ci-info">
           <h3>Nakamoto Pulse Signal</h3>
-          <p>Register your participation for the <strong>Stacks April 2026 Event</strong> on-chain. This txn demonstrates your activity for the transition.</p>
+          <p>Register your participation on-chain. This uses the <code>fee-free-txn-v2</code> contract on Mainnet.</p>
         </div>
         <div class="ci-actions">
-          <button id="btnCheckIn" class="btn btn-primary">
+          <button id="btnCheckIn" class="btn btn-primary" onclick="window.signalTransition()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
               <polyline points="22 4 12 14.01 9 11.01" />
             </svg>
             <span>Signal Transition Now</span>
           </button>
-          <div id="checkInStatus" class="ci-status"></div>
-        </div>
-      </div>
-
-      <div class="tx-table" data-animate>
-        <div class="tx-header">
-          <h3>Recent Transactions</h3>
-          <span class="tx-live"><span class="live-dot"></span> Live</span>
-        </div>
-        <div id="txBody">
-          <div class="tx-empty">No transactions yet — try the playground above to generate activity</div>
+          <div id="checkInStatus" class="ci-status">Ready to signal.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- API Catalog -->
+  <section class="section" id="apis">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="nav-brand">
-            <svg class="brand-logo" width="24" height="24" viewBox="0 0 32 32">
-              <defs>
-                <linearGradient id="logoGrad2" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#5546FF" />
-                  <stop offset="100%" stop-color="#FC6432" />
-                </linearGradient>
-              </defs>
-              <path d="M16 2L28 10V22L16 30L4 22V10L16 2Z" fill="url(#logoGrad2)" />
-              <path d="M10 14L16 10L22 14V20L16 24L10 20V14Z" fill="#0c0d12" opacity="0.65" />
-            </svg>
-            <span>Conduit</span>
+      <div class="section-header" data-animate>
+        <span class="section-tag">Marketplace</span>
+        <h2 class="section-title">API <span class="gradient-text">Catalog</span></h2>
+        <p class="section-subtitle">Pay per call in STX. No API keys required.</p>
+      </div>
+
+      <div class="api-grid" id="apiGrid">
+        <!-- populated by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Playground -->
+  <section class="section section--dark" id="playground">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <span class="section-tag">Playground</span>
+        <h2 class="section-title">Live <span class="gradient-text">Tester</span></h2>
+      </div>
+
+      <div class="playground" data-animate>
+        <div class="pg-panel pg-request">
+          <div class="pg-header">
+            <span class="pg-title">Endpoint</span>
           </div>
-          <p class="footer-tagline">Pay-per-call APIs on the Stacks blockchain.<br>Powered by x402-stacks.</p>
+          <div class="pg-controls">
+            <select id="pgEndpoint" class="pg-select">
+              <option value="discover">GET /api/v1/discover</option>
+              <option value="weather">GET /api/v1/weather</option>
+              <option value="price" selected>GET /api/v1/price</option>
+              <option value="sentiment">POST /api/v1/sentiment</option>
+            </select>
+            <button id="pgSend" class="btn btn-primary btn-sm">Send</button>
+          </div>
         </div>
-        <div class="footer-col">
-          <h4>Protocol</h4>
-          <a href="https://x402.org" target="_blank">x402 Standard</a>
-          <a href="https://github.com/tony1908/x402Stacks" target="_blank">x402-stacks</a>
-          <a href="https://stacks.co" target="_blank">Stacks Blockchain</a>
-        </div>
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <a href="#apis">API Catalog</a>
-          <a href="#playground">Playground</a>
-          <a href="#integrate">Integration Guide</a>
-        </div>
-        <div class="footer-col">
-          <h4>Endpoints</h4>
-          <a href="/api/v1/discover" target="_blank">Discovery API</a>
-          <a href="/api/v1/stats" target="_blank">Stats API</a>
-          <a href="/api/v1/health" target="_blank">Health Check</a>
+
+        <div class="pg-panel pg-response">
+          <div class="pg-header">
+            <span class="pg-title">Response</span>
+            <span class="pg-status" id="pgStatus">Ready</span>
+          </div>
+          <div class="pg-code" id="pgResponseCode">
+            <pre><code>// Result will appear here</code></pre>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Conduit · Built for the <a href="https://dorahacks.io" target="_blank">x402 Stacks
-            Challenge</a></p>
-        <p class="footer-protocol">HTTP 402 Payment Required · Stacks L2 · Secured by Bitcoin</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-wrap">
+        <div class="footer-brand">
+          <span>Conduit</span>
+        </div>
+        <div class="footer-copy">
+          &copy; 2026 Conduit Marketplace · Stacks Nakamoto Ready
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="/js/app.js?v=20261753"></script>
+  <script src="/js/app.js"></script>
 </body>
-
 </html>
