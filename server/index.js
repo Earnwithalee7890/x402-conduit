@@ -173,6 +173,9 @@ function createPaymentConfig(amountSTX, description) {
   };
 }
 
+/**
+ * Records a transaction in the ledger
+ */
 function recordTransaction(apiId, req, payment) {
   const entry = {
     id: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
