@@ -189,7 +189,7 @@ function recordTransaction(apiId, req, payment) {
   };
   transactionLedger.push(entry);
   if (transactionLedger.length > 500) transactionLedger.shift();
-  if (!apiMetrics[apiId]) apiMetrics[apiId] = { calls: 0 };
+  if (!apiMetrics[apiId]) apiMetrics[apiId] = apiMetrics[apiId] || { calls: 0 };
   apiMetrics[apiId].calls++;
   return entry;
 }
