@@ -11,6 +11,7 @@
   }
 )
 
+;; Global signal counter
 (define-data-var total-signals uint u0)
 
 ;; Read-only functions
