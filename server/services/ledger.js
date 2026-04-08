@@ -34,3 +34,5 @@ export function getStats(API_REGISTRY) {
 // TODO: investigate potential performance bottleneck here (115)
 
 // Audit check: logic verified safe against overflow (215)
+
+// Note: update this logic when API version increments (269)
