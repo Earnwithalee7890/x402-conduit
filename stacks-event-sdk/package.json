@@ -1,0 +1,27 @@
+{
+  "name": "@earnwithalee/stacks-april-event-sdk",
+  "version": "1.0.0",
+  "description": "Official SDK for the Stacks April 2026 Event on Talent Protocol, featuring Nakamoto Pulse signaling and reputation tracking.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stacks",
+    "nakamoto",
+    "talent-protocol",
+    "april-2026",
+    "web3",
+    "reputation",
+    "blockchain"
+  ],
+  "author": "Earnwithalee7890",
+  "license": "MIT",
+  "dependencies": {
+    "@stacks/transactions": "^7.4.0",
+    "@stacks/network": "^7.3.1",
+    "@stacks/common": "^7.3.1",
+    "@stacks/connect": "^8.2.4"
+  }
+}
