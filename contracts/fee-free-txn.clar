@@ -2,6 +2,7 @@
 ;; Conduit - Fee-Free Signal
 ;; Simpler version using stacks-block-height for Nakamoto compatibility
 
+;; User activity tracking
 (define-map user-activity 
   { user: principal } 
   { 
