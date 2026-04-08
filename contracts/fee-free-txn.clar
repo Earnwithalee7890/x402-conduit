@@ -1,3 +1,4 @@
+;; Conduit - Engagement Contract
 ;; Conduit - Fee-Free Signal
 ;; Simpler version using stacks-block-height for Nakamoto compatibility
 
