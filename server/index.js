@@ -160,6 +160,9 @@ const API_REGISTRY = [
   },
 ];
 
+/**
+ * Creates a payment configuration
+ */
 function createPaymentConfig(amountSTX, description) {
   return {
     amount: STXtoMicroSTX(amountSTX),
