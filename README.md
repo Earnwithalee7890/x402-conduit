@@ -67,6 +67,10 @@ Server → 200 OK + { price: 97500.00, ... }
 
 ## Quick Start
 
+### Prerequisites
+- Node.js >= 18
+
+
 ```bash
 # Clone
 git clone https://github.com/YOUR_USERNAME/conduit.git
