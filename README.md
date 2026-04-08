@@ -25,7 +25,7 @@ Today's API economy is broken for machines:
 ## The Solution
 
 **Conduit** uses the x402 payment protocol to create a marketplace where:
-- 🤖 AI agents **discover** available APIs via a free catalog endpoint
+- 🤖 AI Agents **discover** available APIs via a free catalog endpoint
 - 🔒 Paid endpoints return **HTTP 402 Payment Required** with pricing
 - 💎 The `x402-stacks` interceptor **auto-pays** in STX and retries
 - ⚡ Data flows back — **no accounts, no keys, no friction**
