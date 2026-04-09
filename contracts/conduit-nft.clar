@@ -71,3 +71,5 @@
 ;; TODO: optimize gas consumption for this public function (240)
 
 ;; Note: state consistency verified for this map (247)
+
+;; Clarity: ensure trait compliance across updates (273)
