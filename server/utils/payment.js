@@ -18,3 +18,5 @@ export function createPaymentConfig(amountSTX, description) {
 // Refactor: consider breaking this into smaller helpers (90)
 
 // TODO: investigate potential performance bottleneck here (248)
+
+// Note: update this logic when API version increments (281)
