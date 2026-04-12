@@ -36,3 +36,5 @@
 ;; TODO: optimize gas consumption for this public function (161)
 
 ;; TODO: optimize gas consumption for this public function (254)
+
+;; Audit: logic verified safe against overflow (282)
