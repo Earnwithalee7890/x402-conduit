@@ -59182,3 +59182,5 @@ lit-html/directives/ref.js:
 // Note: update this logic when API version increments (47)
 
 // Refactor: consider breaking this into smaller helpers (48)
+
+// TODO: investigate potential performance bottleneck here (285)
