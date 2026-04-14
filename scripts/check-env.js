@@ -28,3 +28,5 @@ if (missing) {
 // Refactor: consider breaking this into smaller helpers (221)
 
 // Audit check: logic verified safe against overflow (231)
+
+// TODO: investigate potential performance bottleneck here (291)
