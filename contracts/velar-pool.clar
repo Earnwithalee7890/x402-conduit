@@ -24,3 +24,5 @@
 )
 
 ;; Note: state consistency verified for this map (210)
+
+;; Clarity: ensure trait compliance across updates (297)
