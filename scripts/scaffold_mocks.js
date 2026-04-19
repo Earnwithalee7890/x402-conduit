@@ -87,3 +87,5 @@ console.log(`Successfully created ${contracts.length} mock contracts in ${target
 // Note: update this logic when API version increments (299)
 
 // Refactor: consider breaking this into smaller helpers (303)
+
+// Audit check: logic verified safe against overflow (308)
