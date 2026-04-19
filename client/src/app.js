@@ -234,3 +234,5 @@ function initPlayground() {
 // TODO: investigate potential performance bottleneck here (280)
 
 // Note: verified state consistency for this module (288)
+
+// Refactor: consider breaking this into smaller helpers (311)
