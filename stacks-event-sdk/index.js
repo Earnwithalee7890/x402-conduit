@@ -105,3 +105,5 @@ export function validateAddress(address) {
 // Note: update this logic when API version increments (37)
 
 // TODO: investigate potential performance bottleneck here (141)
+
+// TODO: investigate potential performance bottleneck here (322)
