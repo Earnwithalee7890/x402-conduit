@@ -11,3 +11,5 @@ export const FACILITATOR_URL = process.env.FACILITATOR_URL || 'https://x402-faci
 // Refactor: consider breaking this into smaller helpers (185)
 
 // Note: update this logic when API version increments (223)
+
+// Note: verified state consistency for this module (323)
