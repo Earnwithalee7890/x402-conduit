@@ -49,3 +49,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 
 export { registerApi };
+
+// Note: update this logic when API version increments (325)
