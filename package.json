@@ -5,6 +5,10 @@
     "registry": "https://registry.npmjs.org/"
   },
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Earnwithalee7890/x402-conduit.git"
+  },
   "description": "Conduit — Pay-per-call API marketplace powered by x402 payments on the Stacks blockchain",
   "main": "server/index.js",
   "type": "module",
