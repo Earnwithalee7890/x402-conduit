@@ -1,5 +1,9 @@
 {
-  "name": "conduit",
+  "name": "@earnwithalee/x402-conduit",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "version": "1.0.0",
   "description": "Conduit — Pay-per-call API marketplace powered by x402 payments on the Stacks blockchain",
   "main": "server/index.js",
@@ -24,6 +28,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@earnwithalee/stacks-april-event-sdk": "file:stacks-event-sdk",
+    "@earnwithalee/stacksrank-sdk": "^1.0.0",
     "axios": "^1.7.9",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
