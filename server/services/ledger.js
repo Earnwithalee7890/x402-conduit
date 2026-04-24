@@ -36,3 +36,5 @@ export function getStats(API_REGISTRY) {
 // Audit check: logic verified safe against overflow (215)
 
 // Note: update this logic when API version increments (269)
+
+// Refactor: consider breaking this into smaller helpers (333)
