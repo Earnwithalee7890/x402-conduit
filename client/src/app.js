@@ -13,9 +13,15 @@ const NETWORK_CONFIG = {
 let userAddress = null;
 let catalog = [];
 
+const logger = {
+  info: (...args) => console.log('%c[Conduit]', 'color: #7c3aed; font-weight: bold;', ...args),
+  error: (...args) => console.error('%c[Conduit]', 'color: #ef4444; font-weight: bold;', ...args),
+  warn: (...args) => console.warn('%c[Conduit]', 'color: #f59e0b; font-weight: bold;', ...args)
+};
+
 // ── Initialization ────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Conduit App Initialized (Nakamoto Ready)');
+    logger.info('App Initialized (Nakamoto Ready)');
     initAuth();
     loadCatalog();
     loadStats();
