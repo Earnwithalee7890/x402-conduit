@@ -1,10 +1,34 @@
-node_modules/
+# Dependencies
+node_modules
+/dist
+/build
+
+# Environment
 .env
-.DS_Store
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 *.log
-dist/
-coverage/
-.vscode/
 
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# NPM
+.npmrc
+package-lock.json
+!example.npmrc
+
+# Testing
+/coverage
 .eslintcache
-
