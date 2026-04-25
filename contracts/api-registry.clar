@@ -5,6 +5,7 @@
 ;; Fixed: Map syntax using Tuples and Nakamoto-ready logic.
 
 (define-constant CONTRACT-OWNER tx-sender)
+(define-constant version u100)
 
 ;; Error Codes
 (define-constant ERR-NOT-AUTHORIZED (err u100))
@@ -12,6 +13,7 @@
 (define-constant ERR-API-NOT-FOUND (err u102))
 (define-constant ERR-INVALID-PRICE (err u103))
 (define-constant ERR-INVALID-INPUT (err u104))
+(define-constant ERR-API-INACTIVE (err u105))
 
 ;; Data Storage
 (define-data-var api-counter uint u0)
@@ -104,12 +106,14 @@
   )
 )
 
-;; Internal usage tracking
+;; Internal usage tracking - only CONTRACT-OWNER can call for now (or a designated payment contract)
 (define-public (track-usage (api-id uint) (earned uint))
   (let
     (
       (api (unwrap! (map-get? api-registry { api-id: api-id }) ERR-API-NOT-FOUND))
     )
+    (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-NOT-AUTHORIZED)
+    (asserts! (get active api) ERR-API-INACTIVE)
     (map-set api-registry
       { api-id: api-id }
       (merge api { 
