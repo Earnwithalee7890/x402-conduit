@@ -23,18 +23,31 @@ Please maintain the **Premium Dark Mode** aesthetic.
 
 - Use CSS variables for colors (e.g. `var(--stx-purple)`).
 - Ensure responsiveness on mobile devices.
-- Test wallet connections using the Hiro Wallet (Leather).
+- Test wallet connections using the Leather or Xverse wallets.
+
+## Commit Conventions
+
+We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation changes
+- `style`: Changes that do not affect the meaning of the code
+- `refactor`: A code change that neither fixes a bug nor adds a feature
+- `perf`: A code change that improves performance
+- `test`: Adding missing tests or correcting existing tests
+- `chore`: Changes to the build process or auxiliary tools
+
+Example: `feat(api): add new weather oracle endpoint`
 
 ## Pull Request Process
 
 1. Create a feature branch: `git checkout -b feature/amazing-feature`.
-2. Commit your changes.
+2. Commit your changes using conventional commit messages.
 3. Push to the branch.
-4. Open a Pull Request.
+4. Open a Pull Request with a clear description of the changes.
+5. Ensure all CI checks pass.
 
 ## License
 
 This project is licensed under the MIT License.
-
-<!-- Branch naming conventions enforced -->
-
