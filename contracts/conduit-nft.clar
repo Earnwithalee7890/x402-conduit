@@ -1,11 +1,14 @@
 ;; Conduit NFT
-;; Implements the SIP-009 Non-Fungible Token standard
+;; Standard: SIP-009
+;; Description: Non-fungible token for Conduit Marketplace memberships and access rights.
 
 (impl-trait .sip-009-trait-nft-standard.sip-009-trait)
 
 (define-non-fungible-token conduit-nft uint)
 
+;; Constants
 (define-constant contract-owner tx-sender)
+(define-constant version u100)
 (define-constant err-owner-only (err u100))
 (define-constant err-not-token-owner (err u101))
 (define-constant err-token-id-failure (err u102))
