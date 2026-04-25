@@ -17,6 +17,9 @@
     "dev": "node --watch server/index.js",
     "agent:demo": "node agent-demo/agent.js",
     "build": "node client/build.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check-env": "node scripts/check-env.js",
     "test": "echo \"Tests coming soon\" && exit 0"
   },
   "keywords": [
