@@ -32,6 +32,16 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+// Simple request logger
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
+
+app.get('/api/v1/version', (req, res) => {
+  res.json({ version: VERSION, protocol: 'x402-stacks' });
+});
+
 // ─── Transaction Ledger ─────────────────────────────────────────────────────
 const transactionLedger = [];
 const apiMetrics = {};
@@ -524,6 +534,7 @@ if (process.env.NODE_ENV !== 'production') {
     console.log('  ╔══════════════════════════════════════════════════════════╗');
     console.log('  ║                                                          ║');
     console.log('  ║   ⚡ Conduit                                              ║');
+    console.log(`  ║   v${VERSION.padEnd(54)}║`);
     console.log('  ║   Pay-per-call APIs on Stacks                             ║');
     console.log('  ║                                                          ║');
     console.log(`  ║   🌐 http://localhost:${PORT}                              ║`);
