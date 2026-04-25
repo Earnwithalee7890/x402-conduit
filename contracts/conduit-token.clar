@@ -1,11 +1,14 @@
 ;; Conduit Token (CDT) - SIP-010 Fungible Token
-;; Implements the standard fungible token trait.
+;; Standard: SIP-010
+;; Description: Native utility token for the Conduit API Marketplace
 
 (impl-trait .sip-010-trait-ft-standard.sip-010-trait)
 
 (define-fungible-token conduit-token)
 
+;; Constants
 (define-constant contract-owner tx-sender)
+(define-constant version u100)
 (define-constant err-owner-only (err u100))
 (define-constant err-not-token-owner (err u101))
 
