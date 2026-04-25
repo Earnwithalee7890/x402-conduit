@@ -35,6 +35,17 @@ import { getBuilderScore } from '@earnwithalee/stacks-april-event-sdk';
 const { score } = await getBuilderScore('SP...');
 ```
 
+### Event Status and Validation
+
+Check event details and validate Stacks addresses:
+
+```javascript
+import { getEventStatus, validateAddress } from '@earnwithalee/stacks-april-event-sdk';
+
+const status = await getEventStatus();
+const isValid = validateAddress('SP...');
+```
+
 ## 🔗 Event Metadata
 
 - **Batch**: April 2026
