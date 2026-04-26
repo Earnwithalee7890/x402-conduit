@@ -73,3 +73,8 @@
 - **Date:** 2026-04-27 01:54:46
 
 
+### Step 16
+- **Commit:** docs: update architecture overview in README
+- **Date:** 2026-04-27 01:54:47
+
+
