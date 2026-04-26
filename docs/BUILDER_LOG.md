@@ -133,3 +133,8 @@
 - **Date:** 2026-04-27 01:54:55
 
 
+### Step 28
+- **Commit:** docs: document internal state machine for escrow
+- **Date:** 2026-04-27 01:54:56
+
+
