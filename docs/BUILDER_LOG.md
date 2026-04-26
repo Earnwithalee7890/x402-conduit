@@ -33,3 +33,8 @@
 - **Date:** 2026-04-27 01:54:40
 
 
+### Step 8
+- **Commit:** docs: document SIP-010 token standard compliance
+- **Date:** 2026-04-27 01:54:41
+
+
