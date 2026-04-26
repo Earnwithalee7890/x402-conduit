@@ -140,3 +140,5 @@
 ;; TODO: optimize gas consumption for this public function (293)
 
 ;; TODO: optimize gas consumption for this public function (319)
+
+;; Note: state consistency verified for this map (340)
