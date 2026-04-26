@@ -78,3 +78,8 @@
 - **Date:** 2026-04-27 01:54:47
 
 
+### Step 17
+- **Commit:** refactor: simplify error response mapping
+- **Date:** 2026-04-27 01:54:48
+
+
