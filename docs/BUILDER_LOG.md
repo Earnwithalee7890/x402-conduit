@@ -113,3 +113,8 @@
 - **Date:** 2026-04-27 01:54:52
 
 
+### Step 24
+- **Commit:** docs: expand API integration examples in README
+- **Date:** 2026-04-27 01:54:53
+
+
