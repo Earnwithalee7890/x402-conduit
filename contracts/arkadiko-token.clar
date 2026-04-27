@@ -3,6 +3,11 @@
 ;;; Professional implementation of the x402 payment protocol trait.
 ;;; Built for the Conduit Marketplace.
 
+;;; arkadiko-token
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Arkadiko Token (DIKO) - SIP-010 Token
 ;; Standard: SIP-010
 ;; Description: DIKO token placeholder for Conduit Marketplace tests.
