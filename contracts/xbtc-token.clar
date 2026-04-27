@@ -1,3 +1,8 @@
+;;; xbtc-token
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Wrapped;; xBTC Token (xBTC) - SIP-010 Token
 ;; Standard: SIP-010
 ;; Description: xBTC token placeholder for Conduit Marketplace tests.
