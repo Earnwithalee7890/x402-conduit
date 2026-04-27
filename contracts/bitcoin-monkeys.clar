@@ -1,3 +1,8 @@
+;;; bitcoin-monkeys
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Bitcoin Monkeys - SIP-009 NFT
 (impl-trait .sip-009-trait-nft-standard.sip-009-trait)
 (define-non-fungible-token bitcoin-monkeys uint)
