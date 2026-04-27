@@ -3,6 +3,11 @@
 ;;; Professional implementation of the x402 payment protocol trait.
 ;;; Built for the Conduit Marketplace.
 
+;;; crash-punks
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Crash Punks - SIP-009 NFT
 (impl-trait .sip-009-trait-nft-standard.sip-009-trait)
 (define-non-fungible-token crash-punks uint)
