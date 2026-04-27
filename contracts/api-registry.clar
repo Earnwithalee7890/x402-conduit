@@ -3,6 +3,11 @@
 ;;; Professional implementation of the x402 payment protocol trait.
 ;;; Built for the Conduit Marketplace.
 
+;;; api-registry
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; =============================================
 ;; Conduit — API Registry (Clarity 2.1 / Nakamoto)
 ;; =============================================
