@@ -1,3 +1,8 @@
+;;; miamicoin
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; MiamiCoin (MIA) - SIP-010 Token
 ;; Standard: SIP-010
 ;; Description: MIA token placeholder for Conduit Marketplace tests.
