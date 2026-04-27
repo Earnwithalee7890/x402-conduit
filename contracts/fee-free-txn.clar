@@ -3,6 +3,11 @@
 ;;; Professional implementation of the x402 payment protocol trait.
 ;;; Built for the Conduit Marketplace.
 
+;;; fee-free-txn
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Conduit - Engagement Contract
 ;; Conduit - Fee-Free Signal
 ;; Simpler version using stacks-block-height for Nakamoto compatibility
