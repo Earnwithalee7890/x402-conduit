@@ -1,3 +1,8 @@
+;;; satoshis-nft
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Satoshis - SIP-009 NFT
 (impl-trait .sip-009-trait-nft-standard.sip-009-trait)
 (define-non-fungible-token satoshis uint)
