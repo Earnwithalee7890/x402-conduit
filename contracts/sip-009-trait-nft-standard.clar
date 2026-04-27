@@ -1,3 +1,8 @@
+;;; sip-009-trait-nft-standard
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 (define-trait sip-009-trait
   (
     ;; Last token ID, limited to uint range
