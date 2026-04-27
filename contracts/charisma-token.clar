@@ -1,3 +1,8 @@
+;;; charisma-token
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Charisma Token (CHA) - SIP-010 Token
 ;; Standard: SIP-010
 ;; Description: CHA token placeholder for Conduit Marketplace tests.
