@@ -1,3 +1,8 @@
+;;; megapont-nft
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Megapont Ape Club - SIP-009 NFT
 (impl-trait .sip-009-trait-nft-standard.sip-009-trait)
 (define-non-fungible-token megapont-ape-club uint)
