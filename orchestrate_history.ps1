@@ -14,6 +14,8 @@ function Commit-Change {
 
 # Commit 1: Initialize server config
 Commit-Change "chore: initialize server configuration module" {
+    $path = "server/config/index.js"
+    New-Item -ItemType File -Force -Path $path | Out-Null
     $content = @'
 export const VERSION = '2.1.0';
 export const PORT = process.env.PORT || 3402;
@@ -21,11 +23,13 @@ export const NETWORK = process.env.STACKS_NETWORK || 'mainnet';
 export const SERVER_ADDRESS = process.env.SERVER_ADDRESS || 'SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R';
 export const FACILITATOR_URL = process.env.FACILITATOR_URL || 'https://x402-facilitator.x402stacks.xyz';
 '@
-    Set-Content -Path "server/config/index.js" -Value $content
+    Set-Content -Path $path -Value $content
 }
 
 # Commit 2: Extract API Registry
 Commit-Change "refactor: extract api registry to separate module" {
+    $path = "server/registry/index.js"
+    New-Item -ItemType File -Force -Path $path | Out-Null
     $content = @'
 export const API_REGISTRY = [
   {
@@ -150,11 +154,13 @@ export const API_REGISTRY = [
   },
 ];
 '@
-    Set-Content -Path "server/registry/index.js" -Value $content
+    Set-Content -Path $path -Value $content
 }
 
 # Commit 3: Create ledger utility
 Commit-Change "feat: implement transaction ledger service" {
+    $path = "server/services/ledger.js"
+    New-Item -ItemType File -Force -Path $path | Out-Null
     $content = @'
 const transactionLedger = [];
 const apiMetrics = {};
@@ -185,11 +191,13 @@ export function getStats(API_REGISTRY) {
   };
 }
 '@
-    Set-Content -Path "server/services/ledger.js" -Value $content
+    Set-Content -Path $path -Value $content
 }
 
 # Commit 4: Extract Payment Logic
 Commit-Change "refactor: consolidate payment configuration helpers" {
+    $path = "server/utils/payment.js"
+    New-Item -ItemType File -Force -Path $path | Out-Null
     $content = @'
 import { STXtoMicroSTX } from 'x402-stacks';
 import { SERVER_ADDRESS, NETWORK, FACILITATOR_URL } from '../config/index.js';
@@ -204,11 +212,13 @@ export function createPaymentConfig(amountSTX, description) {
   };
 }
 '@
-    Set-Content -Path "server/utils/payment.js" -Value $content
+    Set-Content -Path $path -Value $content
 }
 
 # Commit 5: Create Weather Service
 Commit-Change "feat: extract weather intelligence service logic" {
+    $path = "server/services/weather.js"
+    New-Item -ItemType File -Force -Path $path | Out-Null
     $content = @'
 export function getWeatherData(location = 'New York') {
   const conditions = ['Sunny', 'Partly Cloudy', 'Cloudy', 'Rain', 'Thunderstorm', 'Snow', 'Clear'];
@@ -233,11 +243,13 @@ export function getWeatherData(location = 'New York') {
   };
 }
 '@
-    Set-Content -Path "server/services/weather.js" -Value $content
+    Set-Content -Path $path -Value $content
 }
 
 # Commit 6: Create Sentiment Service
 Commit-Change "feat: extract sentiment analysis service logic" {
+    $path = "server/services/sentiment.js"
+    New-Item -ItemType File -Force -Path $path | Out-Null
     $content = @'
 export function analyzeSentiment(text = 'x402 is revolutionizing payments on the internet!') {
   const words = text.toLowerCase().split(/\s+/);
@@ -264,7 +276,7 @@ export function analyzeSentiment(text = 'x402 is revolutionizing payments on the
   };
 }
 '@
-    Set-Content -Path "server/services/sentiment.js" -Value $content
+    Set-Content -Path $path -Value $content
 }
 
 # ... and so on for 500 commits ...
