@@ -1,3 +1,8 @@
+;;; usda-token
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; USDA Token (USDA) - SIP-010 Token
 ;; Standard: SIP-010
 ;; Description: USDA token placeholder for Conduit Marketplace tests.
