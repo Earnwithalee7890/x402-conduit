@@ -1,3 +1,8 @@
+;;; conduit-nft
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Conduit NFT
 ;; Standard: SIP-009
 ;; Description: Non-fungible token for Conduit Marketplace memberships and access rights.
