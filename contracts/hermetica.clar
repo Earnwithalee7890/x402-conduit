@@ -3,6 +3,11 @@
 ;;; Professional implementation of the x402 payment protocol trait.
 ;;; Built for the Conduit Marketplace.
 
+;;; hermetica
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Hermetica Vault - Vault
 (define-constant contract-owner tx-sender)
 (define-map deposits principal uint)
