@@ -1,3 +1,8 @@
+;;; reputation
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; =============================================
 ;; Conduit — Reputation (Clarity 2.1 / Nakamoto)
 ;; =============================================
