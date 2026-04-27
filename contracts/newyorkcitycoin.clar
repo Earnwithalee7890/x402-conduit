@@ -3,6 +3,11 @@
 ;;; Professional implementation of the x402 payment protocol trait.
 ;;; Built for the Conduit Marketplace.
 
+;;; newyorkcitycoin
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; NewYorkCityCoin (NYC) - SIP-010 Token
 ;; Standard: SIP-010
 ;; Description: NYC token placeholder for Conduit Marketplace tests.
