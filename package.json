@@ -37,10 +37,12 @@
   "dependencies": {
     "@earnwithalee/stacks-april-event-sdk": "file:stacks-event-sdk",
     "@earnwithalee/stacksrank-sdk": "^1.0.0",
+    "@earnwithalee/x402-conduit": "^1.0.0",
     "axios": "^1.7.9",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.0.1",
+    "i": "^0.3.7",
     "x402-stacks": "^2.0.1"
   },
   "devDependencies": {
