@@ -3,6 +3,11 @@
 ;;; Professional implementation of the x402 payment protocol trait.
 ;;; Built for the Conduit Marketplace.
 
+;;; alex-token
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Alex Token (ALEX) - SIP-010 Token
 ;; Standard: SIP-010
 ;; Description: ALEX token placeholder for Conduit Marketplace tests.
