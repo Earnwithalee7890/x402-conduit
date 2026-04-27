@@ -1,3 +1,8 @@
+;;; conduit-token
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Conduit Token (CDT) - SIP-010 Fungible Token
 ;; Standard: SIP-010
 ;; Description: Native utility token for the Conduit API Marketplace
