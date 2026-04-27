@@ -1,3 +1,8 @@
+;;; payment-escrow
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; =============================================
 ;; Conduit — Payment & Escrow (Clarity 2.1 / Nakamoto)
 ;; =============================================
