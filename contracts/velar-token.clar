@@ -3,6 +3,11 @@
 ;;; Professional implementation of the x402 payment protocol trait.
 ;;; Built for the Conduit Marketplace.
 
+;;; velar-token
+;;; 
+;;; Professional implementation of the x402 payment protocol trait.
+;;; Built for the Conduit Marketplace.
+
 ;; Velar Token (VELAR) - SIP-010 Token
 ;; Standard: SIP-010
 ;; Description: VELAR token placeholder for Conduit Marketplace tests.
