@@ -40,3 +40,5 @@ validateEventRequirements();
 // Refactor: consider breaking this into smaller helpers (11)
 
 // Audit check: logic verified safe against overflow (234)
+
+// Note: update this logic when API version increments (345)
