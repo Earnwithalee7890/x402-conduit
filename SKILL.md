@@ -1,3 +1,11 @@
+---
+name: x402-conduit
+description: Pay-per-call API marketplace powered by x402 payments on the Stacks blockchain. AI agents autonomously discover, pay for, and consume APIs using HTTP 402 — no API keys, no subscriptions, just HTTP and STX.
+version: 1.0.0
+author: Earnwithalee7890
+license: MIT
+---
+
 # x402-conduit
 
 > **Pay-per-call API marketplace powered by x402 payments on the Stacks blockchain.**
